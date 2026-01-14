@@ -14,12 +14,13 @@ animal-fight/
 ├── CLAUDE.md                 # 專案架構與技術決策
 ├── README.md                 # 環境設置與快速開始
 ├── card/                     # 卡片相關檔案
-│   ├── final_cards.html      # A4 全頁列印版（目前使用）
-│   ├── animal-cards-template.html  # 早期模板
+│   ├── final_cards.html      # A4 全頁列印版（16 張動物卡）
 │   ├── generate_from_jsonl.py      # 圖片批次生成腳本
-│   ├── animal-prompts-api.jsonl    # 圖片生成 prompt
 │   ├── .env.example          # API Key 範本
-│   └── images/               # 生成的動物圖片（gitignore）
+│   ├── images/               # 動物圖片 + icon（16+6 張）
+│   └── img-prompt/           # 圖片生成 prompt
+│       ├── animal-ai-prompts.md    # 原始 10 隻動物 prompt
+│       └── animal-ai-prompts-3.md  # 新增 6 隻動物 prompt
 ├── docs/
 │   ├── prompt.txt            # 原始需求 prompt
 │   ├── review-result.md      # 審查報告
@@ -98,14 +99,14 @@ animal-fight/
 - [x] 圖片生成腳本（generate_from_jsonl.py）
 - [x] 動物大對決規則（battle-rules.md）
 - [x] 卡片改版：骰子6 顯示特殊加成
-- [x] 數值平衡調整：總和 23-28、智慧弱點補齊
-- [ ] AI 圖片生成（需 OpenAI 組織驗證）
-- [ ] 6 張新動物天賦技能設計
+- [x] 數值平衡調整：總和 23-28、屬性分布優化
+- [x] AI 圖片生成（16 張動物 + 6 張 icon）
+- [x] 6 張新動物天賦技能設計
 - [ ] 印刷測試
 - [ ] 實際遊玩測試
 
 ## 後續擴充（不納入 MVP）
 - 裝備卡
 - 狀態效果
-- 更多動物（待建立清單 27 張）
+- 更多動物（待建立清單 21 張）
 - Boss 專屬招式表
