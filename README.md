@@ -25,12 +25,14 @@
 
 ```
 animal-fight/
+├── card/
+│   └── animal-cards-A4-bw.html  # 卡片列印用 HTML
 ├── game/
-│   └── rulebook.md           # 正式規則書（開始遊玩看這裡）
+│   └── rulebook.md              # 正式規則書（開始遊玩看這裡）
 └── docs/
-    ├── prompt.txt            # 原始設計需求
-    ├── review-result.md      # 6 版本審查比較報告
-    └── design-versions/      # 設計迭代版本存檔
+    ├── prompt.txt               # 原始設計需求
+    ├── review-result.md         # 6 版本審查比較報告
+    └── design-versions/         # 設計迭代版本存檔
 ```
 
 ## 版本歷史

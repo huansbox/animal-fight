@@ -9,6 +9,8 @@ animal-fight/
 ├── .gitignore
 ├── CLAUDE.md                 # 專案架構與技術決策
 ├── README.md                 # 環境設置與快速開始
+├── card/                     # 卡片列印檔案
+│   └── animal-cards-A4-bw.html
 ├── docs/
 │   ├── prompt.txt            # 原始需求 prompt
 │   ├── review-result.md      # 審查報告
