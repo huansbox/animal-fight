@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>動物守護者 - A4 黑白列印版</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap');
+
+        /* A4 紙張設定 */
+        @page {
+            size: A4 portrait; /* 直式 A4 */
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #cccccc; /* 螢幕上顯示灰色背景，方便辨識紙張邊界 */
+            font-family: 'Noto Sans TC', "Microsoft JhengHei", sans-serif;
+            -webkit-print-color-adjust: exact; /* 強制列印背景色/圖形 */
+            print-color-adjust: exact;
+        }
+
+        /* 每一頁就是一張 A4 */
+        .page {
+            width: 210mm;
+            height: 296mm; /* 稍微預留一點邊距避免被切到 */
+            background-color: white;
+            margin: 20px auto;
+            padding: 15mm; /* 列印安全邊距 */
+            box-sizing: border-box;
+            page-break-after: always; /* 每一頁後強制換頁 */
+            position: relative;
+        }
+
+        /* 螢幕預覽時的陰影效果，列印時會消失 */
+        @media screen {
+            .page {
+                box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            }
+        }
+
+        /* 卡片外框 */
+        .card-border {
+            border: 8px solid #000;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        /* --- 頂部：名稱與圖片 --- */
+        .header {
+            height: 35%;
+            border-bottom: 5px solid #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: #fff;
+        }
+
+        .animal-name {
+            font-size: 48pt;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .animal-role {
+            font-size: 18pt;
+            border: 2px solid #000;
+            padding: 5px 20px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            background-color: #eee; /* 淡灰底色 */
+        }
+
+        .main-image {
+            font-size: 110pt;
+            line-height: 1.2;
+            filter: grayscale(100%); /* 強制黑白 */
+        }
+
+        /* --- 中間：屬性九宮格 (2x3) --- */
+        .stats-grid {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .stat-cell {
+            border-right: 3px solid #000;
+            border-bottom: 3px solid #000;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 移除最右邊和最底部的邊框，避免重複 */
+        .stat-cell:nth-child(3n) { border-right: none; }
+        .stat-cell:nth-child(n+4) { border-bottom: none; }
+
+        /* 骰子點數 (左上角) */
+        .dice-mark {
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            font-size: 40pt;
+            line-height: 1;
+        }
+
+        /* 屬性圖示 (中間偏上) */
+        .icon-mark {
+            font-size: 50pt;
+            margin-top: 10mm;
+            margin-bottom: 5mm;
+            filter: grayscale(100%);
+        }
+
+        /* 屬性名稱 (小字輔助) */
+        .stat-label {
+            font-size: 14pt;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        /* 核心數值 (超大) */
+        .stat-value {
+            font-size: 80pt;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        /* 天賦格特別樣式 (最後一格) */
+        .stat-cell.special {
+            background-color: #f0f0f0; /* 灰色底 */
+        }
+        
+        .stat-cell.special .stat-value {
+             text-decoration: underline;
+        }
+
+        /* --- 底部：技能描述 --- */
+        .footer {
+            height: 12%;
+            border-top: 5px solid #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background-color: #222; /* 黑底 */
+            color: #fff; /* 白字 */
+        }
+
+        .skill-name {
+            font-size: 32pt;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .skill-desc {
+            font-size: 16pt;
+            font-weight: normal;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- 範本產生器腳本 -->
+<script>
+    const animals = [
+        { name: "非洲獅", role: "隊長", emoji: "🦁", stats: [7, 5, 7, 5, 4], skill: "王者咆哮", skillVal: 10, desc: "大吼一聲，嚇跑敵人！" },
+        { name: "獵豹", role: "極速", emoji: "🐆", stats: [4, 9, 6, 3, 4], skill: "閃電衝刺", skillVal: 11, desc: "跑得像風一樣快！" },
+        { name: "非洲象", role: "坦克", emoji: "🐘", stats: [9, 2, 6, 7, 4], skill: "巨足震地", skillVal: 10, desc: "用腳用力踩，地都會震動！" },
+        { name: "大猩猩", role: "鬥士", emoji: "🦍", stats: [7, 4, 7, 6, 5], skill: "金剛重拳", skillVal: 10, desc: "雙手搥胸，力氣超大！" },
+        { name: "遊隼", role: "刺客", emoji: "🦅", stats: [2, 8, 6, 2, 5], skill: "俯衝獵殺", skillVal: 12, desc: "從天空像飛彈一樣衝下來！" },
+        { name: "貓頭鷹", role: "智者", emoji: "🦉", stats: [2, 4, 4, 3, 9], skill: "全知之眼", skillVal: 12, desc: "黑暗中什麼都看得到！" },
+        { name: "穿山甲", role: "鐵壁", emoji: "🦎", stats: [3, 3, 3, 9, 5], skill: "球型防禦", skillVal: 12, desc: "縮成一顆硬硬的球！" },
+        { name: "科摩多龍", role: "毒師", emoji: "🐊", stats: [6, 4, 8, 5, 4], skill: "劇毒撕咬", skillVal: 11, desc: "口水有毒，咬到很痛！" },
+        { name: "蜜獾", role: "狂戰", emoji: "🦡", stats: [5, 5, 7, 7, 4], skill: "無畏反擊", skillVal: 10, desc: "什麼都不怕，越受傷越兇！" },
+        { name: "海豚", role: "輔助", emoji: "🐬", stats: [3, 7, 5, 3, 8], skill: "聲納共鳴", skillVal: 11, desc: "用聲音跟同伴說話！" }
+    ];
+
+    const icons = [
+        { dice: "⚀", type: "✊", label: "力量" },
+        { dice: "⚁", type: "👟", label: "速度" },
+        { dice: "⚂", type: "⚔️", label: "攻擊" },
+        { dice: "⚃", type: "🛡️", label: "防禦" },
+        { dice: "⚄", type: "🧠", label: "智慧" },
+        { dice: "⚅", type: "🌟", label: "天賦" } // Special case
+    ];
+
+    animals.forEach(animal => {
+        document.write(`
+        <div class="page">
+            <div class="card-border">
+                <div class="header">
+                    <div class="main-image">${animal.emoji}</div>
+                    <div class="animal-name">${animal.name}</div>
+                    <div class="animal-role">${animal.role}</div>
+                </div>
+                <div class="stats-grid">
+                    <!-- Slot 1-5 -->
+                    ${animal.stats.map((val, idx) => `
+                        <div class="stat-cell">
+                            <div class="dice-mark">${icons[idx].dice}</div>
+                            <div class="icon-mark">${icons[idx].type}</div>
+                            <div class="stat-label">${icons[idx].label}</div>
+                            <div class="stat-value">${val}</div>
+                        </div>
+                    `).join('')}
+                    
+                    <!-- Slot 6 (Talent) -->
+                    <div class="stat-cell special">
+                        <div class="dice-mark">${icons[5].dice}</div>
+                        <div class="icon-mark">${icons[5].type}</div>
+                        <div class="stat-label">${icons[5].label}</div>
+                        <div class="stat-value">${animal.skillVal}</div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="skill-name">★ ${animal.skill}</div>
+                    <div class="skill-desc">${animal.desc}</div>
+                </div>
+            </div>
+        </div>
+        `);
+    });
+</script>
+
+</body>
+</html>

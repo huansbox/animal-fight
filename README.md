@@ -16,18 +16,22 @@
 - 列印好的動物卡（見下方）
 
 ### 列印說明
-1. 開啟 `animal-cla-2.md`（最終版本）
+1. 開啟 [`game/rulebook.md`](game/rulebook.md)（正式規則書）
 2. 參考 Part 4 版面指引
 3. A4 紙列印，建議 160gsm 以上
 4. 裁切成 63×88mm 卡片
 
-## 檔案說明
+## 專案結構
 
-| 檔案 | 說明 |
-|------|------|
-| `animal-cla-2.md` | **正式版本** - 完整遊戲規則與內容 |
-| `review-result.md` | 6 版本審查比較報告 |
-| `animal-fight-prompt.txt` | 原始設計需求 |
+```
+animal-fight/
+├── game/
+│   └── rulebook.md           # 正式規則書（開始遊玩看這裡）
+└── docs/
+    ├── prompt.txt            # 原始設計需求
+    ├── review-result.md      # 6 版本審查比較報告
+    └── design-versions/      # 設計迭代版本存檔
+```
 
 ## 版本歷史
 
@@ -39,6 +43,8 @@
 | animal-ge | 112 | DC 調整機制 |
 | animal-cl | 111 | 角色台詞設計 |
 | animal-gpt | 94 | 規格書（非遊戲文件） |
+
+詳細比較請見 [`docs/review-result.md`](docs/review-result.md)
 
 ## 授權
 個人使用，非商業用途
