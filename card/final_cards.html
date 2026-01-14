@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>動物守護者 - 最終 A4 黑白列印版 (排版修正版)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Roboto:wght@700;900&display=swap');
+
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #cccccc;
+            font-family: 'Noto Sans TC', "Microsoft JhengHei", sans-serif;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background-color: white;
+            margin: 20px auto;
+            padding: 10mm; /* 稍微縮小邊距以增加內容空間 */
+            box-sizing: border-box;
+            page-break-after: always;
+            position: relative;
+        }
+
+        @media screen {
+            .page { box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+        }
+
+        .card-border {
+            border: 10px solid #000;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        /* --- 頂部區塊：圖片與名稱 --- */
+        .header {
+            height: 50%; /* 稍微縮小高度比例 */
+            border-bottom: 8px solid #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 10px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .image-container {
+            width: 95%;
+            height: 65%; /* 壓縮圖片高度 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 0px; /* 移除底部間距 */
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .animal-name {
+            font-size: 52pt; /* 稍微縮小字體以利上移 */
+            font-weight: 900;
+            margin: 0;
+            line-height: 1.1;
+        }
+        
+        .animal-name-en {
+            font-family: 'Roboto', sans-serif;
+            font-size: 28pt;
+            font-weight: 900; /* 極粗體 */
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 15px;
+        }
+
+        .special-skill-box {
+            width: 90%;
+            border: 3px dashed #000;
+            padding: 8px;
+            margin-top: 10px; /* 保持適當上距 */
+            margin-bottom: 5px; /* 確保不碰到底部粗線 */
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+
+        .skill-title {
+            font-size: 19pt;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .skill-text {
+            font-size: 15pt;
+            font-weight: bold;
+            line-height: 1.2;
+            color: #000;
+        }
+
+        /* --- 下方屬性區塊 --- */
+        .stats-grid {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .stat-cell {
+            border-right: 4px solid #000;
+            border-bottom: 4px solid #000;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 0px;
+            overflow: hidden; /* 防止內容溢出 */
+        }
+
+        .stat-cell:nth-child(3n) { border-right: none; }
+        .stat-cell:nth-child(n+4) { border-bottom: none; }
+
+        .dice-mark {
+            position: absolute;
+            top: 3mm;
+            left: 3mm;
+            font-size: 50pt;
+            font-weight: bold;
+        }
+
+        /* Icon 容器 - 適度縮小以防數字被擠出 */
+        .icon-container {
+            width: 95px; 
+            height: 95px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: -5px;
+        }
+        
+        .icon-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .stat-label {
+            font-size: 13pt;
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        .stat-value {
+            font-size: 72pt; /* 從 85pt 縮小，確保不溢出 */
+            font-weight: 900;
+            line-height: 1; /* 調整行高 */
+            margin-top: -5px;
+        }
+
+        /* 統一為白底 */
+        .stat-cell.special {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* 技能加成顯示 */
+        .skill-bonus-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .bonus-item {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .bonus-icon {
+            width: 36px;
+            height: 36px;
+        }
+
+        .bonus-value {
+            font-size: 32pt;
+            font-weight: 900;
+        }
+
+    </style>
+</head>
+<body>
+
+<script>
+    const animals = [
+        { name: "非洲獅", en: "Lion", img: "images/lion.png", stats: [7, 5, 7, 5, 4], skillName: "大吼", skillDesc: "嚇跑體型比你小的動物，或讓敵人嚇到不敢亂動。", skillBonus: [{attr: 0, val: 2}, {attr: 2, val: 2}] },
+        { name: "非洲象", en: "Elephant", img: "images/elephant.png", stats: [8, 2, 6, 7, 5], skillName: "鼻子噴水", skillDesc: "可以澆熄森林大火，或是洗掉擋路的泥濘。", skillBonus: [{attr: 2, val: 1}, {attr: 3, val: 3}] },
+        { name: "貓頭鷹", en: "Owl", img: "images/owl.png", stats: [2, 5, 4, 3, 9], skillName: "黑夜視線", skillDesc: "在完全黑暗的山洞或夜晚也能看得很清楚。", skillBonus: [{attr: 4, val: 2}, {attr: 3, val: 1}, {attr: 1, val: 1}] },
+        { name: "獵豹", en: "Cheetah", img: "images/cheetah.png", stats: [4, 9, 6, 3, 4], skillName: "極限衝刺", skillDesc: "瞬間爆發速度，用來躲避陷阱或是追上逃跑的敵人。", skillBonus: [{attr: 2, val: 1}, {attr: 3, val: 1}, {attr: 1, val: 2}] },
+        { name: "穿山甲", en: "Pangolin", img: "images/pangolin.png", stats: [3, 4, 3, 9, 5], skillName: "捲成球滾動", skillDesc: "保護自己不攻擊，並像輪胎一樣快速滾動過橋。", skillBonus: [{attr: 3, val: 2}, {attr: 1, val: 2}] },
+        { name: "海豚", en: "Dolphin", img: "images/dolphin.png", stats: [3, 7, 5, 3, 8], skillName: "超音波定位", skillDesc: "在深水或濃霧中發現看不見的隱藏小路。", skillBonus: [{attr: 4, val: 2}, {attr: 3, val: 2}] },
+        { name: "遊隼", en: "Falcon", img: "images/falcon.png", stats: [2, 8, 6, 2, 6], skillName: "千里眼", skillDesc: "從非常遠的高空看到重要的關鍵物品或危險。", skillBonus: [{attr: 3, val: 2}, {attr: 2, val: 1}, {attr: 4, val: 1}] },
+        { name: "科摩多龍", en: "Komodo Dragon", img: "images/komodo.png", stats: [6, 4, 8, 5, 4], skillName: "強酸口水", skillDesc: "吐出有腐蝕性的唾液，可以融化門鎖或繩索。", skillBonus: [{attr: 2, val: 1}, {attr: 3, val: 3}] },
+        { name: "大猩猩", en: "Gorilla", img: "images/gorilla.png", stats: [7, 4, 7, 5, 5], skillName: "攀爬高手", skillDesc: "像在平地一樣輕鬆爬上懸崖或巨大的樹木。", skillBonus: [{attr: 0, val: 1}, {attr: 3, val: 2}, {attr: 1, val: 1}] },
+        { name: "蜜獾", en: "Honey Badger", img: "images/badger.png", stats: [5, 5, 7, 7, 4], skillName: "百毒不侵", skillDesc: "完全不怕毒蛇的毒液，也可以在臭氣中自由行動。", skillBonus: [{attr: 3, val: 3}, {attr: 4, val: 1}] }
+    ];
+
+    const icons = [
+        { dice: "⚀", img: "images/icon_strength.png", label: "力量" },
+        { dice: "⚁", img: "images/icon_speed.png", label: "速度" },
+        { dice: "⚂", img: "images/icon_attack.png", label: "攻擊" },
+        { dice: "⚃", img: "images/icon_defense.png", label: "防禦" },
+        { dice: "⚄", img: "images/icon_intelligence.png", label: "智慧" },
+        { dice: "⚅", img: "images/icon_talent.png", label: "天賦" } 
+    ];
+
+    animals.forEach(animal => {
+        document.write(`
+        <div class="page">
+            <div class="card-border">
+                <div class="header">
+                    <div class="image-container">
+                        <img src="${animal.img}" alt="${animal.name}">
+                    </div>
+                    <div class="animal-name">${animal.name} <span class="animal-name-en">${animal.en}</span></div>
+                    <div class="special-skill-box">
+                        <span class="skill-title">【${animal.skillName}】</span>
+                        <span class="skill-text">${animal.skillDesc}</span>
+                    </div>
+                </div>
+                <div class="stats-grid">
+                    ${animal.stats.map((val, idx) => `
+                        <div class="stat-cell">
+                            <div class="dice-mark">${icons[idx].dice}</div>
+                            <div class="icon-container"><img src="${icons[idx].img}"></div>
+                            <div class="stat-label">${icons[idx].label}</div>
+                            <div class="stat-value">${val}</div>
+                        </div>
+                    `).join('')}
+                    
+                    <div class="stat-cell special">
+                        <div class="dice-mark">${icons[5].dice}</div>
+                        <div class="icon-container"><img src="${icons[5].img}"></div>
+                        <div class="stat-label">${animal.skillName}</div>
+                        ${animal.skillBonus ? `
+                            <div class="skill-bonus-container">
+                                ${animal.skillBonus.map(b => `
+                                    <div class="bonus-item">
+                                        <img class="bonus-icon" src="${icons[b.attr].img}">
+                                        <span class="bonus-value">+${b.val}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : `
+                            <div class="stat-value">${animal.skillVal}</div>
+                        `}
+                    </div>
+                </div>
+            </div>
+        </div>
+        `);
+    });
+</script>
+
+</body>
+</html>
