@@ -25,6 +25,7 @@ animal-fight/
 │   ├── prompt.txt            # 原始需求 prompt
 │   ├── review-result.md      # 審查報告
 │   ├── archetype-template.md # 原型屬性模板（草案）
+│   ├── attribute-review.md   # 屬性合理性審查報告
 │   └── design-versions/      # 設計迭代版本（6 個）
 │       ├── animal-cl.md      # Claude v1
 │       ├── animal-ge.md      # Gemini v1
@@ -53,6 +54,7 @@ animal-fight/
 - 弱項：至少 1 個 ≤ 3
 - 亮點：至少 1 個 ≥ 7
 - 原型：坦克/速度/輸出/智慧/全能
+- 屬性合理性審查見 docs/attribute-review.md（智慧屬性有待調整項目）
 
 ### 已建立動物（16 張）
 
