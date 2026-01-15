@@ -1,0 +1,14 @@
+# prompt 格式
+
+## openai 建議 prompt 格式
+
+{"id": "tortoise","prompt": "Black-and-white vector-style line art of a Galápagos tortoise, full body side view, massive sturdy domed shell, thick legs, head raised with a wise expression. Centered composition. Bold clean outlines, minimal interior detail. Coloring-book style, pure white background, high contrast. No shading, no gradients, no hatching, no gray, no shadow."
+}
+
+## 原本 prompt 格式
+
+{"id":"tortoise","prompt":"black and white vector line art of a Galápagos Tortoise, full body side view, massive sturdy shell, thick legs, head raised looking wise, centered composition, bold lines, coloring book style, white background, high contrast, no shading --ar 1:1"}
+
+* 把 --ar 1:1 拿掉，比例/尺寸不要寫在 prompt
+* 「vector」改成「vector-style」
+* 「pure white background」改成「white background」
