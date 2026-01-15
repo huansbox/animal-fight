@@ -17,7 +17,8 @@
   - `card/final_cards.html`：A4 全頁列印版（含動物圖與 icon）
   - `card/animal-cards-A4-bw.html`：黑白列印版
   - `card/animal-cards-A4-emoji.html`：emoji 佔位的卡片模版（方便改版面/字級/格線）
-  - `card/images/`：輸出的動物圖與 icon（**gitignore**；避免把大量圖檔提交）
+  - `card/images/`：動物圖與 icon（**gitignore**；避免把大量圖檔提交）
+  - `card/images/new/`：批次產圖預設輸出位置（用來放「重新生成」版本，避免覆蓋既有素材）
   - `card/img-prompt/`：產圖用 prompts（JSONL/MD）
   - `card/generate_from_jsonl.py`：從 JSONL 批次產圖腳本
 - `docs/`
@@ -36,12 +37,19 @@
 ### 重要檔案
 - API key：`card/.env`（**不要**把 key 貼到對話/issue/commit；也不要在回覆中印出 `.env` 內容）
 - prompts：`card/img-prompt/*.jsonl`
-- 產出圖檔：`card/images/`（已在 `.gitignore` 排除）
+- 產出圖檔：預設 `card/images/new/`（也可用參數改輸出路徑）
 
 ### 一般操作
 1. 確認 `card/.env` 有 `OPENAI_API_KEY=...`
 2. 進入 `card/` 目錄後執行：`python generate_from_jsonl.py`
-3. 成功後圖檔會出現在 `card/images/`
+3. 成功後圖檔預設會出現在 `card/images/new/`
+
+### 常用參數
+- 指定輸入 JSONL：`python generate_from_jsonl.py --input img-prompt/animal-prompts-api-3.jsonl`
+- 指定輸出資料夾：`python generate_from_jsonl.py --output-dir images/new`
+- 每筆產多張：`python generate_from_jsonl.py --num-images 2`（輸出檔名會加 `_1/_2` 後綴）
+- 重新生成覆寫：`python generate_from_jsonl.py --overwrite`（預設為「已存在就跳過」）
+- 測試用只跑前 N 筆：`python generate_from_jsonl.py --limit 1`（可搭配 `--offset`）
 
 ### 模型與 quality 注意事項
 - `gpt-image-1.5`：`quality` 支援 `low | medium | high | auto`
@@ -51,7 +59,8 @@
 ## 修改卡片/規則時的注意事項
 - **一致性**：改了屬性、DC、或卡片欄位，需同步更新 `game/` 規則書與 `card/` 版面。
 - **避免覆蓋素材**：
-  - 批次產圖建議用「跳過已存在檔案」或「新檔名」策略，避免把原本可用的圖蓋掉。
+  - 預設輸出到 `card/images/new/`，避免把原本可用的圖蓋掉。
+  - 若確定要更新既有檔名對應的圖，再使用 `--overwrite`。
 - **避免外洩機密**：
   - 不要輸出/記錄/貼出 `OPENAI_API_KEY`。
   - 產圖與測試時若需要貼 log，先把 key 打碼。

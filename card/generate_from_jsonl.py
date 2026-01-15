@@ -10,10 +10,18 @@
   2) 在 `card/.env` 填入 OPENAI_API_KEY
   3) python generate_from_jsonl.py
 
+可選參數：
+  - 指定輸入 JSONL：python generate_from_jsonl.py --input img-prompt/animal-prompts-api-3-2.jsonl
+  - 指定輸出資料夾：python generate_from_jsonl.py --output-dir images
+  - 每個 prompt 產多張：python generate_from_jsonl.py --num-images 2
+  - 只跑前 N 筆：python generate_from_jsonl.py --limit 1
+  - 覆寫既有檔案：python generate_from_jsonl.py --overwrite
+
 輸入檔（JSONL）格式範例：
   {"id":"01","prompt":"..."}
 """
 
+import argparse
 import base64
 import json
 import os
@@ -51,11 +59,84 @@ BACKGROUND = "auto"  # auto | transparent | opaque（依模型支援）
 SLEEP_SECONDS = 5
 
 # 檔案路徑
-INPUT_FILE = SCRIPT_DIR / "animal-prompts-api.jsonl"
-OUTPUT_DIR = SCRIPT_DIR / "images"
+PROMPT_DIR = SCRIPT_DIR / "img-prompt"
+DEFAULT_INPUT_CANDIDATES = [
+    PROMPT_DIR / "animal-prompts-api-3-2.jsonl",
+    PROMPT_DIR / "animal-prompts-api-3.jsonl",
+    PROMPT_DIR / "animal-prompts-api.jsonl",
+    SCRIPT_DIR / "animal-prompts-api.jsonl",  # 向下相容舊位置
+]
+DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "images" / "new"
 
 
 # ============ 工具函數 ============
+
+def pick_default_input_file() -> Path:
+    for candidate in DEFAULT_INPUT_CANDIDATES:
+        if candidate.exists():
+            return candidate
+    return DEFAULT_INPUT_CANDIDATES[0]
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="從 JSONL 批次生成圖片（OpenAI Images API）")
+    parser.add_argument(
+        "--input",
+        "-i",
+        type=Path,
+        default=None,
+        help="JSONL prompt 檔案路徑（預設會從 card/img-prompt/ 自動挑一個）",
+    )
+    parser.add_argument(
+        "--output-dir",
+        "-o",
+        type=Path,
+        default=DEFAULT_OUTPUT_DIR,
+        help="圖片輸出資料夾（預設：card/images/new/）",
+    )
+    parser.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="若輸出檔已存在則覆寫（預設：跳過）",
+    )
+    parser.add_argument(
+        "--num-images",
+        type=int,
+        default=1,
+        help="每個 prompt 生成幾張圖（預設：1；>1 時檔名會加 _1/_2... 後綴）",
+    )
+    parser.add_argument(
+        "--offset",
+        type=int,
+        default=0,
+        help="跳過前幾筆 prompt（預設：0）",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=0,
+        help="最多處理幾筆 prompt（0 表示不限制）",
+    )
+    parser.add_argument(
+        "--sleep-seconds",
+        type=int,
+        default=SLEEP_SECONDS,
+        help="每張圖之間等待秒數（避免 rate limit）",
+    )
+    return parser.parse_args()
+
+
+def item_num_images(item: dict, default_value: int) -> int:
+    """支援在 JSONL 每筆資料覆寫張數：num_images / n / count"""
+    for key in ("num_images", "n", "count"):
+        if key in item:
+            try:
+                value = int(item[key])
+            except Exception:
+                return default_value
+            return max(1, value)
+    return max(1, default_value)
+
 
 def retryable_sleep(attempt: int) -> None:
     """指數退避等待"""
@@ -129,6 +210,15 @@ def effective_quality() -> str:
 
 
 def main() -> None:
+    args = parse_args()
+    input_file: Path = args.input or pick_default_input_file()
+    output_dir: Path = args.output_dir
+    sleep_seconds: int = args.sleep_seconds
+    default_num_images: int = max(1, int(args.num_images))
+    overwrite: bool = bool(args.overwrite)
+    offset: int = max(0, int(args.offset))
+    limit: int = max(0, int(args.limit))
+
     print("=" * 50)
     print("動物守護者 - 批次圖片生成")
     print("=" * 50)
@@ -136,8 +226,8 @@ def main() -> None:
     print(f"尺寸: {SIZE}")
     print(f"品質: {effective_quality()}")
     print(f"格式: {OUTPUT_FORMAT}")
-    print(f"輸入: {INPUT_FILE.name}")
-    print(f"輸出: {OUTPUT_DIR}")
+    print(f"輸入: {input_file}")
+    print(f"輸出: {output_dir}")
     print("=" * 50)
 
     # 檢查 API Key
@@ -146,21 +236,38 @@ def main() -> None:
         print(f"檔案位置: {SCRIPT_DIR / '.env'}")
         return
 
-    print(f"API Key: {API_KEY[:12]}...{API_KEY[-4:]}")
+    print("API Key: 已載入")
+
+    if not input_file.exists():
+        print("\n錯誤: 找不到輸入 JSONL 檔案")
+        print(f"指定路徑: {input_file}")
+        if PROMPT_DIR.exists():
+            jsonl_files = sorted(PROMPT_DIR.glob("*.jsonl"))
+            if jsonl_files:
+                print("\n可用的 JSONL（card/img-prompt/）：")
+                for p in jsonl_files:
+                    print(f"  - {p.name}")
+        print("\n你可以用參數指定：")
+        print("  python generate_from_jsonl.py --input img-prompt/animal-prompts-api-3-2.jsonl")
+        return
 
     # 建立輸出資料夾
-    OUTPUT_DIR.mkdir(exist_ok=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     # 初始化 client
     client = OpenAI(api_key=API_KEY)
 
     # 載入 prompts
-    prompts = load_prompts(INPUT_FILE)
+    prompts = load_prompts(input_file)
+    if offset:
+        prompts = prompts[offset:]
+    if limit:
+        prompts = prompts[:limit]
     total = len(prompts)
     print(f"\n載入 {total} 個 prompt\n")
 
     # 批次生成
-    success = 0
+    success_images = 0
     for index, item in enumerate(prompts, 1):
         animal_id = str(item.get("id", index)).strip()
         prompt = item.get("prompt", "").strip()
@@ -170,32 +277,38 @@ def main() -> None:
             print("    失敗：prompt 為空")
             continue
 
-        output_path = OUTPUT_DIR / f"{animal_id}.{OUTPUT_FORMAT}"
-        if output_path.exists():
-            print(f"[{index}/{total}] {animal_id}")
-            print(f"    跳過：已存在 {output_path.name}")
-            continue
+        num_images = item_num_images(item, default_num_images)
 
-        print(f"[{index}/{total}] {animal_id}")
-        print("    生成中...")
+        for variant_index in range(1, num_images + 1):
+            suffix = "" if num_images == 1 else f"_{variant_index}"
+            output_path = output_dir / f"{animal_id}{suffix}.{OUTPUT_FORMAT}"
+            label = animal_id if num_images == 1 else f"{animal_id} ({variant_index}/{num_images})"
 
-        image_bytes = generate_image(client, prompt)
+            if output_path.exists() and not overwrite:
+                print(f"[{index}/{total}] {label}")
+                print(f"    跳過：已存在 {output_path.name}")
+                continue
 
-        if image_bytes:
-            output_path.write_bytes(image_bytes)
-            file_size_kb = output_path.stat().st_size // 1024
-            print(f"    完成: {output_path.name} ({file_size_kb} KB)")
-            success += 1
-        else:
-            print("    失敗")
+            print(f"[{index}/{total}] {label}")
+            print("    生成中...")
 
-        if index < total and SLEEP_SECONDS > 0:
-            print(f"    等待 {SLEEP_SECONDS} 秒...")
-            time.sleep(SLEEP_SECONDS)
+            image_bytes = generate_image(client, prompt)
+
+            if image_bytes:
+                output_path.write_bytes(image_bytes)
+                file_size_kb = output_path.stat().st_size // 1024
+                print(f"    完成: {output_path.name} ({file_size_kb} KB)")
+                success_images += 1
+            else:
+                print("    失敗")
+
+            if (index < total or variant_index < num_images) and sleep_seconds > 0:
+                print(f"    等待 {sleep_seconds} 秒...")
+                time.sleep(sleep_seconds)
 
     print("\n" + "=" * 50)
-    print(f"完成! 成功: {success}/{total}")
-    print(f"圖片位置: {OUTPUT_DIR}")
+    print(f"完成! 新產生圖片: {success_images} 張（處理 prompt: {total} 筆）")
+    print(f"圖片位置: {output_dir}")
     print("=" * 50)
 
 

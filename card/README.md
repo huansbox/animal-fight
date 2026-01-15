@@ -1,100 +1,52 @@
-# 動物卡片生成
+# 動物卡片（產圖與素材）
 
 ## 檔案說明
 
-| 檔案 | 用途 |
-|------|------|
-| `prompts.json` | 10 隻動物的 prompt 清單 |
-| `generate_images.py` | 批次呼叫 OpenAI API 生成圖片 |
-| `animal-cards-template.html` | 卡片模板（Emoji 版） |
-| `images/` | 生成的圖片存放位置 |
+| 檔案/資料夾 | 用途 |
+|---|---|
+| `final_cards.html` | A4 全頁列印版（含動物圖與 icon） |
+| `generate_from_jsonl.py` | 從 JSONL 批次呼叫 OpenAI Images API 產圖 |
+| `img-prompt/` | 產圖用 prompts（`*.jsonl`/`*.md`） |
+| `images/` | 產出的動物圖與 icon |
+| `.env.example` / `.env` | API Key 範本 / 實際設定（勿提交） |
 
-## 使用方式
+## 產圖使用方式
 
-### 1. 安裝相依套件
-
-```bash
-pip install openai
-```
-
-### 2. 設定 API Key
+### 1) 安裝相依套件
 
 ```bash
-# Windows CMD
-set OPENAI_API_KEY=sk-xxxxxxxx
-
-# Windows PowerShell
-$env:OPENAI_API_KEY="sk-xxxxxxxx"
-
-# Mac/Linux
-export OPENAI_API_KEY=sk-xxxxxxxx
+pip install openai python-dotenv
 ```
 
-### 3. 執行腳本
+### 2) 設定 API Key
+
+把 `.env.example` 複製成 `.env`，並在 `card/.env` 內設定：
+```text
+OPENAI_API_KEY=sk-...
+```
+
+### 3) 執行批次產圖
 
 ```bash
 cd D:\mywork\animal-fight\card
-python generate_images.py
+python generate_from_jsonl.py
 ```
 
-### 4. 輸出結果
-
-圖片將儲存至 `card/images/` 資料夾：
-```
-images/
-├── elephant.png
-├── tortoise.png
-├── cheetah.png
-├── falcon.png
-├── komodo.png
-├── tiger.png
-├── owl.png
-├── dolphin.png
-├── wolf.png
-└── honeybadger.png
+指定 prompt 檔（例如 icon）：
+```bash
+python generate_from_jsonl.py --input img-prompt/icon-prompts-api.jsonl
 ```
 
-## 模型選擇
-
-| 模型 | 品質 | 價格 | 速度 |
-|------|------|------|------|
-| `gpt-image-1` | 最高 | ~$0.04/張 | 慢 |
-| `dall-e-3` | 高 | ~$0.04/張 | 中 |
-| `dall-e-2` | 中 | ~$0.02/張 | 快 |
-
-修改 `generate_images.py` 中的 `MODEL` 變數切換模型。
-
-## 自訂 Prompt
-
-編輯 `prompts.json`，每個 prompt 包含：
-- `id`: 檔名（英文）
-- `name`: 動物名稱（顯示用）
-- `prompt`: 圖片生成指令
-
-### Prompt 結構建議
-
-```
-[動物名稱], children's book illustration style,
-simple flat design, soft pastel colors,
-white background, centered composition,
-cute and friendly expression,
-[特徵1], [特徵2], [特徵3],
-digital art, high quality
+同一個 prompt 產 2 張圖（檔名會變成 `id_1.png`、`id_2.png`）：
+```bash
+python generate_from_jsonl.py --num-images 2
 ```
 
-## 費用估算
+調整每張圖的等待時間（避免 rate limit）：
+```bash
+python generate_from_jsonl.py --sleep-seconds 8
+```
 
-10 張圖片（gpt-image-1, 1024x1024, medium）：
-- 約 $0.40 USD
-- 執行時間約 3-5 分鐘（含 rate limit 等待）
+### 4) 輸出結果
 
-## 常見問題
-
-### Rate Limit 錯誤
-腳本預設每張圖片間隔 15 秒，若仍遇到 rate limit，可增加 `time.sleep()` 時間。
-
-### 圖片風格不一致
-確保所有 prompt 使用相同的風格關鍵字：
-- `children's book illustration style`
-- `simple flat design`
-- `soft pastel colors`
+圖檔會輸出到 `card/images/new/`（預設會跳過已存在的檔名）。

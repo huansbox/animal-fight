@@ -1,23 +1,31 @@
 # Animal Guardians 動物守護者
 
-兒童合作闘關 RPG 桌遊 - Print & Play 版本
+兒童桌遊 - Print & Play 版本（35 張動物卡）
 
-## 遊戲資訊
+## 遊戲模式
+
+### 合作闘關
 - **玩家人數**：2-3 人（1 DM + 2 小玩家）
-- **適合年齡**：6-12 歲
 - **遊戲時間**：15-20 分鐘
-- **類型**：合作、擲骰、角色扮演
+- **規則書**：[`game/rulebook.md`](game/rulebook.md)
+
+### 動物大對決
+- **玩家人數**：2 人
+- **遊戲時間**：5-15 分鐘
+- **規則書**：[`game/battle-rules.md`](game/battle-rules.md)
+
+**適合年齡**：6-12 歲
 
 ## 快速開始
 
 ### 需要準備
 - 2 顆六面骰（2d6）
 - 5 個愛心標記（硬幣、糖果皆可）
-- 列印好的動物卡（見下方）
+- 列印好的動物卡
 
 ### 列印說明
-1. 開啟 [`game/rulebook.md`](game/rulebook.md)（正式規則書）
-2. 參考 Part 4 版面指引
+1. 開啟 [`card/final_cards.html`](card/final_cards.html)（35 張動物卡）
+2. 使用瀏覽器列印功能
 3. A4 紙列印，建議 160gsm 以上
 4. 裁切成 63×88mm 卡片
 
@@ -26,27 +34,25 @@
 ```
 animal-fight/
 ├── card/
-│   └── animal-cards-A4-bw.html  # 卡片列印用 HTML
+│   ├── final_cards.html      # A4 列印版（35 張動物卡）
+│   └── images/               # 動物圖片（35 張）+ icon（6 張）
 ├── game/
-│   └── rulebook.md              # 正式規則書（開始遊玩看這裡）
-└── docs/
-    ├── prompt.txt               # 原始設計需求
-    ├── review-result.md         # 6 版本審查比較報告
-    └── design-versions/         # 設計迭代版本存檔
+│   ├── rulebook.md           # 合作闘關規則書
+│   └── battle-rules.md       # 動物大對決規則
+├── docs/
+│   ├── attributes-v2.md      # 動物屬性數值表（v2.1）
+│   └── design-versions/      # 設計迭代版本存檔
+└── sim/
+    └── battle_sim.py         # 對戰模擬器
 ```
 
-## 版本歷史
+## 動物一覽（35 張）
 
-| 版本 | 審查分數 | 說明 |
-|------|:--------:|------|
-| animal-cla-2 | 132 | 整合優化版（採用） |
-| animal-gpt-2 | 128 | DM 引導語優秀 |
-| animal-cl-2 | 118 | 加入定位欄位 |
-| animal-ge | 112 | DC 調整機制 |
-| animal-cl | 111 | 角色台詞設計 |
-| animal-gpt | 94 | 規格書（非遊戲文件） |
+### 第一波（16 張）
+非洲獅、非洲象、大猩猩、灣鱷、蜜獾、蘇門答臘虎、海豚、科摩多龍、獵豹、北極狐、紅袋鼠、遊隼、黑斑羚、貓頭鷹、穿山甲、加拉巴哥象龜
 
-詳細比較請見 [`docs/review-result.md`](docs/review-result.md)
+### 第三波（19 張）
+鬣狗、美洲野牛、山豬、犛牛、麋鹿、駱駝、非洲野犬、疣豬、水鹿、長臂猿、食蟻獸、豪豬、黃鼠狼、鴨嘴獸、大耳狐、狐獴、火雞、樹懶、藍鯨
 
 ## 授權
 個人使用，非商業用途
