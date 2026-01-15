@@ -24,6 +24,7 @@ animal-fight/
 ├── docs/
 │   ├── prompt.txt            # 原始需求 prompt
 │   ├── review-result.md      # 審查報告
+│   ├── archetype-template.md # 原型屬性模板（草案）
 │   └── design-versions/      # 設計迭代版本（6 個）
 │       ├── animal-cl.md      # Claude v1
 │       ├── animal-ge.md      # Gemini v1
@@ -76,6 +77,7 @@ animal-fight/
 
 ### 待建立動物（21 張）
 > 詳見 battle-rules.md 待建立動物清單
+> 原型模板草案見 docs/archetype-template.md（未定案）
 
 ## 遊戲模式
 
