@@ -13,7 +13,11 @@ animal-fight/
 ├── .gitignore
 ├── CLAUDE.md                 # 專案架構與技術決策
 ├── README.md                 # 環境設置與快速開始
-├── archive/v1/               # v1 數值封存（歷史備份）
+├── archive/
+│   ├── v1/                   # v1 數值封存（歷史備份）
+│   └── docs/                 # 歷史設計文件
+│       ├── attribute-review.md       # 屬性審查報告
+│       └── 260115-animal-final.md    # 第三波 19 隻設計過程
 ├── card/                     # 卡片相關檔案
 │   ├── final_cards.html      # A4 全頁列印版（35 張動物卡，v2.1 數值）
 │   ├── generate_from_jsonl.py      # 圖片批次生成腳本
@@ -29,9 +33,7 @@ animal-fight/
 ├── docs/
 │   ├── prompt.txt            # 原始需求 prompt
 │   ├── review-result.md      # 審查報告
-│   ├── attribute-principles.md # 屬性判斷原則
-│   ├── attributes-v2.md      # v2.1 完整屬性數值表（35 隻動物）
-│   ├── 260115-animal-final.md # 第三波 19 隻新動物設計
+│   ├── attributes-v2.md      # v2.1 完整屬性（數值+判斷原則+特殊能力設計）
 │   └── design-versions/      # 設計迭代版本（6 個）
 │       ├── animal-cl.md      # Claude v1
 │       ├── animal-ge.md      # Gemini v1
@@ -55,13 +57,12 @@ animal-fight/
 - **骰子 6**：特殊能力觸發，顯示加成 icon 和分數
 - **特殊能力加成**：固定 +4 分，分配到 2-3 個屬性
 
-### 數值平衡準則（v2.1）
-- 5 屬性總和：16-30（依動物強度分級）
+### 數值設計準則（v2.1）
+- **寫實優先**：依動物真實能力給分，允許極端差距（藍鯨 31 vs 火雞 13）
+- 5 屬性總和：13-31（依動物強度分級）
 - 弱項：至少 1 個 ≤ 3
 - 亮點：至少 1 個 ≥ 7
-- 原型：坦克/速度/輸出/智慧/全能
-- 屬性判斷原則見 docs/attribute-principles.md
-- 完整數值表見 docs/attributes-v2.md
+- 完整屬性判斷原則 + 數值表 + 特殊能力設計規範見 docs/attributes-v2.md
 
 ### AI 繪圖 Prompt 規範
 - **核心原則**：動物姿勢必須視覺化呈現特殊技能
@@ -117,8 +118,8 @@ animal-fight/
 | 樹懶 | 3 | 1 | 2 | 5 | 2 | 13 | 完美偽裝 |
 | 藍鯨 | 9 | 4 | 2 | 9 | 7 | 31 | 尾鰭重擊 |
 
-> 詳細設計見 docs/260115-animal-final.md
 > 繪圖 prompt 見 card/img-prompt/animal-ai-prompts-3.md
+> 設計過程見 archive/docs/260115-animal-final.md
 
 ### 待建立動物（25 張，天賦留白）
 
