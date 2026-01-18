@@ -29,7 +29,6 @@ animal-fight/
 ├── docs/
 │   ├── prompt.txt            # 原始需求 prompt
 │   ├── review-result.md      # 審查報告
-│   ├── archetype-template.md # 原型屬性模板（草案）
 │   ├── attribute-principles.md # 屬性判斷原則
 │   ├── attributes-v2.md      # v2.1 完整屬性數值表（35 隻動物）
 │   ├── 260115-animal-final.md # 第三波 19 隻新動物設計
@@ -121,8 +120,17 @@ animal-fight/
 > 詳細設計見 docs/260115-animal-final.md
 > 繪圖 prompt 見 card/img-prompt/animal-ai-prompts-3.md
 
-### 待建立動物（2 張）
-> 原清單 21 張，已完成 19 張設計
+### 待建立動物（25 張，天賦留白）
+
+| 原型 | 動物 |
+|------|------|
+| 坦克 | 座頭鯨、白犀牛、河馬、獨角仙、刺蝟 |
+| 速度 | 大西洋劍魚、鴕鳥、綠巨人蜻蜓、北極兔、蜂鳥 |
+| 輸出 | 大白鯊、北極熊、蘭花螳螂、電鰻、蠍子、角鵰 |
+| 智慧 | 渡鴉、擬態章魚、黑猩猩、海獺 |
+| 全能 | 灰狼、浣熊、德國牧羊犬、白頭海鵰、綠鬣蜥 |
+
+> 完整數值見 game/battle-rules.md 待建立清單
 
 ## 遊戲模式
 
