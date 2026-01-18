@@ -19,21 +19,24 @@ animal-fight/
 │       ├── attribute-review.md       # 屬性審查報告
 │       └── 260115-animal-final.md    # 第三波 19 隻設計過程
 ├── card/                     # 卡片相關檔案
-│   ├── final_cards.html      # A4 全頁列印版（35 張動物卡，v2.1 數值）
+│   ├── final_cards.html      # A4 全頁列印版（48 張動物卡，v2.2 數值）
 │   ├── generate_from_jsonl.py      # 圖片批次生成腳本
 │   ├── .env.example          # API Key 範本
-│   ├── images/               # 動物圖片 + icon（35+6 張）
+│   ├── images/               # 動物圖片 + icon（48+6 張）
 │   └── img-prompt/           # 圖片生成 prompt
 │       ├── prompt-guidelines.md      # Prompt 撰寫指南與審核條件
 │       ├── animal-ai-prompts.md      # 第一波 10 隻動物 prompt
 │       ├── animal-ai-prompts2.md     # 第二波 6 隻動物 prompt
 │       ├── animal-ai-prompts-3.md    # 第三波 19 隻動物 prompt
 │       ├── animal-prompts-api.jsonl  # 第一波 JSONL（API 用）
-│       └── animal-prompts-api-3.jsonl # 第三波 JSONL（API 用）
+│       ├── animal-prompts-api-3.jsonl # 第三波 JSONL（API 用）
+│       ├── animal-ai-prompts-4.md    # 第四波 13 隻動物 prompt
+│       └── animal-prompts-api-4.jsonl # 第四波 JSONL（API 用）
 ├── docs/
 │   ├── prompt.txt            # 原始需求 prompt
 │   ├── review-result.md      # 審查報告
 │   ├── attributes-v2.md      # v2.1 完整屬性（數值+判斷原則+特殊能力設計）
+│   ├── 260118-animal-wave4.md # 第四波 13 隻新動物設計
 │   └── design-versions/      # 設計迭代版本（6 個）
 │       ├── animal-cl.md      # Claude v1
 │       ├── animal-ge.md      # Gemini v1
@@ -121,15 +124,36 @@ animal-fight/
 > 繪圖 prompt 見 card/img-prompt/animal-ai-prompts-3.md
 > 設計過程見 archive/docs/260115-animal-final.md
 
-### 待建立動物（25 張，天賦留白）
+### 第四波新動物（13 張，已完成）
+
+| 動物 | 力 | 速 | 攻 | 防 | 智 | 總和 | 特殊技能 |
+|------|:--:|:--:|:--:|:--:|:--:|:----:|----------|
+| 大白鯊 | 7 | 7 | 9 | 5 | 4 | 32 | 致命撕咬 |
+| 河馬 | 9 | 4 | 7 | 8 | 3 | 31 | 血盆大口 |
+| 北極熊 | 8 | 5 | 8 | 5 | 5 | 31 | 熊掌重擊 |
+| 犀牛 | 9 | 4 | 7 | 9 | 2 | 31 | 鋼鐵衝撞 |
+| 花豹 | 6 | 7 | 8 | 3 | 5 | 29 | 伏擊撲殺 |
+| 灰狼 | 5 | 7 | 6 | 4 | 7 | 29 | 狼群圍獵 |
+| 狼獾 | 5 | 5 | 7 | 6 | 5 | 28 | 無畏死鬥 |
+| 麝牛 | 7 | 4 | 5 | 7 | 4 | 27 | 頂角對撞 |
+| 長頸鹿 | 7 | 6 | 5 | 5 | 3 | 26 | 長頸橫掃 |
+| 蟒蛇 | 8 | 2 | 7 | 5 | 2 | 24 | 纏繞絞殺 |
+| 人 | 3 | 4 | 2 | 1 | 9 | 19 | 工具大師 |
+| 鵜鶘 | 3 | 5 | 3 | 2 | 4 | 17 | 巨嘴兜捕 |
+| 丹頂鶴 | 2 | 5 | 3 | 2 | 5 | 17 | 仙鶴振翅 |
+
+> 設計文件見 docs/260118-animal-wave4.md
+> 繪圖 prompt 見 card/img-prompt/animal-ai-prompts-4.md
+
+### 待建立動物（12 張，天賦留白）
 
 | 原型 | 動物 |
 |------|------|
-| 坦克 | 座頭鯨、白犀牛、河馬、獨角仙、刺蝟 |
+| 坦克 | 座頭鯨、獨角仙、刺蝟 |
 | 速度 | 大西洋劍魚、鴕鳥、綠巨人蜻蜓、北極兔、蜂鳥 |
-| 輸出 | 大白鯊、北極熊、蘭花螳螂、電鰻、蠍子、角鵰 |
+| 輸出 | 蘭花螳螂、電鰻、蠍子、角鵰 |
 | 智慧 | 渡鴉、擬態章魚、黑猩猩、海獺 |
-| 全能 | 灰狼、浣熊、德國牧羊犬、白頭海鵰、綠鬣蜥 |
+| 全能 | 浣熊、德國牧羊犬、白頭海鵰、綠鬣蜥 |
 
 > 完整數值見 game/battle-rules.md 待建立清單
 
@@ -168,6 +192,10 @@ animal-fight/
 - [x] Prompt 撰寫指南（prompt-guidelines.md）
 - [x] 第三波 AI 圖片生成（19 張）
 - [x] final_cards.html 整合 35 張動物卡
+- [x] 第四波 13 隻新動物設計（屬性 + 技能）
+- [x] 第四波繪圖 prompt
+- [x] 第四波 AI 圖片生成
+- [x] final_cards.html 整合 48 張動物卡
 - [ ] 印刷測試
 - [ ] 實際遊玩測試
 
@@ -190,5 +218,5 @@ animal-fight/
 ## 後續擴充（不納入 MVP）
 - 裝備卡
 - 狀態效果
-- 更多動物（待建立清單 21 張）
+- 更多動物（待建立清單 12 張）
 - Boss 專屬招式表
