@@ -19,10 +19,10 @@ animal-fight/
 │       ├── attribute-review.md       # 屬性審查報告
 │       └── 260115-animal-final.md    # 第三波 19 隻設計過程
 ├── card/                     # 卡片相關檔案
-│   ├── final_cards.html      # A4 全頁列印版（48 張動物卡，v2.2 數值）
+│   ├── final_cards.html      # A4 全頁列印版（64 張動物卡，v2.3 數值）
 │   ├── generate_from_jsonl.py      # 圖片批次生成腳本
 │   ├── .env.example          # API Key 範本
-│   ├── images/               # 動物圖片 + icon（48+6 張）
+│   ├── images/               # 動物圖片 + icon（64+6 張）
 │   └── img-prompt/           # 圖片生成 prompt
 │       ├── prompt-guidelines.md      # Prompt 撰寫指南與審核條件
 │       ├── animal-ai-prompts.md      # 第一波 10 隻動物 prompt
@@ -37,7 +37,7 @@ animal-fight/
 ├── docs/
 │   ├── prompt.txt            # 原始需求 prompt
 │   ├── review-result.md      # 審查報告
-│   ├── attributes-v2.md      # v2.1 完整屬性（數值+判斷原則+特殊能力設計）
+│   ├── attributes-v2.md      # v2.3 完整屬性（數值+判斷原則+特殊能力設計）
 │   ├── 260118-animal-wave4.md # 第四波 13 隻新動物設計
 │   └── design-versions/      # 設計迭代版本（6 個）
 │       ├── animal-cl.md      # Claude v1
@@ -48,7 +48,7 @@ animal-fight/
 │       └── animal-gpt-2.md   # GPT v2
 ├── game/
 │   ├── rulebook.md           # 合作闘關規則書
-│   └── battle-rules.md       # 動物大對決淘汰賽規則（v2.1 數值）
+│   └── battle-rules.md       # 動物大對決淘汰賽規則（v2.3 數值）
 └── sim/                      # 對戰模擬器
     ├── battle_sim_v3.py      # 原規則模擬（35 隻動物，各自擲骰）
     ├── battle_sim_v4.py      # 原規則模擬（48 隻動物，3 強循環賽）
@@ -63,9 +63,9 @@ animal-fight/
 - **骰子 6**：特殊能力觸發，顯示加成 icon 和分數
 - **特殊能力加成**：固定 +4 分，分配到 2-3 個屬性
 
-### 數值設計準則（v2.1）
-- **寫實優先**：依動物真實能力給分，允許極端差距（藍鯨 31 vs 火雞 13）
-- 5 屬性總和：13-31（依動物強度分級）
+### 數值設計準則（v2.3）
+- **寫實優先**：依動物真實能力給分，允許極端差距（虎鯨 38 vs 蘭花螳螂 11）
+- 5 屬性總和：11-38（依動物強度分級）
 - 弱項：至少 1 個 ≤ 3
 - 亮點：至少 1 個 ≥ 7
 - 完整屬性判斷原則 + 數值表 + 特殊能力設計規範見 docs/attributes-v2.md
@@ -224,7 +224,8 @@ animal-fight/
 - [x] 對戰模擬器 v4（48 隻動物，3 強循環賽）
 - [x] 第五波 16 隻新動物設計（屬性 + 技能）
 - [x] 第五波繪圖 prompt
-- [ ] 第五波 AI 圖片生成
+- [x] 第五波 AI 圖片生成（16 張）
+- [x] final_cards.html 整合 64 張動物卡
 - [ ] 印刷測試
 - [ ] 實際遊玩測試
 
