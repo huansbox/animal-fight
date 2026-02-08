@@ -31,7 +31,9 @@ animal-fight/
 │       ├── animal-prompts-api.jsonl  # 第一波 JSONL（API 用）
 │       ├── animal-prompts-api-3.jsonl # 第三波 JSONL（API 用）
 │       ├── animal-ai-prompts-4.md    # 第四波 13 隻動物 prompt
-│       └── animal-prompts-api-4.jsonl # 第四波 JSONL（API 用）
+│       ├── animal-prompts-api-4.jsonl # 第四波 JSONL（API 用）
+│       ├── animal-ai-prompts-5.md    # 第五波 16 隻動物 prompt
+│       └── animal-prompts-api-5.jsonl # 第五波 JSONL（API 用）
 ├── docs/
 │   ├── prompt.txt            # 原始需求 prompt
 │   ├── review-result.md      # 審查報告
@@ -167,7 +169,7 @@ animal-fight/
 | 箭毒蛙 | 1 | 3 | 1 | 7 | 2 | 14 | 劇毒觸膚 |
 | 蘭花螳螂 | 1 | 2 | 4 | 2 | 2 | 11 | 花影伏擊 |
 
-> 設計文件見本次對話紀錄
+> 繪圖 prompt 見 card/img-prompt/animal-ai-prompts-5.md
 
 ### 待建立動物（19 張，暫緩）
 
@@ -221,6 +223,8 @@ animal-fight/
 - [x] final_cards.html 整合 48 張動物卡
 - [x] 對戰模擬器 v4（48 隻動物，3 強循環賽）
 - [x] 第五波 16 隻新動物設計（屬性 + 技能）
+- [x] 第五波繪圖 prompt
+- [ ] 第五波 AI 圖片生成
 - [ ] 印刷測試
 - [ ] 實際遊玩測試
 
