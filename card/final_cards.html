@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>動物守護者 - 最終 A4 黑白列印版 (排版修正版)</title>
+    <title>動物守護者 - 最終 A4 黑白列印版（64 張動物卡）</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Roboto:wght@700;900&display=swap');
 
@@ -210,7 +210,7 @@
 <body>
 
 <script>
-    // v2.1 數值
+    // v2.3 數值（64 張動物卡）
     const animals = [
         { name: "非洲獅", en: "Lion", img: "images/lion.png", stats: [7, 6, 8, 4, 5], skillName: "大吼", skillDesc: "嚇跑體型比你小的動物，或讓敵人嚇到不敢亂動。", skillBonus: [{attr: 0, val: 2}, {attr: 2, val: 2}] },
         { name: "非洲象", en: "Elephant", img: "images/elephant.png", stats: [9, 2, 3, 8, 8], skillName: "鼻子噴水", skillDesc: "可以澆熄森林大火，或是洗掉擋路的泥濘。", skillBonus: [{attr: 2, val: 1}, {attr: 3, val: 3}] },
@@ -261,7 +261,24 @@
         { name: "蟒蛇", en: "Python", img: "images/python.png", stats: [8, 2, 7, 5, 2], skillName: "纏繞絞殺", skillDesc: "用強壯的身體緊緊纏住獵物，讓牠無法呼吸。", skillBonus: [{attr: 0, val: 3}, {attr: 2, val: 1}] },
         { name: "人", en: "Human", img: "images/human.png", stats: [3, 4, 2, 1, 9], skillName: "工具大師", skillDesc: "會使用各種工具和武器，用智慧彌補體能的不足。", skillBonus: [{attr: 4, val: 2}, {attr: 2, val: 2}] },
         { name: "鵜鶘", en: "Pelican", img: "images/pelican.png", stats: [3, 5, 3, 2, 4], skillName: "巨嘴兜捕", skillDesc: "張開超大的嘴巴俯衝，一口把獵物兜進喉囊裡。", skillBonus: [{attr: 2, val: 2}, {attr: 1, val: 1}, {attr: 4, val: 1}] },
-        { name: "丹頂鶴", en: "Red-crowned Crane", img: "images/red_crowned_crane.png", stats: [2, 5, 3, 2, 5], skillName: "仙鶴振翅", skillDesc: "展開巨大翅膀威嚇敵人，用長喙精準啄擊。", skillBonus: [{attr: 1, val: 2}, {attr: 4, val: 1}, {attr: 2, val: 1}] }
+        { name: "丹頂鶴", en: "Red-crowned Crane", img: "images/red_crowned_crane.png", stats: [2, 5, 3, 2, 5], skillName: "仙鶴振翅", skillDesc: "展開巨大翅膀威嚇敵人，用長喙精準啄擊。", skillBonus: [{attr: 1, val: 2}, {attr: 4, val: 1}, {attr: 2, val: 1}] },
+        // 第五波 16 隻新動物
+        { name: "虎鯨", en: "Orca", img: "images/orca.png", stats: [9, 7, 9, 5, 8], skillName: "翻浪獵殺", skillDesc: "從海面躍出翻浪撞擊，用鋒利牙齒獵殺獵物。", skillBonus: [{attr: 0, val: 2}, {attr: 2, val: 2}] },
+        { name: "鴕鳥", en: "Ostrich", img: "images/ostrich.png", stats: [5, 8, 5, 3, 3], skillName: "鐵腿飛踢", skillDesc: "用超強壯的腿踢出去，一腳就能踢飛敵人。", skillBonus: [{attr: 0, val: 2}, {attr: 2, val: 2}] },
+        { name: "雪豹", en: "Snow Leopard", img: "images/snow_leopard.png", stats: [5, 5, 6, 3, 4], skillName: "雪嶺伏殺", skillDesc: "在雪地裡悄悄埋伏，趁敵人沒注意突然撲出。", skillBonus: [{attr: 1, val: 1}, {attr: 2, val: 2}, {attr: 4, val: 1}] },
+        { name: "白頭海鵰", en: "Bald Eagle", img: "images/bald_eagle.png", stats: [3, 7, 6, 2, 5], skillName: "鷹爪俯衝", skillDesc: "從高空俯衝而下，用銳利的鷹爪抓住獵物。", skillBonus: [{attr: 0, val: 1}, {attr: 1, val: 1}, {attr: 2, val: 2}] },
+        { name: "電鰻", en: "Electric Eel", img: "images/electric_eel.png", stats: [4, 4, 7, 4, 3], skillName: "高壓電擊", skillDesc: "釋放強大電流電擊敵人，讓對手全身麻痺。", skillBonus: [{attr: 2, val: 2}, {attr: 3, val: 2}] },
+        { name: "雪鴞", en: "Snowy Owl", img: "images/snowy_owl.png", stats: [2, 7, 4, 2, 6], skillName: "無聲獵殺", skillDesc: "羽毛消音無聲飛行，悄悄靠近獵物精準捕捉。", skillBonus: [{attr: 1, val: 1}, {attr: 2, val: 1}, {attr: 4, val: 2}] },
+        { name: "乳牛", en: "Cow", img: "images/domestic_cow.png", stats: [7, 3, 2, 5, 4], skillName: "蠻力衝撞", skillDesc: "低頭用角猛衝，靠龐大身軀撞飛擋路的敵人。", skillBonus: [{attr: 0, val: 2}, {attr: 3, val: 2}] },
+        { name: "擬態章魚", en: "Mimic Octopus", img: "images/mimic_octopus.png", stats: [2, 4, 3, 3, 8], skillName: "千面擬態", skillDesc: "模仿其他動物的外型和動作，讓敵人搞不清楚。", skillBonus: [{attr: 3, val: 2}, {attr: 4, val: 2}] },
+        { name: "海獺", en: "Sea Otter", img: "images/sea_otter.png", stats: [3, 4, 2, 4, 7], skillName: "石擊破殼", skillDesc: "躺在水上用石頭敲開貝殼，聰明地使用工具。", skillBonus: [{attr: 2, val: 2}, {attr: 4, val: 2}] },
+        { name: "浣熊", en: "Raccoon", img: "images/raccoon.png", stats: [2, 4, 3, 3, 7], skillName: "巧手偷襲", skillDesc: "用靈巧的小手偷走敵人的東西，或解開機關。", skillBonus: [{attr: 1, val: 2}, {attr: 4, val: 2}] },
+        { name: "蠍子", en: "Scorpion", img: "images/scorpion.png", stats: [1, 3, 7, 5, 2], skillName: "毒尾螫刺", skillDesc: "翹起尾巴用毒針狠狠刺下去，注入致命毒液。", skillBonus: [{attr: 2, val: 2}, {attr: 3, val: 2}] },
+        { name: "皇帝企鵝", en: "Emperor Penguin", img: "images/emperor_penguin.png", stats: [3, 3, 2, 4, 5], skillName: "極地潛行", skillDesc: "潛入冰冷深海中快速游動，從水下發動突襲。", skillBonus: [{attr: 1, val: 2}, {attr: 3, val: 2}] },
+        { name: "犰狳", en: "Armadillo", img: "images/armadillo.png", stats: [2, 3, 1, 7, 3], skillName: "鐵甲捲球", skillDesc: "把身體捲成一顆鐵球，堅硬的盔甲讓敵人打不穿。", skillBonus: [{attr: 1, val: 1}, {attr: 3, val: 3}] },
+        { name: "孔雀", en: "Peacock", img: "images/peacock.png", stats: [2, 3, 2, 3, 4], skillName: "華羽開屏", skillDesc: "展開華麗的尾羽威嚇敵人，讓對手眼花撩亂。", skillBonus: [{attr: 3, val: 2}, {attr: 4, val: 2}] },
+        { name: "箭毒蛙", en: "Poison Dart Frog", img: "images/poison_dart_frog.png", stats: [1, 3, 1, 7, 2], skillName: "劇毒觸膚", skillDesc: "皮膚上有劇毒，碰到就會中毒，誰都不敢靠近。", skillBonus: [{attr: 2, val: 1}, {attr: 3, val: 3}] },
+        { name: "蘭花螳螂", en: "Orchid Mantis", img: "images/orchid_mantis.png", stats: [1, 2, 4, 2, 2], skillName: "花影伏擊", skillDesc: "偽裝成美麗花朵，等獵物靠近後閃電出擊。", skillBonus: [{attr: 2, val: 3}, {attr: 3, val: 1}] }
     ];
 
     const icons = [
