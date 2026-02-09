@@ -19,10 +19,10 @@ animal-fight/
 │       ├── attribute-review.md       # 屬性審查報告
 │       └── 260115-animal-final.md    # 第三波 19 隻設計過程
 ├── card/                     # 卡片相關檔案
-│   ├── final_cards.html      # A4 全頁列印版（68 張動物卡，v2.4 數值）
+│   ├── final_cards.html      # A4 全頁列印版（84 張動物卡，v2.5 數值）
 │   ├── generate_from_jsonl.py      # 圖片批次生成腳本
 │   ├── .env.example          # API Key 範本
-│   ├── images/               # 動物圖片 + icon（68+6 張）
+│   ├── images/               # 動物圖片 + icon（84+6 張）
 │   └── img-prompt/           # 圖片生成 prompt
 │       ├── prompt-guidelines.md      # Prompt 撰寫指南與審核條件
 │       ├── animal-ai-prompts.md      # 第一波 10 隻動物 prompt
@@ -33,12 +33,15 @@ animal-fight/
 │       ├── animal-ai-prompts-4.md    # 第四波 13 隻動物 prompt
 │       ├── animal-prompts-api-4.jsonl # 第四波 JSONL（API 用）
 │       ├── animal-ai-prompts-5.md    # 第五波 20 隻動物 prompt
-│       └── animal-prompts-api-5.jsonl # 第五波 JSONL（API 用）
+│       ├── animal-prompts-api-5.jsonl # 第五波 JSONL（API 用）
+│       ├── animal-ai-prompts-6.md    # 第六波 16 隻動物 prompt
+│       └── animal-prompts-api-6.jsonl # 第六波 JSONL（API 用）
 ├── docs/
 │   ├── prompt.txt            # 原始需求 prompt
 │   ├── review-result.md      # 審查報告
-│   ├── attributes-v2.md      # v2.4 完整屬性（數值+判斷原則+特殊能力設計）
+│   ├── attributes-v2.md      # v2.5 完整屬性（數值+判斷原則+特殊能力設計）
 │   ├── 260118-animal-wave4.md # 第四波 13 隻新動物設計
+│   ├── 260209-animal-wave6.md # 第六波 16 隻新動物設計
 │   └── design-versions/      # 設計迭代版本（6 個）
 │       ├── animal-cl.md      # Claude v1
 │       ├── animal-ge.md      # Gemini v1
@@ -66,10 +69,10 @@ animal-fight/
 
 ### 數值系統分歧
 - 合作闘關（rulebook.md）：v1 數值系統（天賦為單一分數 8-12，總和 34-39）
-- 動物大對決（battle-rules.md）：v2.4 數值系統（天賦為 +4 分配，總和 11-33）
+- 動物大對決（battle-rules.md）：v2.5 數值系統（天賦為 +4 分配，總和 11-33）
 - 兩模式獨立運作，待實際遊玩測試後再決定是否統一
 
-### 數值設計準則（v2.4）
+### 數值設計準則（v2.5）
 - 寫實優先，依動物真實能力給分，允許極端差距
 - 設計哲學、屬性判斷原則、特殊能力規範、全數值表 → 見 docs/attributes-v2.md
 
@@ -178,13 +181,37 @@ animal-fight/
 
 > 繪圖 prompt 見 card/img-prompt/animal-ai-prompts-5.md
 
-### 待建立動物（15 張，暫緩）
+### 第六波新動物（16 張，已完成設計）
+
+| 動物 | 力 | 速 | 攻 | 防 | 智 | 總和 | 特殊技能 |
+|------|:--:|:--:|:--:|:--:|:--:|:----:|----------|
+| 棕熊 | 8 | 4 | 7 | 7 | 5 | 31 | 熊抱鎖殺 |
+| 美洲豹 | 7 | 5 | 8 | 4 | 5 | 29 | 碎顱咬殺 |
+| 海象 | 8 | 2 | 5 | 8 | 4 | 27 | 巨牙猛刺 |
+| 野馬 | 7 | 7 | 4 | 4 | 5 | 27 | 後蹄連踢 |
+| 斑馬 | 6 | 7 | 4 | 3 | 3 | 23 | 亂紋迷蹤 |
+| 大熊貓 | 6 | 3 | 3 | 6 | 4 | 22 | 鐵掌劈竹 |
+| 牧羊犬 | 3 | 7 | 3 | 2 | 7 | 22 | 牧群戰術 |
+| 眼鏡蛇 | 2 | 4 | 8 | 3 | 3 | 20 | 毒牙閃擊 |
+| 螳螂蝦 | 1 | 3 | 7 | 4 | 3 | 18 | 音速鐵拳 |
+| 兀鷲 | 3 | 5 | 3 | 2 | 5 | 18 | 腐食鐵胃 |
+| 羊駝 | 4 | 4 | 2 | 3 | 5 | 18 | 口水飛彈 |
+| 臭鼬 | 2 | 3 | 3 | 6 | 4 | 18 | 臭氣沖天 |
+| 鈍尾毒蜥 | 2 | 2 | 6 | 5 | 2 | 17 | 鎖口毒咬 |
+| 巨嘴鳥 | 2 | 5 | 3 | 2 | 4 | 16 | 彩喙猛啄 |
+| 河豚 | 1 | 2 | 1 | 8 | 2 | 14 | 膨脹毒球 |
+| 獨角仙 | 1 | 2 | 4 | 5 | 2 | 14 | 鋼角猛頂 |
+
+> 設計文件見 docs/260209-animal-wave6.md
+> 繪圖 prompt 見 card/img-prompt/animal-ai-prompts-6.md
+
+### 待建立動物（16 張，暫緩）
 
 | 動物 |
 |------|
-| 座頭鯨、獨角仙、刺蝟、大西洋劍魚、綠巨人蜻蜓 |
-| 北極兔、蜂鳥、角鵰、渡鴉、黑猩猩 |
-| 鈍尾毒蜥、斑馬、巨嘴鳥、羊駝、牧羊犬 |
+| 座頭鯨、刺蝟、大西洋劍魚、綠巨人蜻蜓、北極兔 |
+| 蜂鳥、角鵰、渡鴉、黑猩猩、變色龍 |
+| 海龜、蝙蝠、金剛鸚鵡、水母、無尾熊、食人魚 |
 
 > 數值與原型皆未定，待後續波次設計
 
@@ -233,6 +260,10 @@ animal-fight/
 - [x] 第五波繪圖 prompt
 - [x] 第五波 AI 圖片生成（20 張，含 4 隻補充）
 - [x] final_cards.html 整合 68 張動物卡
+- [ ] 第六波 16 隻新動物設計（屬性 + 技能）
+- [ ] 第六波繪圖 prompt
+- [ ] 第六波 AI 圖片生成（16 張）
+- [ ] final_cards.html 整合 84 張動物卡
 - [ ] 印刷測試
 - [ ] 實際遊玩測試
 
@@ -256,5 +287,5 @@ animal-fight/
 ## 後續擴充（不納入 MVP）
 - 裝備卡
 - 狀態效果
-- 更多動物（待建立清單 15 張）
+- 更多動物（待建立清單 16 張）
 - Boss 專屬招式表
