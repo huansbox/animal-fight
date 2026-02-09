@@ -145,7 +145,7 @@ black and white vector line art of Domestic Pig, head lowered pushing forcefully
 ## 18. 猞猁（Eurasian Lynx）- 靜步飛撲
 
 ```
-black and white vector line art of Eurasian Lynx, leaping through air mid-pounce with front paws reaching forward and claws extended, prominent long black pointed ear tufts, thick fur ruff around face, short bobbed tail, large broad paws, muscular compact body, intense hunting gaze, dynamic flying pounce pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Eurasian Lynx, springing steeply upward from a crouched position with front paws reaching high and claws extended, prominent long black pointed ear tufts, thick fur ruff around face, short bobbed tail, large broad paws, muscular compact body, intense hunting gaze, dynamic vertical pounce pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---
@@ -153,7 +153,7 @@ black and white vector line art of Eurasian Lynx, leaping through air mid-pounce
 ## 19. 雲豹（Clouded Leopard）- 長牙穿刺
 
 ```
-black and white vector line art of Clouded Leopard, clinging to a tree branch with mouth wide open showing extremely long saber-like canine teeth, large cloud-shaped blotch markings on fur, long thick tail hanging down for balance, short powerful legs gripping branch, fierce biting pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Clouded Leopard, lunging downward from a tree branch with mouth wide open showing extremely long saber-like canine teeth, front paws releasing branch, large cloud-shaped blotch markings on fur, long thick tail streaming behind for balance, short powerful legs, dynamic downward strike pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---
@@ -186,6 +186,10 @@ black and white vector line art of Green Iguana, body turned sideways with long 
 | 孔雀 | ✅ | ⚠️→✅ | ✅ | 修正後通過 |
 | 箭毒蛙 | ⚠️→✅ | ✅ | ⚠️→✅ | 修正後通過 |
 | 蘭花螳螂 | ✅ | ⚠️→✅ | ⚠️→✅ | 修正後通過 |
+| 家豬 | ✅ | ✅ | ✅ | 通過 |
+| 猞猁 | ⚠️→✅ | ⚠️→✅ | ⚠️→✅ | 修正後通過 |
+| 雲豹 | ⚠️→✅ | ⚠️→✅ | ⚠️→✅ | 修正後通過 |
+| 綠鬣蜥 | ✅ | ✅ | ✅ | 通過 |
 
 ### 修正項目
 
@@ -202,3 +206,5 @@ black and white vector line art of Green Iguana, body turned sideways with long 
 | 孔雀 | 開屏描述不夠具體 | 新增「semicircular」+「large bold eye-spot」+ 纖細體型 |
 | 箭毒蛙 | 「vivid」為顏色描述，線稿無效 | 移除顏色詞，改用幾何警戒花紋 + 抬腿蓄力姿態 |
 | 蘭花螳螂 | 花瓣背景增加場景複雜度 | 移除背景花朵，單獨呈現螳螂花形輪廓 |
+| 猞猁 | 水平飛撲輪廓與花豹撲殺難以區分 | 改為垂直向上蹬跳（springing steeply upward），與花豹水平撲殺區隔 |
+| 雲豹 | 抓枝張嘴姿態過於靜態，缺乏動態感 | 改為從樹枝向下猛撲（lunging downward），前爪鬆開枝幹，尾巴飄向後方 |
