@@ -19,10 +19,10 @@ animal-fight/
 │       ├── attribute-review.md       # 屬性審查報告
 │       └── 260115-animal-final.md    # 第三波 19 隻設計過程
 ├── card/                     # 卡片相關檔案
-│   ├── final_cards.html      # A4 全頁列印版（64 張動物卡，v2.3 數值）
+│   ├── final_cards.html      # A4 全頁列印版（68 張動物卡，v2.4 數值）
 │   ├── generate_from_jsonl.py      # 圖片批次生成腳本
 │   ├── .env.example          # API Key 範本
-│   ├── images/               # 動物圖片 + icon（64+6 張）
+│   ├── images/               # 動物圖片 + icon（68+6 張）
 │   └── img-prompt/           # 圖片生成 prompt
 │       ├── prompt-guidelines.md      # Prompt 撰寫指南與審核條件
 │       ├── animal-ai-prompts.md      # 第一波 10 隻動物 prompt
@@ -32,12 +32,12 @@ animal-fight/
 │       ├── animal-prompts-api-3.jsonl # 第三波 JSONL（API 用）
 │       ├── animal-ai-prompts-4.md    # 第四波 13 隻動物 prompt
 │       ├── animal-prompts-api-4.jsonl # 第四波 JSONL（API 用）
-│       ├── animal-ai-prompts-5.md    # 第五波 16 隻動物 prompt
+│       ├── animal-ai-prompts-5.md    # 第五波 20 隻動物 prompt
 │       └── animal-prompts-api-5.jsonl # 第五波 JSONL（API 用）
 ├── docs/
 │   ├── prompt.txt            # 原始需求 prompt
 │   ├── review-result.md      # 審查報告
-│   ├── attributes-v2.md      # v2.3 完整屬性（數值+判斷原則+特殊能力設計）
+│   ├── attributes-v2.md      # v2.4 完整屬性（數值+判斷原則+特殊能力設計）
 │   ├── 260118-animal-wave4.md # 第四波 13 隻新動物設計
 │   └── design-versions/      # 設計迭代版本（6 個）
 │       ├── animal-cl.md      # Claude v1
@@ -231,8 +231,8 @@ animal-fight/
 - [x] 對戰模擬器 v5（64 隻動物，新版骰 6 規則）
 - [x] 第五波 20 隻新動物設計（屬性 + 技能，含 4 隻補充）
 - [x] 第五波繪圖 prompt
-- [x] 第五波 AI 圖片生成（16 張）
-- [x] final_cards.html 整合 64 張動物卡
+- [x] 第五波 AI 圖片生成（20 張，含 4 隻補充）
+- [x] final_cards.html 整合 68 張動物卡
 - [ ] 印刷測試
 - [ ] 實際遊玩測試
 
