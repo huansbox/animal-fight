@@ -1,6 +1,7 @@
-# 第五波動物 AI 繪圖 Prompt（16 隻）
+# 第五波動物 AI 繪圖 Prompt（20 隻）
 
 > **建立日期**：2026-02-08
+> **更新日期**：2026-02-09（補充 4 隻：家豬、猞猁、雲豹、綠鬣蜥）
 > **風格**：black and white vector line art, coloring book style
 
 ---
@@ -129,6 +130,38 @@ black and white vector line art of Poison Dart Frog, crouched in alert defensive
 
 ```
 black and white vector line art of Orchid Mantis, front raptorial legs raised high ready to strike, petal-shaped leg extensions clearly visible, triangular head turned sideways with large compound eyes, slender elegant body with flower-like silhouette, ambush attack pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+```
+
+---
+
+## 17. 家豬（Domestic Pig）- 鐵鼻猛拱
+
+```
+black and white vector line art of Domestic Pig, head lowered pushing forcefully into ground with flat round disc-shaped snout, dirt and debris flying upward, stocky round body, large floppy ears hanging down, curly short tail, determined fierce expression, dynamic rooting charge pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+```
+
+---
+
+## 18. 猞猁（Eurasian Lynx）- 靜步飛撲
+
+```
+black and white vector line art of Eurasian Lynx, leaping through air mid-pounce with front paws reaching forward and claws extended, prominent long black pointed ear tufts, thick fur ruff around face, short bobbed tail, large broad paws, muscular compact body, intense hunting gaze, dynamic flying pounce pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+```
+
+---
+
+## 19. 雲豹（Clouded Leopard）- 長牙穿刺
+
+```
+black and white vector line art of Clouded Leopard, clinging to a tree branch with mouth wide open showing extremely long saber-like canine teeth, large cloud-shaped blotch markings on fur, long thick tail hanging down for balance, short powerful legs gripping branch, fierce biting pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+```
+
+---
+
+## 20. 綠鬣蜥（Green Iguana）- 鐵尾鞭擊
+
+```
+black and white vector line art of Green Iguana, body turned sideways with long powerful tail swinging in a whip-like strike, row of tall spines along back and tail crest, large prominent dewlap flap under chin, scaly textured skin, sturdy clawed feet, fierce defensive expression, dynamic tail whip pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---
