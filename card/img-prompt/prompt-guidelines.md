@@ -370,3 +370,4 @@ AI 圖像生成器的能力邊界：只能畫「看得見的東西」。
 - `animal-ai-prompts-4.md` - 第四波 13 隻動物
 - `animal-ai-prompts-5.md` - 第五波 20 隻動物
 - `animal-ai-prompts-6.md` - 第六波 16 隻動物
+- `animal-ai-prompts-7.md` - 第七波 14 隻動物（Creature Cases）
