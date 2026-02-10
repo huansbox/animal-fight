@@ -40,7 +40,7 @@ animal-fight/
 │   ├── rulebook.md           # 合作闘關規則書
 │   └── battle-rules.md       # 動物大對決規則
 ├── docs/
-│   ├── attributes-v2.md      # 動物屬性數值表（v2.4）
+│   ├── attributes.md      # 動物屬性數值表（v2.4）
 │   └── design-versions/      # 設計迭代版本存檔
 └── sim/
     ├── battle_sim_v3.py      # 對戰模擬器（35 隻，原規則）
