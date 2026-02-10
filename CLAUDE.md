@@ -295,8 +295,8 @@ animal-fight/
 - [x] final_cards.html 整合 84 張動物卡
 - [x] 第七波 14 隻新動物設計（屬性 + 技能，Creature Cases 系列）
 - [x] 第七波繪圖 prompt
-- [ ] 第七波 AI 圖片生成（14 張）
-- [ ] final_cards.html 整合 98 張動物卡
+- [x] 第七波 AI 圖片生成（14 張）
+- [x] final_cards.html 整合 98 張動物卡
 - [ ] 印刷測試
 - [ ] 實際遊玩測試
 
