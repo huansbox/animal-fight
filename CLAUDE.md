@@ -207,15 +207,39 @@ animal-fight/
 > 設計文件見 docs/260209-animal-wave6.md
 > 繪圖 prompt 見 card/img-prompt/animal-ai-prompts-6.md
 
-### 待建立動物（16 張，暫緩）
+### 待建立動物 — 第七波（14 隻，Creature Cases 系列）
+
+全部來自 Netflix《The Creature Cases》，小孩已在節目中認識。
+
+| 動物 | 英文 | 節目出處 |
+|------|------|---------|
+| 鱷龜 | Snapping Turtle | Ch.1 |
+| 裸鼴鼠 | Naked Mole Rat | Ch.1 |
+| 狼蛛 | Tarantula | Ch.1 |
+| 糞金龜 | Dung Beetle | Ch.1 |
+| 水豚 | Capybara | Ch.3 |
+| 紅毛猩猩 | Orangutan | Ch.1 |
+| 啄羊鸚鵡 | Kea | Ch.3 |
+| 負鼠 | Opossum | Ch.4 |
+| 喙頭蜥 | Tuatara | Ch.4 |
+| 象海豹 | Elephant Seal | Ch.5 |
+| 小貓熊 | Red Panda | Ch.5 |
+| 針鼴 | Echidna | Ch.5 |
+| 安地斯神鷲 | Andean Condor | Ch.3 |
+| 郊狼 | Coyote | Ch.5 |
+
+> 數值與原型皆未定，待後續波次設計
+
+### 待建立動物 — 後續擴充（16 隻）
 
 | 動物 |
 |------|
 | 座頭鯨、刺蝟、大西洋劍魚、綠巨人蜻蜓、北極兔 |
-| 蜂鳥、角鵰、渡鴉、黑猩猩、變色龍 |
-| 海龜、蝙蝠、金剛鸚鵡、水母、無尾熊、食人魚 |
+| 蜂鳥★、角鵰、渡鴉、黑猩猩、變色龍 |
+| 海龜、蝙蝠★、金剛鸚鵡、水母、無尾熊、食人魚 |
 
-> 數值與原型皆未定，待後續波次設計
+> ★ 也出現在 Creature Cases 中
+> 優先順序未定，視實際需求決定
 
 ## 遊戲模式
 
@@ -289,5 +313,5 @@ animal-fight/
 ## 後續擴充（不納入 MVP）
 - 裝備卡
 - 狀態效果
-- 更多動物（待建立清單 16 張）
+- 更多動物（第七波 14 隻 + 後續擴充 16 隻 = 30 隻待建）
 - Boss 專屬招式表
