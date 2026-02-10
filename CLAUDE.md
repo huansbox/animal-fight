@@ -315,6 +315,11 @@ animal-fight/
 > 詳細數據見 `sim/results/v5_*.csv`
 > 舊版結果見 `sim/results/v4_*.csv`、`sim/results/original_rules_*.csv`
 
+## 卡片實體製作
+- **討論文件**：[`docs/plans/2026-02-10-card-size-production.md`](docs/plans/2026-02-10-card-size-production.md)
+- **狀態**：討論中，待決定尺寸與製作方式
+- **初步方向**：Tarot 尺寸（70×120mm）+ 卡套法
+
 ## 後續擴充（不納入 MVP）
 - 裝備卡
 - 狀態效果
