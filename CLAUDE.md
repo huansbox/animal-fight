@@ -76,14 +76,13 @@ animal-fight/
 - 寫實優先，依動物真實能力給分，允許極端差距
 - 設計哲學、屬性判斷原則、特殊能力規範、全數值表 → 見 docs/attributes-v2.md
 
-### AI 繪圖 Prompt 規範
-- **核心原則**：動物姿勢必須視覺化呈現特殊技能
-- **撰寫指南**：card/img-prompt/prompt-guidelines.md
-- **審核條件**：
-  1. 動作是否直接對應技能名稱？
-  2. 是否有動態感（而非靜態站立）？
-  3. 關鍵外觀特徵是否有強調？
-  4. 是否為 full body？
+### Prompt 生產 SOP（6 步）
+1. **特殊能力設計** → `docs/attributes-v2.md` §7（視覺化可行性 + 姿態辨識度 + 命名規範）
+2. **撰寫 Prompt** → `card/img-prompt/prompt-guidelines.md` §1-§6（模板 + 動作轉換 + 風格後綴）
+3. **3 Agent 並行審核** → `prompt-guidelines.md` §3 + §7-§12 + §13（11 項審核清單 + 審核分工）
+4. **產出 .md + .jsonl** → `prompt-guidelines.md` §14（JSONL 轉換規範）
+5. **批次 API 呼叫** → `card/generate_from_jsonl.py`
+6. **圖片驗收 + 整合 HTML** → `card/final_cards.html`
 
 ### 已建立動物（第一波 16 張）
 
