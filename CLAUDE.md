@@ -39,7 +39,7 @@ animal-fight/
 ├── docs/
 │   ├── prompt.txt            # 原始需求 prompt
 │   ├── review-result.md      # 審查報告
-│   ├── attributes-v2.md      # v2.5 完整屬性（數值+判斷原則+特殊能力設計）
+│   ├── attributes.md      # v2.5 完整屬性（數值+判斷原則+特殊能力設計）
 │   ├── 260118-animal-wave4.md # 第四波 13 隻新動物設計
 │   ├── 260209-animal-wave6.md # 第六波 16 隻新動物設計
 │   └── design-versions/      # 設計迭代版本（6 個）
@@ -72,12 +72,15 @@ animal-fight/
 - 動物大對決（battle-rules.md）：v2.5 數值系統（天賦為 +4 分配，總和 11-33）
 - 兩模式獨立運作，待實際遊玩測試後再決定是否統一
 
-### 數值設計準則（v2.5）
-- 寫實優先，依動物真實能力給分，允許極端差距
-- 設計哲學、屬性判斷原則、特殊能力規範、全數值表 → 見 docs/attributes-v2.md
+### 動物數值設計 SOP（5 步）
+1. **選定動物** → 由人決定，AI 不介入
+2. **五維數值設計** → `docs/attributes.md` §1-§5（各屬性判斷邏輯 + 分數標準）
+3. **特殊能力設計** → `docs/attributes.md` §7（動態特徵 + 視覺化可行性 + 姿態辨識度 + +4 分配 + 命名規範）
+4. **五維重疊比對** → `docs/attributes.md` §9（差異分數 ≤3 必須調整）
+5. **3 Agent 並行審核** → `docs/attributes.md` §8（A=科學合理性 / B=特殊能力設計 / C=全局平衡與辨識度）
 
 ### Prompt 生產 SOP（6 步）
-1. **特殊能力設計** → `docs/attributes-v2.md` §7（視覺化可行性 + 姿態辨識度 + 命名規範）
+1. **特殊能力設計** → `docs/attributes.md` §7（視覺化可行性 + 姿態辨識度 + 命名規範）
 2. **撰寫 Prompt** → `card/img-prompt/prompt-guidelines.md` §1-§6（模板 + 動作轉換 + 風格後綴）
 3. **3 Agent 並行審核** → `prompt-guidelines.md` §3 + §7-§12 + §13（11 項審核清單 + 審核分工）
 4. **產出 .md + .jsonl** → `prompt-guidelines.md` §14（JSONL 轉換規範）
