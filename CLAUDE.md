@@ -42,6 +42,7 @@ animal-fight/
 │   ├── attributes.md      # v2.5 完整屬性（數值+判斷原則+特殊能力設計）
 │   ├── 260118-animal-wave4.md # 第四波 13 隻新動物設計
 │   ├── 260209-animal-wave6.md # 第六波 16 隻新動物設計
+│   ├── 260210-animal-wave7.md # 第七波 14 隻新動物設計（Creature Cases）
 │   └── design-versions/      # 設計迭代版本（6 個）
 │       ├── animal-cl.md      # Claude v1
 │       ├── animal-ge.md      # Gemini v1
@@ -207,28 +208,28 @@ animal-fight/
 > 設計文件見 docs/260209-animal-wave6.md
 > 繪圖 prompt 見 card/img-prompt/animal-ai-prompts-6.md
 
-### 待建立動物 — 第七波（14 隻，Creature Cases 系列）
+### 第七波新動物（14 張，已完成設計，Creature Cases 系列）
 
 全部來自 Netflix《The Creature Cases》，小孩已在節目中認識。
 
-| 動物 | 英文 | 節目出處 |
-|------|------|---------|
-| 鱷龜 | Snapping Turtle | Ch.1 |
-| 裸鼴鼠 | Naked Mole Rat | Ch.1 |
-| 狼蛛 | Tarantula | Ch.1 |
-| 糞金龜 | Dung Beetle | Ch.1 |
-| 水豚 | Capybara | Ch.3 |
-| 紅毛猩猩 | Orangutan | Ch.1 |
-| 啄羊鸚鵡 | Kea | Ch.3 |
-| 負鼠 | Opossum | Ch.4 |
-| 喙頭蜥 | Tuatara | Ch.4 |
-| 象海豹 | Elephant Seal | Ch.5 |
-| 小貓熊 | Red Panda | Ch.5 |
-| 針鼴 | Echidna | Ch.5 |
-| 安地斯神鷲 | Andean Condor | Ch.3 |
-| 郊狼 | Coyote | Ch.5 |
+| 動物 | 力 | 速 | 攻 | 防 | 智 | 總和 | 特殊技能 |
+|------|:--:|:--:|:--:|:--:|:--:|:----:|----------|
+| 象海豹 | 9 | 2 | 4 | 7 | 3 | 25 | 巨鼻怒吼 |
+| 紅毛猩猩 | 6 | 2 | 3 | 4 | 9 | 24 | 巧手造物 |
+| 鱷龜 | 5 | 2 | 7 | 7 | 2 | 23 | 鋼喙猛咬 |
+| 郊狼 | 4 | 6 | 4 | 3 | 6 | 23 | 孤狼巧獵 |
+| 啄羊鸚鵡 | 1 | 6 | 5 | 3 | 7 | 22 | 銳喙拆解 |
+| 水豚 | 4 | 5 | 2 | 4 | 5 | 20 | 潛水隱伏 |
+| 安地斯神鷲 | 4 | 6 | 3 | 3 | 4 | 20 | 巨翼蔽天 |
+| 小貓熊 | 2 | 5 | 1 | 3 | 6 | 17 | 驚立威嚇 |
+| 狼蛛 | 1 | 3 | 5 | 4 | 3 | 16 | 刺毛飛射 |
+| 負鼠 | 1 | 4 | 2 | 5 | 4 | 16 | 翻肚裝死 |
+| 針鼴 | 3 | 2 | 1 | 6 | 4 | 16 | 鑽地隱刺 |
+| 裸鼴鼠 | 1 | 2 | 3 | 4 | 5 | 15 | 鐵齒穿地 |
+| 喙頭蜥 | 2 | 2 | 3 | 5 | 3 | 15 | 鋸齒裂咬 |
+| 糞金龜 | 1 | 2 | 2 | 4 | 2 | 11 | 滾球巨力 |
 
-> 數值與原型皆未定，待後續波次設計
+> 設計文件見 docs/260210-animal-wave7.md
 
 ### 待建立動物 — 後續擴充（16 隻）
 
@@ -290,6 +291,10 @@ animal-fight/
 - [x] 第六波繪圖 prompt
 - [x] 第六波 AI 圖片生成（16 張）
 - [x] final_cards.html 整合 84 張動物卡
+- [x] 第七波 14 隻新動物設計（屬性 + 技能，Creature Cases 系列）
+- [ ] 第七波繪圖 prompt
+- [ ] 第七波 AI 圖片生成（14 張）
+- [ ] final_cards.html 整合 98 張動物卡
 - [ ] 印刷測試
 - [ ] 實際遊玩測試
 
@@ -310,8 +315,13 @@ animal-fight/
 > 詳細數據見 `sim/results/v5_*.csv`
 > 舊版結果見 `sim/results/v4_*.csv`、`sim/results/original_rules_*.csv`
 
+## 卡片實體製作
+- **討論文件**：[`docs/plans/2026-02-10-card-size-production.md`](docs/plans/2026-02-10-card-size-production.md)
+- **狀態**：討論中，待決定尺寸與製作方式
+- **初步方向**：Tarot 尺寸（70×120mm）+ 卡套法
+
 ## 後續擴充（不納入 MVP）
 - 裝備卡
 - 狀態效果
-- 更多動物（第七波 14 隻 + 後續擴充 16 隻 = 30 隻待建）
+- 更多動物（後續擴充 16 隻待建）
 - Boss 專屬招式表
