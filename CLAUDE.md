@@ -22,6 +22,8 @@ animal-fight/
 │   ├── final_cards.html      # A4 全頁列印版（84 張動物卡，v2.5 數值）
 │   ├── generate_from_jsonl.py      # 圖片批次生成腳本
 │   ├── .env.example          # API Key 範本
+│   ├── data/                 # 結構化動物資料（per-wave JSON）
+│   │   └── animals-wave7.json  # 第七波範例（wave 8+ 為正式產出）
 │   ├── images/               # 動物圖片 + icon（84+6 張）
 │   └── img-prompt/           # 圖片生成 prompt
 │       ├── prompt-guidelines.md      # Prompt 撰寫指南與審核條件
@@ -75,12 +77,14 @@ animal-fight/
 - 動物大對決（battle-rules.md）：v2.5 數值系統（天賦為 +4 分配，總和 11-33）
 - 兩模式獨立運作，待實際遊玩測試後再決定是否統一
 
-### 動物數值設計 SOP（5 步）
+### 動物數值設計 SOP（7 步）
 1. **選定動物** → 由人決定，AI 不介入
 2. **五維數值設計** → `docs/attributes.md` §1-§5（各屬性判斷邏輯 + 分數標準）
 3. **特殊能力設計** → `docs/attributes.md` §7（動態特徵 + 視覺化可行性 + 姿態辨識度 + +4 分配 + 命名規範）
-4. **五維重疊比對** → `docs/attributes.md` §9（差異分數 ≤3 必須調整）
-5. **3 Agent 並行審核** → `docs/attributes.md` §8（A=科學合理性 / B=特殊能力設計 / C=全局平衡與辨識度）
+4. **技能描述撰寫** → `docs/attributes.md`「技能描述撰寫（skillDesc）」（15-25 字口語化描述，用於卡片顯示）
+5. **五維重疊比對** → `docs/attributes.md` §9（差異分數 ≤3 必須調整）
+6. **3 Agent 並行審核** → `docs/attributes.md` §8（A=科學合理性 / B=特殊能力設計 / C=全局平衡與辨識度）
+7. **產出結構化資料** → `card/data/animals-wave{N}.json`（含全部 7 欄位：id, name, en, img, stats, skillName, skillDesc, skillBonus）
 
 ### Prompt 生產 SOP（6 步）
 1. **特殊能力設計** → `docs/attributes.md` §7（視覺化可行性 + 姿態辨識度 + 命名規範）
@@ -88,7 +92,7 @@ animal-fight/
 3. **3 Agent 並行審核** → `prompt-guidelines.md` §3 + §7-§12 + §13（11 項審核清單 + 審核分工）
 4. **產出 .md + .jsonl** → `prompt-guidelines.md` §14（JSONL 轉換規範）
 5. **批次 API 呼叫** → `card/generate_from_jsonl.py`
-6. **圖片驗收 + 整合 HTML** → `card/final_cards.html`
+6. **圖片驗收 + 整合 HTML** → 讀取 `card/data/animals-wave{N}.json` 合併至 `card/final_cards.html`
 
 ### 已建立動物（第一波 16 張）
 
@@ -297,6 +301,7 @@ animal-fight/
 - [x] 第七波繪圖 prompt
 - [x] 第七波 AI 圖片生成（14 張）
 - [x] final_cards.html 整合 98 張動物卡
+- [x] 動物資料結構化 SOP（skillDesc 規範 + per-wave JSON 格式 + SOP 補步驟）
 - [ ] 印刷測試
 - [ ] 實際遊玩測試
 

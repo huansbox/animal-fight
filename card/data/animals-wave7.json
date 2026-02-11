@@ -1,0 +1,142 @@
+[
+  {
+    "id": "snapping_turtle",
+    "name": "鱷龜",
+    "en": "Alligator Snapping Turtle",
+    "img": "images/snapping_turtle.png",
+    "stats": [5, 2, 7, 7, 2],
+    "skillName": "鋼喙猛咬",
+    "skillDesc": "用像鷹嘴一樣堅硬的喙，突然猛咬一口，連骨頭都能咬碎！",
+    "skillBonus": [{"attr": 2, "val": 3}, {"attr": 0, "val": 1}]
+  },
+  {
+    "id": "naked_mole_rat",
+    "name": "裸鼴鼠",
+    "en": "Naked Mole Rat",
+    "img": "images/naked_mole_rat.png",
+    "stats": [1, 2, 3, 4, 5],
+    "skillName": "鐵齒穿地",
+    "skillDesc": "用超大門牙像挖土機一樣挖洞，連水泥都能啃穿。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "tarantula",
+    "name": "狼蛛",
+    "en": "Tarantula",
+    "img": "images/tarantula.png",
+    "stats": [1, 3, 5, 4, 3],
+    "skillName": "刺毛飛射",
+    "skillDesc": "腹部的刺毛豎起散射，讓靠近的敵人全身發癢受不了。",
+    "skillBonus": [{"attr": 3, "val": 2}, {"attr": 2, "val": 1}, {"attr": 1, "val": 1}]
+  },
+  {
+    "id": "dung_beetle",
+    "name": "糞金龜",
+    "en": "Dung Beetle",
+    "img": "images/dung_beetle.png",
+    "stats": [1, 2, 2, 4, 2],
+    "skillName": "滾球巨力",
+    "skillDesc": "用後腳推著比自己大的糞球，力氣是體重的一千倍！",
+    "skillBonus": [{"attr": 0, "val": 3}, {"attr": 2, "val": 1}]
+  },
+  {
+    "id": "capybara",
+    "name": "水豚",
+    "en": "Capybara",
+    "img": "images/capybara.png",
+    "stats": [4, 5, 2, 4, 5],
+    "skillName": "潛水隱伏",
+    "skillDesc": "沉入水中只露出眼睛和鼻子，安靜地躲避敵人的追蹤。",
+    "skillBonus": [{"attr": 3, "val": 2}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "orangutan",
+    "name": "紅毛猩猩",
+    "en": "Orangutan",
+    "img": "images/orangutan.png",
+    "stats": [6, 2, 3, 4, 9],
+    "skillName": "巧手造物",
+    "skillDesc": "用樹枝當工具挖蟲吃，還會做雨傘擋雨，超級聰明。",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 0, "val": 1}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "kea",
+    "name": "啄羊鸚鵡",
+    "en": "Kea",
+    "img": "images/kea.png",
+    "stats": [1, 6, 5, 3, 7],
+    "skillName": "銳喙拆解",
+    "skillDesc": "用超長的上喙像開罐器一樣拆解任何東西，連車子都不放過。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "opossum",
+    "name": "負鼠",
+    "en": "Virginia Opossum",
+    "img": "images/opossum.png",
+    "stats": [1, 4, 2, 5, 4],
+    "skillName": "翻肚裝死",
+    "skillDesc": "翻肚躺平吐舌頭裝死，連臭味都裝出來，騙過所有掠食者。",
+    "skillBonus": [{"attr": 3, "val": 3}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "tuatara",
+    "name": "喙頭蜥",
+    "en": "Tuatara",
+    "img": "images/tuatara.png",
+    "stats": [2, 2, 3, 5, 3],
+    "skillName": "鋸齒裂咬",
+    "skillDesc": "張開嘴露出跟顎骨合為一體的鋸齒，一口咬下撕裂獵物。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "elephant_seal",
+    "name": "象海豹",
+    "en": "Southern Elephant Seal",
+    "img": "images/elephant_seal.png",
+    "stats": [9, 2, 4, 7, 3],
+    "skillName": "巨鼻怒吼",
+    "skillDesc": "膨起巨大的象鼻般鼻囊，發出震耳欲聾的怒吼嚇退對手。",
+    "skillBonus": [{"attr": 0, "val": 3}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "red_panda",
+    "name": "小貓熊",
+    "en": "Red Panda",
+    "img": "images/red_panda.png",
+    "stats": [2, 5, 1, 3, 6],
+    "skillName": "驚立威嚇",
+    "skillDesc": "被嚇到時站起來把兩隻爪子舉高高，看起來又大又可怕。",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 3, "val": 1}, {"attr": 1, "val": 1}]
+  },
+  {
+    "id": "echidna",
+    "name": "針鼴",
+    "en": "Short-beaked Echidna",
+    "img": "images/echidna.png",
+    "stats": [3, 2, 1, 6, 4],
+    "skillName": "鑽地隱刺",
+    "skillDesc": "蹲低用大爪子猛挖地，全身尖刺豎起來，誰也碰不了。",
+    "skillBonus": [{"attr": 3, "val": 3}, {"attr": 0, "val": 1}]
+  },
+  {
+    "id": "andean_condor",
+    "name": "安地斯神鷲",
+    "en": "Andean Condor",
+    "img": "images/andean_condor.png",
+    "stats": [4, 6, 3, 3, 4],
+    "skillName": "巨翼蔽天",
+    "skillDesc": "展開超過三公尺的巨大翅膀，遮天蔽日氣勢驚人。",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "coyote",
+    "name": "郊狼",
+    "en": "Coyote",
+    "img": "images/coyote.png",
+    "stats": [4, 6, 4, 3, 6],
+    "skillName": "孤狼巧獵",
+    "skillDesc": "獨自一隻靠聰明和速度追捕獵物，什麼招數都用得出來。",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 4, "val": 2}]
+  }
+]
