@@ -1,0 +1,82 @@
+[
+  {
+    "id": "rooster",
+    "name": "公雞",
+    "en": "Rooster",
+    "img": "images/rooster.png",
+    "stats": [2, 3, 4, 2, 3],
+    "skillName": "飛距猛刺",
+    "skillDesc": "跳起來用腳上尖銳的距猛踢對手，又快又狠！",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 1, "val": 1}, {"attr": 0, "val": 1}]
+  },
+  {
+    "id": "black_panther",
+    "name": "黑豹",
+    "en": "Black Panther",
+    "img": "images/black_panther.png",
+    "stats": [5, 6, 8, 3, 7],
+    "skillName": "暗夜飛撲",
+    "skillDesc": "在黑夜裡悄悄靠近獵物，看不見的影子突然飛撲！",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "himalayan_tahr",
+    "name": "喜馬拉雅塔爾羊",
+    "en": "Himalayan Tahr",
+    "img": "images/himalayan_tahr.png",
+    "stats": [4, 4, 4, 4, 3],
+    "skillName": "崖壁猛撞",
+    "skillDesc": "在陡峭懸崖上穩穩站住，低頭用堅硬短角猛力衝撞對手！",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "acorn_woodpecker",
+    "name": "橡實啄木鳥",
+    "en": "Acorn Woodpecker",
+    "img": "images/acorn_woodpecker.png",
+    "stats": [1, 4, 3, 3, 6],
+    "skillName": "穀倉連啄",
+    "skillDesc": "像機關槍一樣瘋狂啄洞，藏滿上萬顆橡實當糧食庫！",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 2, "val": 1}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "japanese_macaque",
+    "name": "日本獼猴",
+    "en": "Japanese Macaque",
+    "img": "images/japanese_macaque.png",
+    "stats": [3, 5, 4, 3, 7],
+    "skillName": "溫泉智謀",
+    "skillDesc": "發現溫泉可以取暖就跳進去泡，還教會整群猴子一起泡！",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 0, "val": 1}, {"attr": 1, "val": 1}]
+  },
+  {
+    "id": "mouse_deer",
+    "name": "鼷鹿",
+    "en": "Mouse Deer",
+    "img": "images/mouse_deer.png",
+    "stats": [1, 5, 2, 2, 4],
+    "skillName": "踏地警報",
+    "skillDesc": "用小腳快速踏踏踏敲地板，警告同伴有危險來了！",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 4, "val": 1}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "wombat",
+    "name": "袋熊",
+    "en": "Wombat",
+    "img": "images/wombat.png",
+    "stats": [4, 5, 2, 6, 3],
+    "skillName": "鐵臀堵洞",
+    "skillDesc": "鑽進自己挖的洞，用超硬屁股堵住洞口，誰都進不來！",
+    "skillBonus": [{"attr": 3, "val": 3}, {"attr": 0, "val": 1}]
+  },
+  {
+    "id": "eastern_gray_squirrel",
+    "name": "東部灰松鼠",
+    "en": "Eastern Gray Squirrel",
+    "img": "images/eastern_gray_squirrel.png",
+    "stats": [1, 7, 1, 3, 5],
+    "skillName": "藏果詭計",
+    "skillDesc": "堅果藏在幾百個地方都記得住，還會假裝埋東西騙人！",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 1, "val": 2}]
+  }
+]
