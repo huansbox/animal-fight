@@ -40,7 +40,9 @@ animal-fight/
 │       ├── animal-ai-prompts-6.md    # 第六波 16 隻動物 prompt
 │       ├── animal-prompts-api-6.jsonl # 第六波 JSONL（API 用）
 │       ├── animal-ai-prompts-7.md    # 第七波 14 隻動物 prompt
-│       └── animal-prompts-api-7.jsonl # 第七波 JSONL（API 用）
+│       ├── animal-prompts-api-7.jsonl # 第七波 JSONL（API 用）
+│       ├── animal-ai-prompts-8.md    # 第八波 8 隻動物 prompt
+│       └── animal-prompts-api-8.jsonl # 第八波 JSONL（API 用）
 ├── docs/
 │   ├── prompt.txt            # 原始需求 prompt
 │   ├── review-result.md      # 審查報告
@@ -375,7 +377,7 @@ animal-fight/
 - [x] final_cards.html 整合 98 張動物卡
 - [x] 動物資料結構化 SOP（skillDesc 規範 + per-wave JSON 格式 + SOP 補步驟）
 - [x] 第八波 8 隻新動物設計（屬性 + 技能，公雞、黑豹 + 6 隻 Creature Cases）
-- [ ] 第八波繪圖 prompt
+- [x] 第八波繪圖 prompt
 - [ ] 第八波 AI 圖片生成（8 張）
 - [ ] final_cards.html 整合 106 張動物卡
 - [ ] 印刷測試
