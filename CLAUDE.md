@@ -19,7 +19,7 @@ animal-fight/
 │       ├── attribute-review.md       # 屬性審查報告
 │       └── 260115-animal-final.md    # 第三波 19 隻設計過程
 ├── card/                     # 卡片相關檔案
-│   ├── final_cards.html      # A4 全頁列印版（84 張動物卡，v2.5 數值）
+│   ├── final_cards.html      # A4 全頁列印版（106 張動物卡，v2.5 數值）
 │   ├── generate_from_jsonl.py      # 圖片批次生成腳本
 │   ├── .env.example          # API Key 範本
 │   ├── data/                 # 結構化動物資料（per-wave JSON）
@@ -80,22 +80,23 @@ animal-fight/
 - 動物大對決（battle-rules.md）：v2.5 數值系統（天賦為 +4 分配，總和 11-33）
 - 兩模式獨立運作，待實際遊玩測試後再決定是否統一
 
-### 動物數值設計 SOP（7 步）
-1. **選定動物** → 由人決定，AI 不介入
-2. **五維數值設計** → `docs/attributes.md` §1-§5（各屬性判斷邏輯 + 分數標準）
-3. **特殊能力設計** → `docs/attributes.md` §7（動態特徵 + 視覺化可行性 + 姿態辨識度 + +4 分配 + 命名規範）
-4. **技能描述撰寫** → `docs/attributes.md`「技能描述撰寫（skillDesc）」（15-25 字口語化描述，用於卡片顯示）
-5. **五維重疊比對** → `docs/attributes.md` §9（差異分數 ≤3 必須調整）
-6. **3 Agent 並行審核** → `docs/attributes.md` §8（A=科學合理性 / B=特殊能力設計 / C=全局平衡與辨識度）
-7. **產出結構化資料** → `card/data/animals-wave{N}.json`（含全部 7 欄位：id, name, en, img, stats, skillName, skillDesc, skillBonus）
+### 動物設計全流程 SOP（10 步）
 
-### Prompt 生產 SOP（6 步）
-1. **特殊能力設計** → `docs/attributes.md` §7（視覺化可行性 + 姿態辨識度 + 命名規範）
-2. **撰寫 Prompt** → `card/img-prompt/prompt-guidelines.md` §1-§6（模板 + 動作轉換 + 風格後綴）
-3. **3 Agent 並行審核** → `prompt-guidelines.md` §3 + §7-§12 + §13（11 項審核清單 + 審核分工）
-4. **產出 .md + .jsonl** → `prompt-guidelines.md` §14（JSONL 轉換規範）
-5. **批次 API 呼叫** → `card/generate_from_jsonl.py`
-6. **圖片驗收 + 整合 HTML** → 讀取 `card/data/animals-wave{N}.json` 合併至 `card/final_cards.html`
+觸發指令：「用 SOP 設計第 N 波新動物：[動物清單]」
+AI 自動執行步驟 1-8，步驟 9 交由人工，步驟 10 等圖片就緒後執行。
+
+| 階段 | 步驟 | 內容 |
+|------|:----:|------|
+| 數值 | 1 | **選定動物** → 由人決定，AI 不介入 |
+| 數值 | 2 | **五維數值 + 特殊能力 + skillDesc** → `docs/attributes.md` §1-§5（數值）+ §7（技能設計 + +4 分配 + 命名）+「技能描述撰寫」（15-25 字） |
+| 數值 | 3 | **五維重疊比對** → `docs/attributes.md` §9（差異分數 ≤3 必須調整） |
+| 數值 | 4 | **3 Agent 數值審核** → `docs/attributes.md` §8（A=科學合理性 / B=特殊能力設計 / C=全局平衡與辨識度） |
+| 數值 | 5 | **產出 JSON** → `card/data/animals-wave{N}.json`（7 欄位：id, name, en, img, stats, skillName, skillDesc, skillBonus） |
+| Prompt | 6 | **撰寫繪圖 Prompt** → `card/img-prompt/prompt-guidelines.md` §1-§6（模板 + 動作轉換 + 風格後綴） |
+| Prompt | 7 | **3 Agent Prompt 審核** → `prompt-guidelines.md` §3 + §7-§12 + §13（11 項審核清單 + 審核分工） |
+| Prompt | 8 | **產出 .md + .jsonl** → `prompt-guidelines.md` §14（JSONL 轉換規範） |
+| 人工 | 9 | **批次 API 生圖** → `card/generate_from_jsonl.py`（人工執行） |
+| 整合 | 10 | **圖片驗收 + 整合 HTML** → 讀取 `card/data/animals-wave{N}.json` 合併至 `card/final_cards.html` |
 
 ### 已建立動物（第一波 16 張）
 
@@ -379,7 +380,7 @@ animal-fight/
 - [x] 第八波 8 隻新動物設計（屬性 + 技能，公雞、黑豹 + 6 隻 Creature Cases）
 - [x] 第八波繪圖 prompt
 - [ ] 第八波 AI 圖片生成（8 張）
-- [ ] final_cards.html 整合 106 張動物卡
+- [x] final_cards.html 整合 106 張動物卡
 - [ ] 印刷測試
 - [ ] 實際遊玩測試
 

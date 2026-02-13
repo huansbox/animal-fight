@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>動物守護者 - 最終 A4 黑白列印版（98 張動物卡）</title>
+    <title>動物守護者 - 最終 A4 黑白列印版（106 張動物卡）</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Roboto:wght@700;900&display=swap');
 
@@ -210,7 +210,7 @@
 <body>
 
 <script>
-    // v2.5 數值（84 張動物卡）
+    // v2.5 數值（106 張動物卡）
     const animals = [
         { name: "非洲獅", en: "Lion", img: "images/lion.png", stats: [7, 6, 8, 4, 5], skillName: "大吼", skillDesc: "嚇跑體型比你小的動物，或讓敵人嚇到不敢亂動。", skillBonus: [{attr: 0, val: 2}, {attr: 2, val: 2}] },
         { name: "非洲象", en: "Elephant", img: "images/elephant.png", stats: [9, 2, 3, 8, 8], skillName: "鼻子噴水", skillDesc: "可以澆熄森林大火，或是洗掉擋路的泥濘。", skillBonus: [{attr: 2, val: 1}, {attr: 3, val: 3}] },
@@ -315,7 +315,16 @@
         { name: "小貓熊", en: "Red Panda", img: "images/red_panda.png", stats: [2, 5, 1, 3, 6], skillName: "驚立威嚇", skillDesc: "被嚇到時站起來把兩隻爪子舉高高，看起來又大又可怕。", skillBonus: [{attr: 4, val: 2}, {attr: 3, val: 1}, {attr: 1, val: 1}] },
         { name: "針鼴", en: "Short-beaked Echidna", img: "images/echidna.png", stats: [3, 2, 1, 6, 4], skillName: "鑽地隱刺", skillDesc: "蹲低用大爪子猛挖地，全身尖刺豎起來，誰也碰不了。", skillBonus: [{attr: 3, val: 3}, {attr: 0, val: 1}] },
         { name: "安地斯神鷲", en: "Andean Condor", img: "images/andean_condor.png", stats: [4, 6, 3, 3, 4], skillName: "巨翼蔽天", skillDesc: "展開超過三公尺的巨大翅膀，遮天蔽日氣勢驚人。", skillBonus: [{attr: 1, val: 2}, {attr: 3, val: 2}] },
-        { name: "郊狼", en: "Coyote", img: "images/coyote.png", stats: [4, 6, 4, 3, 6], skillName: "孤狼巧獵", skillDesc: "獨自一隻靠聰明和速度追捕獵物，什麼招數都用得出來。", skillBonus: [{attr: 1, val: 2}, {attr: 4, val: 2}] }
+        { name: "郊狼", en: "Coyote", img: "images/coyote.png", stats: [4, 6, 4, 3, 6], skillName: "孤狼巧獵", skillDesc: "獨自一隻靠聰明和速度追捕獵物，什麼招數都用得出來。", skillBonus: [{attr: 1, val: 2}, {attr: 4, val: 2}] },
+        // 第八波 8 隻新動物
+        { name: "公雞", en: "Rooster", img: "images/rooster.png", stats: [2, 3, 4, 2, 3], skillName: "飛距猛刺", skillDesc: "跳起來用腳上尖銳的距猛踢對手，又快又狠！", skillBonus: [{attr: 2, val: 2}, {attr: 1, val: 1}, {attr: 0, val: 1}] },
+        { name: "黑豹", en: "Black Panther", img: "images/black_panther.png", stats: [5, 6, 8, 3, 7], skillName: "暗夜飛撲", skillDesc: "在黑夜裡悄悄靠近獵物，看不見的影子突然飛撲！", skillBonus: [{attr: 2, val: 2}, {attr: 4, val: 2}] },
+        { name: "喜馬拉雅塔爾羊", en: "Himalayan Tahr", img: "images/himalayan_tahr.png", stats: [4, 4, 4, 4, 3], skillName: "崖壁猛撞", skillDesc: "在陡峭懸崖上穩穩站住，低頭用堅硬短角猛力衝撞對手！", skillBonus: [{attr: 0, val: 2}, {attr: 3, val: 2}] },
+        { name: "橡實啄木鳥", en: "Acorn Woodpecker", img: "images/acorn_woodpecker.png", stats: [1, 4, 3, 3, 6], skillName: "穀倉連啄", skillDesc: "像機關槍一樣瘋狂啄洞，藏滿上萬顆橡實當糧食庫！", skillBonus: [{attr: 4, val: 2}, {attr: 2, val: 1}, {attr: 3, val: 1}] },
+        { name: "日本獼猴", en: "Japanese Macaque", img: "images/japanese_macaque.png", stats: [3, 5, 4, 3, 7], skillName: "溫泉智謀", skillDesc: "發現溫泉可以取暖就跳進去泡，還教會整群猴子一起泡！", skillBonus: [{attr: 4, val: 2}, {attr: 0, val: 1}, {attr: 1, val: 1}] },
+        { name: "鼷鹿", en: "Mouse Deer", img: "images/mouse_deer.png", stats: [1, 5, 2, 2, 4], skillName: "踏地警報", skillDesc: "用小腳快速踏踏踏敲地板，警告同伴有危險來了！", skillBonus: [{attr: 1, val: 2}, {attr: 4, val: 1}, {attr: 3, val: 1}] },
+        { name: "袋熊", en: "Wombat", img: "images/wombat.png", stats: [4, 5, 2, 6, 3], skillName: "鐵臀堵洞", skillDesc: "鑽進自己挖的洞，用超硬屁股堵住洞口，誰都進不來！", skillBonus: [{attr: 3, val: 3}, {attr: 0, val: 1}] },
+        { name: "東部灰松鼠", en: "Eastern Gray Squirrel", img: "images/eastern_gray_squirrel.png", stats: [1, 7, 1, 3, 5], skillName: "藏果詭計", skillDesc: "堅果藏在幾百個地方都記得住，還會假裝埋東西騙人！", skillBonus: [{attr: 4, val: 2}, {attr: 1, val: 2}] }
     ];
 
     const icons = [
