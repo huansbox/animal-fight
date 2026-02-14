@@ -19,12 +19,13 @@ animal-fight/
 │       ├── attribute-review.md       # 屬性審查報告
 │       └── 260115-animal-final.md    # 第三波 19 隻設計過程
 ├── card/                     # 卡片相關檔案
-│   ├── final_cards.html      # A4 全頁列印版（106 張動物卡，v2.5 數值）
+│   ├── final_cards.html      # A4 全頁列印版（128 張動物卡，v2.5 數值）
 │   ├── generate_from_jsonl.py      # 圖片批次生成腳本
 │   ├── .env.example          # API Key 範本
 │   ├── data/                 # 結構化動物資料（per-wave JSON）
 │   │   ├── animals-wave7.json  # 第七波（Creature Cases 系列）
-│   │   └── animals-wave8.json  # 第八波（公雞、黑豹等 8 隻）
+│   │   ├── animals-wave8.json  # 第八波（公雞、黑豹等 8 隻）
+│   │   └── animals-wave9.json  # 第九波（22 隻新動物）
 │   ├── images/               # 動物圖片 + icon（84+6 張）
 │   └── img-prompt/           # 圖片生成 prompt
 │       ├── prompt-guidelines.md      # Prompt 撰寫指南與審核條件
@@ -42,7 +43,9 @@ animal-fight/
 │       ├── animal-ai-prompts-7.md    # 第七波 14 隻動物 prompt
 │       ├── animal-prompts-api-7.jsonl # 第七波 JSONL（API 用）
 │       ├── animal-ai-prompts-8.md    # 第八波 8 隻動物 prompt
-│       └── animal-prompts-api-8.jsonl # 第八波 JSONL（API 用）
+│       ├── animal-prompts-api-8.jsonl # 第八波 JSONL（API 用）
+│       ├── animal-ai-prompts-9.md    # 第九波 22 隻動物 prompt
+│       └── animal-prompts-api-9.jsonl # 第九波 JSONL（API 用）
 ├── docs/
 │   ├── prompt.txt            # 原始需求 prompt
 │   ├── review-result.md      # 審查報告
@@ -284,69 +287,90 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 
 > 結構化資料見 card/data/animals-wave8.json
 
-### 待建立動物 — 後續擴充（62 隻）
+### 第九波新動物（22 張，已完成設計）
 
-**原 backlog（16 隻）**
+原 backlog 15 隻 + Creature Cases Fact File 8 隻，補至 128 張。
+
+| 動物 | 力 | 速 | 攻 | 防 | 智 | 總和 | 特殊技能 |
+|------|:--:|:--:|:--:|:--:|:--:|:----:|----------|
+| 長毛象 | 9 | 3 | 4 | 8 | 6 | 30 | 冰原衝鋒 |
+| 座頭鯨 | 8 | 4 | 3 | 7 | 6 | 28 | 泡網圍獵 |
+| 黑猩猩 | 5 | 5 | 6 | 3 | 8 | 27 | 猿怒狂擊 |
+| 森蚺 | 9 | 3 | 6 | 5 | 3 | 26 | 深水絞縛 |
+| 眼鏡熊 | 6 | 4 | 5 | 5 | 6 | 26 | 攀樹猛擊 |
+| 大西洋劍魚 | 5 | 9 | 7 | 2 | 2 | 25 | 劍吻斬擊 |
+| 角鵰 | 6 | 6 | 7 | 2 | 3 | 24 | 巨爪穿擊 |
+| 短尾貓 | 3 | 6 | 4 | 5 | 4 | 22 | 短尾夜襲 |
+| 食人魚 | 2 | 6 | 7 | 1 | 4 | 20 | 群齒撕裂 |
+| 金剛鸚鵡 | 2 | 3 | 5 | 4 | 6 | 20 | 彩翼破殼 |
+| 渡鴉 | 3 | 3 | 1 | 3 | 9 | 19 | 狡智巧謀 |
+| 狐蝠 | 3 | 7 | 1 | 2 | 4 | 17 | 夜空巡航 |
+| 海龜 | 4 | 2 | 2 | 7 | 2 | 17 | 鐵殼護航 |
+| 變色龍 | 1 | 2 | 6 | 2 | 6 | 17 | 瞬舌獵擊 |
+| 刺蝟 | 1 | 3 | 4 | 7 | 1 | 16 | 尖刺縮球 |
+| 北極兔 | 2 | 7 | 1 | 3 | 2 | 15 | 白毛疾奔 |
+| 蜂鳥 | 1 | 8 | 1 | 1 | 3 | 14 | 懸停疾閃 |
+| 水母 | 1 | 1 | 6 | 3 | 2 | 13 | 毒絲纏螫 |
+| 無尾熊 | 3 | 2 | 1 | 3 | 3 | 12 | 鐵爪掛樹 |
+| 行軍蟻 | 2 | 2 | 3 | 1 | 4 | 12 | 蟻海吞噬 |
+| 竹節蟲 | 1 | 1 | 1 | 5 | 3 | 11 | 擬態隱身 |
+| 螢火蟲 | 1 | 3 | 1 | 1 | 4 | 10 | 閃光誘惑 |
+
+> 結構化資料見 card/data/animals-wave9.json
+> 繪圖 prompt 見 card/img-prompt/animal-ai-prompts-9.md
+
+### 待建立動物 — 後續擴充（39 隻）
+
+**原 backlog 剩餘（1 隻）**
 
 | 動物 |
 |------|
-| 座頭鯨、刺蝟、大西洋劍魚、綠巨人蜻蜓、北極兔 |
-| 蜂鳥★、角鵰、渡鴉、黑猩猩、變色龍 |
-| 海龜、蝙蝠★、金剛鸚鵡、水母、無尾熊、食人魚 |
+| 綠巨人蜻蜓 |
 
-**Creature Cases Fact File 新增（46 隻）**
+**Creature Cases Fact File 剩餘（38 隻）**
 
 | # | 英文名 | 中文名 |
 |---|--------|--------|
 | 1 | African lungfish | 非洲肺魚 |
 | 2 | Amami rabbit | 奄美兔 |
 | 3 | American bittern | 美洲麻鷺 |
-| 4 | Anaconda | 森蚺 |
-| 5 | Arctic Skua | 賊鷗 |
-| 6 | Arctic woolly bear moth | 北極毛蟲蛾 |
-| 7 | Army ants | 行軍蟻 |
-| 8 | Badger | 美洲獾 |
-| 9 | Blue tit | 藍山雀 |
-| 10 | Bobcat | 短尾貓 |
-| 11 | Bowerbird | 園丁鳥 |
-| 12 | Chinchilla | 絨鼠 |
-| 13 | Cuckoo | 杜鵑 |
-| 14 | Fireflies | 螢火蟲 |
-| 15 | Flycatcher | 鶲 |
-| 16 | Flying fox | 狐蝠 |
-| 17 | Frosted flatwoods salamander | 霜地蠑螈 |
-| 18 | Glass frog | 玻璃蛙 |
-| 19 | Grasshopper mouse | 蚱蜢鼠 |
-| 20 | Hawkmoth | 天蛾 |
-| 21 | Honey Guide | 響蜜鴷 |
-| 22 | Hooded pitohui | 黑頭林鵙鶲 |
-| 23 | Inaccessible Island Rail | 不可及島秧雞 |
-| 24 | Little blue penguin | 小藍企鵝 |
-| 25 | Margay | 長尾虎貓 |
-| 26 | Mole lizard | 蚓蜥 |
-| 27 | Night Monkeys | 夜猴 |
-| 28 | Norway Lemming | 挪威旅鼠 |
-| 29 | Pikas | 鼠兔 |
-| 30 | Pocket Gopher | 囊地鼠 |
-| 31 | Saharan Silver Ants | 撒哈拉銀蟻 |
-| 32 | Singing dog | 紐幾內亞唱犬 |
-| 33 | Skunk frog | 臭蛙 |
-| 34 | Snowshoe Hare | 雪鞋兔 |
-| 35 | Southern Ground Hornbill | 南地犀鳥 |
-| 36 | Spectacled bear | 眼鏡熊 |
-| 37 | Springhare | 跳兔 |
-| 38 | Tree cricket | 樹蟋蟀 |
-| 39 | Velvet worm | 天鵝絨蟲 |
-| 40 | Walking stick | 竹節蟲 |
-| 41 | Woolly mammoth | 長毛象 |
-| 42 | Yellow garden spider | 花園蜘蛛 |
-| 43 | Indian Cobra | 印度眼鏡蛇 |
-| 44 | Common Krait | 環蛇 |
-| 45 | Russell's Viper | 鏈蛇 |
-| 46 | Saw-scaled Viper | 鋸鱗蝰 |
+| 4 | Arctic Skua | 賊鷗 |
+| 5 | Arctic woolly bear moth | 北極毛蟲蛾 |
+| 6 | Badger | 美洲獾 |
+| 7 | Blue tit | 藍山雀 |
+| 8 | Bowerbird | 園丁鳥 |
+| 9 | Chinchilla | 絨鼠 |
+| 10 | Cuckoo | 杜鵑 |
+| 11 | Flycatcher | 鶲 |
+| 12 | Frosted flatwoods salamander | 霜地蠑螈 |
+| 13 | Glass frog | 玻璃蛙 |
+| 14 | Grasshopper mouse | 蚱蜢鼠 |
+| 15 | Hawkmoth | 天蛾 |
+| 16 | Honey Guide | 響蜜鴷 |
+| 17 | Hooded pitohui | 黑頭林鵙鶲 |
+| 18 | Inaccessible Island Rail | 不可及島秧雞 |
+| 19 | Little blue penguin | 小藍企鵝 |
+| 20 | Margay | 長尾虎貓 |
+| 21 | Mole lizard | 蚓蜥 |
+| 22 | Night Monkeys | 夜猴 |
+| 23 | Norway Lemming | 挪威旅鼠 |
+| 24 | Pikas | 鼠兔 |
+| 25 | Pocket Gopher | 囊地鼠 |
+| 26 | Saharan Silver Ants | 撒哈拉銀蟻 |
+| 27 | Singing dog | 紐幾內亞唱犬 |
+| 28 | Skunk frog | 臭蛙 |
+| 29 | Snowshoe Hare | 雪鞋兔 |
+| 30 | Southern Ground Hornbill | 南地犀鳥 |
+| 31 | Springhare | 跳兔 |
+| 32 | Tree cricket | 樹蟋蟀 |
+| 33 | Velvet worm | 天鵝絨蟲 |
+| 34 | Yellow garden spider | 花園蜘蛛 |
+| 35 | Indian Cobra | 印度眼鏡蛇 |
+| 36 | Common Krait | 環蛇 |
+| 37 | Russell's Viper | 鏈蛇 |
+| 38 | Saw-scaled Viper | 鋸鱗蝰 |
 
-> ★ 也出現在 Creature Cases 中
-> #49-52 來自 Big Four（印度四大毒蛇），節目 S1E01 介紹
+> #35-38 來自 Big Four（印度四大毒蛇），節目 S1E01 介紹
 > 優先順序未定，視實際需求決定
 
 ## 遊戲模式
@@ -416,6 +440,10 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
   - [x] 動畫系統（骰子滾動、天賦觸發閃光、勝負特效）
   - [x] 五個畫面（主選單 → 賽制設定 → 選角 → 對戰 → 冠軍）
   - [ ] 實際遊玩測試
+- [x] 第九波 22 隻新動物設計（屬性 + 技能）
+- [x] 第九波繪圖 prompt
+- [ ] 第九波 AI 圖片生成（22 張）
+- [x] final_cards.html 整合 128 張動物卡
 - [ ] 印刷測試
 - [ ] 實際遊玩測試（實體版）
 
