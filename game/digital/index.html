@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動物大對決</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Screen 1: 主選單 -->
+    <div id="screen-menu" class="screen active">
+        <h1 class="game-title">動物大對決</h1>
+        <div class="menu-buttons">
+            <button id="btn-vs-ai">VS 電腦</button>
+            <button id="btn-vs-player">雙人對戰</button>
+        </div>
+        <div id="ai-difficulty" class="hidden">
+            <h2>選擇難度</h2>
+            <button data-difficulty="easy">簡單</button>
+            <button data-difficulty="normal">普通</button>
+            <button data-difficulty="hard">困難</button>
+        </div>
+    </div>
+
+    <!-- Screen 2: 賽制設定 -->
+    <div id="screen-setup" class="screen">
+        <h2>賽制設定</h2>
+        <div class="setup-section">
+            <h3>賽制規模</h3>
+            <div class="btn-group" id="size-group">
+                <button data-size="4">4 強</button>
+                <button data-size="8">8 強</button>
+                <button data-size="16" class="selected">16 強</button>
+                <button data-size="32">32 強</button>
+            </div>
+        </div>
+        <div class="setup-section">
+            <h3>選角方式</h3>
+            <div class="btn-group" id="draft-group">
+                <button data-draft="random">快速隨機</button>
+                <button data-draft="draft" class="selected">選秀</button>
+                <button data-draft="manual">自選</button>
+            </div>
+        </div>
+        <button id="btn-start">開始</button>
+    </div>
+
+    <!-- Screen 3: 選角 -->
+    <div id="screen-draft" class="screen"></div>
+
+    <!-- Screen 4: 對戰 -->
+    <div id="screen-battle" class="screen"></div>
+
+    <!-- Screen 5: 冠軍 -->
+    <div id="screen-champion" class="screen"></div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
