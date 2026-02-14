@@ -386,9 +386,7 @@ function startBattle() {
 
         renderBracket(state.bracket, document.getElementById('bracket-display'));
 
-        document.getElementById('btn-roll').addEventListener('click', () => {
-            playFullBattle(match);
-        }, { once: true });
+        playFullBattle(match);
     }
 
     /** 完整對戰流程（含加賽迴圈） */
