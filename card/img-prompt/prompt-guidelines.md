@@ -388,6 +388,19 @@ AI 圖像生成器的能力邊界：只能畫「看得見的東西」。
 | 簡稱優先 | `rhino_beetle`（非 `rhinoceros_beetle`），但卡片顯示名可為全名 |
 | 全域唯一 | 不得與歷史波次的 id 重複 |
 
+### .md 標題格式
+
+`.md` 檔中每隻動物的標題統一使用 **id 格式**（與 JSON / JSONL / 圖檔同名），不用英文正式名稱：
+
+```markdown
+## 1. 公雞（rooster）- 飛距猛刺        ← 正確
+## 1. 公雞（Rooster）- 飛距猛刺        ← 錯誤
+## 2. 黑豹（black_panther）- 暗夜飛撲   ← 正確
+## 2. 黑豹（Black Panther）- 暗夜飛撲   ← 錯誤
+```
+
+好處：一眼對照 id → 圖檔名 → JSONL id，減少轉換時的查找成本。
+
 ### 轉換檢查清單
 
 - [ ] 每行是合法 JSON（可用 `python -m json.tool` 驗證）

@@ -83,7 +83,7 @@ animal-fight/
 ### 動物設計全流程 SOP（10 步）
 
 觸發指令：「用 SOP 設計第 N 波新動物：[動物清單]」
-AI 自動執行步驟 1-8，步驟 9 交由人工，步驟 10 等圖片就緒後執行。
+AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後只剩人工生圖。
 
 | 階段 | 步驟 | 內容 |
 |------|:----:|------|
@@ -97,8 +97,8 @@ AI 自動執行步驟 1-8，步驟 9 交由人工，步驟 10 等圖片就緒後
 | Prompt | 6 | **撰寫繪圖 Prompt** → `prompt-guidelines.md` §1-§6（模板 + 動作轉換 + 風格後綴），含 §7 黑化/特殊毛色處理 |
 | Prompt | 7 | **3 Agent Prompt 審核** → `prompt-guidelines.md` §3 + §7-§12 + §13（12 項審核清單 + 審核分工） |
 | Prompt | 8 | **產出 .md + .jsonl** → `prompt-guidelines.md` §14（JSONL 轉換規範） |
-| 人工 | 9 | **批次 API 生圖** → `card/generate_from_jsonl.py`（人工執行） |
-| 整合 | 10 | **圖片驗收 + 整合 HTML** → 讀取 `card/data/animals-wave{N}.json` 合併至 `card/final_cards.html` |
+| 整合 | 9 | **整合 HTML + 更新文件** → `final_cards.html` 加入新動物 + `CLAUDE.md` 更新（數值表 + backlog + checklist） |
+| 人工 | 10 | **批次 API 生圖** → `card/generate_from_jsonl.py`（人工執行，圖片放入 `card/images/` 即完成） |
 
 ### 已建立動物（第一波 16 張）
 
