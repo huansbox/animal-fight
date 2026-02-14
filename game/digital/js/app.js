@@ -525,6 +525,11 @@ function startBattle() {
             await animateResult(winSide === 'a' ? cardA : cardB, winSide === 'a' ? cardB : cardA);
             await sleep(1500);
 
+            // 記錄分數到 match，供 bracket 顯示
+            const curMatch = getCurrentMatch(state.bracket);
+            curMatch.scoreA = resA.score;
+            curMatch.scoreB = resB.score;
+
             // 推進淘汰賽 + 顯示對戰表 overlay
             const nextMatch = advanceBracket(state.bracket, winner);
             const overlay = document.getElementById('bracket-overlay');

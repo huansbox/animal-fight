@@ -73,16 +73,19 @@ function renderBracketTree(bracket, teamMap, container) {
 
     const ROUND_NAMES = { 1: '冠軍賽', 2: '四強', 4: '八強', 8: '十六強', 16: '三十二強' };
 
-    function slot(animal, winner) {
+    function slot(match, side) {
+        const animal = match[side];
         if (!animal) return '<div class="bt-slot bt-pending">?</div>';
         const team = teamMap ? teamMap.get(animal.id) : null;
-        const won = winner === animal;
-        const lost = winner && winner !== animal;
+        const won = match.winner === animal;
+        const lost = match.winner && match.winner !== animal;
         let cls = 'bt-slot';
         if (won) cls += ' bt-won';
         if (lost) cls += ' bt-lost';
         const dot = team ? `<span class="bt-dot bt-dot-${team}"></span>` : '';
-        return `<div class="${cls}">${dot}${animal.name}</div>`;
+        const scoreKey = side === 'a' ? 'scoreA' : 'scoreB';
+        const score = match[scoreKey] != null ? `<span class="bt-score">${match[scoreKey]}</span>` : '';
+        return `<div class="${cls}">${dot}<span class="bt-name">${animal.name}</span>${score}</div>`;
     }
 
     let html = '<div class="bt-trophy">🏆</div>';
@@ -97,8 +100,8 @@ function renderBracketTree(bracket, teamMap, container) {
             const isCurrent = r === bracket.currentRound
                 && mi === bracket.currentMatch && !match.winner;
             html += `<div class="bt-match${isCurrent ? ' bt-current' : ''}">`;
-            html += slot(match.a, match.winner);
-            html += slot(match.b, match.winner);
+            html += slot(match, 'a');
+            html += slot(match, 'b');
             html += '</div>';
         });
         html += '</div>';

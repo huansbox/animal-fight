@@ -519,8 +519,19 @@ body {
 .bt-slot:last-child { border-bottom: none; }
 
 .bt-slot.bt-won { color: gold; background: rgba(255, 215, 0, 0.1); }
-.bt-slot.bt-lost { color: #555; text-decoration: line-through; }
+.bt-slot.bt-lost { color: #555; }
+.bt-slot.bt-lost .bt-name { text-decoration: line-through; }
 .bt-slot.bt-pending { color: #555; font-style: italic; }
+
+.bt-name { flex: 1; }
+.bt-score {
+    font-size: 12px;
+    color: #aaa;
+    margin-left: auto;
+    padding-left: 8px;
+}
+.bt-slot.bt-won .bt-score { color: gold; }
+.bt-slot.bt-lost .bt-score { color: #555; }
 
 .bt-dot {
     width: 8px;
