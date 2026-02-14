@@ -393,3 +393,213 @@ body {
     background: #5a4a9a;
     transform: scale(1.05);
 }
+
+/* ===== 對戰畫面 ===== */
+#screen-battle {
+    display: none;
+    flex-direction: column;
+    padding: 12px;
+    overflow: hidden;
+}
+
+#screen-battle.active {
+    display: flex;
+}
+
+.bracket-container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    overflow-x: auto;
+    padding: 8px;
+    flex-shrink: 0;
+    max-height: 120px;
+}
+
+.bracket-round {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+}
+
+.bracket-match {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.bracket-match.current {
+    border-color: gold;
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.bracket-name { color: #aaa; }
+.bracket-name.won { color: gold; font-weight: bold; }
+.bracket-vs { color: #666; font-size: 9px; }
+
+.round-info {
+    text-align: center;
+    font-size: 16px;
+    color: #888;
+    margin: 4px 0;
+    flex-shrink: 0;
+}
+
+/* 對戰區 */
+.battle-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex: 1;
+    min-height: 0;
+}
+
+/* 動物卡 */
+.battle-card {
+    width: 280px;
+    background: #2a2a4a;
+    border: 3px solid #555;
+    border-radius: 16px;
+    padding: 16px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.battle-card img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+}
+
+.battle-card .animal-name {
+    font-size: 28px;
+    font-weight: 900;
+    margin: 4px 0;
+}
+
+.battle-card .animal-en {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.battle-card .stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+}
+
+.battle-card .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 11px;
+}
+
+.battle-card .stat-icon { font-size: 16px; }
+.battle-card .stat-label { color: #aaa; font-size: 10px; }
+.battle-card .stat-value { font-size: 22px; font-weight: 900; }
+
+.battle-card .skill-name {
+    font-size: 16px;
+    color: gold;
+    margin-top: 8px;
+    font-weight: 700;
+}
+
+/* 中央區 */
+.battle-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-width: 200px;
+}
+
+.dice-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.dice-group {
+    display: flex;
+    gap: 8px;
+}
+
+.vs-text {
+    font-size: 32px;
+    font-weight: 900;
+    color: #666;
+}
+
+.score-display {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.score {
+    font-size: 48px;
+    font-weight: 900;
+    min-width: 80px;
+    text-align: center;
+}
+
+.score-vs {
+    font-size: 36px;
+    color: #666;
+}
+
+.result-text {
+    font-size: 28px;
+    font-weight: 900;
+    min-height: 40px;
+}
+
+.roll-btn {
+    padding: 16px 48px;
+    font-size: 28px;
+    font-weight: 900;
+    border: 3px solid gold;
+    border-radius: 12px;
+    background: #4a3a8a;
+    color: gold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.roll-btn:hover {
+    background: #5a4a9a;
+    transform: scale(1.05);
+}
+
+.roll-btn:disabled {
+    opacity: 0.5;
+    cursor: default;
+    transform: none;
+}
+
+.next-btn {
+    padding: 12px 36px;
+    font-size: 22px;
+    font-weight: 700;
+    border: 2px solid #888;
+    border-radius: 10px;
+    background: #2a4a2a;
+    color: #8f8;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.next-btn:hover {
+    background: #3a6a3a;
+    transform: scale(1.05);
+}
