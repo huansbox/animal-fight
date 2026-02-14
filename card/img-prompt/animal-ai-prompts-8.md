@@ -69,7 +69,7 @@ black and white vector line art of Mouse Deer (Lesser Chevrotain), tiny body wit
 ## 7. 袋熊（Wombat）- 鐵臀堵洞
 
 ```
-black and white vector line art of Wombat, backing into a burrow entrance with broad flat hardened rear end facing outward and blocking the hole, compact barrel-shaped body, short sturdy powerful legs with large digging claws, small rounded ears, blunt squared-off nose, coarse thick fur texture, short stubby tail barely visible, determined defensive burrow-blocking pose viewed from three-quarter rear angle, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Wombat, viewed from the side in the act of reversing into a burrow entrance with broad flat hardened rear end pressing against the hole, head turned toward the viewer with a determined stubborn expression, compact barrel-shaped body, short sturdy powerful legs with large digging claws, small rounded ears, blunt squared-off nose, coarse thick fur texture, short stubby tail barely visible, side-view defensive burrow-blocking pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 **姿態比對**：針鼴＝蹲伏鑽地背刺外翻（朝下），袋熊＝倒退入洞方形屁股堵洞口（朝後）。方向＋防禦方式完全不同
