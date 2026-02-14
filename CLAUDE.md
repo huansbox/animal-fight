@@ -61,6 +61,7 @@ animal-fight/
 │   ├── rulebook.md           # 合作闘關規則書
 │   ├── battle-rules.md       # 動物大對決淘汰賽規則（v2.4 數值）
 │   └── digital/              # 動物大對決數位版（離線 Web App）
+│       ├── README.md         # 啟動方式、遊戲規則、維護指南
 │       ├── index.html        # 進入點（單頁應用，5 個畫面）
 │       ├── css/style.css     # 樣式 + 動畫（骰子、翻牌、勝負特效）
 │       ├── js/
@@ -89,12 +90,13 @@ animal-fight/
 - **特殊能力加成**：固定 +4 分，分配到 2-3 個屬性
 
 ### 數位版（game/digital/）
+- **詳細文件**：[`game/digital/README.md`](game/digital/README.md)（啟動、規則、維護指南）
 - **技術**：Vanilla HTML/CSS/JS（無框架），ES Modules，CSS Animations
 - **架構**：單頁應用，5 畫面 CSS class 切換 + fade-in 過渡
 - **對戰引擎**：從 `sim/battle_sim_v5.py` 移植，純邏輯無 DOM
 - **動物資料**：`data/animals.json` 合併 106 隻，圖片引用 `../../card/images/`
 - **AI 難度**：僅影響選角策略（骰子完全隨機）
-- **離線運行**：瀏覽器直接開 `index.html`，無需伺服器
+- **離線運行**：需本地 HTTP server（ES Modules 不支援 `file://`），詳見 README
 - **目標裝置**：MacBook Pro 14 吋，搭飛機/火車讓小孩玩
 
 ### 數值系統分歧
