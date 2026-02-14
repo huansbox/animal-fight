@@ -2,3 +2,4 @@
 .env
 card/images/
 __pycache__/
+.worktrees/
