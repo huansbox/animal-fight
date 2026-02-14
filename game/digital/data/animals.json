@@ -1,0 +1,1062 @@
+[
+  {
+    "id": "lion",
+    "name": "非洲獅",
+    "en": "Lion",
+    "img": "lion.png",
+    "stats": [7, 6, 8, 4, 5],
+    "skillName": "大吼",
+    "skillDesc": "嚇跑體型比你小的動物，或讓敵人嚇到不敢亂動。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 2, "val": 2}]
+  },
+  {
+    "id": "elephant",
+    "name": "非洲象",
+    "en": "Elephant",
+    "img": "elephant.png",
+    "stats": [9, 2, 3, 8, 8],
+    "skillName": "鼻子噴水",
+    "skillDesc": "可以澆熄森林大火，或是洗掉擋路的泥濘。",
+    "skillBonus": [{"attr": 2, "val": 1}, {"attr": 3, "val": 3}]
+  },
+  {
+    "id": "owl",
+    "name": "貓頭鷹",
+    "en": "Owl",
+    "img": "owl.png",
+    "stats": [2, 5, 4, 2, 6],
+    "skillName": "黑夜視線",
+    "skillDesc": "在完全黑暗的山洞或夜晚也能看得很清楚。",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 3, "val": 1}, {"attr": 1, "val": 1}]
+  },
+  {
+    "id": "cheetah",
+    "name": "獵豹",
+    "en": "Cheetah",
+    "img": "cheetah.png",
+    "stats": [4, 9, 6, 2, 4],
+    "skillName": "極限衝刺",
+    "skillDesc": "瞬間爆發速度，用來躲避陷阱或是追上逃跑的敵人。",
+    "skillBonus": [{"attr": 2, "val": 1}, {"attr": 3, "val": 1}, {"attr": 1, "val": 2}]
+  },
+  {
+    "id": "pangolin",
+    "name": "穿山甲",
+    "en": "Pangolin",
+    "img": "pangolin.png",
+    "stats": [3, 2, 1, 9, 2],
+    "skillName": "捲成球滾動",
+    "skillDesc": "保護自己不攻擊，並像輪胎一樣快速滾動過橋。",
+    "skillBonus": [{"attr": 3, "val": 2}, {"attr": 1, "val": 2}]
+  },
+  {
+    "id": "dolphin",
+    "name": "海豚",
+    "en": "Dolphin",
+    "img": "dolphin.png",
+    "stats": [4, 7, 3, 4, 8],
+    "skillName": "超音波定位",
+    "skillDesc": "在深水或濃霧中發現看不見的隱藏小路。",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "falcon",
+    "name": "遊隼",
+    "en": "Falcon",
+    "img": "falcon.png",
+    "stats": [2, 9, 5, 1, 4],
+    "skillName": "千里眼",
+    "skillDesc": "從非常遠的高空看到重要的關鍵物品或危險。",
+    "skillBonus": [{"attr": 3, "val": 2}, {"attr": 2, "val": 1}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "komodo",
+    "name": "科摩多龍",
+    "en": "Komodo Dragon",
+    "img": "komodo.png",
+    "stats": [6, 3, 7, 6, 4],
+    "skillName": "強酸口水",
+    "skillDesc": "吐出有腐蝕性的唾液，可以融化門鎖或繩索。",
+    "skillBonus": [{"attr": 2, "val": 1}, {"attr": 3, "val": 3}]
+  },
+  {
+    "id": "gorilla",
+    "name": "大猩猩",
+    "en": "Gorilla",
+    "img": "gorilla.png",
+    "stats": [8, 4, 4, 5, 9],
+    "skillName": "攀爬高手",
+    "skillDesc": "像在平地一樣輕鬆爬上懸崖或巨大的樹木。",
+    "skillBonus": [{"attr": 0, "val": 1}, {"attr": 3, "val": 2}, {"attr": 1, "val": 1}]
+  },
+  {
+    "id": "badger",
+    "name": "蜜獾",
+    "en": "Honey Badger",
+    "img": "badger.png",
+    "stats": [5, 4, 6, 7, 6],
+    "skillName": "百毒不侵",
+    "skillDesc": "完全不怕毒蛇的毒液，也可以在臭氣中自由行動。",
+    "skillBonus": [{"attr": 3, "val": 3}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "tortoise",
+    "name": "加拉巴哥象龜",
+    "en": "Tortoise",
+    "img": "tortoise.png",
+    "stats": [3, 1, 1, 9, 2],
+    "skillName": "龜殼堡壘",
+    "skillDesc": "縮進堅硬的殼裡，變成一座移動堡壘，任何攻擊都彈開。",
+    "skillBonus": [{"attr": 3, "val": 3}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "impala",
+    "name": "黑斑羚",
+    "en": "Impala",
+    "img": "impala.png",
+    "stats": [3, 8, 2, 3, 3],
+    "skillName": "靈活跳躍",
+    "skillDesc": "跳得又高又遠，輕鬆越過河流、懸崖或敵人的包圍。",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "tiger",
+    "name": "蘇門答臘虎",
+    "en": "Tiger",
+    "img": "tiger.png",
+    "stats": [7, 5, 8, 4, 4],
+    "skillName": "隱密伏擊",
+    "skillDesc": "躲在草叢裡悄悄靠近，突然撲出給敵人致命一擊。",
+    "skillBonus": [{"attr": 0, "val": 1}, {"attr": 2, "val": 2}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "crocodile",
+    "name": "灣鱷",
+    "en": "Crocodile",
+    "img": "crocodile.png",
+    "stats": [8, 3, 9, 7, 2],
+    "skillName": "死亡翻滾",
+    "skillDesc": "咬住獵物後瘋狂旋轉，把任何東西都撕成碎片。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "arctic_fox",
+    "name": "北極狐",
+    "en": "Arctic Fox",
+    "img": "arctic_fox.png",
+    "stats": [3, 7, 3, 4, 7],
+    "skillName": "雪地隱身",
+    "skillDesc": "在冰天雪地裡完全隱形，悄悄接近目標或躲避危險。",
+    "skillBonus": [{"attr": 1, "val": 1}, {"attr": 3, "val": 1}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "kangaroo",
+    "name": "紅袋鼠",
+    "en": "Kangaroo",
+    "img": "kangaroo.png",
+    "stats": [5, 6, 5, 4, 3],
+    "skillName": "拳擊踢腿",
+    "skillDesc": "用強壯的後腿踢出致命一擊，可以踢飛比自己大的敵人。",
+    "skillBonus": [{"attr": 0, "val": 1}, {"attr": 1, "val": 1}, {"attr": 2, "val": 2}]
+  },
+  {
+    "id": "wild_dog",
+    "name": "非洲野犬",
+    "en": "Wild Dog",
+    "img": "wild_dog.png",
+    "stats": [3, 7, 5, 2, 6],
+    "skillName": "團隊狩獵",
+    "skillDesc": "呼喚同伴一起追捕，利用團隊默契與耐力拖垮對手。",
+    "skillBonus": [{"attr": 1, "val": 1}, {"attr": 2, "val": 2}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "hyena",
+    "name": "鬣狗",
+    "en": "Hyena",
+    "img": "hyena.png",
+    "stats": [6, 6, 7, 4, 6],
+    "skillName": "碎骨利齒",
+    "skillDesc": "牙齒超有力，連骨頭都能咬碎。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 2, "val": 2}]
+  },
+  {
+    "id": "warthog",
+    "name": "疣豬",
+    "en": "Warthog",
+    "img": "warthog.png",
+    "stats": [5, 5, 5, 4, 4],
+    "skillName": "獠牙衝撞",
+    "skillDesc": "低頭用獠牙猛衝，撞開擋路的障礙物或敵人。",
+    "skillBonus": [{"attr": 0, "val": 1}, {"attr": 2, "val": 2}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "wild_boar",
+    "name": "山豬",
+    "en": "Wild Boar",
+    "img": "wild_boar.png",
+    "stats": [6, 5, 6, 6, 5],
+    "skillName": "豬突猛進",
+    "skillDesc": "像火車一樣直線衝撞，不管前面有什麼。",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 0, "val": 1}, {"attr": 2, "val": 1}]
+  },
+  {
+    "id": "camel",
+    "name": "駱駝",
+    "en": "Camel",
+    "img": "camel.png",
+    "stats": [7, 5, 3, 6, 3],
+    "skillName": "沙漠耐力",
+    "skillDesc": "不怕熱也不怕渴，比別人更能撐。",
+    "skillBonus": [{"attr": 1, "val": 1}, {"attr": 3, "val": 2}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "porcupine",
+    "name": "豪豬",
+    "en": "Porcupine",
+    "img": "porcupine.png",
+    "stats": [2, 2, 3, 8, 3],
+    "skillName": "刺針反擊",
+    "skillDesc": "豎起尖刺，誰敢打我就刺傷誰。",
+    "skillBonus": [{"attr": 2, "val": 1}, {"attr": 3, "val": 3}]
+  },
+  {
+    "id": "turkey",
+    "name": "火雞",
+    "en": "Turkey",
+    "img": "turkey.png",
+    "stats": [2, 4, 2, 2, 3],
+    "skillName": "驚嚇飛逃",
+    "skillDesc": "突然起飛逃脫危險，或發出警戒叫聲嚇退敵人。",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 3, "val": 1}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "bison",
+    "name": "美洲野牛",
+    "en": "Bison",
+    "img": "bison.png",
+    "stats": [8, 6, 5, 7, 3],
+    "skillName": "狂暴衝撞",
+    "skillDesc": "發起衝鋒，撞翻任何擋路的東西，甚至車輛。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "yak",
+    "name": "犛牛",
+    "en": "Yak",
+    "img": "yak.png",
+    "stats": [8, 4, 5, 7, 3],
+    "skillName": "高原厚皮",
+    "skillDesc": "又厚又長的毛，像穿了厚外套一樣防護。",
+    "skillBonus": [{"attr": 0, "val": 1}, {"attr": 3, "val": 3}]
+  },
+  {
+    "id": "fennec_fox",
+    "name": "大耳狐",
+    "en": "Fennec Fox",
+    "img": "fennec_fox.png",
+    "stats": [2, 6, 2, 2, 5],
+    "skillName": "巨耳偵測",
+    "skillDesc": "巨大耳朵能聽到地下獵物或遠處危險，提前發現陷阱。",
+    "skillBonus": [{"attr": 1, "val": 1}, {"attr": 3, "val": 1}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "sambar_deer",
+    "name": "水鹿",
+    "en": "Sambar Deer",
+    "img": "sambar_deer.png",
+    "stats": [6, 6, 4, 4, 3],
+    "skillName": "水中逃脫",
+    "skillDesc": "跳入水中游泳逃脫追捕，或渡過河流。",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "moose",
+    "name": "麋鹿",
+    "en": "Moose",
+    "img": "moose.png",
+    "stats": [7, 6, 5, 5, 3],
+    "skillName": "巨角橫掃",
+    "skillDesc": "用巨大的鹿角橫掃，擊退多個敵人。",
+    "skillBonus": [{"attr": 0, "val": 1}, {"attr": 2, "val": 2}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "meerkat",
+    "name": "狐獴",
+    "en": "Meerkat",
+    "img": "meerkat.png",
+    "stats": [1, 5, 2, 2, 7],
+    "skillName": "團隊哨兵",
+    "skillDesc": "站崗放哨，提前發現危險並發出警報，讓同伴逃跑。",
+    "skillBonus": [{"attr": 1, "val": 1}, {"attr": 3, "val": 1}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "weasel",
+    "name": "黃鼠狼",
+    "en": "Weasel",
+    "img": "weasel.png",
+    "stats": [1, 7, 4, 2, 4],
+    "skillName": "迅捷突襲",
+    "skillDesc": "瘋狂地跳來跳去迷惑敵人，精準發動攻擊。",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 2, "val": 2}]
+  },
+  {
+    "id": "gibbon",
+    "name": "長臂猿",
+    "en": "Gibbon",
+    "img": "gibbon.png",
+    "stats": [4, 7, 3, 2, 7],
+    "skillName": "樹冠擺盪",
+    "skillDesc": "在樹林間快速移動，輕鬆越過障礙或逃離地面危險。",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 3, "val": 1}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "anteater",
+    "name": "食蟻獸",
+    "en": "Anteater",
+    "img": "anteater.png",
+    "stats": [4, 3, 5, 5, 2],
+    "skillName": "利爪揮擊",
+    "skillDesc": "站立後用強壯的利爪挖開蟻穴，或擊退攻擊者。",
+    "skillBonus": [{"attr": 0, "val": 1}, {"attr": 2, "val": 2}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "platypus",
+    "name": "鴨嘴獸",
+    "en": "Platypus",
+    "img": "platypus.png",
+    "stats": [2, 4, 5, 3, 4],
+    "skillName": "毒刺反擊",
+    "skillDesc": "用後腿毒刺攻擊敵人，造成劇痛。",
+    "skillBonus": [{"attr": 2, "val": 3}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "sloth",
+    "name": "樹懶",
+    "en": "Sloth",
+    "img": "sloth.png",
+    "stats": [3, 1, 2, 5, 2],
+    "skillName": "完美偽裝",
+    "skillDesc": "身上的藻類讓自己和樹融為一體，敵人完全找不到。",
+    "skillBonus": [{"attr": 3, "val": 3}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "blue_whale",
+    "name": "藍鯨",
+    "en": "Blue Whale",
+    "img": "blue_whale.png",
+    "stats": [9, 4, 2, 9, 7],
+    "skillName": "尾鰭重擊",
+    "skillDesc": "用巨大的尾鰭拍打水面，掀起巨浪或擊退敵人。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "great_white_shark",
+    "name": "大白鯊",
+    "en": "Great White Shark",
+    "img": "great_white_shark.png",
+    "stats": [7, 7, 9, 5, 4],
+    "skillName": "致命撕咬",
+    "skillDesc": "高速衝向獵物，用鋸齒狀牙齒一口撕裂。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 1, "val": 2}]
+  },
+  {
+    "id": "hippopotamus",
+    "name": "河馬",
+    "en": "Hippopotamus",
+    "img": "hippopotamus.png",
+    "stats": [9, 4, 7, 8, 3],
+    "skillName": "血盆大口",
+    "skillDesc": "張開超大嘴巴露出巨大獠牙，嚇跑或咬碎敵人。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 0, "val": 2}]
+  },
+  {
+    "id": "polar_bear",
+    "name": "北極熊",
+    "en": "Polar Bear",
+    "img": "polar_bear.png",
+    "stats": [8, 5, 8, 5, 5],
+    "skillName": "熊掌重擊",
+    "skillDesc": "用強壯的熊掌一擊，可以拍碎冰塊或擊暈獵物。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 2, "val": 2}]
+  },
+  {
+    "id": "rhinoceros",
+    "name": "犀牛",
+    "en": "Rhinoceros",
+    "img": "rhinoceros.png",
+    "stats": [9, 4, 7, 9, 2],
+    "skillName": "鋼鐵衝撞",
+    "skillDesc": "低頭用堅硬的角猛衝，撞飛任何擋路的東西。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "leopard",
+    "name": "花豹",
+    "en": "Leopard",
+    "img": "leopard.png",
+    "stats": [6, 7, 8, 3, 5],
+    "skillName": "伏擊撲殺",
+    "skillDesc": "躲在暗處悄悄靠近，突然撲出一擊必殺。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "gray_wolf",
+    "name": "灰狼",
+    "en": "Gray Wolf",
+    "img": "gray_wolf.png",
+    "stats": [5, 7, 6, 4, 7],
+    "skillName": "狼群圍獵",
+    "skillDesc": "呼喚狼群夥伴從四面八方包圍，協力攻擊獵物。",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 2, "val": 2}]
+  },
+  {
+    "id": "wolverine",
+    "name": "狼獾",
+    "en": "Wolverine",
+    "img": "wolverine.png",
+    "stats": [5, 5, 7, 6, 5],
+    "skillName": "無畏死鬥",
+    "skillDesc": "不管對手多大都敢打，絕不後退的戰鬥精神。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "muskox",
+    "name": "麝牛",
+    "en": "Muskox",
+    "img": "muskox.png",
+    "stats": [7, 4, 5, 7, 4],
+    "skillName": "頂角對撞",
+    "skillDesc": "用堅硬的頭骨和彎角猛烈撞擊，震退敵人。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "giraffe",
+    "name": "長頸鹿",
+    "en": "Giraffe",
+    "img": "giraffe.png",
+    "stats": [7, 6, 5, 5, 3],
+    "skillName": "長頸橫掃",
+    "skillDesc": "用超長的脖子像鞭子一樣橫掃，擊退靠近的敵人。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 1, "val": 1}, {"attr": 2, "val": 1}]
+  },
+  {
+    "id": "python",
+    "name": "蟒蛇",
+    "en": "Python",
+    "img": "python.png",
+    "stats": [8, 2, 7, 5, 2],
+    "skillName": "纏繞絞殺",
+    "skillDesc": "用強壯的身體緊緊纏住獵物，讓牠無法呼吸。",
+    "skillBonus": [{"attr": 0, "val": 3}, {"attr": 2, "val": 1}]
+  },
+  {
+    "id": "human",
+    "name": "人",
+    "en": "Human",
+    "img": "human.png",
+    "stats": [3, 4, 2, 1, 9],
+    "skillName": "工具大師",
+    "skillDesc": "會使用各種工具和武器，用智慧彌補體能的不足。",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 2, "val": 2}]
+  },
+  {
+    "id": "pelican",
+    "name": "鵜鶘",
+    "en": "Pelican",
+    "img": "pelican.png",
+    "stats": [3, 5, 3, 2, 4],
+    "skillName": "巨嘴兜捕",
+    "skillDesc": "張開超大的嘴巴俯衝，一口把獵物兜進喉囊裡。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 1, "val": 1}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "red_crowned_crane",
+    "name": "丹頂鶴",
+    "en": "Red-crowned Crane",
+    "img": "red_crowned_crane.png",
+    "stats": [2, 5, 3, 2, 5],
+    "skillName": "仙鶴振翅",
+    "skillDesc": "展開巨大翅膀威嚇敵人，用長喙精準啄擊。",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 4, "val": 1}, {"attr": 2, "val": 1}]
+  },
+  {
+    "id": "orca",
+    "name": "虎鯨",
+    "en": "Orca",
+    "img": "orca.png",
+    "stats": [8, 6, 8, 4, 7],
+    "skillName": "翻浪獵殺",
+    "skillDesc": "從海面躍出翻浪撞擊，用鋒利牙齒獵殺獵物。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 2, "val": 2}]
+  },
+  {
+    "id": "ostrich",
+    "name": "鴕鳥",
+    "en": "Ostrich",
+    "img": "ostrich.png",
+    "stats": [5, 8, 5, 3, 3],
+    "skillName": "鐵腿飛踢",
+    "skillDesc": "用超強壯的腿踢出去，一腳就能踢飛敵人。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 2, "val": 2}]
+  },
+  {
+    "id": "snow_leopard",
+    "name": "雪豹",
+    "en": "Snow Leopard",
+    "img": "snow_leopard.png",
+    "stats": [5, 5, 6, 3, 4],
+    "skillName": "雪嶺伏殺",
+    "skillDesc": "在雪地裡悄悄埋伏，趁敵人沒注意突然撲出。",
+    "skillBonus": [{"attr": 1, "val": 1}, {"attr": 2, "val": 2}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "bald_eagle",
+    "name": "白頭海鵰",
+    "en": "Bald Eagle",
+    "img": "bald_eagle.png",
+    "stats": [3, 7, 6, 2, 5],
+    "skillName": "鷹爪俯衝",
+    "skillDesc": "從高空俯衝而下，用銳利的鷹爪抓住獵物。",
+    "skillBonus": [{"attr": 0, "val": 1}, {"attr": 1, "val": 1}, {"attr": 2, "val": 2}]
+  },
+  {
+    "id": "electric_eel",
+    "name": "電鰻",
+    "en": "Electric Eel",
+    "img": "electric_eel.png",
+    "stats": [4, 4, 7, 4, 3],
+    "skillName": "高壓電擊",
+    "skillDesc": "釋放強大電流電擊敵人，讓對手全身麻痺。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "snowy_owl",
+    "name": "雪鴞",
+    "en": "Snowy Owl",
+    "img": "snowy_owl.png",
+    "stats": [2, 7, 4, 2, 6],
+    "skillName": "無聲獵殺",
+    "skillDesc": "羽毛消音無聲飛行，悄悄靠近獵物精準捕捉。",
+    "skillBonus": [{"attr": 1, "val": 1}, {"attr": 2, "val": 1}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "domestic_cow",
+    "name": "乳牛",
+    "en": "Cow",
+    "img": "domestic_cow.png",
+    "stats": [7, 3, 2, 5, 4],
+    "skillName": "蠻力衝撞",
+    "skillDesc": "低頭用角猛衝，靠龐大身軀撞飛擋路的敵人。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "mimic_octopus",
+    "name": "擬態章魚",
+    "en": "Mimic Octopus",
+    "img": "mimic_octopus.png",
+    "stats": [2, 4, 3, 3, 8],
+    "skillName": "千面擬態",
+    "skillDesc": "模仿其他動物的外型和動作，讓敵人搞不清楚。",
+    "skillBonus": [{"attr": 3, "val": 2}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "sea_otter",
+    "name": "海獺",
+    "en": "Sea Otter",
+    "img": "sea_otter.png",
+    "stats": [3, 4, 2, 4, 7],
+    "skillName": "石擊破殼",
+    "skillDesc": "躺在水上用石頭敲開貝殼，聰明地使用工具。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "raccoon",
+    "name": "浣熊",
+    "en": "Raccoon",
+    "img": "raccoon.png",
+    "stats": [2, 4, 3, 3, 7],
+    "skillName": "巧手偷襲",
+    "skillDesc": "用靈巧的小手偷走敵人的東西，或解開機關。",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "scorpion",
+    "name": "蠍子",
+    "en": "Scorpion",
+    "img": "scorpion.png",
+    "stats": [1, 3, 7, 5, 2],
+    "skillName": "毒尾螫刺",
+    "skillDesc": "翹起尾巴用毒針狠狠刺下去，注入致命毒液。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "emperor_penguin",
+    "name": "皇帝企鵝",
+    "en": "Emperor Penguin",
+    "img": "emperor_penguin.png",
+    "stats": [3, 3, 2, 4, 5],
+    "skillName": "極地潛行",
+    "skillDesc": "潛入冰冷深海中快速游動，從水下發動突襲。",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "armadillo",
+    "name": "犰狳",
+    "en": "Armadillo",
+    "img": "armadillo.png",
+    "stats": [2, 3, 1, 7, 3],
+    "skillName": "鐵甲捲球",
+    "skillDesc": "把身體捲成一顆鐵球，堅硬的盔甲讓敵人打不穿。",
+    "skillBonus": [{"attr": 1, "val": 1}, {"attr": 3, "val": 3}]
+  },
+  {
+    "id": "peacock",
+    "name": "孔雀",
+    "en": "Peacock",
+    "img": "peacock.png",
+    "stats": [2, 3, 2, 3, 4],
+    "skillName": "華羽開屏",
+    "skillDesc": "展開華麗的尾羽威嚇敵人，讓對手眼花撩亂。",
+    "skillBonus": [{"attr": 3, "val": 2}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "poison_dart_frog",
+    "name": "箭毒蛙",
+    "en": "Poison Dart Frog",
+    "img": "poison_dart_frog.png",
+    "stats": [1, 3, 1, 7, 2],
+    "skillName": "劇毒觸膚",
+    "skillDesc": "皮膚上有劇毒，碰到就會中毒，誰都不敢靠近。",
+    "skillBonus": [{"attr": 2, "val": 1}, {"attr": 3, "val": 3}]
+  },
+  {
+    "id": "orchid_mantis",
+    "name": "蘭花螳螂",
+    "en": "Orchid Mantis",
+    "img": "orchid_mantis.png",
+    "stats": [1, 2, 4, 2, 2],
+    "skillName": "花影伏擊",
+    "skillDesc": "偽裝成美麗花朵，等獵物靠近後閃電出擊。",
+    "skillBonus": [{"attr": 2, "val": 3}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "domestic_pig",
+    "name": "家豬",
+    "en": "Domestic Pig",
+    "img": "domestic_pig.png",
+    "stats": [6, 3, 3, 5, 7],
+    "skillName": "鐵鼻猛拱",
+    "skillDesc": "用堅硬的鼻子猛力拱地，翻出埋藏的東西或撞開障礙。",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 0, "val": 2}]
+  },
+  {
+    "id": "eurasian_lynx",
+    "name": "猞猁",
+    "en": "Eurasian Lynx",
+    "img": "eurasian_lynx.png",
+    "stats": [4, 6, 6, 3, 4],
+    "skillName": "靜步飛撲",
+    "skillDesc": "無聲無息地潛行靠近，然後猛然飛撲而出。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 1, "val": 2}]
+  },
+  {
+    "id": "clouded_leopard",
+    "name": "雲豹",
+    "en": "Clouded Leopard",
+    "img": "clouded_leopard.png",
+    "stats": [3, 5, 6, 2, 4],
+    "skillName": "長牙穿刺",
+    "skillDesc": "用超長的犬齒猛咬，穿透獵物的防禦。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 1, "val": 1}, {"attr": 0, "val": 1}]
+  },
+  {
+    "id": "green_iguana",
+    "name": "綠鬣蜥",
+    "en": "Green Iguana",
+    "img": "green_iguana.png",
+    "stats": [2, 4, 3, 3, 3],
+    "skillName": "鐵尾鞭擊",
+    "skillDesc": "用又長又硬的尾巴像鞭子一樣甩過去，打退靠近的敵人。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "brown_bear",
+    "name": "棕熊",
+    "en": "Brown Bear",
+    "img": "brown_bear.png",
+    "stats": [8, 4, 7, 7, 5],
+    "skillName": "熊抱鎖殺",
+    "skillDesc": "站起來用巨大前掌緊緊抱住敵人，壓制不讓對手動彈。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 3, "val": 1}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "jaguar",
+    "name": "美洲豹",
+    "en": "Jaguar",
+    "img": "jaguar.png",
+    "stats": [7, 5, 8, 4, 5],
+    "skillName": "碎顱咬殺",
+    "skillDesc": "用超強咬合力直接咬穿敵人的頭骨，一擊必殺。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 0, "val": 2}]
+  },
+  {
+    "id": "walrus",
+    "name": "海象",
+    "en": "Walrus",
+    "img": "walrus.png",
+    "stats": [8, 2, 5, 8, 4],
+    "skillName": "巨牙猛刺",
+    "skillDesc": "用一公尺長的巨大象牙猛刺，嚇退任何靠近的敵人。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "mustang",
+    "name": "野馬",
+    "en": "Mustang",
+    "img": "mustang.png",
+    "stats": [7, 7, 4, 4, 5],
+    "skillName": "後蹄連踢",
+    "skillDesc": "轉身用強壯的後蹄連續踢擊，踢飛靠近的威脅。",
+    "skillBonus": [{"attr": 1, "val": 1}, {"attr": 2, "val": 2}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "zebra",
+    "name": "斑馬",
+    "en": "Zebra",
+    "img": "zebra.png",
+    "stats": [6, 7, 4, 3, 3],
+    "skillName": "亂紋迷蹤",
+    "skillDesc": "全速奔跑時條紋混在一起，讓敵人看花眼抓不到。",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "giant_panda",
+    "name": "大熊貓",
+    "en": "Giant Panda",
+    "img": "giant_panda.png",
+    "stats": [6, 3, 3, 6, 4],
+    "skillName": "鐵掌劈竹",
+    "skillDesc": "用強壯的熊掌一掌劈開竹子，展現和平坦克的力量。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 2, "val": 2}]
+  },
+  {
+    "id": "border_collie",
+    "name": "牧羊犬",
+    "en": "Border Collie",
+    "img": "border_collie.png",
+    "stats": [3, 7, 3, 2, 7],
+    "skillName": "牧群戰術",
+    "skillDesc": "用聰明的眼神和飛快的奔跑控制整群羊的行動。",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 1, "val": 2}]
+  },
+  {
+    "id": "king_cobra",
+    "name": "眼鏡蛇",
+    "en": "King Cobra",
+    "img": "king_cobra.png",
+    "stats": [2, 4, 8, 3, 3],
+    "skillName": "毒牙閃擊",
+    "skillDesc": "展開頸部撐傘，以閃電速度噴出致命毒液。",
+    "skillBonus": [{"attr": 2, "val": 3}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "mantis_shrimp",
+    "name": "螳螂蝦",
+    "en": "Mantis Shrimp",
+    "img": "mantis_shrimp.png",
+    "stats": [1, 3, 7, 4, 3],
+    "skillName": "音速鐵拳",
+    "skillDesc": "出拳速度比子彈還快，一拳能打碎玻璃！",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 0, "val": 1}, {"attr": 1, "val": 1}]
+  },
+  {
+    "id": "griffon_vulture",
+    "name": "兀鷲",
+    "en": "Griffon Vulture",
+    "img": "griffon_vulture.png",
+    "stats": [3, 5, 3, 2, 5],
+    "skillName": "腐食鐵胃",
+    "skillDesc": "鐵胃能消化腐肉和病菌，什麼都不怕吃。",
+    "skillBonus": [{"attr": 3, "val": 2}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "alpaca",
+    "name": "羊駝",
+    "en": "Alpaca",
+    "img": "alpaca.png",
+    "stats": [4, 4, 2, 3, 5],
+    "skillName": "口水飛彈",
+    "skillDesc": "瞄準敵人的臉，噴出一大口臭口水！",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "striped_skunk",
+    "name": "臭鼬",
+    "en": "Striped Skunk",
+    "img": "striped_skunk.png",
+    "stats": [2, 3, 3, 6, 4],
+    "skillName": "臭氣沖天",
+    "skillDesc": "翹起尾巴噴出超臭的液體，方圓五公尺內沒人敢靠近。",
+    "skillBonus": [{"attr": 3, "val": 3}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "gila_monster",
+    "name": "鈍尾毒蜥",
+    "en": "Gila Monster",
+    "img": "gila_monster.png",
+    "stats": [2, 2, 6, 5, 2],
+    "skillName": "鎖口毒咬",
+    "skillDesc": "咬住不放使勁嚼，靠咀嚼把毒液灌進傷口。",
+    "skillBonus": [{"attr": 2, "val": 3}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "toco_toucan",
+    "name": "巨嘴鳥",
+    "en": "Toco Toucan",
+    "img": "toco_toucan.png",
+    "stats": [2, 5, 3, 2, 4],
+    "skillName": "彩喙猛啄",
+    "skillDesc": "用色彩鮮豔的大嘴巴猛啄，嚇退比自己大的敵人。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 3, "val": 1}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "pufferfish",
+    "name": "河豚",
+    "en": "Pufferfish",
+    "img": "pufferfish.png",
+    "stats": [1, 2, 1, 8, 2],
+    "skillName": "膨脹毒球",
+    "skillDesc": "吸水膨脹成帶刺的大球，碰到就會中毒。",
+    "skillBonus": [{"attr": 3, "val": 3}, {"attr": 2, "val": 1}]
+  },
+  {
+    "id": "rhino_beetle",
+    "name": "獨角仙",
+    "en": "Rhinoceros Beetle",
+    "img": "rhino_beetle.png",
+    "stats": [1, 2, 4, 5, 2],
+    "skillName": "鋼角猛頂",
+    "skillDesc": "用超級大角往上頂，把對手翻過去摔下去。",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 2, "val": 2}]
+  },
+  {
+    "id": "snapping_turtle",
+    "name": "鱷龜",
+    "en": "Alligator Snapping Turtle",
+    "img": "snapping_turtle.png",
+    "stats": [5, 2, 7, 7, 2],
+    "skillName": "鋼喙猛咬",
+    "skillDesc": "用像鷹嘴一樣堅硬的喙，突然猛咬一口，連骨頭都能咬碎！",
+    "skillBonus": [{"attr": 2, "val": 3}, {"attr": 0, "val": 1}]
+  },
+  {
+    "id": "naked_mole_rat",
+    "name": "裸鼴鼠",
+    "en": "Naked Mole Rat",
+    "img": "naked_mole_rat.png",
+    "stats": [1, 2, 3, 4, 5],
+    "skillName": "鐵齒穿地",
+    "skillDesc": "用超大門牙像挖土機一樣挖洞，連水泥都能啃穿。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "tarantula",
+    "name": "狼蛛",
+    "en": "Tarantula",
+    "img": "tarantula.png",
+    "stats": [1, 3, 5, 4, 3],
+    "skillName": "刺毛飛射",
+    "skillDesc": "腹部的刺毛豎起散射，讓靠近的敵人全身發癢受不了。",
+    "skillBonus": [{"attr": 3, "val": 2}, {"attr": 2, "val": 1}, {"attr": 1, "val": 1}]
+  },
+  {
+    "id": "dung_beetle",
+    "name": "糞金龜",
+    "en": "Dung Beetle",
+    "img": "dung_beetle.png",
+    "stats": [1, 2, 2, 4, 2],
+    "skillName": "滾球巨力",
+    "skillDesc": "用後腳推著比自己大的糞球，力氣是體重的一千倍！",
+    "skillBonus": [{"attr": 0, "val": 3}, {"attr": 2, "val": 1}]
+  },
+  {
+    "id": "capybara",
+    "name": "水豚",
+    "en": "Capybara",
+    "img": "capybara.png",
+    "stats": [4, 5, 2, 4, 5],
+    "skillName": "潛水隱伏",
+    "skillDesc": "沉入水中只露出眼睛和鼻子，安靜地躲避敵人的追蹤。",
+    "skillBonus": [{"attr": 3, "val": 2}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "orangutan",
+    "name": "紅毛猩猩",
+    "en": "Orangutan",
+    "img": "orangutan.png",
+    "stats": [6, 2, 3, 4, 9],
+    "skillName": "巧手造物",
+    "skillDesc": "用樹枝當工具挖蟲吃，還會做雨傘擋雨，超級聰明。",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 0, "val": 1}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "kea",
+    "name": "啄羊鸚鵡",
+    "en": "Kea",
+    "img": "kea.png",
+    "stats": [1, 6, 5, 3, 7],
+    "skillName": "銳喙拆解",
+    "skillDesc": "用超長的上喙像開罐器一樣拆解任何東西，連車子都不放過。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "opossum",
+    "name": "負鼠",
+    "en": "Virginia Opossum",
+    "img": "opossum.png",
+    "stats": [1, 4, 2, 5, 4],
+    "skillName": "翻肚裝死",
+    "skillDesc": "翻肚躺平吐舌頭裝死，連臭味都裝出來，騙過所有掠食者。",
+    "skillBonus": [{"attr": 3, "val": 3}, {"attr": 4, "val": 1}]
+  },
+  {
+    "id": "tuatara",
+    "name": "喙頭蜥",
+    "en": "Tuatara",
+    "img": "tuatara.png",
+    "stats": [2, 2, 3, 5, 3],
+    "skillName": "鋸齒裂咬",
+    "skillDesc": "張開嘴露出跟顎骨合為一體的鋸齒，一口咬下撕裂獵物。",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "elephant_seal",
+    "name": "象海豹",
+    "en": "Southern Elephant Seal",
+    "img": "elephant_seal.png",
+    "stats": [9, 2, 4, 7, 3],
+    "skillName": "巨鼻怒吼",
+    "skillDesc": "膨起巨大的象鼻般鼻囊，發出震耳欲聾的怒吼嚇退對手。",
+    "skillBonus": [{"attr": 0, "val": 3}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "red_panda",
+    "name": "小貓熊",
+    "en": "Red Panda",
+    "img": "red_panda.png",
+    "stats": [2, 5, 1, 3, 6],
+    "skillName": "驚立威嚇",
+    "skillDesc": "被嚇到時站起來把兩隻爪子舉高高，看起來又大又可怕。",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 3, "val": 1}, {"attr": 1, "val": 1}]
+  },
+  {
+    "id": "echidna",
+    "name": "針鼴",
+    "en": "Short-beaked Echidna",
+    "img": "echidna.png",
+    "stats": [3, 2, 1, 6, 4],
+    "skillName": "鑽地隱刺",
+    "skillDesc": "蹲低用大爪子猛挖地，全身尖刺豎起來，誰也碰不了。",
+    "skillBonus": [{"attr": 3, "val": 3}, {"attr": 0, "val": 1}]
+  },
+  {
+    "id": "andean_condor",
+    "name": "安地斯神鷲",
+    "en": "Andean Condor",
+    "img": "andean_condor.png",
+    "stats": [4, 6, 3, 3, 4],
+    "skillName": "巨翼蔽天",
+    "skillDesc": "展開超過三公尺的巨大翅膀，遮天蔽日氣勢驚人。",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "coyote",
+    "name": "郊狼",
+    "en": "Coyote",
+    "img": "coyote.png",
+    "stats": [4, 6, 4, 3, 6],
+    "skillName": "孤狼巧獵",
+    "skillDesc": "獨自一隻靠聰明和速度追捕獵物，什麼招數都用得出來。",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "rooster",
+    "name": "公雞",
+    "en": "Rooster",
+    "img": "rooster.png",
+    "stats": [2, 3, 4, 2, 3],
+    "skillName": "飛距猛刺",
+    "skillDesc": "跳起來用腳上尖銳的距猛踢對手，又快又狠！",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 1, "val": 1}, {"attr": 0, "val": 1}]
+  },
+  {
+    "id": "black_panther",
+    "name": "黑豹",
+    "en": "Black Panther",
+    "img": "black_panther.png",
+    "stats": [5, 6, 8, 3, 7],
+    "skillName": "暗夜飛撲",
+    "skillDesc": "在黑夜裡悄悄靠近獵物，看不見的影子突然飛撲！",
+    "skillBonus": [{"attr": 2, "val": 2}, {"attr": 4, "val": 2}]
+  },
+  {
+    "id": "himalayan_tahr",
+    "name": "喜馬拉雅塔爾羊",
+    "en": "Himalayan Tahr",
+    "img": "himalayan_tahr.png",
+    "stats": [4, 4, 4, 4, 3],
+    "skillName": "崖壁猛撞",
+    "skillDesc": "在陡峭懸崖上穩穩站住，低頭用堅硬短角猛力衝撞對手！",
+    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 3, "val": 2}]
+  },
+  {
+    "id": "acorn_woodpecker",
+    "name": "橡實啄木鳥",
+    "en": "Acorn Woodpecker",
+    "img": "acorn_woodpecker.png",
+    "stats": [1, 4, 3, 3, 6],
+    "skillName": "穀倉連啄",
+    "skillDesc": "像機關槍一樣瘋狂啄洞，藏滿上萬顆橡實當糧食庫！",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 2, "val": 1}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "japanese_macaque",
+    "name": "日本獼猴",
+    "en": "Japanese Macaque",
+    "img": "japanese_macaque.png",
+    "stats": [3, 5, 4, 3, 7],
+    "skillName": "溫泉智謀",
+    "skillDesc": "發現溫泉可以取暖就跳進去泡，還教會整群猴子一起泡！",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 0, "val": 1}, {"attr": 1, "val": 1}]
+  },
+  {
+    "id": "mouse_deer",
+    "name": "鼷鹿",
+    "en": "Mouse Deer",
+    "img": "mouse_deer.png",
+    "stats": [1, 5, 2, 2, 4],
+    "skillName": "踏地警報",
+    "skillDesc": "用小腳快速踏踏踏敲地板，警告同伴有危險來了！",
+    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 4, "val": 1}, {"attr": 3, "val": 1}]
+  },
+  {
+    "id": "wombat",
+    "name": "袋熊",
+    "en": "Wombat",
+    "img": "wombat.png",
+    "stats": [4, 5, 2, 6, 3],
+    "skillName": "鐵臀堵洞",
+    "skillDesc": "鑽進自己挖的洞，用超硬屁股堵住洞口，誰都進不來！",
+    "skillBonus": [{"attr": 3, "val": 3}, {"attr": 0, "val": 1}]
+  },
+  {
+    "id": "eastern_gray_squirrel",
+    "name": "東部灰松鼠",
+    "en": "Eastern Gray Squirrel",
+    "img": "eastern_gray_squirrel.png",
+    "stats": [1, 7, 1, 3, 5],
+    "skillName": "藏果詭計",
+    "skillDesc": "堅果藏在幾百個地方都記得住，還會假裝埋東西騙人！",
+    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 1, "val": 2}]
+  }
+]
