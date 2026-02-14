@@ -496,16 +496,72 @@ function startBattle() {
     renderBattleScreen();
 }
 
-/* ===== 冠軍畫面（stub，Task 9 完整實作） ===== */
+/* ===== 冠軍畫面 ===== */
 function showChampion(champion) {
     const container = document.getElementById('screen-champion');
+    const totalRounds = state.bracket.rounds.length;
+    const total = champion.stats.reduce((s, v) => s + v, 0);
+
     container.innerHTML = `
-        <h1 class="champion-title">🏆 冠軍！</h1>
-        <img src="${IMG_BASE}${champion.img}" class="champion-img" alt="${champion.name}">
-        <h2 class="champion-name">${champion.name}</h2>
-        <button id="btn-rematch">再來一局</button>
-        <button id="btn-home">回主選單</button>
+        <div class="champion-content">
+            <h1 class="champion-title">冠軍！</h1>
+            <div class="champion-card">
+                <img src="${IMG_BASE}${champion.img}" class="champion-img" alt="${champion.name}"
+                     onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23333%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23888%22 font-size=%2240%22>?</text></svg>'">
+                <h2 class="champion-name">${champion.name}</h2>
+                <div class="champion-en">${champion.en}</div>
+                <div class="champion-stats">
+                    ${champion.stats.map((v, i) => `
+                        <div class="champion-stat">
+                            <span>${ATTR_ICONS[i]}</span>
+                            <span>${ATTR_NAMES[i]}</span>
+                            <span class="champion-stat-value">${v}</span>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="champion-total">總和 ${total}</div>
+                <div class="champion-skill">${champion.skillName}</div>
+                <div class="champion-skill-desc">${champion.skillDesc}</div>
+            </div>
+            <div class="champion-record">${totalRounds} 輪全勝</div>
+            <div class="champion-buttons">
+                <button id="btn-rematch" class="champion-btn rematch-btn">再來一局</button>
+                <button id="btn-home" class="champion-btn home-btn">回主選單</button>
+            </div>
+        </div>
     `;
+
+    // Rematch — keep mode/difficulty/size/draftMode, reset teams and bracket
+    document.getElementById('btn-rematch').addEventListener('click', () => {
+        state.teamA = [];
+        state.teamB = [];
+        state.bracket = null;
+        state.currentMatch = 0;
+        showScreen('screen-setup');
+    });
+
+    // Home — full reset
+    document.getElementById('btn-home').addEventListener('click', () => {
+        state.mode = null;
+        state.difficulty = null;
+        state.size = 16;
+        state.draftMode = 'draft';
+        state.teamA = [];
+        state.teamB = [];
+        state.bracket = null;
+        state.currentMatch = 0;
+        // Reset menu UI state
+        document.querySelector('.menu-buttons').classList.remove('hidden');
+        document.getElementById('ai-difficulty').classList.add('hidden');
+        // Reset setup defaults
+        document.querySelectorAll('#size-group button').forEach(b => {
+            b.classList.toggle('selected', b.dataset.size === '16');
+        });
+        document.querySelectorAll('#draft-group button').forEach(b => {
+            b.classList.toggle('selected', b.dataset.draft === 'draft');
+        });
+        showScreen('screen-menu');
+    });
 }
 
 /* ===== 初始化 ===== */

@@ -603,3 +603,138 @@ body {
     background: #3a6a3a;
     transform: scale(1.05);
 }
+
+/* ===== 冠軍畫面 ===== */
+#screen-champion {
+    background: radial-gradient(ellipse at center, #2a2a4a 0%, #1a1a2e 70%);
+}
+
+.champion-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.champion-title {
+    font-size: 56px;
+    font-weight: 900;
+    color: gold;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+    animation: champion-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes champion-glow {
+    from { text-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
+    to { text-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 80px rgba(255, 215, 0, 0.3); }
+}
+
+.champion-card {
+    background: #2a2a4a;
+    border: 4px solid gold;
+    border-radius: 20px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
+}
+
+.champion-img {
+    width: 240px;
+    height: 240px;
+    object-fit: contain;
+}
+
+.champion-name {
+    font-size: 36px;
+    font-weight: 900;
+    margin: 8px 0 0;
+}
+
+.champion-en {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 12px;
+}
+
+.champion-stats {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.champion-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+    color: #aaa;
+}
+
+.champion-stat-value {
+    font-size: 24px;
+    font-weight: 900;
+    color: #eee;
+}
+
+.champion-total {
+    font-size: 18px;
+    color: gold;
+    margin-top: 8px;
+}
+
+.champion-skill {
+    font-size: 20px;
+    font-weight: 700;
+    color: gold;
+    margin-top: 12px;
+}
+
+.champion-skill-desc {
+    font-size: 14px;
+    color: #aaa;
+    max-width: 300px;
+}
+
+.champion-record {
+    font-size: 22px;
+    color: #8f8;
+    font-weight: 700;
+}
+
+.champion-buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.champion-btn {
+    padding: 14px 40px;
+    font-size: 22px;
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.rematch-btn {
+    background: #4a3a8a;
+    border: 3px solid gold;
+    color: gold;
+}
+
+.rematch-btn:hover {
+    background: #5a4a9a;
+    transform: scale(1.05);
+}
+
+.home-btn {
+    background: #2a2a4a;
+    border: 2px solid #666;
+    color: #aaa;
+}
+
+.home-btn:hover {
+    background: #3a3a5a;
+    border-color: #888;
+    transform: scale(1.05);
+}
