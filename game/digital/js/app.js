@@ -387,7 +387,10 @@ function startBattle() {
                 document.getElementById('result-text').textContent = '平手！加賽！';
                 document.getElementById('score-a').textContent = '-';
                 document.getElementById('score-b').textContent = '-';
-                document.querySelectorAll('.dice').forEach(d => { d.textContent = '?'; });
+                document.querySelectorAll('.dice').forEach(d => {
+                    d.textContent = '?';
+                    d.classList.remove('show-attr');
+                });
                 await sleep(1200);
                 document.getElementById('result-text').textContent = '';
             }
@@ -409,34 +412,37 @@ function startBattle() {
                 animateDiceRoll(diceB2, detB.d2Raw === 6 ? 6 : detB.d2Final, 750),
             ]);
 
-            // 處理 A 骰子 1 的天賦觸發
-            if (detA.d1Triggers > 0) {
-                await animateTrigger(diceA1);
-                await animateDiceRoll(diceA1, detA.d1Final, 500);
+            // 處理天賦觸發（支援連續骰 6）
+            async function playTriggers(diceEl, triggers, finalVal) {
+                for (let t = 0; t < triggers; t++) {
+                    await animateTrigger(diceEl);
+                    if (t < triggers - 1) {
+                        // 中間的重骰：顯示再次骰到 6
+                        await animateDiceRoll(diceEl, 6, 400);
+                    } else {
+                        // 最後一次：顯示最終值
+                        await animateDiceRoll(diceEl, finalVal, 500);
+                    }
+                }
             }
-            // 處理 A 骰子 2 的天賦觸發
-            if (detA.d2Triggers > 0) {
-                await animateTrigger(diceA2);
-                await animateDiceRoll(diceA2, detA.d2Final, 500);
-            }
-            // 處理 B 骰子 1 的天賦觸發
-            if (detB.d1Triggers > 0) {
-                await animateTrigger(diceB1);
-                await animateDiceRoll(diceB1, detB.d1Final, 500);
-            }
-            // 處理 B 骰子 2 的天賦觸發
-            if (detB.d2Triggers > 0) {
-                await animateTrigger(diceB2);
-                await animateDiceRoll(diceB2, detB.d2Final, 500);
-            }
+            await Promise.all([
+                detA.d1Triggers > 0 ? playTriggers(diceA1, detA.d1Triggers, detA.d1Final) : Promise.resolve(),
+                detA.d2Triggers > 0 ? playTriggers(diceA2, detA.d2Triggers, detA.d2Final) : Promise.resolve(),
+                detB.d1Triggers > 0 ? playTriggers(diceB1, detB.d1Triggers, detB.d1Final) : Promise.resolve(),
+                detB.d2Triggers > 0 ? playTriggers(diceB2, detB.d2Triggers, detB.d2Final) : Promise.resolve(),
+            ]);
 
             await sleep(300);
 
             // 顯示骰面對應的屬性名稱
-            diceA1.textContent = `${detA.d1Final} ${ATTR_NAMES[detA.d1Final - 1]}`;
-            diceA2.textContent = `${detA.d2Final} ${ATTR_NAMES[detA.d2Final - 1]}`;
-            diceB1.textContent = `${detB.d1Final} ${ATTR_NAMES[detB.d1Final - 1]}`;
-            diceB2.textContent = `${detB.d2Final} ${ATTR_NAMES[detB.d2Final - 1]}`;
+            function showDiceAttr(diceEl, val) {
+                diceEl.classList.add('show-attr');
+                diceEl.innerHTML = `<span style="font-size:28px;font-weight:900">${val}</span><span>${ATTR_NAMES[val - 1]}</span>`;
+            }
+            showDiceAttr(diceA1, detA.d1Final);
+            showDiceAttr(diceA2, detA.d2Final);
+            showDiceAttr(diceB1, detB.d1Final);
+            showDiceAttr(diceB2, detB.d2Final);
 
             await sleep(500);
 
