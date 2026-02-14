@@ -402,50 +402,169 @@ body {
     overflow: hidden;
 }
 
-.bracket-container {
-    display: flex;
-    gap: 8px;
-    justify-content: flex-start;
-    overflow: auto;
-    padding: 8px;
-    flex-shrink: 0;
-    max-height: 150px;
-}
-
-.bracket-round {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    justify-content: center;
-}
-
-.bracket-match {
+/* Battle top bar */
+.battle-top-bar {
     display: flex;
     align-items: center;
-    gap: 4px;
-    padding: 2px 8px;
-    border: 1px solid #444;
-    border-radius: 4px;
-    font-size: 11px;
-    white-space: nowrap;
+    justify-content: center;
+    gap: 16px;
+    flex-shrink: 0;
+    padding: 4px 0;
 }
-
-.bracket-match.current {
-    border-color: gold;
-    background: rgba(255, 215, 0, 0.1);
-}
-
-.bracket-name { color: #aaa; }
-.bracket-name.won { color: gold; font-weight: bold; }
-.bracket-vs { color: #666; font-size: 9px; }
 
 .round-info {
-    text-align: center;
     font-size: 16px;
     color: #888;
-    margin: 4px 0;
+}
+
+.bracket-toggle-btn {
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    border: 2px solid gold;
+    border-radius: 8px;
+    background: #2a2a4a;
+    color: gold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.bracket-toggle-btn:hover {
+    background: #3a3a6a;
+    transform: scale(1.05);
+}
+
+/* Bracket overlay */
+.bt-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(10, 10, 20, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+    animation: fade-in 0.3s ease;
+}
+.bt-overlay.hidden { display: none !important; }
+
+.bt-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 28px;
+    background: none;
+    border: 2px solid #666;
+    border-radius: 50%;
+    color: #aaa;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+.bt-close:hover { border-color: #fff; color: #fff; }
+
+/* Bracket tree */
+.bt-tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.bt-trophy { font-size: 48px; margin-bottom: 8px; }
+
+.bt-round-label {
+    font-size: 14px;
+    color: #888;
+    text-align: center;
+    margin: 4px 0 2px;
+}
+
+.bt-round {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.bt-match {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #444;
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 100px;
+}
+.bt-match.bt-current {
+    border-color: gold;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.bt-slot {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-weight: 700;
+    background: #2a2a4a;
+    border-bottom: 1px solid #333;
+}
+.bt-slot:last-child { border-bottom: none; }
+
+.bt-slot.bt-won { color: gold; background: rgba(255, 215, 0, 0.1); }
+.bt-slot.bt-lost { color: #555; text-decoration: line-through; }
+.bt-slot.bt-pending { color: #555; font-style: italic; }
+
+.bt-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
     flex-shrink: 0;
 }
+.bt-dot-a { background: #4a8af5; }
+.bt-dot-b { background: #f55a5a; }
+
+.bt-connectors {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    height: 12px;
+}
+.bt-conn {
+    flex: 1;
+    max-width: 100px;
+    position: relative;
+}
+.bt-conn::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #333;
+}
+
+.bt-next {
+    padding: 14px 40px;
+    font-size: 22px;
+    font-weight: 900;
+    border: 3px solid gold;
+    border-radius: 12px;
+    background: #4a3a8a;
+    color: gold;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: all 0.2s;
+}
+.bt-next:hover { background: #5a4a9a; transform: scale(1.05); }
 
 /* 對戰區 */
 .battle-area {

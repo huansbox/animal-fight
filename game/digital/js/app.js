@@ -1,6 +1,6 @@
 // game/digital/js/app.js
 import { randomAssign, generateDraftOrder, createPool } from './draft.js';
-import { createBracket, getCurrentMatch, advanceBracket, getChampion, renderBracket } from './bracket.js';
+import { createBracket, getCurrentMatch, advanceBracket, getChampion, renderBracketTree } from './bracket.js';
 import { aiPick } from './ai.js';
 import { rollD6, scoreFromResolved } from './battle.js';
 import { animateDiceRoll, animateTrigger, animateScore, animateResult, sleep } from './animations.js';
@@ -14,6 +14,7 @@ const state = {
     teamA: [],
     teamB: [],
     bracket: null,
+    teamMap: null,
     currentMatch: 0,
 };
 
@@ -92,6 +93,9 @@ function startGame() {
         state.teamA = teamA;
         state.teamB = teamB;
         state.bracket = createBracket(teamA, teamB);
+        state.teamMap = new Map();
+        teamA.forEach(a => state.teamMap.set(a.id, 'a'));
+        teamB.forEach(a => state.teamMap.set(a.id, 'b'));
         showScreen('screen-battle');
         startBattle();
     } else {
@@ -281,6 +285,9 @@ function startDraft() {
                 state.teamA = teamA;
                 state.teamB = teamB;
                 state.bracket = createBracket(teamA, teamB);
+                state.teamMap = new Map();
+                teamA.forEach(a => state.teamMap.set(a.id, 'a'));
+                teamB.forEach(a => state.teamMap.set(a.id, 'b'));
                 showScreen('screen-battle');
                 startBattle();
             });
@@ -295,8 +302,8 @@ function startBattle() {
     const container = document.getElementById('screen-battle');
     const SVG_PLACEHOLDER = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23333%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23888%22 font-size=%2240%22>?</text></svg>";
 
-    function teamLabel(side) {
-        if (side === 'a') return state.mode === 'ai' ? '玩家' : '玩家 A';
+    function label(team) {
+        if (team === 'a') return state.mode === 'ai' ? '玩家' : '玩家 A';
         return state.mode === 'ai' ? '電腦' : '玩家 B';
     }
 
@@ -312,13 +319,22 @@ function startBattle() {
         const roundNum = state.bracket.currentRound + 1;
         const matchNum = state.bracket.currentMatch + 1;
         const totalMatches = state.bracket.rounds[state.bracket.currentRound].length;
+        const lt = state.teamMap.get(match.a.id);
+        const rt = state.teamMap.get(match.b.id);
 
         container.innerHTML = `
-            <div class="bracket-container" id="bracket-display"></div>
-            <div class="round-info">第 ${roundNum} 輪 — 第 ${matchNum}/${totalMatches} 場</div>
+            <div class="battle-top-bar">
+                <div class="round-info">第 ${roundNum} 輪 — 第 ${matchNum}/${totalMatches} 場</div>
+                <button class="bracket-toggle-btn" id="btn-bracket">🏆 對戰表</button>
+            </div>
+            <div class="bt-overlay hidden" id="bracket-overlay">
+                <button class="bt-close" id="btn-bt-close">✕</button>
+                <div class="bt-tree" id="bt-tree"></div>
+                <button class="bt-next hidden" id="btn-bt-next">下一場 →</button>
+            </div>
             <div class="battle-area">
-                <div class="battle-card card card-flip team-a-card" id="card-a">
-                    <div class="team-label team-a-label">${teamLabel('a')}</div>
+                <div class="battle-card card card-flip team-${lt}-card" id="card-a">
+                    <div class="team-label team-${lt}-label">${label(lt)}</div>
                     <img src="${IMG_BASE}${match.a.img}" alt="${match.a.name}" onerror="this.src='${SVG_PLACEHOLDER}'">
                     <div class="animal-name">${match.a.name}</div>
                     <div class="animal-en">${match.a.en}</div>
@@ -339,33 +355,32 @@ function startBattle() {
                     <div class="dice-area">
                         <div class="dice-side">
                             <div class="dice-group">
-                                <div class="dice dice-a" id="dice-a1">?</div>
-                                <div class="dice dice-a" id="dice-a2">?</div>
+                                <div class="dice dice-${lt}" id="dice-a1">?</div>
+                                <div class="dice dice-${lt}" id="dice-a2">?</div>
                             </div>
                             <div class="trigger-counter" id="trigger-a"></div>
                         </div>
                         <div class="vs-text">VS</div>
                         <div class="dice-side">
                             <div class="dice-group">
-                                <div class="dice dice-b" id="dice-b1">?</div>
-                                <div class="dice dice-b" id="dice-b2">?</div>
+                                <div class="dice dice-${rt}" id="dice-b1">?</div>
+                                <div class="dice dice-${rt}" id="dice-b2">?</div>
                             </div>
                             <div class="trigger-counter" id="trigger-b"></div>
                         </div>
                     </div>
                     <div class="breakdown-area" id="breakdown-area"></div>
                     <div class="score-display">
-                        <span class="score score-a-text" id="score-a">-</span>
+                        <span class="score score-${lt}-text" id="score-a">-</span>
                         <span class="score-vs">:</span>
-                        <span class="score score-b-text" id="score-b">-</span>
+                        <span class="score score-${rt}-text" id="score-b">-</span>
                     </div>
                     <div class="result-text" id="result-text"></div>
                     <button class="roll-btn" id="btn-roll">擲骰！</button>
-                    <button class="next-btn hidden" id="btn-next">下一場</button>
                 </div>
 
-                <div class="battle-card card card-flip team-b-card" id="card-b">
-                    <div class="team-label team-b-label">${teamLabel('b')}</div>
+                <div class="battle-card card card-flip team-${rt}-card" id="card-b">
+                    <div class="team-label team-${rt}-label">${label(rt)}</div>
                     <img src="${IMG_BASE}${match.b.img}" alt="${match.b.name}" onerror="this.src='${SVG_PLACEHOLDER}'">
                     <div class="animal-name">${match.b.name}</div>
                     <div class="animal-en">${match.b.en}</div>
@@ -384,13 +399,26 @@ function startBattle() {
             </div>
         `;
 
-        renderBracket(state.bracket, document.getElementById('bracket-display'));
+        document.getElementById('btn-bracket').addEventListener('click', () => {
+            const overlay = document.getElementById('bracket-overlay');
+            overlay.classList.remove('hidden');
+            renderBracketTree(state.bracket, state.teamMap, document.getElementById('bt-tree'));
+            document.getElementById('btn-bt-next').classList.add('hidden');
+        });
+        document.getElementById('btn-bt-close').addEventListener('click', () => {
+            document.getElementById('bracket-overlay').classList.add('hidden');
+        });
 
         playFullBattle(match);
     }
 
     /** 完整對戰流程（含加賽迴圈） */
     async function playFullBattle(match) {
+        const lt = state.teamMap.get(match.a.id);
+        const rt = state.teamMap.get(match.b.id);
+        const leftHuman = state.mode === 'player' || lt === 'a';
+        const rightHuman = state.mode === 'player' || rt === 'a';
+
         let overtime = false;
 
         while (true) {
@@ -404,7 +432,7 @@ function startBattle() {
             const dice = { a1: 0, a2: 0, b1: 0, b2: 0 };
             const triggers = { a1: 0, a2: 0, b1: 0, b2: 0 };
 
-            /** 擲一側骰子 + 處理所有 6（interactive 決定是否需按鈕） */
+            /** 擲一側骰子 + 處理所有 6 */
             async function rollSide(side, interactive) {
                 const keys = side === 'a' ? ['a1', 'a2'] : ['b1', 'b2'];
                 const triggerId = `trigger-${side}`;
@@ -445,28 +473,27 @@ function startBattle() {
                 document.getElementById('result-text').textContent = '';
             }
 
-            // === A 側擲骰（人類） ===
-            rollBtn.textContent = state.mode === 'player'
-                ? `${teamLabel('a')} 擲骰！` : '擲骰！';
+            // === 左側擲骰 ===
+            rollBtn.textContent = `${label(lt)} 擲骰！`;
             rollBtn.classList.remove('hidden');
             rollBtn.disabled = false;
             await waitForClick('btn-roll');
             rollBtn.disabled = true;
             rollBtn.classList.add('hidden');
-            await rollSide('a', true);
+            await rollSide('a', leftHuman);
 
-            // === B 側擲骰 ===
-            if (state.mode === 'ai') {
-                await sleep(500);
-                await rollSide('b', false);
-            } else {
-                rollBtn.textContent = `${teamLabel('b')} 擲骰！`;
+            // === 右側擲骰 ===
+            if (rightHuman) {
+                rollBtn.textContent = `${label(rt)} 擲骰！`;
                 rollBtn.classList.remove('hidden');
                 rollBtn.disabled = false;
                 await waitForClick('btn-roll');
                 rollBtn.disabled = true;
                 rollBtn.classList.add('hidden');
                 await rollSide('b', true);
+            } else {
+                await sleep(500);
+                await rollSide('b', false);
             }
 
             // === 分數拆解 ===
@@ -480,7 +507,6 @@ function startBattle() {
             await showScoreBreakdown('b', match.b, dice.b1, dice.b2, resB, totalTriggersB, diceEls);
             await sleep(600);
 
-            // === Phase 4: 分數對比 ===
             if (resA.score === resB.score) {
                 overtime = true;
                 continue;
@@ -499,15 +525,22 @@ function startBattle() {
             await animateResult(winSide === 'a' ? cardA : cardB, winSide === 'a' ? cardB : cardA);
             await sleep(1500);
 
-            // 推進淘汰賽
+            // 推進淘汰賽 + 顯示對戰表 overlay
             const nextMatch = advanceBracket(state.bracket, winner);
+            const overlay = document.getElementById('bracket-overlay');
+            overlay.classList.remove('hidden');
+            renderBracketTree(state.bracket, state.teamMap, document.getElementById('bt-tree'));
+
+            const btNextBtn = document.getElementById('btn-bt-next');
+            btNextBtn.textContent = nextMatch === null ? '👑 查看冠軍' : '下一場 →';
+            btNextBtn.classList.remove('hidden');
+            await waitForClick('btn-bt-next');
+
             if (nextMatch === null) {
                 showScreen('screen-champion');
                 showChampion(winner);
             } else {
-                const nextBtn = document.getElementById('btn-next');
-                nextBtn.classList.remove('hidden');
-                nextBtn.addEventListener('click', () => renderBattleScreen(), { once: true });
+                renderBattleScreen();
             }
             return;
         }
@@ -552,12 +585,13 @@ function startBattle() {
         const part1 = attrPart(ATTR_NAMES[res.attr1], res.val1, bonus1);
         const part2 = attrPart(ATTR_NAMES[res.attr2], res.val2, bonus2);
 
+        const team = state.teamMap.get(animal.id);
         const breakdownArea = document.getElementById('breakdown-area');
-        const label = side === 'a' ? teamLabel('a') : teamLabel('b');
-        const colorClass = `breakdown-${side}`;
+        const lbl = label(team);
+        const colorClass = `breakdown-${team}`;
         const line = document.createElement('div');
         line.className = `breakdown-line ${colorClass}`;
-        line.innerHTML = `<span class="breakdown-label">${label}</span> ${part1} + ${part2} = ${res.score}`;
+        line.innerHTML = `<span class="breakdown-label">${lbl}</span> ${part1} + ${part2} = ${res.score}`;
         breakdownArea.appendChild(line);
         await sleep(800);
 
@@ -623,6 +657,7 @@ function showChampion(champion) {
         state.teamA = [];
         state.teamB = [];
         state.bracket = null;
+        state.teamMap = null;
         state.currentMatch = 0;
         showScreen('screen-setup');
     });
@@ -636,6 +671,7 @@ function showChampion(champion) {
         state.teamA = [];
         state.teamB = [];
         state.bracket = null;
+        state.teamMap = null;
         state.currentMatch = 0;
         // Reset menu UI state
         document.querySelector('.menu-buttons').classList.remove('hidden');
