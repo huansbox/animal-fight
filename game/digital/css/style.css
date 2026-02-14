@@ -510,6 +510,77 @@ body {
     font-weight: 700;
 }
 
+/* 隊伍色彩 */
+.team-a-card { border-color: #4a8af5; }
+.team-b-card { border-color: #f55a5a; }
+
+.team-label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 2px 12px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+}
+.team-a-label { background: rgba(74, 138, 245, 0.2); color: #8af; }
+.team-b-label { background: rgba(245, 90, 90, 0.2); color: #f88; }
+
+.dice-a { border: 3px solid #4a8af5; }
+.dice-b { border: 3px solid #f55a5a; }
+
+.dice-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.trigger-counter {
+    font-size: 16px;
+    font-weight: 900;
+    color: gold;
+    min-height: 22px;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+/* 屬性高亮 */
+.stat-highlight {
+    background: rgba(255, 215, 0, 0.15);
+    border-radius: 6px;
+    box-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+}
+
+/* 分數拆解 */
+.breakdown-area {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.breakdown-line {
+    padding: 4px 12px;
+    border-radius: 6px;
+    animation: fade-in 0.3s ease;
+}
+.breakdown-a { background: rgba(74, 138, 245, 0.1); color: #bdf; }
+.breakdown-b { background: rgba(245, 90, 90, 0.1); color: #fcc; }
+
+.breakdown-label {
+    font-weight: 900;
+    margin-right: 6px;
+}
+.breakdown-bonus {
+    color: gold;
+}
+
+/* 隊伍色分數 */
+.score-a-text { color: #8af; }
+.score-b-text { color: #f88; }
+
 /* 中央區 */
 .battle-center {
     display: flex;

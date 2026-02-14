@@ -2,7 +2,7 @@
 import { randomAssign, generateDraftOrder, createPool } from './draft.js';
 import { createBracket, getCurrentMatch, advanceBracket, getChampion, renderBracket } from './bracket.js';
 import { aiPick } from './ai.js';
-import { fightMatch } from './battle.js';
+import { rollD6, scoreFromResolved } from './battle.js';
 import { animateDiceRoll, animateTrigger, animateScore, animateResult, sleep } from './animations.js';
 
 const state = {
@@ -292,6 +292,19 @@ function startDraft() {
 /* ===== 對戰畫面 ===== */
 function startBattle() {
     const container = document.getElementById('screen-battle');
+    const SVG_PLACEHOLDER = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23333%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23888%22 font-size=%2240%22>?</text></svg>";
+
+    function teamLabel(side) {
+        if (side === 'a') return state.mode === 'ai' ? '玩家' : '玩家 A';
+        return state.mode === 'ai' ? '電腦' : '玩家 B';
+    }
+
+    /** 等待按鈕點擊（回傳 Promise） */
+    function waitForClick(btnId) {
+        return new Promise(resolve => {
+            document.getElementById(btnId).addEventListener('click', resolve, { once: true });
+        });
+    }
 
     function renderBattleScreen() {
         const match = getCurrentMatch(state.bracket);
@@ -303,14 +316,14 @@ function startBattle() {
             <div class="bracket-container" id="bracket-display"></div>
             <div class="round-info">第 ${roundNum} 輪 — 第 ${matchNum}/${totalMatches} 場</div>
             <div class="battle-area">
-                <div class="battle-card card card-flip" id="card-a">
-                    <img src="${IMG_BASE}${match.a.img}" alt="${match.a.name}"
-                         onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23333%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23888%22 font-size=%2240%22>?</text></svg>'">
+                <div class="battle-card card card-flip team-a-card" id="card-a">
+                    <div class="team-label team-a-label">${teamLabel('a')}</div>
+                    <img src="${IMG_BASE}${match.a.img}" alt="${match.a.name}" onerror="this.src='${SVG_PLACEHOLDER}'">
                     <div class="animal-name">${match.a.name}</div>
                     <div class="animal-en">${match.a.en}</div>
                     <div class="stats">
                         ${match.a.stats.map((v, i) => `
-                            <div class="stat">
+                            <div class="stat" id="stat-a-${i}">
                                 <span class="stat-icon">${ATTR_ICONS[i]}</span>
                                 <span class="stat-label">${ATTR_NAMES[i]}</span>
                                 <span class="stat-value">${v}</span>
@@ -322,34 +335,41 @@ function startBattle() {
 
                 <div class="battle-center">
                     <div class="dice-area">
-                        <div class="dice-group">
-                            <div class="dice" id="dice-a1">?</div>
-                            <div class="dice" id="dice-a2">?</div>
+                        <div class="dice-side">
+                            <div class="dice-group">
+                                <div class="dice dice-a" id="dice-a1">?</div>
+                                <div class="dice dice-a" id="dice-a2">?</div>
+                            </div>
+                            <div class="trigger-counter" id="trigger-a"></div>
                         </div>
                         <div class="vs-text">VS</div>
-                        <div class="dice-group">
-                            <div class="dice" id="dice-b1">?</div>
-                            <div class="dice" id="dice-b2">?</div>
+                        <div class="dice-side">
+                            <div class="dice-group">
+                                <div class="dice dice-b" id="dice-b1">?</div>
+                                <div class="dice dice-b" id="dice-b2">?</div>
+                            </div>
+                            <div class="trigger-counter" id="trigger-b"></div>
                         </div>
                     </div>
+                    <div class="breakdown-area" id="breakdown-area"></div>
                     <div class="score-display">
-                        <span class="score" id="score-a">-</span>
+                        <span class="score score-a-text" id="score-a">-</span>
                         <span class="score-vs">:</span>
-                        <span class="score" id="score-b">-</span>
+                        <span class="score score-b-text" id="score-b">-</span>
                     </div>
                     <div class="result-text" id="result-text"></div>
                     <button class="roll-btn" id="btn-roll">擲骰！</button>
                     <button class="next-btn hidden" id="btn-next">下一場</button>
                 </div>
 
-                <div class="battle-card card card-flip" id="card-b">
-                    <img src="${IMG_BASE}${match.b.img}" alt="${match.b.name}"
-                         onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23333%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23888%22 font-size=%2240%22>?</text></svg>'">
+                <div class="battle-card card card-flip team-b-card" id="card-b">
+                    <div class="team-label team-b-label">${teamLabel('b')}</div>
+                    <img src="${IMG_BASE}${match.b.img}" alt="${match.b.name}" onerror="this.src='${SVG_PLACEHOLDER}'">
                     <div class="animal-name">${match.b.name}</div>
                     <div class="animal-en">${match.b.en}</div>
                     <div class="stats">
                         ${match.b.stats.map((v, i) => `
-                            <div class="stat">
+                            <div class="stat" id="stat-b-${i}">
                                 <span class="stat-icon">${ATTR_ICONS[i]}</span>
                                 <span class="stat-label">${ATTR_NAMES[i]}</span>
                                 <span class="stat-value">${v}</span>
@@ -361,142 +381,191 @@ function startBattle() {
             </div>
         `;
 
-        // 渲染淘汰賽樹
         renderBracket(state.bracket, document.getElementById('bracket-display'));
 
-        // 綁定擲骰按鈕
-        document.getElementById('btn-roll').addEventListener('click', async () => {
+        document.getElementById('btn-roll').addEventListener('click', () => {
+            playFullBattle(match);
+        }, { once: true });
+    }
+
+    /** 完整對戰流程（含加賽迴圈） */
+    async function playFullBattle(match) {
+        let overtime = false;
+
+        while (true) {
+            if (overtime) {
+                document.getElementById('result-text').textContent = '平手！加賽！';
+                await sleep(1000);
+                resetRoundDisplay();
+                document.getElementById('result-text').textContent = '';
+                // 加賽要等按擲骰
+                const rollBtn = document.getElementById('btn-roll');
+                rollBtn.textContent = '擲骰！';
+                rollBtn.classList.remove('hidden');
+                rollBtn.disabled = false;
+                await waitForClick('btn-roll');
+            }
+
             const rollBtn = document.getElementById('btn-roll');
             rollBtn.disabled = true;
             rollBtn.classList.add('hidden');
 
-            await playBattleAnimation(match);
-        });
+            // === Phase 1: 擲骰 ===
+            const dice = { a1: rollD6(), a2: rollD6(), b1: rollD6(), b2: rollD6() };
+            const triggers = { a1: 0, a2: 0, b1: 0, b2: 0 };
+            const diceEls = {
+                a1: document.getElementById('dice-a1'),
+                a2: document.getElementById('dice-a2'),
+                b1: document.getElementById('dice-b1'),
+                b2: document.getElementById('dice-b2'),
+            };
+
+            await Promise.all([
+                animateDiceRoll(diceEls.a1, dice.a1, 600),
+                animateDiceRoll(diceEls.a2, dice.a2, 700),
+                animateDiceRoll(diceEls.b1, dice.b1, 650),
+                animateDiceRoll(diceEls.b2, dice.b2, 750),
+            ]);
+
+            // === Phase 2: 互動處理骰到 6 ===
+            const hasSixes = () => ['a1', 'a2', 'b1', 'b2'].some(k => dice[k] === 6);
+
+            while (hasSixes()) {
+                const sixKeys = ['a1', 'a2', 'b1', 'b2'].filter(k => dice[k] === 6);
+
+                // 記錄觸發次數
+                for (const k of sixKeys) triggers[k]++;
+
+                // 觸發動畫
+                for (const k of sixKeys) await animateTrigger(diceEls[k]);
+
+                // 更新觸發計數器
+                const trigA = triggers.a1 + triggers.a2;
+                const trigB = triggers.b1 + triggers.b2;
+                document.getElementById('trigger-a').textContent = trigA > 0 ? `天賦 x${trigA}` : '';
+                document.getElementById('trigger-b').textContent = trigB > 0 ? `天賦 x${trigB}` : '';
+
+                // 顯示「重骰！」按鈕，等待點擊
+                rollBtn.textContent = '重骰！';
+                rollBtn.classList.remove('hidden');
+                rollBtn.disabled = false;
+                await waitForClick('btn-roll');
+                rollBtn.disabled = true;
+                rollBtn.classList.add('hidden');
+
+                // 只重骰為 6 的骰子
+                for (const k of sixKeys) dice[k] = rollD6();
+                await Promise.all(
+                    sixKeys.map(k => animateDiceRoll(diceEls[k], dice[k], 500))
+                );
+            }
+
+            // === Phase 3: 分數拆解（逐步自動播放） ===
+            const totalTriggersA = triggers.a1 + triggers.a2;
+            const totalTriggersB = triggers.b1 + triggers.b2;
+            const resA = scoreFromResolved(match.a, dice.a1, dice.a2, totalTriggersA);
+            const resB = scoreFromResolved(match.b, dice.b1, dice.b2, totalTriggersB);
+
+            await showScoreBreakdown('a', match.a, dice.a1, dice.a2, resA, totalTriggersA, diceEls);
+            await sleep(400);
+            await showScoreBreakdown('b', match.b, dice.b1, dice.b2, resB, totalTriggersB, diceEls);
+            await sleep(600);
+
+            // === Phase 4: 分數對比 ===
+            if (resA.score === resB.score) {
+                overtime = true;
+                continue;
+            }
+
+            // 勝負宣告
+            const winner = resA.score > resB.score ? match.a : match.b;
+            const winSide = resA.score > resB.score ? 'a' : 'b';
+
+            const resultText = document.getElementById('result-text');
+            resultText.textContent = `${winner.name} 勝利！`;
+            resultText.style.color = 'gold';
+
+            const cardA = document.getElementById('card-a');
+            const cardB = document.getElementById('card-b');
+            await animateResult(winSide === 'a' ? cardA : cardB, winSide === 'a' ? cardB : cardA);
+            await sleep(1500);
+
+            // 推進淘汰賽
+            const nextMatch = advanceBracket(state.bracket, winner);
+            if (nextMatch === null) {
+                showScreen('screen-champion');
+                showChampion(winner);
+            } else {
+                const nextBtn = document.getElementById('btn-next');
+                nextBtn.classList.remove('hidden');
+                nextBtn.addEventListener('click', () => renderBattleScreen(), { once: true });
+            }
+            return;
+        }
     }
 
-    async function playBattleAnimation(match) {
-        // 預先計算對戰結果
-        const result = fightMatch(match.a, match.b);
+    /** 顯示單方分數拆解 */
+    async function showScoreBreakdown(side, animal, d1, d2, res, totalTriggers, diceEls) {
+        const dk1 = side + '1';
+        const dk2 = side + '2';
 
-        // 播放每一回合（含加賽）
-        for (let i = 0; i < result.rounds.length; i++) {
-            const round = result.rounds[i];
+        // 骰子顯示屬性名稱
+        function showDiceAttr(el, val) {
+            el.classList.add('show-attr');
+            el.innerHTML = `<span style="font-size:28px;font-weight:900">${val}</span><span>${ATTR_NAMES[val - 1]}</span>`;
+        }
+        showDiceAttr(diceEls[dk1], d1);
+        showDiceAttr(diceEls[dk2], d2);
 
-            if (i > 0) {
-                // 加賽提示
-                document.getElementById('result-text').textContent = '平手！加賽！';
-                document.getElementById('score-a').textContent = '-';
-                document.getElementById('score-b').textContent = '-';
-                document.querySelectorAll('.dice').forEach(d => {
-                    d.textContent = '?';
-                    d.classList.remove('show-attr');
-                });
-                await sleep(1200);
-                document.getElementById('result-text').textContent = '';
-            }
+        // 高亮對應的屬性列
+        const statEl1 = document.getElementById(`stat-${side}-${res.attr1}`);
+        const statEl2 = document.getElementById(`stat-${side}-${res.attr2}`);
+        if (statEl1) statEl1.classList.add('stat-highlight');
+        if (statEl2) statEl2.classList.add('stat-highlight');
 
-            const detA = round.resultA.details;
-            const detB = round.resultB.details;
+        await sleep(600);
 
-            // 取得骰子 DOM 元素
-            const diceA1 = document.getElementById('dice-a1');
-            const diceA2 = document.getElementById('dice-a2');
-            const diceB1 = document.getElementById('dice-b1');
-            const diceB2 = document.getElementById('dice-b2');
+        // 顯示計算過程
+        const breakdownArea = document.getElementById('breakdown-area');
+        const label = side === 'a' ? teamLabel('a') : teamLabel('b');
+        const colorClass = `breakdown-${side}`;
 
-            // 四顆骰子同時滾動（略有時差）
-            await Promise.all([
-                animateDiceRoll(diceA1, detA.d1Raw === 6 ? 6 : detA.d1Final, 600),
-                animateDiceRoll(diceA2, detA.d2Raw === 6 ? 6 : detA.d2Final, 700),
-                animateDiceRoll(diceB1, detB.d1Raw === 6 ? 6 : detB.d1Final, 650),
-                animateDiceRoll(diceB2, detB.d2Raw === 6 ? 6 : detB.d2Final, 750),
-            ]);
+        let calcText = '';
+        if (res.doubled) {
+            calcText = `${ATTR_NAMES[res.attr1]} ${res.val1} x2 = ${res.baseScore}`;
+        } else {
+            calcText = `${ATTR_NAMES[res.attr1]} ${res.val1} + ${ATTR_NAMES[res.attr2]} ${res.val2} = ${res.baseScore}`;
+        }
 
-            // 處理天賦觸發（支援連續骰 6）
-            async function playTriggers(diceEl, triggers, finalVal) {
-                for (let t = 0; t < triggers; t++) {
-                    await animateTrigger(diceEl);
-                    if (t < triggers - 1) {
-                        // 中間的重骰：顯示再次骰到 6
-                        await animateDiceRoll(diceEl, 6, 400);
-                    } else {
-                        // 最後一次：顯示最終值
-                        await animateDiceRoll(diceEl, finalVal, 500);
-                    }
-                }
-            }
-            await Promise.all([
-                detA.d1Triggers > 0 ? playTriggers(diceA1, detA.d1Triggers, detA.d1Final) : Promise.resolve(),
-                detA.d2Triggers > 0 ? playTriggers(diceA2, detA.d2Triggers, detA.d2Final) : Promise.resolve(),
-                detB.d1Triggers > 0 ? playTriggers(diceB1, detB.d1Triggers, detB.d1Final) : Promise.resolve(),
-                detB.d2Triggers > 0 ? playTriggers(diceB2, detB.d2Triggers, detB.d2Final) : Promise.resolve(),
-            ]);
+        const line = document.createElement('div');
+        line.className = `breakdown-line ${colorClass}`;
+        line.innerHTML = `<span class="breakdown-label">${label}</span> ${calcText}`;
+        breakdownArea.appendChild(line);
+        await sleep(800);
 
-            await sleep(300);
-
-            // 顯示骰面對應的屬性名稱
-            function showDiceAttr(diceEl, val) {
-                diceEl.classList.add('show-attr');
-                diceEl.innerHTML = `<span style="font-size:28px;font-weight:900">${val}</span><span>${ATTR_NAMES[val - 1]}</span>`;
-            }
-            showDiceAttr(diceA1, detA.d1Final);
-            showDiceAttr(diceA2, detA.d2Final);
-            showDiceAttr(diceB1, detB.d1Final);
-            showDiceAttr(diceB2, detB.d2Final);
-
-            await sleep(500);
-
-            // 顯示分數
-            await Promise.all([
-                animateScore(document.getElementById('score-a'), round.resultA.score),
-                animateScore(document.getElementById('score-b'), round.resultB.score),
-            ]);
-
-            // 若有天賦觸發，顯示加分細節
-            if (detA.totalTriggers > 0 && detA.bonusPerTrigger > 0) {
-                document.getElementById('score-a').textContent =
-                    `${round.resultA.score} (${detA.baseScore}+${detA.totalBonus})`;
-            }
-            if (detB.totalTriggers > 0 && detB.bonusPerTrigger > 0) {
-                document.getElementById('score-b').textContent =
-                    `${round.resultB.score} (${detB.baseScore}+${detB.totalBonus})`;
-            }
-
+        // 天賦加分
+        if (totalTriggers > 0 && res.bonusPerTrigger > 0) {
+            line.innerHTML += ` <span class="breakdown-bonus">+ 天賦 ${res.bonusPerTrigger} x${totalTriggers} = ${res.score}</span>`;
             await sleep(600);
         }
 
-        // 最終結果
-        const winner = result.winner === 'a' ? match.a : match.b;
-        const winnerName = winner.name;
-        const resultText = document.getElementById('result-text');
-        resultText.textContent = `${winnerName} 勝利！`;
-        resultText.style.color = 'gold';
+        // 顯示該方總分
+        await animateScore(document.getElementById(`score-${side}`), res.score);
+    }
 
-        const cardA = document.getElementById('card-a');
-        const cardB = document.getElementById('card-b');
-        if (result.winner === 'a') {
-            await animateResult(cardA, cardB);
-        } else {
-            await animateResult(cardB, cardA);
-        }
-
-        await sleep(1500);
-
-        // 推進淘汰賽
-        const nextMatch = advanceBracket(state.bracket, winner);
-
-        if (nextMatch === null) {
-            // 冠軍產生
-            showScreen('screen-champion');
-            showChampion(winner);
-        } else {
-            // 顯示「下一場」按鈕
-            const nextBtn = document.getElementById('btn-next');
-            nextBtn.classList.remove('hidden');
-            nextBtn.addEventListener('click', () => {
-                renderBattleScreen();
-            });
-        }
+    /** 重置回合顯示（加賽用） */
+    function resetRoundDisplay() {
+        document.querySelectorAll('.dice').forEach(d => {
+            d.textContent = '?';
+            d.classList.remove('show-attr', 'trigger');
+            d.innerHTML = '?';
+        });
+        document.getElementById('score-a').textContent = '-';
+        document.getElementById('score-b').textContent = '-';
+        document.getElementById('trigger-a').textContent = '';
+        document.getElementById('trigger-b').textContent = '';
+        document.getElementById('breakdown-area').innerHTML = '';
+        document.querySelectorAll('.stat-highlight').forEach(el => el.classList.remove('stat-highlight'));
     }
 
     renderBattleScreen();
