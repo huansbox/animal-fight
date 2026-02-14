@@ -59,7 +59,20 @@ animal-fight/
 │       └── animal-gpt-2.md   # GPT v2
 ├── game/
 │   ├── rulebook.md           # 合作闘關規則書
-│   └── battle-rules.md       # 動物大對決淘汰賽規則（v2.4 數值）
+│   ├── battle-rules.md       # 動物大對決淘汰賽規則（v2.4 數值）
+│   └── digital/              # 動物大對決數位版（離線 Web App）
+│       ├── index.html        # 進入點（單頁應用，5 個畫面）
+│       ├── css/style.css     # 樣式 + 動畫（骰子、翻牌、勝負特效）
+│       ├── js/
+│       │   ├── app.js        # 主流程 + 畫面切換（ES Module）
+│       │   ├── battle.js     # 對戰引擎（骰子、計分、天賦觸發）
+│       │   ├── draft.js      # 選秀 + 自選 + 快速隨機
+│       │   ├── ai.js         # AI 選角策略（簡單/普通/困難）
+│       │   ├── bracket.js    # 淘汰賽樹邏輯 + 渲染
+│       │   ├── animations.js # 骰子滾動、天賦觸發、勝負特效
+│       │   └── utils.js      # Fisher-Yates shuffle
+│       ├── data/animals.json # 合併全部 wave 的 106 隻動物
+│       └── (images/)         # 引用 ../../card/images/（不另存）
 └── sim/                      # 對戰模擬器
     ├── battle_sim_v3.py      # 原規則模擬（35 隻動物，各自擲骰）
     ├── battle_sim_v4.py      # 原規則模擬（48 隻動物，3 強循環賽）
@@ -74,6 +87,15 @@ animal-fight/
 - **5 屬性**：力量、速度、攻擊、防禦、智慧（骰子 1-5）
 - **骰子 6**：特殊能力觸發，顯示加成 icon 和分數
 - **特殊能力加成**：固定 +4 分，分配到 2-3 個屬性
+
+### 數位版（game/digital/）
+- **技術**：Vanilla HTML/CSS/JS（無框架），ES Modules，CSS Animations
+- **架構**：單頁應用，5 畫面 CSS class 切換 + fade-in 過渡
+- **對戰引擎**：從 `sim/battle_sim_v5.py` 移植，純邏輯無 DOM
+- **動物資料**：`data/animals.json` 合併 106 隻，圖片引用 `../../card/images/`
+- **AI 難度**：僅影響選角策略（骰子完全隨機）
+- **離線運行**：瀏覽器直接開 `index.html`，無需伺服器
+- **目標裝置**：MacBook Pro 14 吋，搭飛機/火車讓小孩玩
 
 ### 數值系統分歧
 - 合作闘關（rulebook.md）：v1 數值系統（天賦為單一分數 8-12，總和 34-39）
@@ -383,8 +405,17 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - [x] 第八波繪圖 prompt
 - [ ] 第八波 AI 圖片生成（8 張）
 - [x] final_cards.html 整合 106 張動物卡
+- [x] 動物大對決數位版 — 離線 Web App（game/digital/）
+  - [x] 設計文件（docs/plans/2026-02-14-digital-battle-design.md）
+  - [x] 對戰引擎移植（battle_sim_v5.py → battle.js）
+  - [x] 選角系統（快速隨機 / Snake Draft 選秀 / 全手動自選）
+  - [x] AI 選角（簡單=隨機 / 普通=前 50% / 困難=貪心最高總和）
+  - [x] 淘汰賽樹（4/8/16/32 強，即時更新）
+  - [x] 動畫系統（骰子滾動、天賦觸發閃光、勝負特效）
+  - [x] 五個畫面（主選單 → 賽制設定 → 選角 → 對戰 → 冠軍）
+  - [ ] 實際遊玩測試
 - [ ] 印刷測試
-- [ ] 實際遊玩測試
+- [ ] 實際遊玩測試（實體版）
 
 ## 對戰模擬結果（64 隻動物淘汰賽 v5）⚠️ 尚未納入補充 4 隻
 
