@@ -104,3 +104,115 @@ body {
 
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+
+/* ===== 主選單 ===== */
+.game-title {
+    font-size: 64px;
+    font-weight: 900;
+    margin-bottom: 40px;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.menu-buttons button,
+#ai-difficulty button {
+    padding: 16px 48px;
+    font-size: 24px;
+    font-weight: 700;
+    border: 2px solid #555;
+    border-radius: 12px;
+    background: #2a2a4a;
+    color: #eee;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.menu-buttons button:hover,
+#ai-difficulty button:hover {
+    background: #3a3a6a;
+    border-color: gold;
+    transform: scale(1.05);
+}
+
+#ai-difficulty {
+    text-align: center;
+}
+
+#ai-difficulty h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+#ai-difficulty button {
+    margin: 0 8px;
+}
+
+/* ===== 賽制設定 ===== */
+#screen-setup {
+    gap: 30px;
+}
+
+#screen-setup h2 {
+    font-size: 36px;
+    font-weight: 900;
+}
+
+.setup-section {
+    text-align: center;
+}
+
+.setup-section h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: #aaa;
+}
+
+.btn-group {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-group button {
+    padding: 12px 24px;
+    font-size: 20px;
+    font-weight: 700;
+    border: 2px solid #555;
+    border-radius: 10px;
+    background: #2a2a4a;
+    color: #eee;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-group button:hover {
+    border-color: #888;
+}
+
+.btn-group button.selected {
+    background: #4a3a8a;
+    border-color: gold;
+    color: gold;
+}
+
+#btn-start {
+    padding: 16px 64px;
+    font-size: 28px;
+    font-weight: 900;
+    border: 3px solid gold;
+    border-radius: 12px;
+    background: #4a3a8a;
+    color: gold;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 20px;
+}
+
+#btn-start:hover {
+    background: #5a4a9a;
+    transform: scale(1.05);
+}
