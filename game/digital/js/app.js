@@ -23,6 +23,7 @@ let allAnimals = [];
 
 const ATTR_NAMES = ['力量', '速度', '攻擊', '防禦', '智慧'];
 const ATTR_ICONS = ['💪', '⚡', '⚔️', '🛡️', '🧠'];
+const SHORT_ATTR = ['力', '速', '攻', '防', '智'];
 
 function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => {
@@ -331,6 +332,7 @@ function startBattle() {
                         `).join('')}
                     </div>
                     <div class="skill-name">${match.a.skillName}</div>
+                    <div class="skill-bonus">${match.a.skillBonus.map(b => SHORT_ATTR[b.attr] + '+' + b.val).join('  ')}</div>
                 </div>
 
                 <div class="battle-center">
@@ -377,6 +379,7 @@ function startBattle() {
                         `).join('')}
                     </div>
                     <div class="skill-name">${match.b.skillName}</div>
+                    <div class="skill-bonus">${match.b.skillBonus.map(b => SHORT_ATTR[b.attr] + '+' + b.val).join('  ')}</div>
                 </div>
             </div>
         `;
@@ -393,74 +396,82 @@ function startBattle() {
         let overtime = false;
 
         while (true) {
-            if (overtime) {
-                document.getElementById('result-text').textContent = '平手！加賽！';
-                await sleep(1000);
-                resetRoundDisplay();
-                document.getElementById('result-text').textContent = '';
-                // 加賽要等按擲骰
-                const rollBtn = document.getElementById('btn-roll');
-                rollBtn.textContent = '擲骰！';
-                rollBtn.classList.remove('hidden');
-                rollBtn.disabled = false;
-                await waitForClick('btn-roll');
-            }
-
             const rollBtn = document.getElementById('btn-roll');
-            rollBtn.disabled = true;
-            rollBtn.classList.add('hidden');
-
-            // === Phase 1: 擲骰 ===
-            const dice = { a1: rollD6(), a2: rollD6(), b1: rollD6(), b2: rollD6() };
-            const triggers = { a1: 0, a2: 0, b1: 0, b2: 0 };
             const diceEls = {
                 a1: document.getElementById('dice-a1'),
                 a2: document.getElementById('dice-a2'),
                 b1: document.getElementById('dice-b1'),
                 b2: document.getElementById('dice-b2'),
             };
+            const dice = { a1: 0, a2: 0, b1: 0, b2: 0 };
+            const triggers = { a1: 0, a2: 0, b1: 0, b2: 0 };
 
-            await Promise.all([
-                animateDiceRoll(diceEls.a1, dice.a1, 600),
-                animateDiceRoll(diceEls.a2, dice.a2, 700),
-                animateDiceRoll(diceEls.b1, dice.b1, 650),
-                animateDiceRoll(diceEls.b2, dice.b2, 750),
-            ]);
+            /** 擲一側骰子 + 處理所有 6（interactive 決定是否需按鈕） */
+            async function rollSide(side, interactive) {
+                const keys = side === 'a' ? ['a1', 'a2'] : ['b1', 'b2'];
+                const triggerId = `trigger-${side}`;
+                for (const k of keys) dice[k] = rollD6();
+                await Promise.all(keys.map((k, i) =>
+                    animateDiceRoll(diceEls[k], dice[k], 600 + i * 100)));
 
-            // === Phase 2: 互動處理骰到 6 ===
-            const hasSixes = () => ['a1', 'a2', 'b1', 'b2'].some(k => dice[k] === 6);
+                while (keys.some(k => dice[k] === 6)) {
+                    const sixKeys = keys.filter(k => dice[k] === 6);
+                    for (const k of sixKeys) triggers[k]++;
+                    for (const k of sixKeys) await animateTrigger(diceEls[k]);
 
-            while (hasSixes()) {
-                const sixKeys = ['a1', 'a2', 'b1', 'b2'].filter(k => dice[k] === 6);
+                    const trig = keys.reduce((sum, k) => sum + triggers[k], 0);
+                    document.getElementById(triggerId).textContent =
+                        trig > 0 ? `天賦 x${trig}` : '';
 
-                // 記錄觸發次數
-                for (const k of sixKeys) triggers[k]++;
+                    if (interactive) {
+                        rollBtn.textContent = '重骰！';
+                        rollBtn.classList.remove('hidden');
+                        rollBtn.disabled = false;
+                        await waitForClick('btn-roll');
+                        rollBtn.disabled = true;
+                        rollBtn.classList.add('hidden');
+                    } else {
+                        await sleep(600);
+                    }
 
-                // 觸發動畫
-                for (const k of sixKeys) await animateTrigger(diceEls[k]);
+                    for (const k of sixKeys) dice[k] = rollD6();
+                    await Promise.all(
+                        sixKeys.map(k => animateDiceRoll(diceEls[k], dice[k], 500)));
+                }
+            }
 
-                // 更新觸發計數器
-                const trigA = triggers.a1 + triggers.a2;
-                const trigB = triggers.b1 + triggers.b2;
-                document.getElementById('trigger-a').textContent = trigA > 0 ? `天賦 x${trigA}` : '';
-                document.getElementById('trigger-b').textContent = trigB > 0 ? `天賦 x${trigB}` : '';
+            if (overtime) {
+                document.getElementById('result-text').textContent = '平手！加賽！';
+                await sleep(1000);
+                resetRoundDisplay();
+                document.getElementById('result-text').textContent = '';
+            }
 
-                // 顯示「重骰！」按鈕，等待點擊
-                rollBtn.textContent = '重骰！';
+            // === A 側擲骰（人類） ===
+            rollBtn.textContent = state.mode === 'player'
+                ? `${teamLabel('a')} 擲骰！` : '擲骰！';
+            rollBtn.classList.remove('hidden');
+            rollBtn.disabled = false;
+            await waitForClick('btn-roll');
+            rollBtn.disabled = true;
+            rollBtn.classList.add('hidden');
+            await rollSide('a', true);
+
+            // === B 側擲骰 ===
+            if (state.mode === 'ai') {
+                await sleep(500);
+                await rollSide('b', false);
+            } else {
+                rollBtn.textContent = `${teamLabel('b')} 擲骰！`;
                 rollBtn.classList.remove('hidden');
                 rollBtn.disabled = false;
                 await waitForClick('btn-roll');
                 rollBtn.disabled = true;
                 rollBtn.classList.add('hidden');
-
-                // 只重骰為 6 的骰子
-                for (const k of sixKeys) dice[k] = rollD6();
-                await Promise.all(
-                    sixKeys.map(k => animateDiceRoll(diceEls[k], dice[k], 500))
-                );
+                await rollSide('b', true);
             }
 
-            // === Phase 3: 分數拆解（逐步自動播放） ===
+            // === 分數拆解 ===
             const totalTriggersA = triggers.a1 + triggers.a2;
             const totalTriggersB = triggers.b1 + triggers.b2;
             const resA = scoreFromResolved(match.a, dice.a1, dice.a2, totalTriggersA);
@@ -525,29 +536,32 @@ function startBattle() {
 
         await sleep(600);
 
-        // 顯示計算過程
+        // 計算各屬性的天賦加成
+        let bonus1 = 0, bonus2 = 0;
+        if (totalTriggers > 0) {
+            for (const b of animal.skillBonus) {
+                if (b.attr === res.attr1) bonus1 += b.val;
+                if (b.attr === res.attr2 && !res.doubled) bonus2 += b.val;
+            }
+        }
+
+        function attrPart(name, val, bonusVal) {
+            if (bonusVal > 0 && totalTriggers > 0)
+                return `${name} ${val} <span class="breakdown-bonus">+(${bonusVal}\u00d7${totalTriggers})</span>`;
+            return `${name} ${val}`;
+        }
+
+        const part1 = attrPart(ATTR_NAMES[res.attr1], res.val1, bonus1);
+        const part2 = attrPart(ATTR_NAMES[res.attr2], res.val2, bonus2);
+
         const breakdownArea = document.getElementById('breakdown-area');
         const label = side === 'a' ? teamLabel('a') : teamLabel('b');
         const colorClass = `breakdown-${side}`;
-
-        let calcText = '';
-        if (res.doubled) {
-            calcText = `${ATTR_NAMES[res.attr1]} ${res.val1} x2 = ${res.baseScore}`;
-        } else {
-            calcText = `${ATTR_NAMES[res.attr1]} ${res.val1} + ${ATTR_NAMES[res.attr2]} ${res.val2} = ${res.baseScore}`;
-        }
-
         const line = document.createElement('div');
         line.className = `breakdown-line ${colorClass}`;
-        line.innerHTML = `<span class="breakdown-label">${label}</span> ${calcText}`;
+        line.innerHTML = `<span class="breakdown-label">${label}</span> ${part1} + ${part2} = ${res.score}`;
         breakdownArea.appendChild(line);
         await sleep(800);
-
-        // 天賦加分
-        if (totalTriggers > 0 && res.bonusPerTrigger > 0) {
-            line.innerHTML += ` <span class="breakdown-bonus">+ 天賦 ${res.bonusPerTrigger} x${totalTriggers} = ${res.score}</span>`;
-            await sleep(600);
-        }
 
         // 顯示該方總分
         await animateScore(document.getElementById(`score-${side}`), res.score);

@@ -510,6 +510,13 @@ body {
     font-weight: 700;
 }
 
+.battle-card .skill-bonus {
+    font-size: 13px;
+    color: #ccc;
+    margin-top: 2px;
+    letter-spacing: 2px;
+}
+
 /* 隊伍色彩 */
 .team-a-card { border-color: #4a8af5; }
 .team-b-card { border-color: #f55a5a; }
