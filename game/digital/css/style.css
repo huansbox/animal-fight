@@ -216,3 +216,180 @@ body {
     background: #5a4a9a;
     transform: scale(1.05);
 }
+
+/* ===== 選角畫面 ===== */
+#screen-draft {
+    display: none;
+    flex-direction: column;
+    padding: 16px;
+    overflow: hidden;
+}
+
+#screen-draft.active {
+    display: flex;
+}
+
+.draft-header {
+    text-align: center;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+}
+
+.draft-header h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.draft-status {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.turn-indicator {
+    font-weight: 900;
+    padding: 4px 16px;
+    border-radius: 8px;
+}
+
+.turn-indicator.a { background: #2a4a8a; color: #8af; }
+.turn-indicator.b { background: #8a2a2a; color: #f88; }
+.turn-indicator.done { background: #2a8a2a; color: #8f8; }
+
+.pick-count { color: #888; margin-left: 8px; }
+
+.draft-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.draft-search {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: 2px solid #555;
+    border-radius: 8px;
+    background: #2a2a4a;
+    color: #eee;
+    width: 200px;
+}
+
+.sort-buttons { display: flex; gap: 4px; }
+
+.sort-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #555;
+    border-radius: 6px;
+    background: #2a2a4a;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.sort-btn.selected {
+    border-color: gold;
+    color: gold;
+}
+
+/* 動物池 */
+.draft-pool {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    overflow-y: auto;
+    flex: 1;
+    padding: 8px;
+    min-height: 0;
+}
+
+/* 迷你卡片 */
+.mini-card {
+    width: 100px;
+    height: 130px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px;
+    transition: transform 0.2s, border-color 0.2s;
+    background: #2a2a4a;
+}
+
+.mini-card:hover {
+    transform: scale(1.05);
+    border-color: gold;
+}
+
+.mini-card img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.mini-card .name { font-size: 11px; font-weight: bold; }
+.mini-card .total { font-size: 10px; color: #aaa; }
+
+.mini-card.picked-card {
+    width: 80px;
+    height: 100px;
+    cursor: default;
+    border-color: #666;
+}
+
+.mini-card.picked-card img {
+    width: 50px;
+    height: 50px;
+}
+
+/* 隊伍區 */
+.draft-teams {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-shrink: 0;
+    padding-top: 12px;
+    border-top: 2px solid #333;
+}
+
+.draft-team {
+    text-align: center;
+}
+
+.draft-team h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.team-a h3 { color: #8af; }
+.team-b h3 { color: #f88; }
+
+.team-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    max-width: 400px;
+}
+
+.draft-confirm-btn {
+    padding: 16px 48px;
+    font-size: 24px;
+    font-weight: 900;
+    border: 3px solid gold;
+    border-radius: 12px;
+    background: #4a3a8a;
+    color: gold;
+    cursor: pointer;
+    margin-top: 12px;
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+.draft-confirm-btn:hover {
+    background: #5a4a9a;
+    transform: scale(1.05);
+}
