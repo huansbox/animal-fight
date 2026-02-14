@@ -90,10 +90,12 @@ AI 自動執行步驟 1-8，步驟 9 交由人工，步驟 10 等圖片就緒後
 | 數值 | 1 | **選定動物** → 由人決定，AI 不介入 |
 | 數值 | 2 | **五維數值 + 特殊能力 + skillDesc** → `docs/attributes.md` §1-§5（數值）+ §7（技能設計 + +4 分配 + 命名）+「技能描述撰寫」（15-25 字） |
 | 數值 | 3 | **五維重疊比對** → `docs/attributes.md` §9（差異分數 ≤3 必須調整） |
+| 數值 | 3.5 | **自動化前置檢查** → `docs/attributes.md` §8（bonus 加總、skillName 撞名、加成模式重疊、差異分數） |
 | 數值 | 4 | **3 Agent 數值審核** → `docs/attributes.md` §8（A=科學合理性 / B=特殊能力設計 / C=全局平衡與辨識度） |
 | 數值 | 5 | **產出 JSON** → `card/data/animals-wave{N}.json`（7 欄位：id, name, en, img, stats, skillName, skillDesc, skillBonus） |
-| Prompt | 6 | **撰寫繪圖 Prompt** → `card/img-prompt/prompt-guidelines.md` §1-§6（模板 + 動作轉換 + 風格後綴） |
-| Prompt | 7 | **3 Agent Prompt 審核** → `prompt-guidelines.md` §3 + §7-§12 + §13（11 項審核清單 + 審核分工） |
+| Prompt | 5.5 | **物種特徵研究** → `prompt-guidelines.md` §0（每隻列出 2-3 個最高辨識度外觀特徵） |
+| Prompt | 6 | **撰寫繪圖 Prompt** → `prompt-guidelines.md` §1-§6（模板 + 動作轉換 + 風格後綴），含 §7 黑化/特殊毛色處理 |
+| Prompt | 7 | **3 Agent Prompt 審核** → `prompt-guidelines.md` §3 + §7-§12 + §13（12 項審核清單 + 審核分工） |
 | Prompt | 8 | **產出 .md + .jsonl** → `prompt-guidelines.md` §14（JSONL 轉換規範） |
 | 人工 | 9 | **批次 API 生圖** → `card/generate_from_jsonl.py`（人工執行） |
 | 整合 | 10 | **圖片驗收 + 整合 HTML** → 讀取 `card/data/animals-wave{N}.json` 合併至 `card/final_cards.html` |
