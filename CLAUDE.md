@@ -120,7 +120,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 | 數值 | 3 | **五維重疊比對** → `docs/attributes.md` §9（差異分數 ≤3 必須調整） |
 | 數值 | 3.5 | **自動化前置檢查** → `docs/attributes.md` §8（bonus 加總、skillName 撞名、加成模式重疊、差異分數） |
 | 數值 | 4 | **3 Agent 數值審核** → `docs/attributes.md` §8（A=科學合理性 / B=特殊能力設計 / C=全局平衡與辨識度） |
-| 數值 | 5 | **產出 JSON** → `card/data/animals-wave{N}.json`（7 欄位：id, name, en, img, stats, skillName, skillDesc, skillBonus） |
+| 數值 | 5 | **產出 JSON** → `card/data/animals-wave{N}.json`（7 欄位：id, name, en, img, stats, skillName, skillDesc, skillBonus）。img 格式固定為 `"images/{id}.png"` |
 | Prompt | 5.5 | **物種特徵研究** → `prompt-guidelines.md` §0（每隻列出 2-3 個最高辨識度外觀特徵） |
 | Prompt | 6 | **撰寫繪圖 Prompt** → `prompt-guidelines.md` §1-§6（模板 + 動作轉換 + 風格後綴），含 §7 黑化/特殊毛色處理 |
 | Prompt | 7 | **3 Agent Prompt 審核** → `prompt-guidelines.md` §3 + §7-§12 + §13（12 項審核清單 + 審核分工） |
