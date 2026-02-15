@@ -2,10 +2,6 @@ import { shuffleArray } from './utils.js';
 
 /**
  * 建立淘汰賽 bracket
- * @param {Object[]} teamA - A 隊動物
- * @param {Object[]} teamB - B 隊動物
- * @returns {Object} bracket state
- *
  * 配對規則：先 shuffle 各隊順序，然後 A[0] vs B[0], A[1] vs B[1]...
  */
 function createBracket(teamA, teamB) {
@@ -24,8 +20,6 @@ function createBracket(teamA, teamB) {
 
 /**
  * 記錄勝者，推進到下一場/下一輪
- * @param {Object} bracket
- * @param {Object} winner - 勝出的動物物件
  * @returns {Object|null} 下一場配對，或 null = 冠軍產生
  */
 function advanceBracket(bracket, winner) {
@@ -33,10 +27,9 @@ function advanceBracket(bracket, winner) {
     round[bracket.currentMatch].winner = winner;
     bracket.currentMatch++;
 
-    // 本輪打完 → 建立下一輪
     if (bracket.currentMatch >= round.length) {
         const winners = round.map(m => m.winner);
-        if (winners.length === 1) return null; // 冠軍！
+        if (winners.length === 1) return null;
 
         const nextRound = [];
         for (let i = 0; i < winners.length; i += 2) {
@@ -50,53 +43,79 @@ function advanceBracket(bracket, winner) {
     return bracket.rounds[bracket.currentRound][bracket.currentMatch];
 }
 
-/** 取得當前要打的配對 */
 function getCurrentMatch(bracket) {
     return bracket.rounds[bracket.currentRound][bracket.currentMatch];
 }
 
-/** 取得冠軍 */
 function getChampion(bracket) {
     const lastRound = bracket.rounds[bracket.rounds.length - 1];
     return lastRound[0]?.winner || null;
 }
 
 /**
- * 渲染淘汰賽樹到指定容器
+ * 渲染淘汰賽樹（由下往上，含隊伍色標示）
  * @param {Object} bracket
+ * @param {Map} teamMap - animal ID → 'a' | 'b'
  * @param {HTMLElement} container
  */
-function renderBracket(bracket, container) {
-    container.innerHTML = '';
+function renderBracketTree(bracket, teamMap, container) {
+    const firstRoundLen = bracket.rounds[0].length;
+    const totalRounds = Math.ceil(Math.log2(firstRoundLen)) + 1;
 
-    bracket.rounds.forEach((round, ri) => {
-        const col = document.createElement('div');
-        col.className = 'bracket-round';
-        col.dataset.round = ri;
+    const allRounds = [];
+    for (let r = 0; r < totalRounds; r++) {
+        const expected = firstRoundLen / Math.pow(2, r);
+        allRounds.push(
+            bracket.rounds[r] ||
+            Array.from({ length: expected }, () => ({ a: null, b: null, winner: null }))
+        );
+    }
 
+    const ROUND_NAMES = { 1: '冠軍賽', 2: '四強', 4: '八強', 8: '十六強', 16: '三十二強' };
+
+    function slot(match, side) {
+        const animal = match[side];
+        if (!animal) return '<div class="bt-slot bt-pending">?</div>';
+        const team = teamMap ? teamMap.get(animal.id) : null;
+        const won = match.winner === animal;
+        const lost = match.winner && match.winner !== animal;
+        let cls = 'bt-slot';
+        if (won) cls += ' bt-won';
+        if (lost) cls += ' bt-lost';
+        const dot = team ? `<span class="bt-dot bt-dot-${team}"></span>` : '';
+        const scoreKey = side === 'a' ? 'scoreA' : 'scoreB';
+        const score = match[scoreKey] != null ? `<span class="bt-score">${match[scoreKey]}</span>` : '';
+        return `<div class="${cls}">${dot}<span class="bt-name">${animal.name}</span>${score}</div>`;
+    }
+
+    let html = '<div class="bt-trophy">🏆</div>';
+
+    for (let r = totalRounds - 1; r >= 0; r--) {
+        const round = allRounds[r];
+        const roundName = ROUND_NAMES[round.length] || `第 ${r + 1} 輪`;
+
+        html += `<div class="bt-round-label">${roundName}</div>`;
+        html += '<div class="bt-round">';
         round.forEach((match, mi) => {
-            const matchEl = document.createElement('div');
-            matchEl.className = 'bracket-match';
-            if (ri === bracket.currentRound && mi === bracket.currentMatch) {
-                matchEl.classList.add('current');
-            }
-
-            const nameA = match.a?.name || '?';
-            const nameB = match.b?.name || '?';
-            const winClass = match.winner
-                ? (match.winner === match.a ? 'winner-a' : 'winner-b')
-                : '';
-
-            matchEl.innerHTML = `
-                <span class="bracket-name ${winClass === 'winner-a' ? 'won' : ''}">${nameA}</span>
-                <span class="bracket-vs">vs</span>
-                <span class="bracket-name ${winClass === 'winner-b' ? 'won' : ''}">${nameB}</span>
-            `;
-            col.appendChild(matchEl);
+            const isCurrent = r === bracket.currentRound
+                && mi === bracket.currentMatch && !match.winner;
+            html += `<div class="bt-match${isCurrent ? ' bt-current' : ''}">`;
+            html += slot(match, 'a');
+            html += slot(match, 'b');
+            html += '</div>';
         });
+        html += '</div>';
 
-        container.appendChild(col);
-    });
+        if (r > 0) {
+            html += '<div class="bt-connectors">';
+            for (let i = 0; i < round.length; i++) {
+                html += '<div class="bt-conn"></div>';
+            }
+            html += '</div>';
+        }
+    }
+
+    container.innerHTML = html;
 }
 
-export { createBracket, advanceBracket, getCurrentMatch, getChampion, renderBracket };
+export { createBracket, advanceBracket, getCurrentMatch, getChampion, renderBracketTree };

@@ -1,8 +1,8 @@
 // game/digital/js/app.js
 import { randomAssign, generateDraftOrder, createPool } from './draft.js';
-import { createBracket, getCurrentMatch, advanceBracket, getChampion, renderBracket } from './bracket.js';
+import { createBracket, getCurrentMatch, advanceBracket, getChampion, renderBracketTree } from './bracket.js';
 import { aiPick } from './ai.js';
-import { fightMatch } from './battle.js';
+import { rollD6, scoreFromResolved } from './battle.js';
 import { animateDiceRoll, animateTrigger, animateScore, animateResult, sleep } from './animations.js';
 
 const state = {
@@ -14,6 +14,7 @@ const state = {
     teamA: [],
     teamB: [],
     bracket: null,
+    teamMap: null,
     currentMatch: 0,
 };
 
@@ -23,6 +24,7 @@ let allAnimals = [];
 
 const ATTR_NAMES = ['力量', '速度', '攻擊', '防禦', '智慧'];
 const ATTR_ICONS = ['💪', '⚡', '⚔️', '🛡️', '🧠'];
+const SHORT_ATTR = ['力', '速', '攻', '防', '智'];
 
 function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => {
@@ -91,6 +93,9 @@ function startGame() {
         state.teamA = teamA;
         state.teamB = teamB;
         state.bracket = createBracket(teamA, teamB);
+        state.teamMap = new Map();
+        teamA.forEach(a => state.teamMap.set(a.id, 'a'));
+        teamB.forEach(a => state.teamMap.set(a.id, 'b'));
         showScreen('screen-battle');
         startBattle();
     } else {
@@ -280,6 +285,9 @@ function startDraft() {
                 state.teamA = teamA;
                 state.teamB = teamB;
                 state.bracket = createBracket(teamA, teamB);
+                state.teamMap = new Map();
+                teamA.forEach(a => state.teamMap.set(a.id, 'a'));
+                teamB.forEach(a => state.teamMap.set(a.id, 'b'));
                 showScreen('screen-battle');
                 startBattle();
             });
@@ -292,25 +300,47 @@ function startDraft() {
 /* ===== 對戰畫面 ===== */
 function startBattle() {
     const container = document.getElementById('screen-battle');
+    const SVG_PLACEHOLDER = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23333%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23888%22 font-size=%2240%22>?</text></svg>";
+
+    function label(team) {
+        if (team === 'a') return state.mode === 'ai' ? '玩家' : '玩家 A';
+        return state.mode === 'ai' ? '電腦' : '玩家 B';
+    }
+
+    /** 等待按鈕點擊（回傳 Promise） */
+    function waitForClick(btnId) {
+        return new Promise(resolve => {
+            document.getElementById(btnId).addEventListener('click', resolve, { once: true });
+        });
+    }
 
     function renderBattleScreen() {
         const match = getCurrentMatch(state.bracket);
         const roundNum = state.bracket.currentRound + 1;
         const matchNum = state.bracket.currentMatch + 1;
         const totalMatches = state.bracket.rounds[state.bracket.currentRound].length;
+        const lt = state.teamMap.get(match.a.id);
+        const rt = state.teamMap.get(match.b.id);
 
         container.innerHTML = `
-            <div class="bracket-container" id="bracket-display"></div>
-            <div class="round-info">第 ${roundNum} 輪 — 第 ${matchNum}/${totalMatches} 場</div>
+            <div class="battle-top-bar">
+                <div class="round-info">第 ${roundNum} 輪 — 第 ${matchNum}/${totalMatches} 場</div>
+                <button class="bracket-toggle-btn" id="btn-bracket">🏆 對戰表</button>
+            </div>
+            <div class="bt-overlay hidden" id="bracket-overlay">
+                <button class="bt-close" id="btn-bt-close">✕</button>
+                <div class="bt-tree" id="bt-tree"></div>
+                <button class="bt-next hidden" id="btn-bt-next">下一場 →</button>
+            </div>
             <div class="battle-area">
-                <div class="battle-card card card-flip" id="card-a">
-                    <img src="${IMG_BASE}${match.a.img}" alt="${match.a.name}"
-                         onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23333%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23888%22 font-size=%2240%22>?</text></svg>'">
+                <div class="battle-card card card-flip team-${lt}-card" id="card-a">
+                    <div class="team-label team-${lt}-label">${label(lt)}</div>
+                    <img src="${IMG_BASE}${match.a.img}" alt="${match.a.name}" onerror="this.src='${SVG_PLACEHOLDER}'">
                     <div class="animal-name">${match.a.name}</div>
                     <div class="animal-en">${match.a.en}</div>
                     <div class="stats">
                         ${match.a.stats.map((v, i) => `
-                            <div class="stat">
+                            <div class="stat" id="stat-a-${i}">
                                 <span class="stat-icon">${ATTR_ICONS[i]}</span>
                                 <span class="stat-label">${ATTR_NAMES[i]}</span>
                                 <span class="stat-value">${v}</span>
@@ -318,38 +348,45 @@ function startBattle() {
                         `).join('')}
                     </div>
                     <div class="skill-name">${match.a.skillName}</div>
+                    <div class="skill-bonus">${match.a.skillBonus.map(b => SHORT_ATTR[b.attr] + '+' + b.val).join('  ')}</div>
                 </div>
 
                 <div class="battle-center">
                     <div class="dice-area">
-                        <div class="dice-group">
-                            <div class="dice" id="dice-a1">?</div>
-                            <div class="dice" id="dice-a2">?</div>
+                        <div class="dice-side">
+                            <div class="dice-group">
+                                <div class="dice dice-${lt}" id="dice-a1">?</div>
+                                <div class="dice dice-${lt}" id="dice-a2">?</div>
+                            </div>
+                            <div class="trigger-counter" id="trigger-a"></div>
                         </div>
                         <div class="vs-text">VS</div>
-                        <div class="dice-group">
-                            <div class="dice" id="dice-b1">?</div>
-                            <div class="dice" id="dice-b2">?</div>
+                        <div class="dice-side">
+                            <div class="dice-group">
+                                <div class="dice dice-${rt}" id="dice-b1">?</div>
+                                <div class="dice dice-${rt}" id="dice-b2">?</div>
+                            </div>
+                            <div class="trigger-counter" id="trigger-b"></div>
                         </div>
                     </div>
+                    <div class="breakdown-area" id="breakdown-area"></div>
                     <div class="score-display">
-                        <span class="score" id="score-a">-</span>
+                        <span class="score score-${lt}-text" id="score-a">-</span>
                         <span class="score-vs">:</span>
-                        <span class="score" id="score-b">-</span>
+                        <span class="score score-${rt}-text" id="score-b">-</span>
                     </div>
                     <div class="result-text" id="result-text"></div>
                     <button class="roll-btn" id="btn-roll">擲骰！</button>
-                    <button class="next-btn hidden" id="btn-next">下一場</button>
                 </div>
 
-                <div class="battle-card card card-flip" id="card-b">
-                    <img src="${IMG_BASE}${match.b.img}" alt="${match.b.name}"
-                         onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%23333%22 width=%22200%22 height=%22200%22/><text x=%22100%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23888%22 font-size=%2240%22>?</text></svg>'">
+                <div class="battle-card card card-flip team-${rt}-card" id="card-b">
+                    <div class="team-label team-${rt}-label">${label(rt)}</div>
+                    <img src="${IMG_BASE}${match.b.img}" alt="${match.b.name}" onerror="this.src='${SVG_PLACEHOLDER}'">
                     <div class="animal-name">${match.b.name}</div>
                     <div class="animal-en">${match.b.en}</div>
                     <div class="stats">
                         ${match.b.stats.map((v, i) => `
-                            <div class="stat">
+                            <div class="stat" id="stat-b-${i}">
                                 <span class="stat-icon">${ATTR_ICONS[i]}</span>
                                 <span class="stat-label">${ATTR_NAMES[i]}</span>
                                 <span class="stat-value">${v}</span>
@@ -357,146 +394,229 @@ function startBattle() {
                         `).join('')}
                     </div>
                     <div class="skill-name">${match.b.skillName}</div>
+                    <div class="skill-bonus">${match.b.skillBonus.map(b => SHORT_ATTR[b.attr] + '+' + b.val).join('  ')}</div>
                 </div>
             </div>
         `;
 
-        // 渲染淘汰賽樹
-        renderBracket(state.bracket, document.getElementById('bracket-display'));
-
-        // 綁定擲骰按鈕
-        document.getElementById('btn-roll').addEventListener('click', async () => {
-            const rollBtn = document.getElementById('btn-roll');
-            rollBtn.disabled = true;
-            rollBtn.classList.add('hidden');
-
-            await playBattleAnimation(match);
+        document.getElementById('btn-bracket').addEventListener('click', () => {
+            const overlay = document.getElementById('bracket-overlay');
+            overlay.classList.remove('hidden');
+            renderBracketTree(state.bracket, state.teamMap, document.getElementById('bt-tree'));
+            document.getElementById('btn-bt-next').classList.add('hidden');
         });
+        document.getElementById('btn-bt-close').addEventListener('click', () => {
+            document.getElementById('bracket-overlay').classList.add('hidden');
+        });
+
+        playFullBattle(match);
     }
 
-    async function playBattleAnimation(match) {
-        // 預先計算對戰結果
-        const result = fightMatch(match.a, match.b);
+    /** 完整對戰流程（含加賽迴圈） */
+    async function playFullBattle(match) {
+        const lt = state.teamMap.get(match.a.id);
+        const rt = state.teamMap.get(match.b.id);
+        const leftHuman = state.mode === 'player' || lt === 'a';
+        const rightHuman = state.mode === 'player' || rt === 'a';
 
-        // 播放每一回合（含加賽）
-        for (let i = 0; i < result.rounds.length; i++) {
-            const round = result.rounds[i];
+        let overtime = false;
 
-            if (i > 0) {
-                // 加賽提示
+        while (true) {
+            const rollBtn = document.getElementById('btn-roll');
+            const diceEls = {
+                a1: document.getElementById('dice-a1'),
+                a2: document.getElementById('dice-a2'),
+                b1: document.getElementById('dice-b1'),
+                b2: document.getElementById('dice-b2'),
+            };
+            const dice = { a1: 0, a2: 0, b1: 0, b2: 0 };
+            const triggers = { a1: 0, a2: 0, b1: 0, b2: 0 };
+
+            /** 擲一側骰子 + 處理所有 6 */
+            async function rollSide(side, interactive) {
+                const keys = side === 'a' ? ['a1', 'a2'] : ['b1', 'b2'];
+                const triggerId = `trigger-${side}`;
+                for (const k of keys) dice[k] = rollD6();
+                await Promise.all(keys.map((k, i) =>
+                    animateDiceRoll(diceEls[k], dice[k], 600 + i * 100)));
+
+                while (keys.some(k => dice[k] === 6)) {
+                    const sixKeys = keys.filter(k => dice[k] === 6);
+                    for (const k of sixKeys) triggers[k]++;
+                    for (const k of sixKeys) await animateTrigger(diceEls[k]);
+
+                    const trig = keys.reduce((sum, k) => sum + triggers[k], 0);
+                    document.getElementById(triggerId).textContent =
+                        trig > 0 ? `天賦 x${trig}` : '';
+
+                    if (interactive) {
+                        rollBtn.textContent = '重骰！';
+                        rollBtn.classList.remove('hidden');
+                        rollBtn.disabled = false;
+                        await waitForClick('btn-roll');
+                        rollBtn.disabled = true;
+                        rollBtn.classList.add('hidden');
+                    } else {
+                        await sleep(600);
+                    }
+
+                    for (const k of sixKeys) dice[k] = rollD6();
+                    await Promise.all(
+                        sixKeys.map(k => animateDiceRoll(diceEls[k], dice[k], 500)));
+                }
+            }
+
+            if (overtime) {
                 document.getElementById('result-text').textContent = '平手！加賽！';
-                document.getElementById('score-a').textContent = '-';
-                document.getElementById('score-b').textContent = '-';
-                document.querySelectorAll('.dice').forEach(d => {
-                    d.textContent = '?';
-                    d.classList.remove('show-attr');
-                });
-                await sleep(1200);
+                await sleep(1000);
+                resetRoundDisplay();
                 document.getElementById('result-text').textContent = '';
             }
 
-            const detA = round.resultA.details;
-            const detB = round.resultB.details;
+            // === 左側擲骰 ===
+            rollBtn.textContent = `${label(lt)} 擲骰！`;
+            rollBtn.classList.remove('hidden');
+            rollBtn.disabled = false;
+            await waitForClick('btn-roll');
+            rollBtn.disabled = true;
+            rollBtn.classList.add('hidden');
+            await rollSide('a', leftHuman);
 
-            // 取得骰子 DOM 元素
-            const diceA1 = document.getElementById('dice-a1');
-            const diceA2 = document.getElementById('dice-a2');
-            const diceB1 = document.getElementById('dice-b1');
-            const diceB2 = document.getElementById('dice-b2');
-
-            // 四顆骰子同時滾動（略有時差）
-            await Promise.all([
-                animateDiceRoll(diceA1, detA.d1Raw === 6 ? 6 : detA.d1Final, 600),
-                animateDiceRoll(diceA2, detA.d2Raw === 6 ? 6 : detA.d2Final, 700),
-                animateDiceRoll(diceB1, detB.d1Raw === 6 ? 6 : detB.d1Final, 650),
-                animateDiceRoll(diceB2, detB.d2Raw === 6 ? 6 : detB.d2Final, 750),
-            ]);
-
-            // 處理天賦觸發（支援連續骰 6）
-            async function playTriggers(diceEl, triggers, finalVal) {
-                for (let t = 0; t < triggers; t++) {
-                    await animateTrigger(diceEl);
-                    if (t < triggers - 1) {
-                        // 中間的重骰：顯示再次骰到 6
-                        await animateDiceRoll(diceEl, 6, 400);
-                    } else {
-                        // 最後一次：顯示最終值
-                        await animateDiceRoll(diceEl, finalVal, 500);
-                    }
-                }
-            }
-            await Promise.all([
-                detA.d1Triggers > 0 ? playTriggers(diceA1, detA.d1Triggers, detA.d1Final) : Promise.resolve(),
-                detA.d2Triggers > 0 ? playTriggers(diceA2, detA.d2Triggers, detA.d2Final) : Promise.resolve(),
-                detB.d1Triggers > 0 ? playTriggers(diceB1, detB.d1Triggers, detB.d1Final) : Promise.resolve(),
-                detB.d2Triggers > 0 ? playTriggers(diceB2, detB.d2Triggers, detB.d2Final) : Promise.resolve(),
-            ]);
-
-            await sleep(300);
-
-            // 顯示骰面對應的屬性名稱
-            function showDiceAttr(diceEl, val) {
-                diceEl.classList.add('show-attr');
-                diceEl.innerHTML = `<span style="font-size:28px;font-weight:900">${val}</span><span>${ATTR_NAMES[val - 1]}</span>`;
-            }
-            showDiceAttr(diceA1, detA.d1Final);
-            showDiceAttr(diceA2, detA.d2Final);
-            showDiceAttr(diceB1, detB.d1Final);
-            showDiceAttr(diceB2, detB.d2Final);
-
-            await sleep(500);
-
-            // 顯示分數
-            await Promise.all([
-                animateScore(document.getElementById('score-a'), round.resultA.score),
-                animateScore(document.getElementById('score-b'), round.resultB.score),
-            ]);
-
-            // 若有天賦觸發，顯示加分細節
-            if (detA.totalTriggers > 0 && detA.bonusPerTrigger > 0) {
-                document.getElementById('score-a').textContent =
-                    `${round.resultA.score} (${detA.baseScore}+${detA.totalBonus})`;
-            }
-            if (detB.totalTriggers > 0 && detB.bonusPerTrigger > 0) {
-                document.getElementById('score-b').textContent =
-                    `${round.resultB.score} (${detB.baseScore}+${detB.totalBonus})`;
+            // === 右側擲骰 ===
+            if (rightHuman) {
+                rollBtn.textContent = `${label(rt)} 擲骰！`;
+                rollBtn.classList.remove('hidden');
+                rollBtn.disabled = false;
+                await waitForClick('btn-roll');
+                rollBtn.disabled = true;
+                rollBtn.classList.add('hidden');
+                await rollSide('b', true);
+            } else {
+                await sleep(500);
+                await rollSide('b', false);
             }
 
+            // === 分數拆解 ===
+            const totalTriggersA = triggers.a1 + triggers.a2;
+            const totalTriggersB = triggers.b1 + triggers.b2;
+            const resA = scoreFromResolved(match.a, dice.a1, dice.a2, totalTriggersA);
+            const resB = scoreFromResolved(match.b, dice.b1, dice.b2, totalTriggersB);
+
+            await showScoreBreakdown('a', match.a, dice.a1, dice.a2, resA, totalTriggersA, diceEls);
+            await sleep(400);
+            await showScoreBreakdown('b', match.b, dice.b1, dice.b2, resB, totalTriggersB, diceEls);
             await sleep(600);
-        }
 
-        // 最終結果
-        const winner = result.winner === 'a' ? match.a : match.b;
-        const winnerName = winner.name;
-        const resultText = document.getElementById('result-text');
-        resultText.textContent = `${winnerName} 勝利！`;
-        resultText.style.color = 'gold';
+            if (resA.score === resB.score) {
+                overtime = true;
+                continue;
+            }
 
-        const cardA = document.getElementById('card-a');
-        const cardB = document.getElementById('card-b');
-        if (result.winner === 'a') {
-            await animateResult(cardA, cardB);
-        } else {
-            await animateResult(cardB, cardA);
-        }
+            // 勝負宣告
+            const winner = resA.score > resB.score ? match.a : match.b;
+            const winSide = resA.score > resB.score ? 'a' : 'b';
 
-        await sleep(1500);
+            const resultText = document.getElementById('result-text');
+            resultText.textContent = `${winner.name} 勝利！`;
+            resultText.style.color = 'gold';
 
-        // 推進淘汰賽
-        const nextMatch = advanceBracket(state.bracket, winner);
+            const cardA = document.getElementById('card-a');
+            const cardB = document.getElementById('card-b');
+            await animateResult(winSide === 'a' ? cardA : cardB, winSide === 'a' ? cardB : cardA);
+            await sleep(1500);
 
-        if (nextMatch === null) {
-            // 冠軍產生
-            showScreen('screen-champion');
-            showChampion(winner);
-        } else {
-            // 顯示「下一場」按鈕
-            const nextBtn = document.getElementById('btn-next');
-            nextBtn.classList.remove('hidden');
-            nextBtn.addEventListener('click', () => {
+            // 記錄分數到 match，供 bracket 顯示
+            const curMatch = getCurrentMatch(state.bracket);
+            curMatch.scoreA = resA.score;
+            curMatch.scoreB = resB.score;
+
+            // 推進淘汰賽 + 顯示對戰表 overlay
+            const nextMatch = advanceBracket(state.bracket, winner);
+            const overlay = document.getElementById('bracket-overlay');
+            overlay.classList.remove('hidden');
+            renderBracketTree(state.bracket, state.teamMap, document.getElementById('bt-tree'));
+
+            const btNextBtn = document.getElementById('btn-bt-next');
+            btNextBtn.textContent = nextMatch === null ? '👑 查看冠軍' : '下一場 →';
+            btNextBtn.classList.remove('hidden');
+            await waitForClick('btn-bt-next');
+
+            if (nextMatch === null) {
+                showScreen('screen-champion');
+                showChampion(winner);
+            } else {
                 renderBattleScreen();
-            });
+            }
+            return;
         }
+    }
+
+    /** 顯示單方分數拆解 */
+    async function showScoreBreakdown(side, animal, d1, d2, res, totalTriggers, diceEls) {
+        const dk1 = side + '1';
+        const dk2 = side + '2';
+
+        // 骰子顯示屬性名稱
+        function showDiceAttr(el, val) {
+            el.classList.add('show-attr');
+            el.innerHTML = `<span style="font-size:28px;font-weight:900">${val}</span><span>${ATTR_NAMES[val - 1]}</span>`;
+        }
+        showDiceAttr(diceEls[dk1], d1);
+        showDiceAttr(diceEls[dk2], d2);
+
+        // 高亮對應的屬性列
+        const statEl1 = document.getElementById(`stat-${side}-${res.attr1}`);
+        const statEl2 = document.getElementById(`stat-${side}-${res.attr2}`);
+        if (statEl1) statEl1.classList.add('stat-highlight');
+        if (statEl2) statEl2.classList.add('stat-highlight');
+
+        await sleep(600);
+
+        // 計算各屬性的天賦加成
+        let bonus1 = 0, bonus2 = 0;
+        if (totalTriggers > 0) {
+            for (const b of animal.skillBonus) {
+                if (b.attr === res.attr1) bonus1 += b.val;
+                if (b.attr === res.attr2 && !res.doubled) bonus2 += b.val;
+            }
+        }
+
+        function attrPart(name, val, bonusVal) {
+            if (bonusVal > 0 && totalTriggers > 0)
+                return `${name} ${val} <span class="breakdown-bonus">+(${bonusVal}\u00d7${totalTriggers})</span>`;
+            return `${name} ${val}`;
+        }
+
+        const part1 = attrPart(ATTR_NAMES[res.attr1], res.val1, bonus1);
+        const part2 = attrPart(ATTR_NAMES[res.attr2], res.val2, bonus2);
+
+        const team = state.teamMap.get(animal.id);
+        const breakdownArea = document.getElementById('breakdown-area');
+        const lbl = label(team);
+        const colorClass = `breakdown-${team}`;
+        const line = document.createElement('div');
+        line.className = `breakdown-line ${colorClass}`;
+        line.innerHTML = `<span class="breakdown-label">${lbl}</span> ${part1} + ${part2} = ${res.score}`;
+        breakdownArea.appendChild(line);
+        await sleep(800);
+
+        // 顯示該方總分
+        await animateScore(document.getElementById(`score-${side}`), res.score);
+    }
+
+    /** 重置回合顯示（加賽用） */
+    function resetRoundDisplay() {
+        document.querySelectorAll('.dice').forEach(d => {
+            d.textContent = '?';
+            d.classList.remove('show-attr', 'trigger');
+            d.innerHTML = '?';
+        });
+        document.getElementById('score-a').textContent = '-';
+        document.getElementById('score-b').textContent = '-';
+        document.getElementById('trigger-a').textContent = '';
+        document.getElementById('trigger-b').textContent = '';
+        document.getElementById('breakdown-area').innerHTML = '';
+        document.querySelectorAll('.stat-highlight').forEach(el => el.classList.remove('stat-highlight'));
     }
 
     renderBattleScreen();
@@ -542,6 +662,7 @@ function showChampion(champion) {
         state.teamA = [];
         state.teamB = [];
         state.bracket = null;
+        state.teamMap = null;
         state.currentMatch = 0;
         showScreen('screen-setup');
     });
@@ -555,6 +676,7 @@ function showChampion(champion) {
         state.teamA = [];
         state.teamB = [];
         state.bracket = null;
+        state.teamMap = null;
         state.currentMatch = 0;
         // Reset menu UI state
         document.querySelector('.menu-buttons').classList.remove('hidden');

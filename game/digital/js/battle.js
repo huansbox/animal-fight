@@ -110,4 +110,42 @@ function fightMatch(animalA, animalB) {
     }
 }
 
-export { rollD6, resolveDie, calculateScore, fightMatch };
+/**
+ * 從已解析的骰面計算分數（供互動模式使用）
+ * @param {Object} animal - 動物資料
+ * @param {number} d1Final - 第一顆骰子最終值 (1-5)
+ * @param {number} d2Final - 第二顆骰子最終值 (1-5)
+ * @param {number} totalTriggers - 總天賦觸發次數
+ * @returns {{ score, baseScore, bonusPerTrigger, totalBonus, attr1, attr2, doubled }}
+ */
+function scoreFromResolved(animal, d1Final, d2Final, totalTriggers) {
+    const attr1 = d1Final - 1;
+    const attr2 = d2Final - 1;
+    const doubled = d1Final === d2Final;
+    const baseScore = doubled
+        ? animal.stats[attr1] * 2
+        : animal.stats[attr1] + animal.stats[attr2];
+
+    let bonusPerTrigger = 0;
+    if (totalTriggers > 0) {
+        const hitAttrs = [attr1, attr2];
+        for (const b of animal.skillBonus) {
+            if (hitAttrs.includes(b.attr)) bonusPerTrigger += b.val;
+        }
+    }
+    const totalBonus = totalTriggers * bonusPerTrigger;
+
+    return {
+        score: baseScore + totalBonus,
+        baseScore,
+        bonusPerTrigger,
+        totalBonus,
+        attr1,
+        attr2,
+        val1: animal.stats[attr1],
+        val2: animal.stats[attr2],
+        doubled,
+    };
+}
+
+export { rollD6, resolveDie, calculateScore, fightMatch, scoreFromResolved };
