@@ -3,7 +3,7 @@
     "id": "hedgehog",
     "name": "刺蝟",
     "en": "Hedgehog",
-    "img": "hedgehog.png",
+    "img": "images/hedgehog.png",
     "stats": [
       1,
       3,
@@ -32,7 +32,7 @@
     "id": "koala",
     "name": "無尾熊",
     "en": "Koala",
-    "img": "koala.png",
+    "img": "images/koala.png",
     "stats": [
       3,
       2,
@@ -61,7 +61,7 @@
     "id": "chameleon",
     "name": "變色龍",
     "en": "Chameleon",
-    "img": "chameleon.png",
+    "img": "images/chameleon.png",
     "stats": [
       1,
       2,
@@ -86,7 +86,7 @@
     "id": "chimpanzee",
     "name": "黑猩猩",
     "en": "Chimpanzee",
-    "img": "chimpanzee.png",
+    "img": "images/chimpanzee.png",
     "stats": [
       5,
       5,
@@ -115,7 +115,7 @@
     "id": "sea_turtle",
     "name": "海龜",
     "en": "Sea Turtle",
-    "img": "sea_turtle.png",
+    "img": "images/sea_turtle.png",
     "stats": [
       4,
       2,
@@ -148,7 +148,7 @@
     "id": "hummingbird",
     "name": "蜂鳥",
     "en": "Hummingbird",
-    "img": "hummingbird.png",
+    "img": "images/hummingbird.png",
     "stats": [
       1,
       8,
@@ -173,7 +173,7 @@
     "id": "flying_fox",
     "name": "狐蝠",
     "en": "Flying Fox",
-    "img": "flying_fox.png",
+    "img": "images/flying_fox.png",
     "stats": [
       3,
       7,
@@ -202,7 +202,7 @@
     "id": "humpback_whale",
     "name": "座頭鯨",
     "en": "Humpback Whale",
-    "img": "humpback_whale.png",
+    "img": "images/humpback_whale.png",
     "stats": [
       8,
       4,
@@ -231,7 +231,7 @@
     "id": "piranha",
     "name": "食人魚",
     "en": "Piranha",
-    "img": "piranha.png",
+    "img": "images/piranha.png",
     "stats": [
       2,
       6,
@@ -256,7 +256,7 @@
     "id": "jellyfish",
     "name": "水母",
     "en": "Jellyfish",
-    "img": "jellyfish.png",
+    "img": "images/jellyfish.png",
     "stats": [
       1,
       1,
@@ -289,7 +289,7 @@
     "id": "scarlet_macaw",
     "name": "金剛鸚鵡",
     "en": "Scarlet Macaw",
-    "img": "scarlet_macaw.png",
+    "img": "images/scarlet_macaw.png",
     "stats": [
       2,
       3,
@@ -314,7 +314,7 @@
     "id": "anaconda",
     "name": "森蚺",
     "en": "Anaconda",
-    "img": "anaconda.png",
+    "img": "images/anaconda.png",
     "stats": [
       9,
       3,
@@ -343,7 +343,7 @@
     "id": "woolly_mammoth",
     "name": "長毛象",
     "en": "Woolly Mammoth",
-    "img": "woolly_mammoth.png",
+    "img": "images/woolly_mammoth.png",
     "stats": [
       9,
       3,
@@ -372,7 +372,7 @@
     "id": "spectacled_bear",
     "name": "眼鏡熊",
     "en": "Spectacled Bear",
-    "img": "spectacled_bear.png",
+    "img": "images/spectacled_bear.png",
     "stats": [
       6,
       4,
@@ -401,7 +401,7 @@
     "id": "harpy_eagle",
     "name": "角鵰",
     "en": "Harpy Eagle",
-    "img": "harpy_eagle.png",
+    "img": "images/harpy_eagle.png",
     "stats": [
       6,
       6,
@@ -426,7 +426,7 @@
     "id": "firefly",
     "name": "螢火蟲",
     "en": "Firefly",
-    "img": "firefly.png",
+    "img": "images/firefly.png",
     "stats": [
       1,
       3,
@@ -451,7 +451,7 @@
     "id": "swordfish",
     "name": "大西洋劍魚",
     "en": "Atlantic Swordfish",
-    "img": "swordfish.png",
+    "img": "images/swordfish.png",
     "stats": [
       5,
       9,
@@ -476,7 +476,7 @@
     "id": "bobcat",
     "name": "短尾貓",
     "en": "Bobcat",
-    "img": "bobcat.png",
+    "img": "images/bobcat.png",
     "stats": [
       3,
       6,
@@ -505,7 +505,7 @@
     "id": "raven",
     "name": "渡鴉",
     "en": "Raven",
-    "img": "raven.png",
+    "img": "images/raven.png",
     "stats": [
       3,
       3,
@@ -530,7 +530,7 @@
     "id": "arctic_hare",
     "name": "北極兔",
     "en": "Arctic Hare",
-    "img": "arctic_hare.png",
+    "img": "images/arctic_hare.png",
     "stats": [
       2,
       7,
@@ -555,7 +555,7 @@
     "id": "walking_stick",
     "name": "竹節蟲",
     "en": "Walking Stick Insect",
-    "img": "walking_stick.png",
+    "img": "images/walking_stick.png",
     "stats": [
       1,
       1,
@@ -588,7 +588,7 @@
     "id": "army_ant",
     "name": "行軍蟻",
     "en": "Army Ant",
-    "img": "army_ant.png",
+    "img": "images/army_ant.png",
     "stats": [
       2,
       2,
