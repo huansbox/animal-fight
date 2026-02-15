@@ -75,7 +75,7 @@ animal-fight/
 │       │   ├── bracket.js    # 淘汰賽樹邏輯 + 渲染
 │       │   ├── animations.js # 骰子滾動、天賦觸發、勝負特效
 │       │   └── utils.js      # Fisher-Yates shuffle
-│       ├── data/animals.json # 合併全部 wave 的 106 隻動物
+│       ├── data/animals.json # 合併全部 wave 的 128 隻動物
 │       └── (images/)         # 引用 ../../card/images/（不另存）
 └── sim/                      # 對戰模擬器
     ├── battle_sim_v3.py      # 原規則模擬（35 隻動物，各自擲骰）
@@ -97,8 +97,9 @@ animal-fight/
 - **技術**：Vanilla HTML/CSS/JS（無框架），ES Modules，CSS Animations
 - **架構**：單頁應用，5 畫面 CSS class 切換 + fade-in 過渡
 - **對戰引擎**：從 `sim/battle_sim_v5.py` 移植，純邏輯無 DOM
-- **動物資料**：`data/animals.json` 合併 106 隻，圖片引用 `../../card/images/`
+- **動物資料**：`data/animals.json` 合併 128 隻，圖片引用 `../../card/images/`
 - **AI 難度**：僅影響選角策略（骰子完全隨機）
+- **對戰 UX**：隊伍色彩識別（藍/紅）、分開擲骰、互動重骰、分數公式拆解、全螢幕 bracket overlay（含比分）、跨輪次隊伍記憶（teamMap）
 - **離線運行**：需本地 HTTP server（ES Modules 不支援 `file://`），詳見 README
 - **目標裝置**：MacBook Pro 14 吋，搭飛機/火車讓小孩玩
 
@@ -439,6 +440,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
   - [x] 淘汰賽樹（4/8/16/32 強，即時更新）
   - [x] 動畫系統（骰子滾動、天賦觸發閃光、勝負特效）
   - [x] 五個畫面（主選單 → 賽制設定 → 選角 → 對戰 → 冠軍）
+  - [x] 對戰 UX 優化（隊伍識別、分開擲骰、分數拆解、bracket overlay、隊伍記憶）
   - [ ] 實際遊玩測試
 - [x] 第九波 22 隻新動物設計（屬性 + 技能）
 - [x] 第九波繪圖 prompt
