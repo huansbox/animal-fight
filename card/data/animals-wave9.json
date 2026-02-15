@@ -3,220 +3,610 @@
     "id": "hedgehog",
     "name": "刺蝟",
     "en": "Hedgehog",
-    "img": "images/hedgehog.png",
-    "stats": [1, 3, 4, 7, 1],
+    "img": "hedgehog.png",
+    "stats": [
+      1,
+      3,
+      4,
+      7,
+      1
+    ],
     "skillName": "尖刺縮球",
     "skillDesc": "一感到危險就縮成刺球，全身尖刺讓誰都碰不了！",
-    "skillBonus": [{"attr": 3, "val": 2}, {"attr": 2, "val": 1}, {"attr": 0, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 3,
+        "val": 2
+      },
+      {
+        "attr": 2,
+        "val": 1
+      },
+      {
+        "attr": 0,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "koala",
     "name": "無尾熊",
     "en": "Koala",
-    "img": "images/koala.png",
-    "stats": [3, 2, 1, 3, 3],
+    "img": "koala.png",
+    "stats": [
+      3,
+      2,
+      1,
+      3,
+      3
+    ],
     "skillName": "鐵爪掛樹",
     "skillDesc": "用超強抓力牢牢掛在樹上，連睡覺都不會掉下來，誰也拉不走！",
-    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 1, "val": 1}, {"attr": 4, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 0,
+        "val": 2
+      },
+      {
+        "attr": 1,
+        "val": 1
+      },
+      {
+        "attr": 4,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "chameleon",
     "name": "變色龍",
     "en": "Chameleon",
-    "img": "images/chameleon.png",
-    "stats": [1, 2, 6, 2, 6],
+    "img": "chameleon.png",
+    "stats": [
+      1,
+      2,
+      6,
+      2,
+      6
+    ],
     "skillName": "瞬舌獵擊",
     "skillDesc": "眼睛能各看不同方向，發現獵物後舌頭像閃電一樣快速黏住！",
-    "skillBonus": [{"attr": 2, "val": 3}, {"attr": 1, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 2,
+        "val": 3
+      },
+      {
+        "attr": 1,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "chimpanzee",
     "name": "黑猩猩",
     "en": "Chimpanzee",
-    "img": "images/chimpanzee.png",
-    "stats": [5, 5, 6, 3, 8],
+    "img": "chimpanzee.png",
+    "stats": [
+      5,
+      5,
+      6,
+      3,
+      8
+    ],
     "skillName": "猿怒狂擊",
     "skillDesc": "用石頭和木棍當武器猛敲，是靠腦袋打仗的天才格鬥家！",
-    "skillBonus": [{"attr": 4, "val": 2}, {"attr": 2, "val": 1}, {"attr": 0, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 4,
+        "val": 2
+      },
+      {
+        "attr": 2,
+        "val": 1
+      },
+      {
+        "attr": 0,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "sea_turtle",
     "name": "海龜",
     "en": "Sea Turtle",
-    "img": "images/sea_turtle.png",
-    "stats": [4, 2, 2, 7, 2],
+    "img": "sea_turtle.png",
+    "stats": [
+      4,
+      2,
+      2,
+      7,
+      2
+    ],
     "skillName": "鐵殼護航",
     "skillDesc": "堅硬的殼像盾牌一樣擋住一切攻擊，在海裡游得又遠又穩！",
-    "skillBonus": [{"attr": 1, "val": 1}, {"attr": 2, "val": 1}, {"attr": 3, "val": 1}, {"attr": 4, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 1,
+        "val": 1
+      },
+      {
+        "attr": 2,
+        "val": 1
+      },
+      {
+        "attr": 3,
+        "val": 1
+      },
+      {
+        "attr": 4,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "hummingbird",
     "name": "蜂鳥",
     "en": "Hummingbird",
-    "img": "images/hummingbird.png",
-    "stats": [1, 8, 1, 1, 3],
+    "img": "hummingbird.png",
+    "stats": [
+      1,
+      8,
+      1,
+      1,
+      3
+    ],
     "skillName": "懸停疾閃",
     "skillDesc": "翅膀快到看不見，懸停在空中像直升機，閃躲超靈活！",
-    "skillBonus": [{"attr": 1, "val": 3}, {"attr": 4, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 1,
+        "val": 3
+      },
+      {
+        "attr": 4,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "flying_fox",
     "name": "狐蝠",
     "en": "Flying Fox",
-    "img": "images/flying_fox.png",
-    "stats": [3, 7, 1, 2, 4],
+    "img": "flying_fox.png",
+    "stats": [
+      3,
+      7,
+      1,
+      2,
+      4
+    ],
     "skillName": "夜空巡航",
     "skillDesc": "張開超過一公尺的翅膀，在黑夜裡飛好遠去找水果吃！",
-    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 0, "val": 1}, {"attr": 4, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 1,
+        "val": 2
+      },
+      {
+        "attr": 0,
+        "val": 1
+      },
+      {
+        "attr": 4,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "humpback_whale",
     "name": "座頭鯨",
     "en": "Humpback Whale",
-    "img": "images/humpback_whale.png",
-    "stats": [8, 4, 3, 7, 6],
+    "img": "humpback_whale.png",
+    "stats": [
+      8,
+      4,
+      3,
+      7,
+      6
+    ],
     "skillName": "泡網圍獵",
     "skillDesc": "在水裡吹出一圈圈泡泡牆，把魚群困住再一口吞掉！",
-    "skillBonus": [{"attr": 3, "val": 2}, {"attr": 0, "val": 1}, {"attr": 4, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 3,
+        "val": 2
+      },
+      {
+        "attr": 0,
+        "val": 1
+      },
+      {
+        "attr": 4,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "piranha",
     "name": "食人魚",
     "en": "Piranha",
-    "img": "images/piranha.png",
-    "stats": [2, 6, 7, 1, 4],
+    "img": "piranha.png",
+    "stats": [
+      2,
+      6,
+      7,
+      1,
+      4
+    ],
     "skillName": "群齒撕裂",
     "skillDesc": "一大群一起衝上來，幾百顆尖牙同時咬，幾秒就把獵物吃光光！",
-    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 1, "val": 2}]
+    "skillBonus": [
+      {
+        "attr": 0,
+        "val": 2
+      },
+      {
+        "attr": 1,
+        "val": 2
+      }
+    ]
   },
   {
     "id": "jellyfish",
     "name": "水母",
     "en": "Jellyfish",
-    "img": "images/jellyfish.png",
-    "stats": [1, 1, 6, 3, 2],
+    "img": "jellyfish.png",
+    "stats": [
+      1,
+      1,
+      6,
+      3,
+      2
+    ],
     "skillName": "毒絲纏螫",
     "skillDesc": "長長的觸手飄在水裡，碰到的東西都會被螫得超痛！",
-    "skillBonus": [{"attr": 0, "val": 1}, {"attr": 1, "val": 1}, {"attr": 2, "val": 1}, {"attr": 3, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 0,
+        "val": 1
+      },
+      {
+        "attr": 1,
+        "val": 1
+      },
+      {
+        "attr": 2,
+        "val": 1
+      },
+      {
+        "attr": 3,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "scarlet_macaw",
     "name": "金剛鸚鵡",
     "en": "Scarlet Macaw",
-    "img": "images/scarlet_macaw.png",
-    "stats": [2, 3, 5, 4, 6],
+    "img": "scarlet_macaw.png",
+    "stats": [
+      2,
+      3,
+      5,
+      4,
+      6
+    ],
     "skillName": "彩翼破殼",
     "skillDesc": "聰明到能學人說話，超硬大嘴巴連最硬的堅果殼都咬得開！",
-    "skillBonus": [{"attr": 4, "val": 3}, {"attr": 2, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 4,
+        "val": 3
+      },
+      {
+        "attr": 2,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "anaconda",
     "name": "森蚺",
     "en": "Anaconda",
-    "img": "images/anaconda.png",
-    "stats": [9, 3, 6, 5, 3],
+    "img": "anaconda.png",
+    "stats": [
+      9,
+      3,
+      6,
+      5,
+      3
+    ],
     "skillName": "深水絞縛",
     "skillDesc": "在水裡突然纏上獵物，越纏越緊連鱷魚都掙不開！",
-    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 2, "val": 1}, {"attr": 3, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 0,
+        "val": 2
+      },
+      {
+        "attr": 2,
+        "val": 1
+      },
+      {
+        "attr": 3,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "woolly_mammoth",
     "name": "長毛象",
     "en": "Woolly Mammoth",
-    "img": "images/woolly_mammoth.png",
-    "stats": [9, 3, 4, 8, 6],
+    "img": "woolly_mammoth.png",
+    "stats": [
+      9,
+      3,
+      4,
+      8,
+      6
+    ],
     "skillName": "冰原衝鋒",
     "skillDesc": "甩動巨大長牙像鏟子一樣掃過去，在冰天雪地裡所向無敵！",
-    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 2, "val": 1}, {"attr": 4, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 0,
+        "val": 2
+      },
+      {
+        "attr": 2,
+        "val": 1
+      },
+      {
+        "attr": 4,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "spectacled_bear",
     "name": "眼鏡熊",
     "en": "Spectacled Bear",
-    "img": "images/spectacled_bear.png",
-    "stats": [6, 4, 5, 5, 6],
+    "img": "spectacled_bear.png",
+    "stats": [
+      6,
+      4,
+      5,
+      5,
+      6
+    ],
     "skillName": "攀樹猛擊",
     "skillDesc": "輕鬆爬上高高的大樹，從樹上猛力揮掌打下來！",
-    "skillBonus": [{"attr": 0, "val": 2}, {"attr": 1, "val": 1}, {"attr": 3, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 0,
+        "val": 2
+      },
+      {
+        "attr": 1,
+        "val": 1
+      },
+      {
+        "attr": 3,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "harpy_eagle",
     "name": "角鵰",
     "en": "Harpy Eagle",
-    "img": "images/harpy_eagle.png",
-    "stats": [6, 6, 7, 2, 3],
+    "img": "harpy_eagle.png",
+    "stats": [
+      6,
+      6,
+      7,
+      2,
+      3
+    ],
     "skillName": "巨爪穿擊",
     "skillDesc": "用跟灰熊一樣大的超強爪子，從樹林間飛撲猛抓獵物！",
-    "skillBonus": [{"attr": 0, "val": 3}, {"attr": 1, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 0,
+        "val": 3
+      },
+      {
+        "attr": 1,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "firefly",
     "name": "螢火蟲",
     "en": "Firefly",
-    "img": "images/firefly.png",
-    "stats": [1, 3, 1, 1, 4],
+    "img": "firefly.png",
+    "stats": [
+      1,
+      3,
+      1,
+      1,
+      4
+    ],
     "skillName": "閃光誘惑",
     "skillDesc": "屁股發出神祕的光，模仿別種螢火蟲的燈號把它們騙過來！",
-    "skillBonus": [{"attr": 4, "val": 3}, {"attr": 3, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 4,
+        "val": 3
+      },
+      {
+        "attr": 3,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "swordfish",
     "name": "大西洋劍魚",
     "en": "Atlantic Swordfish",
-    "img": "images/swordfish.png",
-    "stats": [5, 9, 7, 2, 2],
+    "img": "swordfish.png",
+    "stats": [
+      5,
+      9,
+      7,
+      2,
+      2
+    ],
     "skillName": "劍吻斬擊",
     "skillDesc": "用又長又尖的嘴巴像劍一樣左右猛砍，在魚群裡瘋狂掃射！",
-    "skillBonus": [{"attr": 1, "val": 3}, {"attr": 2, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 1,
+        "val": 3
+      },
+      {
+        "attr": 2,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "bobcat",
     "name": "短尾貓",
     "en": "Bobcat",
-    "img": "images/bobcat.png",
-    "stats": [3, 6, 4, 5, 4],
+    "img": "bobcat.png",
+    "stats": [
+      3,
+      6,
+      4,
+      5,
+      4
+    ],
     "skillName": "短尾夜襲",
     "skillDesc": "用短尾巴保持平衡，跑得又快又穩，在夜裡悄悄飛撲獵物！",
-    "skillBonus": [{"attr": 1, "val": 2}, {"attr": 0, "val": 1}, {"attr": 3, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 1,
+        "val": 2
+      },
+      {
+        "attr": 0,
+        "val": 1
+      },
+      {
+        "attr": 3,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "raven",
     "name": "渡鴉",
     "en": "Raven",
-    "img": "images/raven.png",
-    "stats": [3, 3, 1, 3, 9],
+    "img": "raven.png",
+    "stats": [
+      3,
+      3,
+      1,
+      3,
+      9
+    ],
     "skillName": "狡智巧謀",
     "skillDesc": "會用石頭當工具、模仿別種動物叫聲，什麼鬼主意都想得出來！",
-    "skillBonus": [{"attr": 4, "val": 3}, {"attr": 1, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 4,
+        "val": 3
+      },
+      {
+        "attr": 1,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "arctic_hare",
     "name": "北極兔",
     "en": "Arctic Hare",
-    "img": "images/arctic_hare.png",
-    "stats": [2, 7, 1, 3, 2],
+    "img": "arctic_hare.png",
+    "stats": [
+      2,
+      7,
+      1,
+      3,
+      2
+    ],
     "skillName": "白毛疾奔",
     "skillDesc": "一身雪白的毛融入雪地裡，一旦被發現就用超快速度跑掉！",
-    "skillBonus": [{"attr": 1, "val": 3}, {"attr": 3, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 1,
+        "val": 3
+      },
+      {
+        "attr": 3,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "walking_stick",
     "name": "竹節蟲",
     "en": "Walking Stick Insect",
-    "img": "images/walking_stick.png",
-    "stats": [1, 1, 1, 5, 3],
+    "img": "walking_stick.png",
+    "stats": [
+      1,
+      1,
+      1,
+      5,
+      3
+    ],
     "skillName": "擬態隱身",
     "skillDesc": "整個身體長得跟樹枝一模一樣，一動不動連鳥都找不到！",
-    "skillBonus": [{"attr": 0, "val": 1}, {"attr": 1, "val": 1}, {"attr": 3, "val": 1}, {"attr": 4, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 0,
+        "val": 1
+      },
+      {
+        "attr": 1,
+        "val": 1
+      },
+      {
+        "attr": 3,
+        "val": 1
+      },
+      {
+        "attr": 4,
+        "val": 1
+      }
+    ]
   },
   {
     "id": "army_ant",
     "name": "行軍蟻",
     "en": "Army Ant",
-    "img": "images/army_ant.png",
-    "stats": [2, 2, 3, 1, 4],
+    "img": "army_ant.png",
+    "stats": [
+      2,
+      2,
+      3,
+      1,
+      4
+    ],
     "skillName": "蟻海吞噬",
     "skillDesc": "幾十萬隻小螞蟻排成大軍一起前進，什麼東西都會被淹沒！",
-    "skillBonus": [{"attr": 0, "val": 3}, {"attr": 4, "val": 1}]
+    "skillBonus": [
+      {
+        "attr": 0,
+        "val": 3
+      },
+      {
+        "attr": 4,
+        "val": 1
+      }
+    ]
   }
 ]
