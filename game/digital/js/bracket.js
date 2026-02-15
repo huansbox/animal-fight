@@ -88,32 +88,38 @@ function renderBracketTree(bracket, teamMap, container) {
         return `<div class="${cls}">${dot}<span class="bt-name">${animal.name}</span>${score}</div>`;
     }
 
-    let html = '<div class="bt-trophy">🏆</div>';
+    let html = '';
 
-    for (let r = totalRounds - 1; r >= 0; r--) {
+    for (let r = 0; r < totalRounds; r++) {
         const round = allRounds[r];
         const roundName = ROUND_NAMES[round.length] || `第 ${r + 1} 輪`;
 
-        html += `<div class="bt-round-label">${roundName}</div>`;
-        html += '<div class="bt-round">';
+        html += '<div class="bt-col">';
+        html += `<div class="bt-col-lbl">${roundName}</div>`;
+        html += '<div class="bt-col-body">';
         round.forEach((match, mi) => {
             const isCurrent = r === bracket.currentRound
                 && mi === bracket.currentMatch && !match.winner;
+            html += '<div class="bt-mw">';
             html += `<div class="bt-match${isCurrent ? ' bt-current' : ''}">`;
             html += slot(match, 'a');
             html += slot(match, 'b');
-            html += '</div>';
+            html += '</div></div>';
         });
-        html += '</div>';
+        html += '</div></div>';
 
-        if (r > 0) {
-            html += '<div class="bt-connectors">';
-            for (let i = 0; i < round.length; i++) {
-                html += '<div class="bt-conn"></div>';
+        if (r < totalRounds - 1) {
+            const pairs = round.length / 2;
+            html += '<div class="bt-conn-col">';
+            html += '<div class="bt-col-lbl">&nbsp;</div>';
+            for (let p = 0; p < pairs; p++) {
+                html += '<div class="bt-bracket-line"></div>';
             }
             html += '</div>';
         }
     }
+
+    html += '<div class="bt-trophy">🏆</div>';
 
     container.innerHTML = html;
 }

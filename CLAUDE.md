@@ -72,7 +72,7 @@ animal-fight/
 │       │   ├── battle.js     # 對戰引擎（骰子、計分、天賦觸發）
 │       │   ├── draft.js      # 選秀 + 自選 + 快速隨機
 │       │   ├── ai.js         # AI 選角策略（簡單/普通/困難）
-│       │   ├── bracket.js    # 淘汰賽樹邏輯 + 渲染
+│       │   ├── bracket.js    # 淘汰賽樹邏輯 + 橫向 bracket 渲染
 │       │   ├── animations.js # 骰子滾動、天賦觸發、勝負特效
 │       │   └── utils.js      # Fisher-Yates shuffle
 │       ├── data/animals.json # 合併全部 wave 的 128 隻動物
@@ -99,8 +99,8 @@ animal-fight/
 - **對戰引擎**：從 `sim/battle_sim_v5.py` 移植，純邏輯無 DOM
 - **動物資料**：`data/animals.json` 合併 128 隻，圖片引用 `../../card/images/`
 - **AI 難度**：僅影響選角策略（骰子完全隨機）
-- **對戰 UX**：隊伍色彩識別（藍/紅）、分開擲骰、互動重骰、分數公式拆解、全螢幕 bracket overlay（含比分）、跨輪次隊伍記憶（teamMap）
-- **離線運行**：需本地 HTTP server（ES Modules 不支援 `file://`），詳見 README
+- **對戰 UX**：隊伍色彩識別（藍/紅）、分開擲骰、互動重骰、分數公式拆解、全螢幕 bracket overlay（橫向左到右 + 連接線 + 比分）、跨輪次隊伍記憶（teamMap）
+- **離線運行**：需從專案根目錄啟動 HTTP server（圖片路徑引用 `../../card/images/`），詳見 README
 - **目標裝置**：MacBook Pro 14 吋，搭飛機/火車讓小孩玩
 
 ### 數值系統分歧
