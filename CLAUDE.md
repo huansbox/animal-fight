@@ -17,7 +17,10 @@ animal-fight/
 │   ├── v1/                   # v1 數值封存（歷史備份）
 │   └── docs/                 # 歷史設計文件
 │       ├── attribute-review.md       # 屬性審查報告
-│       └── 260115-animal-final.md    # 第三波 19 隻設計過程
+│       ├── 260115-animal-final.md    # 第三波 19 隻設計過程
+│       ├── 2026-02-10-prompt-pipeline-improvement-design.md  # Prompt 流程改善（已落實）
+│       ├── 2026-02-14-digital-battle-design.md   # 數位版設計文件（已完成）
+│       └── 2026-02-14-digital-battle-plan.md     # 數位版實作計畫（已完成）
 ├── card/                     # 卡片相關檔案
 │   ├── final_cards.html      # A4 全頁列印版（128 張動物卡，v2.5 數值）
 │   ├── batch_generate.py     # Batch API 批次生成寫實風格大頭照（4 子命令）
@@ -452,7 +455,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - [x] 第八波繪圖 prompt
 - [x] final_cards.html 整合 106 張動物卡
 - [x] 動物大對決數位版 — 離線 Web App（game/digital/）
-  - [x] 設計文件（docs/plans/2026-02-14-digital-battle-design.md）
+  - [x] 設計文件（archive/docs/2026-02-14-digital-battle-design.md）
   - [x] 對戰引擎移植（battle_sim_v5.py → battle.js）
   - [x] 選角系統（快速隨機 / Snake Draft 選秀 / 全手動自選）
   - [x] AI 選角（簡單=隨機 / 普通=前 50% / 困難=貪心最高總和）
