@@ -467,13 +467,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - [x] 寫實風格圖片測試（卡通 vs 寫實，各 10 張）
 - [x] Batch API 腳本（`card/batch_generate.py`，4 子命令）
 - [x] 卡通圖片封存至 `archive-cartoon/`
-- [ ] 128 張寫實風格圖片生成（Batch API 進行中，118 張待完成 + 10 張已完成）
-  - Batch ID: `batch_69943e3e97e08190a134f5b332804a24`（2026-02-17 提交）
-  - 狀態檔：`card/.batch_state.json`
-  - 回來後執行：`python3 card/batch_generate.py status`，確認 completed 後執行 `python3 card/batch_generate.py download`
-  - 圖片會下載至 `card/images-realistic/`
-  - 下載完成後驗證：開 `http://localhost:8080/game/digital/` 確認 128 張圖片顯示正常
-  - 工作分支：`feat/batch-generate-realistic`
+- [x] 128 張寫實風格圖片生成（Batch API 完成，128 張已下載至 `card/images-realistic/`）
 - [ ] 印刷測試
 - [ ] 實際遊玩測試（實體版）
 
