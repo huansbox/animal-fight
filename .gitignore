@@ -1,6 +1,7 @@
 .claude/
 .env
 card/images/
+card/images-realistic/
 __pycache__/
 .worktrees/
 card/batch_input.jsonl

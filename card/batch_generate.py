@@ -33,7 +33,7 @@ SCRIPT_DIR = Path(__file__).parent
 ANIMALS_JSON = SCRIPT_DIR.parent / "game" / "digital" / "data" / "animals.json"
 BATCH_INPUT = SCRIPT_DIR / "batch_input.jsonl"
 STATE_FILE = SCRIPT_DIR / ".batch_state.json"
-IMAGES_DIR = SCRIPT_DIR / "images"
+IMAGES_DIR = SCRIPT_DIR / "images-realistic"
 
 # ── 已完成的 10 張寫實圖片（不重複生成） ──
 EXISTING_REALISTIC = {

@@ -20,13 +20,16 @@ animal-fight/
 │       └── 260115-animal-final.md    # 第三波 19 隻設計過程
 ├── card/                     # 卡片相關檔案
 │   ├── final_cards.html      # A4 全頁列印版（128 張動物卡，v2.5 數值）
-│   ├── generate_from_jsonl.py      # 圖片批次生成腳本
+│   ├── batch_generate.py     # Batch API 批次生成寫實風格大頭照（4 子命令）
+│   ├── generate_from_jsonl.py      # 單張圖片生成腳本（舊版，逐張呼叫 API）
 │   ├── .env.example          # API Key 範本
 │   ├── data/                 # 結構化動物資料（per-wave JSON）
 │   │   ├── animals-wave7.json  # 第七波（Creature Cases 系列）
 │   │   ├── animals-wave8.json  # 第八波（公雞、黑豹等 8 隻）
 │   │   └── animals-wave9.json  # 第九波（22 隻新動物）
-│   ├── images/               # 動物圖片 + icon（84+6 張）
+│   ├── images/               # 列印版動物圖片（per-wave prompt 風格）
+│   │   └── archive-cartoon/  # 封存的卡通風格測試圖片（10 張）
+│   ├── images-realistic/     # 數位版動物圖片（寫實風格 128 張，Batch API 生成）
 │   └── img-prompt/           # 圖片生成 prompt
 │       ├── prompt-guidelines.md      # Prompt 撰寫指南與審核條件
 │       ├── animal-ai-prompts.md      # 第一波 10 隻動物 prompt
@@ -76,7 +79,7 @@ animal-fight/
 │       │   ├── animations.js # 骰子滾動、天賦觸發、勝負特效
 │       │   └── utils.js      # Fisher-Yates shuffle
 │       ├── data/animals.json # 合併全部 wave 的 128 隻動物
-│       └── (images/)         # 引用 ../../card/images/（不另存）
+│       └── (images/)         # 引用 ../../card/images-realistic/（不另存）
 └── sim/                      # 對戰模擬器
     ├── battle_sim_v3.py      # 原規則模擬（35 隻動物，各自擲骰）
     ├── battle_sim_v4.py      # 原規則模擬（48 隻動物，3 強循環賽）
@@ -97,16 +100,33 @@ animal-fight/
 - **技術**：Vanilla HTML/CSS/JS（無框架），ES Modules，CSS Animations
 - **架構**：單頁應用，5 畫面 CSS class 切換 + fade-in 過渡
 - **對戰引擎**：從 `sim/battle_sim_v5.py` 移植，純邏輯無 DOM
-- **動物資料**：`data/animals.json` 合併 128 隻，圖片引用 `../../card/images/`
+- **動物資料**：`data/animals.json` 合併 128 隻，圖片引用 `../../card/images-realistic/`
 - **AI 難度**：僅影響選角策略（骰子完全隨機）
 - **對戰 UX**：隊伍色彩識別（藍/紅）、分開擲骰、互動重骰、分數公式拆解、全螢幕 bracket overlay（橫向左到右 + 連接線 + 比分）、跨輪次隊伍記憶（teamMap）
-- **離線運行**：需從專案根目錄啟動 HTTP server（圖片路徑引用 `../../card/images/`），詳見 README
+- **離線運行**：需從專案根目錄啟動 HTTP server（圖片路徑引用 `../../card/images-realistic/`），詳見 README
 - **目標裝置**：MacBook Pro 14 吋，搭飛機/火車讓小孩玩
 
 ### 數值系統分歧
 - 合作闘關（rulebook.md）：v1 數值系統（天賦為單一分數 8-12，總和 34-39）
 - 動物大對決（battle-rules.md）：v2.5 數值系統（天賦為 +4 分配，總和 11-33）
 - 兩模式獨立運作，待實際遊玩測試後再決定是否統一
+
+### 圖片生成策略（寫實風格 + Batch API）
+
+- **風格**：寫實動物大頭照（realistic wildlife portrait photograph）
+- **模型**：gpt-image-1.5，quality=medium，1024x1024
+- **腳本**：`card/batch_generate.py`（4 子命令：generate / submit / status / download）
+- **Prompt 模板**：依動物類別自動套用（wildlife / macro / extinct / human）
+  - 鳥類 → `plumage and beak`
+  - 爬行類 → `scales and eyes`
+  - 魚類 → `scales and fins`
+  - 海洋哺乳類 → `smooth skin and eyes`
+  - 昆蟲/節肢 → macro 模板 + `exoskeleton and body texture`
+  - 其餘哺乳類 → `fur and eyes`
+- **共用後綴**：`facing slightly left, natural lighting, solid dark teal background, studio-quality, square format, no text, no watermark`
+- **成本**：Batch API 50% 折扣，≈ $0.02/張
+- **輸出目錄**：`card/images-realistic/`（數位版專用，與列印版 `card/images/` 分開）
+- **封存**：舊卡通風格測試圖片保留於 `card/images/archive-cartoon/`（10 張）
 
 ### 動物設計全流程 SOP（10 步）
 
@@ -126,7 +146,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 | Prompt | 7 | **3 Agent Prompt 審核** → `prompt-guidelines.md` §3 + §7-§12 + §13（12 項審核清單 + 審核分工） |
 | Prompt | 8 | **產出 .md + .jsonl** → `prompt-guidelines.md` §14（JSONL 轉換規範） |
 | 整合 | 9 | **整合 HTML + 更新文件** → `final_cards.html` 加入新動物 + `CLAUDE.md` 更新（數值表 + backlog + checklist） |
-| 人工 | 10 | **批次 API 生圖** → `card/generate_from_jsonl.py`（人工執行，圖片放入 `card/images/` 即完成） |
+| 人工 | 10 | **批次 API 生圖** → `card/batch_generate.py`（Batch API 生成寫實風格至 `card/images-realistic/`；列印版圖片另存 `card/images/`） |
 
 ### 已建立動物（第一波 16 張）
 
@@ -401,7 +421,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - [x] 動物大對決規則（battle-rules.md）
 - [x] 卡片改版：骰子6 顯示特殊加成
 - [x] 數值平衡調整：總和 23-28、屬性分布優化
-- [x] AI 圖片生成（16 張動物 + 6 張 icon，via Codex CLI + gpt-image-1.5）
+- [x] AI 圖片生成（第一波 16 張動物 + 6 張 icon，卡通風格，已封存）
 - [x] 6 張新動物天賦技能設計
 - [x] 對戰模擬器（35 隻動物，原規則 + 共用骰子規則）
 - [x] v2.1 數值調整（科學合理性優先）
@@ -430,7 +450,6 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - [x] 動物資料結構化 SOP（skillDesc 規範 + per-wave JSON 格式 + SOP 補步驟）
 - [x] 第八波 8 隻新動物設計（屬性 + 技能，公雞、黑豹 + 6 隻 Creature Cases）
 - [x] 第八波繪圖 prompt
-- [ ] 第八波 AI 圖片生成（8 張）
 - [x] final_cards.html 整合 106 張動物卡
 - [x] 動物大對決數位版 — 離線 Web App（game/digital/）
   - [x] 設計文件（docs/plans/2026-02-14-digital-battle-design.md）
@@ -444,8 +463,11 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
   - [ ] 實際遊玩測試
 - [x] 第九波 22 隻新動物設計（屬性 + 技能）
 - [x] 第九波繪圖 prompt
-- [ ] 第九波 AI 圖片生成（22 張）
 - [x] final_cards.html 整合 128 張動物卡
+- [x] 寫實風格圖片測試（卡通 vs 寫實，各 10 張）
+- [x] Batch API 腳本（`card/batch_generate.py`，4 子命令）
+- [x] 卡通圖片封存至 `archive-cartoon/`
+- [ ] 128 張寫實風格圖片生成（Batch API 進行中，118 張待完成 + 10 張已完成）
 - [ ] 印刷測試
 - [ ] 實際遊玩測試（實體版）
 
@@ -497,5 +519,5 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 ## 後續擴充（不納入 MVP）
 - 裝備卡
 - 狀態效果
-- 更多動物（後續擴充 16 隻待建）
+- 更多動物（後續擴充 39 隻待建）
 - Boss 專屬招式表

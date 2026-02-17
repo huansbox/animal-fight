@@ -18,7 +18,7 @@ const state = {
     currentMatch: 0,
 };
 
-const IMG_BASE = '../../card/images/';
+const IMG_BASE = '../../card/images-realistic/';
 
 let allAnimals = [];
 

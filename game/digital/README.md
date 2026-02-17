@@ -6,7 +6,7 @@
 ## 啟動
 
 ES Modules 需要 HTTP server，不能直接雙擊 `index.html`。
-**必須從專案根目錄啟動**（圖片路徑需要存取 `card/images/`）。
+**必須從專案根目錄啟動**（圖片路徑需要存取 `card/images-realistic/`）。
 
 ```bash
 cd animal-fight          # 專案根目錄
@@ -97,8 +97,8 @@ game/digital/
 
 ### 圖片
 
-圖片不在此目錄，引用路徑為 `../../card/images/{id}.png`。
-因此 HTTP server **必須從專案根目錄啟動**，否則瀏覽器無法存取 `card/images/`。
+圖片不在此目錄，引用路徑為 `../../card/images-realistic/{id}.png`。
+因此 HTTP server **必須從專案根目錄啟動**，否則瀏覽器無法存取 `card/images-realistic/`。
 缺圖的動物會顯示灰色 `?` placeholder（透過 `<img onerror>`）。
 
 ### 新增動物
@@ -118,7 +118,7 @@ game/digital/
    ```
    - `stats` index 0-4 = 力量/速度/攻擊/防禦/智慧
    - `skillBonus` 的 `attr` 對應 stats index，`val` 加總必須 = 4
-2. 對應圖片放入 `card/images/`
+2. 對應圖片放入 `card/images-realistic/`
 
 ### 修改對戰規則
 
