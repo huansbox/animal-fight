@@ -5,8 +5,9 @@
 
 ## 啟動
 
-ES Modules 需要 HTTP server，不能直接雙擊 `index.html`。
-**必須從專案根目錄啟動**（圖片路徑需要存取 `card/images-realistic/`）。
+**最簡單**：雙擊專案根目錄的 `start-game.command`，自動啟動 server + 開瀏覽器。
+
+手動啟動（ES Modules 需要 HTTP server，**必須從專案根目錄啟動**）：
 
 ```bash
 cd animal-fight          # 專案根目錄
@@ -127,5 +128,5 @@ game/digital/
 
 ### 設計文件
 
-- 需求與畫面設計：`docs/plans/2026-02-14-digital-battle-design.md`
-- 實作計畫（11 Task）：`docs/plans/2026-02-14-digital-battle-plan.md`
+- 需求與畫面設計：`archive/docs/2026-02-14-digital-battle-design.md`
+- 實作計畫（11 Task）：`archive/docs/2026-02-14-digital-battle-plan.md`
