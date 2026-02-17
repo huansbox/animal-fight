@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """
 動物守護者 - 從 JSONL 批次生成圖片
 
@@ -50,7 +52,7 @@ SIZE = "1024x1024"  # 1024x1024 | 1792x1024 | 1024x1792
 # 注意：quality 參數各模型支援的值不同
 # - gpt-image-1.5：low | medium | high | auto
 # - dall-e-3：standard | hd
-GPT_IMAGE_QUALITY = "auto"
+GPT_IMAGE_QUALITY = "medium"
 DALLE_QUALITY = "standard"
 OUTPUT_FORMAT = "png"  # png | jpeg | webp（gpt-image-1.5 支援）
 BACKGROUND = "auto"  # auto | transparent | opaque（依模型支援）
