@@ -4,6 +4,7 @@ import { createBracket, getCurrentMatch, advanceBracket, getChampion, renderBrac
 import { aiPick } from './ai.js';
 import { rollD6, scoreFromResolved } from './battle.js';
 import { animateDiceRoll, animateTrigger, animateScore, animateResult, sleep } from './animations.js';
+import { ZONES, getZoneIcon } from './zones.js';
 
 const state = {
     mode: null,
@@ -117,6 +118,7 @@ function startDraft() {
 
     let sortMode = 'total'; // 'total' or 'name'
     let searchText = '';
+    let activeZone = null; // null = 全部, 'ueno' = 只顯示上野
 
     function render() {
         const currentTurn = order[pickIndex];
@@ -132,12 +134,21 @@ function startDraft() {
                         : '<span class="turn-indicator done">選角完成！</span>'
                     }
                 </div>
-                ${state.draftMode === 'manual' ? `
+                ${state.draftMode !== 'random' ? `
                     <div class="draft-controls">
-                        <input type="text" id="draft-search" placeholder="搜尋動物..." class="draft-search">
+                        ${state.draftMode === 'manual' ? `
+                            <input type="text" id="draft-search" placeholder="搜尋動物..." class="draft-search">
+                        ` : ''}
                         <div class="sort-buttons">
                             <button id="sort-total" class="sort-btn ${sortMode === 'total' ? 'selected' : ''}">依總和</button>
                             <button id="sort-name" class="sort-btn ${sortMode === 'name' ? 'selected' : ''}">依名稱</button>
+                        </div>
+                        <div class="zone-filters">
+                            ${Object.entries(ZONES).map(([key, z]) => `
+                                <button class="zone-btn ${activeZone === key ? 'selected' : ''}" data-zone="${key}">
+                                    ${z.icon} ${z.name}
+                                </button>
+                            `).join('')}
                         </div>
                     </div>
                 ` : ''}
@@ -179,6 +190,11 @@ function startDraft() {
 
         let displayPool = pool.filter(a => !picked.has(a));
 
+        // Zone filter
+        if (activeZone && ZONES[activeZone]) {
+            displayPool = displayPool.filter(a => ZONES[activeZone].ids.has(a.id));
+        }
+
         // Search filter (manual mode only)
         if (searchText) {
             const q = searchText.toLowerCase();
@@ -201,8 +217,10 @@ function startDraft() {
 
         poolEl.innerHTML = displayPool.map(a => {
             const total = a.stats.reduce((s, v) => s + v, 0);
+            const badge = getZoneIcon(a.id);
             return `
                 <div class="mini-card" data-id="${a.id}">
+                    ${badge ? `<span class="zone-badge">${badge}</span>` : ''}
                     <img src="${IMG_BASE}${a.img}" alt="${a.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 70 70%22><rect fill=%22%23333%22 width=%2270%22 height=%2270%22/><text x=%2235%22 y=%2240%22 text-anchor=%22middle%22 fill=%22%23888%22 font-size=%2212%22>?</text></svg>'">
                     <span class="name">${a.name}</span>
                     <span class="total">${total}</span>
@@ -277,6 +295,19 @@ function startDraft() {
                 bindPoolClicks();
             });
         }
+
+        // Zone filter buttons
+        document.querySelectorAll('.zone-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const zone = btn.dataset.zone;
+                activeZone = activeZone === zone ? null : zone;
+                document.querySelectorAll('.zone-btn').forEach(b => {
+                    b.classList.toggle('selected', b.dataset.zone === activeZone);
+                });
+                renderPool();
+                bindPoolClicks();
+            });
+        });
 
         // Confirm button (when draft complete)
         const confirmBtn = document.getElementById('draft-confirm');

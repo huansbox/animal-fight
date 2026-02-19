@@ -3398,5 +3398,60 @@
         "val": 1
       }
     ]
+  },
+  {
+    "id": "pygmy_hippo",
+    "name": "侏儒河馬",
+    "en": "Pygmy Hippopotamus",
+    "img": "pygmy_hippo.png",
+    "stats": [5, 3, 4, 5, 4],
+    "skillName": "夜林潛行",
+    "skillDesc": "在深夜的森林裡悄悄移動，利用矮小身體鑽進草叢躲藏。",
+    "skillBonus": [
+      {"attr": 3, "val": 2},
+      {"attr": 1, "val": 1},
+      {"attr": 4, "val": 1}
+    ]
+  },
+  {
+    "id": "aye_aye",
+    "name": "指猴",
+    "en": "Aye-aye",
+    "img": "aye_aye.png",
+    "stats": [1, 3, 4, 2, 7],
+    "skillName": "叩木尋蟲",
+    "skillDesc": "用超長的手指敲敲樹幹，聽聲音就能找到藏在裡面的蟲！",
+    "skillBonus": [
+      {"attr": 4, "val": 2},
+      {"attr": 2, "val": 1},
+      {"attr": 1, "val": 1}
+    ]
+  },
+  {
+    "id": "okapi",
+    "name": "㺢㹢狓",
+    "en": "Okapi",
+    "img": "okapi.png",
+    "stats": [5, 5, 3, 4, 3],
+    "skillName": "長舌巧食",
+    "skillDesc": "伸出超長舌頭靈活地捲住高處樹葉，連耳朵都能舔到！",
+    "skillBonus": [
+      {"attr": 1, "val": 2},
+      {"attr": 3, "val": 1},
+      {"attr": 4, "val": 1}
+    ]
+  },
+  {
+    "id": "shoebill",
+    "name": "鯨頭鸛",
+    "en": "Shoebill",
+    "img": "shoebill.png",
+    "stats": [2, 2, 6, 3, 5],
+    "skillName": "靜候斬擊",
+    "skillDesc": "像雕像一樣一動不動，等獵物靠近後用巨喙猛力斬下！",
+    "skillBonus": [
+      {"attr": 2, "val": 3},
+      {"attr": 4, "val": 1}
+    ]
   }
 ]
