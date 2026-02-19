@@ -293,6 +293,45 @@ body {
     color: gold;
 }
 
+/* 特區篩選 */
+.zone-filters {
+    display: flex;
+    gap: 4px;
+    margin-left: 8px;
+}
+
+.zone-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #555;
+    border-radius: 6px;
+    background: #2a2a4a;
+    color: #aaa;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.zone-btn.selected {
+    border-color: #f0c040;
+    color: #f0c040;
+    background: #3a3a5a;
+}
+
+.zone-btn:hover {
+    border-color: #888;
+}
+
+/* 特區徽章（mini-card 右上角） */
+.zone-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 12px;
+    line-height: 1;
+    z-index: 1;
+}
+
 /* 動物池 */
 .draft-pool {
     display: flex;
@@ -307,6 +346,7 @@ body {
 
 /* 迷你卡片 */
 .mini-card {
+    position: relative;
     width: 100px;
     height: 130px;
     border: 2px solid #444;
