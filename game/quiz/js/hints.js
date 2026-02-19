@@ -1,5 +1,5 @@
 /**
- * 動物猜猜看 — 提示資料庫（55 隻）
+ * 動物猜猜看 — 提示資料庫（86 隻）
  *
  * 每隻動物有：
  *   hints: [提示1, 提示2, 提示3]  — 由廣到窄，越來越明確
@@ -9,31 +9,33 @@
 // ===== 干擾選項分組 =====
 // 同組的動物容易混淆，適合當干擾選項
 export const DISTRACTOR_GROUPS = {
-  big_cats:        ['lion', 'cheetah', 'tiger', 'jaguar', 'snow_leopard'],
-  african_large:   ['elephant', 'giraffe', 'hippopotamus', 'rhinoceros', 'gorilla', 'zebra'],
-  bears:           ['polar_bear', 'giant_panda', 'brown_bear', 'gorilla'],
-  ocean:           ['dolphin', 'orca', 'great_white_shark', 'blue_whale', 'humpback_whale', 'sea_turtle', 'jellyfish', 'walrus', 'sea_otter', 'electric_eel'],
-  birds:           ['owl', 'emperor_penguin', 'ostrich', 'peacock', 'bald_eagle', 'hummingbird', 'scarlet_macaw', 'red_crowned_crane', 'falcon'],
-  reptiles:        ['komodo', 'chameleon', 'crocodile', 'anaconda', 'sea_turtle'],
-  unique_mammals:  ['pangolin', 'platypus', 'sloth', 'badger', 'kangaroo', 'armadillo', 'hedgehog', 'porcupine', 'wombat'],
-  african:         ['lion', 'cheetah', 'elephant', 'giraffe', 'hippopotamus', 'rhinoceros', 'gorilla', 'zebra', 'hyena'],
-  swimmers:        ['dolphin', 'orca', 'great_white_shark', 'blue_whale', 'polar_bear', 'hippopotamus', 'platypus', 'emperor_penguin', 'sea_turtle', 'walrus', 'sea_otter', 'crocodile', 'humpback_whale', 'electric_eel'],
-  nocturnal:       ['owl', 'badger', 'pangolin', 'raccoon', 'arctic_fox'],
-  armored:         ['pangolin', 'rhinoceros', 'komodo', 'armadillo', 'porcupine', 'hedgehog', 'crocodile'],
-  cute:            ['giant_panda', 'dolphin', 'sloth', 'kangaroo', 'emperor_penguin', 'red_panda', 'koala', 'sea_otter', 'hedgehog', 'wombat', 'arctic_fox'],
-  large:           ['elephant', 'hippopotamus', 'rhinoceros', 'brown_bear', 'polar_bear', 'blue_whale', 'orca', 'giraffe', 'gorilla', 'moose', 'walrus', 'humpback_whale', 'crocodile', 'anaconda'],
-  fast:            ['cheetah', 'ostrich', 'dolphin', 'kangaroo', 'lion', 'falcon', 'hummingbird', 'jaguar'],
-  cold:            ['polar_bear', 'emperor_penguin', 'owl', 'arctic_fox', 'moose', 'snow_leopard', 'walrus'],
-  australian:      ['kangaroo', 'platypus', 'koala', 'wombat'],
-  primates:        ['gorilla', 'chimpanzee'],
-  canines:         ['gray_wolf', 'arctic_fox', 'hyena', 'raccoon'],
+  big_cats:        ['lion', 'cheetah', 'tiger', 'jaguar', 'snow_leopard', 'leopard', 'black_panther'],
+  african_large:   ['elephant', 'giraffe', 'hippopotamus', 'rhinoceros', 'gorilla', 'zebra', 'bison'],
+  bears:           ['polar_bear', 'giant_panda', 'brown_bear', 'wolverine'],
+  ocean:           ['dolphin', 'orca', 'great_white_shark', 'blue_whale', 'humpback_whale', 'sea_turtle', 'jellyfish', 'walrus', 'sea_otter', 'electric_eel', 'mimic_octopus', 'pufferfish', 'mantis_shrimp', 'piranha'],
+  birds:           ['owl', 'emperor_penguin', 'ostrich', 'peacock', 'bald_eagle', 'hummingbird', 'scarlet_macaw', 'red_crowned_crane', 'falcon', 'snowy_owl', 'harpy_eagle', 'toco_toucan', 'shoebill', 'rooster'],
+  reptiles:        ['komodo', 'chameleon', 'crocodile', 'anaconda', 'sea_turtle', 'tortoise'],
+  unique_mammals:  ['pangolin', 'platypus', 'sloth', 'badger', 'kangaroo', 'armadillo', 'hedgehog', 'porcupine', 'wombat', 'opossum', 'naked_mole_rat', 'echidna', 'striped_skunk'],
+  african:         ['lion', 'cheetah', 'elephant', 'giraffe', 'hippopotamus', 'rhinoceros', 'gorilla', 'zebra', 'hyena', 'leopard', 'meerkat', 'shoebill', 'dung_beetle', 'naked_mole_rat'],
+  swimmers:        ['dolphin', 'orca', 'great_white_shark', 'blue_whale', 'polar_bear', 'hippopotamus', 'platypus', 'emperor_penguin', 'sea_turtle', 'walrus', 'sea_otter', 'crocodile', 'humpback_whale', 'electric_eel', 'capybara', 'piranha'],
+  nocturnal:       ['owl', 'badger', 'pangolin', 'raccoon', 'arctic_fox', 'leopard', 'black_panther', 'fennec_fox', 'firefly', 'scorpion', 'wolverine', 'striped_skunk', 'opossum', 'wild_boar'],
+  armored:         ['pangolin', 'rhinoceros', 'komodo', 'armadillo', 'porcupine', 'hedgehog', 'crocodile', 'tortoise', 'scorpion', 'echidna'],
+  cute:            ['giant_panda', 'dolphin', 'sloth', 'kangaroo', 'emperor_penguin', 'red_panda', 'koala', 'sea_otter', 'hedgehog', 'wombat', 'arctic_fox', 'fennec_fox', 'meerkat', 'capybara', 'alpaca'],
+  large:           ['elephant', 'hippopotamus', 'rhinoceros', 'brown_bear', 'polar_bear', 'blue_whale', 'orca', 'giraffe', 'gorilla', 'moose', 'walrus', 'humpback_whale', 'crocodile', 'anaconda', 'bison', 'mustang'],
+  fast:            ['cheetah', 'ostrich', 'dolphin', 'kangaroo', 'lion', 'falcon', 'hummingbird', 'jaguar', 'mustang'],
+  cold:            ['polar_bear', 'emperor_penguin', 'owl', 'arctic_fox', 'moose', 'snow_leopard', 'walrus', 'snowy_owl', 'wolverine'],
+  australian:      ['kangaroo', 'platypus', 'koala', 'wombat', 'echidna'],
+  primates:        ['gorilla', 'chimpanzee', 'orangutan'],
+  canines:         ['gray_wolf', 'arctic_fox', 'hyena', 'raccoon', 'fennec_fox'],
   snakes:          ['anaconda', 'king_cobra'],
   ocean_mammals:   ['dolphin', 'orca', 'blue_whale', 'humpback_whale', 'walrus', 'sea_otter'],
-  raptors:         ['bald_eagle', 'falcon', 'owl'],
-  colorful:        ['peacock', 'scarlet_macaw', 'hummingbird', 'chameleon'],
-  desert:          ['camel', 'scorpion', 'armadillo'],
-  spiky:           ['hedgehog', 'porcupine', 'armadillo'],
-  south_america:   ['jaguar', 'anaconda', 'armadillo', 'sloth'],
+  raptors:         ['bald_eagle', 'falcon', 'owl', 'snowy_owl', 'harpy_eagle'],
+  colorful:        ['peacock', 'scarlet_macaw', 'hummingbird', 'chameleon', 'mantis_shrimp', 'toco_toucan'],
+  desert:          ['camel', 'scorpion', 'armadillo', 'fennec_fox', 'meerkat'],
+  spiky:           ['hedgehog', 'porcupine', 'armadillo', 'echidna', 'pufferfish'],
+  south_america:   ['jaguar', 'anaconda', 'armadillo', 'sloth', 'capybara', 'alpaca', 'piranha', 'harpy_eagle', 'toco_toucan', 'electric_eel'],
+  insects:         ['firefly', 'scorpion', 'dung_beetle'],
+  fierce_small:    ['badger', 'wolverine', 'wild_boar', 'striped_skunk'],
 };
 
 // ===== 25 隻動物提示資料 =====
@@ -514,6 +516,270 @@ export const HINTS = {
       '我全身有黑白相間的條紋，每一隻的花紋都獨一無二',
     ],
     groups: ['african_large', 'african', 'fast'],
+  },
+
+  // ===== 第三波 30 隻 =====
+
+  // --- 貓科追加 ---
+  leopard: {
+    hints: [
+      '我是大型貓科動物，住在非洲和亞洲，適應力超強',
+      '我打獵完會把獵物叼到樹上去，防止別人來搶',
+      '我身上有一圈一圈像玫瑰花的黑色斑紋，跟獵豹的實心圓點不一樣',
+    ],
+    groups: ['big_cats', 'african', 'nocturnal'],
+  },
+  black_panther: {
+    hints: [
+      '我其實不是獨立的物種，而是某種大貓的特殊版本',
+      '在強光下仔細看，你還是可以隱約看到我身上的花紋',
+      '我全身的毛是純黑色的，在夜晚幾乎完全隱形',
+    ],
+    groups: ['big_cats', 'nocturnal'],
+  },
+
+  // --- 靈長類追加 ---
+  orangutan: {
+    hints: [
+      '我是住在東南亞熱帶雨林裡的大型靈長類',
+      '我超聰明，會用大片的葉子當雨傘撐著遮雨',
+      '我全身是紅棕色的長毛，名字的意思是「森林裡的人」',
+    ],
+    groups: ['primates'],
+  },
+
+  // --- 草原 / 農場 ---
+  bison: {
+    hints: [
+      '我是北美洲最大的陸地動物，成群住在大草原上',
+      '冬天的時候我會用巨大的頭當鏟子，把雪推開找草吃',
+      '我的前半身超壯，有厚厚的棕色鬃毛和一對短短彎彎的角',
+    ],
+    groups: ['large'],
+  },
+  mustang: {
+    hints: [
+      '我住在北美洲的荒野，成群自由自在地奔跑',
+      '我的祖先是幾百年前從歐洲被帶來的，後來跑到野外生活',
+      '我就是「野馬」，象徵自由和力量',
+    ],
+    groups: ['fast'],
+  },
+  rooster: {
+    hints: [
+      '我是農場裡最早起床的動物，天還沒亮就開始工作了',
+      '我頭上有一片紅紅的冠，下巴也垂著紅色的肉',
+      '每天早上太陽快出來的時候，我會大聲「咕咕咕～」叫大家起床',
+    ],
+    groups: [],
+  },
+
+  // --- 萌系 ---
+  fennec_fox: {
+    hints: [
+      '我是世界上最小的狐狸，住在北非的沙漠裡',
+      '我的大耳朵不只是聽力好，還可以幫我散熱降溫',
+      '我有一對超級大的三角形耳朵，大到跟臉差不多寬',
+    ],
+    groups: ['canines', 'desert', 'cute', 'nocturnal'],
+  },
+  meerkat: {
+    hints: [
+      '我住在非洲南部的沙漠，是一種小型的哺乳動物',
+      '我們家族會輪流站崗放哨，一有危險就發出警報聲',
+      '我最有名的姿勢就是用後腿站直直的，像一個小哨兵',
+    ],
+    groups: ['african', 'desert', 'cute'],
+  },
+  capybara: {
+    hints: [
+      '我是世界上最大的囓齒類動物，比兔子大好幾倍',
+      '我超愛泡水，跟誰都可以當朋友，連鳥都會站在我背上',
+      '我住在南美洲的水邊，長得像一隻超大號的天竺鼠',
+    ],
+    groups: ['swimmers', 'south_america', 'cute'],
+  },
+  alpaca: {
+    hints: [
+      '我住在南美洲的高山上，被人類養了好幾千年',
+      '我的毛超級柔軟保暖，可以做成很高級的衣服',
+      '我長得毛茸茸的，有一張呆萌的臉，生氣的時候會吐口水',
+    ],
+    groups: ['cute', 'south_america'],
+  },
+
+  // --- 海洋 / 水域追加 ---
+  mimic_octopus: {
+    hints: [
+      '我住在海底，身體超級軟，沒有骨頭',
+      '我可以模仿至少十五種其他海洋動物的樣子，超厲害',
+      '我有八隻手臂，是章魚家族裡最會「演戲」的高手',
+    ],
+    groups: ['ocean', 'swimmers'],
+  },
+  pufferfish: {
+    hints: [
+      '我是一種住在海裡的小魚，看起來很普通',
+      '我的身體裡有劇毒，是河豚毒素，比毒蛇還毒好幾百倍',
+      '我遇到危險會吸水把自己撐成一顆圓滾滾的刺球',
+    ],
+    groups: ['ocean', 'swimmers', 'spiky'],
+  },
+  mantis_shrimp: {
+    hints: [
+      '我住在海底，是一種甲殼類動物，身體色彩超繽紛',
+      '我的眼睛可以看到十六種顏色，人類只能看到三種',
+      '我出拳的速度跟子彈一樣快，可以打碎玻璃和螃蟹殼',
+    ],
+    groups: ['ocean', 'swimmers', 'colorful'],
+  },
+  piranha: {
+    hints: [
+      '我住在南美洲的河流裡，是一種小型的淡水魚',
+      '我們成群行動，幾十隻一起吃東西的時候超級可怕',
+      '我的嘴巴裡有像剃刀一樣鋒利的三角形牙齒',
+    ],
+    groups: ['ocean', 'swimmers', 'south_america'],
+  },
+
+  // --- 鳥類追加 ---
+  snowy_owl: {
+    hints: [
+      '我住在北極圈附近的凍原上，跟大部分貓頭鷹不一樣，我白天也會活動',
+      '我是少數可以在冰天雪地裡生活的貓頭鷹',
+      '我全身是雪白色的羽毛，哈利波特的寵物「嘿美」就是我這種',
+    ],
+    groups: ['birds', 'raptors', 'cold'],
+  },
+  harpy_eagle: {
+    hints: [
+      '我是世界上最強壯的老鷹之一，住在中南美洲的雨林裡',
+      '我的爪子跟灰熊的一樣大，可以直接抓起樹懶和猴子',
+      '我頭上有一圈豎起來的灰色羽毛，看起來像戴了皇冠',
+    ],
+    groups: ['birds', 'raptors', 'south_america', 'large'],
+  },
+  toco_toucan: {
+    hints: [
+      '我住在南美洲的熱帶雨林裡，是一種很搶眼的鳥',
+      '我的嘴巴看起來超重，但其實是中空的很輕',
+      '我有一個橘黃色的超大嘴巴，幾乎佔了身體的三分之一',
+    ],
+    groups: ['birds', 'colorful', 'south_america'],
+  },
+  shoebill: {
+    hints: [
+      '我是一種住在非洲沼澤的大型鳥類，站著不動可以好幾個小時',
+      '我捕魚的方式是一動不動地盯著水面，然後猛地一衝',
+      '我有一個超大的嘴巴，形狀像一隻荷蘭木鞋',
+    ],
+    groups: ['birds', 'african', 'large'],
+  },
+
+  // --- 爬蟲追加 ---
+  tortoise: {
+    hints: [
+      '我住在一個太平洋的火山島上，是世界上最長壽的動物之一',
+      '我可以活超過一百五十歲，走路慢慢的一點都不急',
+      '我有四條粗壯像柱子的腿和一個超大的圓頂硬殼',
+    ],
+    groups: ['reptiles', 'armored'],
+  },
+
+  // --- 兩棲 ---
+  poison_dart_frog: {
+    hints: [
+      '我是一種住在中南美洲雨林裡的小小動物，體型比你的拇指還小',
+      '我的皮膚有劇毒，當地原住民會把毒液塗在吹箭上打獵',
+      '我全身的顏色超級鮮豔，有紅色、藍色、黃色，用來警告敵人「我有毒別碰我」',
+    ],
+    groups: ['colorful', 'south_america'],
+  },
+
+  // --- 滅絕 ---
+  woolly_mammoth: {
+    hints: [
+      '我已經不在地球上了，大約一萬年前消失的',
+      '科學家在冰凍的土裡找到過我完整的身體，保存得很好',
+      '我是一種全身長滿長長棕毛的史前巨象，有兩根超長彎曲的象牙',
+    ],
+    groups: ['large', 'cold'],
+  },
+
+  // --- 昆蟲 / 節肢 ---
+  firefly: {
+    hints: [
+      '我是一種昆蟲，在夏天的夜晚才看得到',
+      '我的光是冷光，摸起來一點都不燙',
+      '我的肚子會發出一閃一閃的黃綠色光芒，像小星星在飛',
+    ],
+    groups: ['nocturnal'],
+  },
+  scorpion: {
+    hints: [
+      '我住在沙漠和乾燥的地方，是一種古老的節肢動物',
+      '我用紫外線燈照會發出螢光，在黑暗中整隻發亮',
+      '我有兩隻大鉗子和一根彎曲的毒尾巴，尾巴尖端有毒針',
+    ],
+    groups: ['desert', 'nocturnal', 'armored'],
+  },
+  dung_beetle: {
+    hints: [
+      '我是一種了不起的昆蟲，力氣超大超大',
+      '我可以推動自己體重一千倍以上的東西，是地球上相對力氣最大的動物',
+      '我最愛把動物的大便滾成一顆圓球，推回家給寶寶吃',
+    ],
+    groups: ['african'],
+  },
+
+  // --- 特色哺乳類追加 ---
+  wolverine: {
+    hints: [
+      '我住在北方的寒冷森林和凍原，體型不大但超級兇猛',
+      '我敢跟比我大好幾倍的動物搶食物，連熊都要讓我三分',
+      '我看起來像小型的熊，有厚厚的深棕色毛和強壯的爪子',
+    ],
+    groups: ['cold', 'nocturnal'],
+  },
+  striped_skunk: {
+    hints: [
+      '我住在北美洲，是一種體型不大的哺乳動物',
+      '所有動物看到我都躲得遠遠的，不是因為我兇，而是因為我的秘密武器',
+      '我遇到危險會轉過身從屁股噴出超級臭的液體，臭到一公里外都聞得到',
+    ],
+    groups: ['nocturnal'],
+  },
+  opossum: {
+    hints: [
+      '我住在美洲，是那裡唯一的有袋類動物',
+      '我遇到危險的時候不是逃跑，而是直接「裝死」躺在地上不動',
+      '我會張大嘴巴露出五十顆牙齒嚇人，但其實我超膽小',
+    ],
+    groups: ['nocturnal'],
+  },
+  wild_boar: {
+    hints: [
+      '我住在山裡的森林，用鼻子在地上到處翻找食物',
+      '我全身是粗硬的深色毛，脾氣來了連人都敢衝',
+      '我的嘴巴兩邊有兩根往上彎的獠牙，是家豬的野生祖先',
+    ],
+    groups: ['nocturnal'],
+  },
+  naked_mole_rat: {
+    hints: [
+      '我住在東非的地底下，是一種很奇特的囓齒類動物',
+      '我們像蜜蜂一樣有一個「女王」，只有她可以生小孩',
+      '我全身幾乎沒有毛，皮膚皺巴巴的，有兩顆大大的門牙露在外面',
+    ],
+    groups: ['african'],
+  },
+  echidna: {
+    hints: [
+      '我住在澳洲，是地球上僅有的兩種會下蛋的哺乳類之一',
+      '我用又長又黏的舌頭伸進蟻窩裡舔螞蟻吃，跟穿山甲很像',
+      '我全身長滿了尖刺，鼻子又長又尖，像刺蝟和食蟻獸的混合體',
+    ],
+    groups: ['australian', 'spiky', 'armored'],
   },
 };
 
