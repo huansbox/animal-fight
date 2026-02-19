@@ -55,6 +55,7 @@ BIRDS = {
     "griffon_vulture", "toco_toucan", "kea", "andean_condor",
     "acorn_woodpecker", "rooster", "harpy_eagle", "scarlet_macaw",
     "hummingbird", "raven",
+    "shoebill",  # wave 10
 }
 
 REPTILES = {
