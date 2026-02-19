@@ -17,17 +17,17 @@ animal-fight/
 │   ├── v1/                   # v1 數值封存（歷史備份）
 │   └── docs/                 # 歷史設計文件
 ├── card/                     # 卡片相關檔案
-│   ├── final_cards.html      # A4 全頁列印版（128 張動物卡，v2.5 數值）
+│   ├── final_cards.html      # A4 全頁列印版（132 張動物卡，v2.5 數值）
 │   ├── batch_generate.py     # Batch API 批次生成寫實風格大頭照（4 子命令）
 │   ├── generate_from_jsonl.py      # 單張圖片生成腳本（舊版）
 │   ├── data/                 # 結構化動物資料（per-wave JSON）
-│   │   └── animals-wave{7~9}.json  # 第七～九波（較早波次見 docs/attributes.md）
+│   │   └── animals-wave{7~10}.json # 第七～十波（較早波次見 docs/attributes.md）
 │   ├── images/               # 列印版動物圖片
 │   │   └── archive-cartoon/  # 封存的卡通風格測試圖片（10 張）
-│   ├── images-realistic/     # 數位版動物圖片（寫實風格 128 張）
+│   ├── images-realistic/     # 數位版動物圖片（寫實風格 132 張）
 │   └── img-prompt/           # 圖片生成 prompt
 │       ├── prompt-guidelines.md          # Prompt 撰寫指南與審核條件
-│       ├── animal-ai-prompts{-N}.md      # 各波繪圖 prompt（1~9）
+│       ├── animal-ai-prompts{-N}.md      # 各波繪圖 prompt（1~10）
 │       └── animal-prompts-api{-N}.jsonl  # 各波 JSONL（API 用）
 ├── docs/
 │   ├── prompt.txt            # 原始需求 prompt
@@ -45,8 +45,8 @@ animal-fight/
 │       ├── README.md         # 啟動方式、遊戲規則、維護指南
 │       ├── index.html        # 進入點（單頁應用，5 個畫面）
 │       ├── css/style.css     # 樣式 + 動畫
-│       ├── js/               # app.js, battle.js, draft.js, ai.js, bracket.js, animations.js, utils.js
-│       ├── data/animals.json # 合併全部 wave 的 128 隻動物
+│       ├── js/               # app.js, battle.js, draft.js, ai.js, bracket.js, animations.js, utils.js, zones.js
+│       ├── data/animals.json # 合併全部 wave 的 132 隻動物
 │       └── (images/)         # 引用 ../../card/images-realistic/（不另存）
 └── sim/                      # 對戰模擬器（v3~v5 + shared_dice）
     └── results/              # 模擬結果
@@ -64,7 +64,8 @@ animal-fight/
 - **技術**：Vanilla HTML/CSS/JS（無框架），ES Modules，CSS Animations
 - **架構**：單頁應用，5 畫面 CSS class 切換 + fade-in 過渡
 - **對戰引擎**：從 `sim/battle_sim_v5.py` 移植，純邏輯無 DOM
-- **動物資料**：`data/animals.json` 合併 128 隻，圖片引用 `../../card/images-realistic/`
+- **動物資料**：`data/animals.json` 合併 132 隻，圖片引用 `../../card/images-realistic/`
+- **動物園特區**：`js/zones.js` 定義特區（上野動物園 16 隻），選角畫面可篩選 + mini-card 徽章
 - **AI 難度**：僅影響選角策略（骰子完全隨機）
 - **對戰 UX**：隊伍色彩識別（藍/紅）、分開擲骰、互動重骰、分數公式拆解、全螢幕 bracket overlay（橫向左到右 + 連接線 + 比分）、跨輪次隊伍記憶（teamMap）
 - **離線運行**：需從專案根目錄啟動 HTTP server（圖片路徑引用 `../../card/images-realistic/`），詳見 README
@@ -112,7 +113,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 | 整合 | 9 | **整合 HTML + 更新文件** → `final_cards.html` 加入新動物 + `CLAUDE.md` 更新 |
 | 人工 | 10 | **批次 API 生圖** → `card/batch_generate.py`（Batch API 生成寫實風格至 `card/images-realistic/`；列印版圖片另存 `card/images/`） |
 
-### 動物總覽（128 隻，9 波完成）
+### 動物總覽（132 隻，10 波完成）
 
 完整數值見 `docs/attributes.md`，per-wave JSON 見 `card/data/`，合併資料見 `game/digital/data/animals.json`。
 
@@ -126,8 +127,9 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 | 7 | 14 | 11–25 | Creature Cases 系列，設計見 `docs/260210-animal-wave7.md` |
 | 8 | 8 | 14–29 | 公雞 + 黑豹 + 6 隻 Creature Cases |
 | 9 | 22 | 10–30 | 補至 128 張 |
+| 10 | 4 | 17–21 | 上野動物園特區 |
 
-> 後續擴充 39 隻待建，見 [`docs/backlog.md`](docs/backlog.md)
+> 後續擴充 35 隻待建，見 [`docs/backlog.md`](docs/backlog.md)
 
 ## 遊戲模式
 
@@ -147,7 +149,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 
 ## 當前狀態
 
-**已完成**：需求分析 → 多版本設計 → 審查選定 → 9 波 128 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 128 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫） → 對戰模擬器 v3-v5
+**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5
 
 **待完成**：
 - [ ] 數位版實際遊玩測試
