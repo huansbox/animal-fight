@@ -12,15 +12,30 @@
     <div class="start-container">
       <h1 class="game-title">動物猜猜看</h1>
       <p class="subtitle">你能從提示猜出是哪隻動物嗎？</p>
-      <div class="mode-select">
-        <p class="mode-label">選擇題數</p>
+      <div class="mode-section">
+        <p class="mode-label">一般模式</p>
         <div class="mode-buttons">
           <button class="btn btn-mode" data-count="10">快速 10 題</button>
           <button class="btn btn-mode selected" data-count="20">標準 20 題</button>
           <button class="btn btn-mode" data-count="30">挑戰 30 題</button>
         </div>
+        <button id="btn-start" class="btn btn-primary">開始！</button>
       </div>
-      <button id="btn-start" class="btn btn-primary">開始挑戰！</button>
+
+      <div class="mode-divider"><span>或</span></div>
+
+      <div class="challenge-section">
+        <p class="mode-label">全制霸模式</p>
+        <p class="challenge-desc">不重複挑戰全部 132 隻動物，支援存檔接續</p>
+        <div id="challenge-new">
+          <button id="btn-challenge" class="btn btn-primary">132 題全制霸！</button>
+        </div>
+        <div id="challenge-resume" class="challenge-resume hidden">
+          <p class="resume-info">上次進度：<span id="resume-progress">0</span> / <span id="resume-total">132</span> 題｜⭐ <span id="resume-score">0</span> 分</p>
+          <button id="btn-resume" class="btn btn-primary">繼續挑戰</button>
+          <button id="btn-reset-save" class="btn btn-text">放棄進度，重新開始</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -34,6 +49,7 @@
       <div class="progress-bar">
         <div id="progress-fill" class="progress-fill"></div>
       </div>
+      <button id="btn-save-exit" class="btn btn-save-exit hidden">存檔離開</button>
     </div>
 
     <div class="quiz-body">

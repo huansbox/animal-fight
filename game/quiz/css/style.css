@@ -55,6 +55,34 @@ body {
 .btn-hint:hover { background: #3a3a5a; }
 .btn-hint.hidden { display: none; }
 
+/* ===== Utility ===== */
+.hidden { display: none !important; }
+
+/* ===== Challenge Mode (Start) ===== */
+.mode-divider {
+  display: flex; align-items: center; gap: 16px;
+  margin: 28px 0; color: #555; font-size: 0.9rem;
+}
+.mode-divider::before, .mode-divider::after {
+  content: ''; flex: 1; height: 1px; background: #333;
+}
+.challenge-section { text-align: center; }
+.challenge-desc { color: #888; font-size: 0.9rem; margin: 8px 0 20px; }
+.challenge-resume { margin-top: 8px; }
+.resume-info { color: #aaa; font-size: 1rem; margin-bottom: 16px; }
+.resume-info span { color: #f5af19; font-weight: 700; }
+.btn-text {
+  background: none; border: none; color: #666; font-size: 0.85rem;
+  cursor: pointer; padding: 8px; display: block; margin: 8px auto 0;
+  text-decoration: underline;
+}
+.btn-text:hover { color: #aaa; }
+.btn-save-exit {
+  padding: 6px 16px; background: transparent; color: #666;
+  font-size: 0.8rem; border: 1px solid #444; margin-top: 8px; float: right;
+}
+.btn-save-exit:hover { color: #aaa; border-color: #666; }
+
 /* ===== Quiz Screen ===== */
 .quiz-header { width: 100%; max-width: 600px; margin-bottom: 20px; }
 .progress-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; }
