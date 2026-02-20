@@ -41,13 +41,17 @@ animal-fight/
 ├── game/
 │   ├── rulebook.md           # 合作闘關規則書
 │   ├── battle-rules.md       # 動物大對決淘汰賽規則（v2.4 數值）
-│   └── digital/              # 動物大對決數位版（離線 Web App）
-│       ├── README.md         # 啟動方式、遊戲規則、維護指南
-│       ├── index.html        # 進入點（單頁應用，5 個畫面）
-│       ├── css/style.css     # 樣式 + 動畫
-│       ├── js/               # app.js, battle.js, draft.js, ai.js, bracket.js, animations.js, utils.js, zones.js
-│       ├── data/animals.json # 合併全部 wave 的 132 隻動物
-│       └── (images/)         # 引用 ../../card/images-realistic/（不另存）
+│   ├── digital/              # 動物大對決數位版（離線 Web App）
+│   │   ├── README.md         # 啟動方式、遊戲規則、維護指南
+│   │   ├── index.html        # 進入點（單頁應用，5 個畫面）
+│   │   ├── css/style.css     # 樣式 + 動畫
+│   │   ├── js/               # app.js, battle.js, draft.js, ai.js, bracket.js, animations.js, utils.js, zones.js
+│   │   ├── data/animals.json # 合併全部 wave 的 132 隻動物
+│   │   └── (images/)         # 引用 ../../card/images-realistic/（不另存）
+│   └── quiz/                 # 動物猜猜看（離線 Web App）
+│       ├── index.html        # 進入點（4 個畫面）
+│       ├── css/style.css     # 樣式
+│       └── js/               # app.js（遊戲邏輯）, hints.js（132 隻提示 + 干擾分組）
 └── sim/                      # 對戰模擬器（v3~v5 + shared_dice）
     └── results/              # 模擬結果
 ```
@@ -70,6 +74,15 @@ animal-fight/
 - **對戰 UX**：隊伍色彩識別（藍/紅）、分開擲骰、互動重骰、分數公式拆解、全螢幕 bracket overlay（橫向左到右 + 連接線 + 比分）、跨輪次隊伍記憶（teamMap）
 - **離線運行**：需從專案根目錄啟動 HTTP server（圖片路徑引用 `../../card/images-realistic/`），詳見 README
 - **目標裝置**：MacBook Pro 14 吋，搭飛機/火車讓小孩玩
+
+### 動物猜猜看（game/quiz/）
+- **技術**：Vanilla HTML/CSS/JS（無框架），ES Modules
+- **架構**：單頁應用，4 畫面（開始 → 題目 → 揭曉 → 結算）
+- **玩法**：每題給 3 個文字提示，從 5 個選項猜動物；提示越少分數越高（3/2/1 分）
+- **題數**：快速 10 題 / 標準 20 題 / 挑戰 30 題
+- **動物資料**：引用 `game/digital/data/animals.json`（132 隻），提示定義於 `js/hints.js`
+- **干擾選項**：30 組語義分組（carnivore, primate, bird 等），優先選同組動物增加難度
+- **離線運行**：同數位版，需從專案根目錄啟動 HTTP server
 
 ### 數值系統分歧
 - 合作闘關（rulebook.md）：v1 數值系統（天賦為單一分數 8-12，總和 34-39）
@@ -149,7 +162,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 
 ## 當前狀態
 
-**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5
+**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示）
 
 **待完成**：
 - [ ] 數位版實際遊玩測試

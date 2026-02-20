@@ -1,6 +1,6 @@
 # Animal Guardians 動物守護者
 
-兒童桌遊 - Print & Play 版本（128 張動物卡）
+兒童桌遊 - Print & Play 版本（132 張動物卡）
 
 ## 遊戲模式
 
@@ -14,6 +14,12 @@
 - **遊戲時間**：5-15 分鐘
 - **規則書**：[`game/battle-rules.md`](game/battle-rules.md)
 - **數位版**：[`game/digital/`](game/digital/)（離線 Web App，瀏覽器即玩）
+
+### 動物猜猜看
+- **玩家人數**：1 人
+- **遊戲時間**：5-10 分鐘
+- **數位版**：[`game/quiz/`](game/quiz/)（離線 Web App，瀏覽器即玩）
+- **玩法**：每題給 3 個提示，從 5 個選項猜動物，132 隻全收錄
 
 **適合年齡**：6-12 歲
 
@@ -32,14 +38,15 @@
 3. A4 紙列印，建議 160gsm 以上
 4. 裁切成 63×88mm 卡片
 
-### 數位版
+### 數位版（對決 + 猜猜看）
 
 從專案根目錄啟動 HTTP server：
 
 ```bash
 cd animal-fight
 python -m http.server 8080
-# 瀏覽器開 http://localhost:8080/game/digital/
+# 動物大對決 http://localhost:8080/game/digital/
+# 動物猜猜看 http://localhost:8080/game/quiz/
 ```
 
 詳細說明見 [`game/digital/README.md`](game/digital/README.md)
@@ -80,7 +87,8 @@ animal-fight/
 ├── game/
 │   ├── rulebook.md           # 合作闘關規則書
 │   ├── battle-rules.md       # 動物大對決規則
-│   └── digital/              # 動物大對決數位版（離線 Web App）
+│   ├── digital/              # 動物大對決數位版（離線 Web App）
+│   └── quiz/                 # 動物猜猜看（離線 Web App）
 ├── docs/
 │   ├── attributes.md         # 動物屬性數值表（v2.5）
 │   └── design-versions/      # 設計迭代版本存檔
@@ -90,7 +98,7 @@ animal-fight/
     └── battle_sim_v3.py      # 對戰模擬器（35 隻，原規則）
 ```
 
-## 動物一覽（128 張）
+## 動物一覽（132 張）
 
 ### 第一波（16 張）
 非洲獅、非洲象、大猩猩、灣鱷、蜜獾、蘇門答臘虎、海豚、科摩多龍、獵豹、北極狐、紅袋鼠、遊隼、黑斑羚、貓頭鷹、穿山甲、加拉巴哥象龜
@@ -115,6 +123,9 @@ animal-fight/
 
 ### 第九波（22 張）
 長毛象、座頭鯨、黑猩猩、森蚺、眼鏡熊、大西洋劍魚、角鵰、短尾貓、食人魚、金剛鸚鵡、渡鴉、狐蝠、海龜、變色龍、刺蝟、北極兔、蜂鳥、水母、無尾熊、行軍蟻、竹節蟲、螢火蟲
+
+### 第十波（4 張，上野動物園特區）
+侏儒河馬、指猴、㺢㹢狓、鯨頭鸛
 
 ## 授權
 個人使用，非商業用途
