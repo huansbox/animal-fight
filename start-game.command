@@ -15,16 +15,6 @@ case "$choice" in
   *) URL="http://localhost:$PORT/game/digital/" ;;
 esac
 
-cleanup() {
-  kill $SERVER_PID 2>/dev/null
-  osascript -e 'tell application "Terminal" to close front window' &
-  exit 0
-}
-trap cleanup INT TERM
-
-python3 -m http.server $PORT &
-SERVER_PID=$!
-sleep 1
-open "$URL"
-wait $SERVER_PID
-cleanup
+(sleep 1 && open "$URL") &
+python3 -m http.server $PORT
+osascript -e 'tell application "Terminal" to close front window'
