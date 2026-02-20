@@ -2,6 +2,13 @@
 cd "$(dirname "$0")"
 PORT=8080
 
+# 清除佔用 port 的殘留 process
+EXISTING_PID=$(lsof -ti:$PORT 2>/dev/null)
+if [ -n "$EXISTING_PID" ]; then
+  kill $EXISTING_PID 2>/dev/null
+  sleep 0.5
+fi
+
 echo ""
 echo "  動物守護者 — 選擇遊戲"
 echo "  ─────────────────────"
