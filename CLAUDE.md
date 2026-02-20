@@ -12,7 +12,7 @@
 animal-fight/
 ├── CLAUDE.md                 # 專案架構與技術決策
 ├── README.md                 # 環境設置與快速開始
-├── start-game.command        # 雙擊啟動遊戲（HTTP server + 開瀏覽器）
+├── start-game.command        # 雙擊啟動遊戲（選單選擇對決/猜猜看）
 ├── archive/
 │   ├── v1/                   # v1 數值封存（歷史備份）
 │   └── docs/                 # 歷史設計文件

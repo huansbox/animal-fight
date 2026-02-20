@@ -40,7 +40,9 @@
 
 ### 數位版（對決 + 猜猜看）
 
-從專案根目錄啟動 HTTP server：
+**最簡單**：雙擊專案根目錄的 `start-game.command`，選擇要玩的遊戲，自動啟動 server + 開瀏覽器。
+
+手動啟動：
 
 ```bash
 cd animal-fight
