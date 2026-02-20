@@ -15,6 +15,9 @@ case "$choice" in
   *) URL="http://localhost:$PORT/game/digital/" ;;
 esac
 
+python3 -m http.server $PORT &
+SERVER_PID=$!
+sleep 1
 open "$URL"
-python3 -m http.server $PORT
+wait $SERVER_PID
 osascript -e 'tell application "Terminal" to close front window'
