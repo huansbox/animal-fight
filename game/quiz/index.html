@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>動物猜猜看</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ===== 開始畫面 ===== -->
+  <div id="screen-start" class="screen active">
+    <div class="start-container">
+      <h1 class="game-title">動物猜猜看</h1>
+      <p class="subtitle">你能從提示猜出是哪隻動物嗎？</p>
+      <div class="mode-select">
+        <p class="mode-label">選擇題數</p>
+        <div class="mode-buttons">
+          <button class="btn btn-mode" data-count="10">快速 10 題</button>
+          <button class="btn btn-mode selected" data-count="20">標準 20 題</button>
+          <button class="btn btn-mode" data-count="30">挑戰 30 題</button>
+        </div>
+      </div>
+      <button id="btn-start" class="btn btn-primary">開始挑戰！</button>
+    </div>
+  </div>
+
+  <!-- ===== 題目畫面 ===== -->
+  <div id="screen-quiz" class="screen">
+    <div class="quiz-header">
+      <div class="progress-info">
+        <span id="progress-text">第 1 / 10 題</span>
+        <span id="score-text">⭐ 0 分</span>
+      </div>
+      <div class="progress-bar">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="quiz-body">
+      <div class="hints-area">
+        <div id="hint-1" class="hint-card hidden">
+          <span class="hint-badge">提示 1</span>
+          <p class="hint-text"></p>
+        </div>
+        <div id="hint-2" class="hint-card hidden">
+          <span class="hint-badge">提示 2</span>
+          <p class="hint-text"></p>
+        </div>
+        <div id="hint-3" class="hint-card hidden">
+          <span class="hint-badge">提示 3</span>
+          <p class="hint-text"></p>
+        </div>
+      </div>
+
+      <button id="btn-next-hint" class="btn btn-hint">再一個提示 ➜</button>
+
+      <div class="options-area">
+        <button class="btn btn-option" data-idx="0"></button>
+        <button class="btn btn-option" data-idx="1"></button>
+        <button class="btn btn-option" data-idx="2"></button>
+        <button class="btn btn-option" data-idx="3"></button>
+        <button class="btn btn-option" data-idx="4"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 答案揭曉畫面 ===== -->
+  <div id="screen-reveal" class="screen">
+    <div class="reveal-container">
+      <div id="reveal-result" class="reveal-result"></div>
+      <div class="reveal-card">
+        <img id="reveal-img" src="" alt="" class="reveal-img">
+        <h2 id="reveal-name" class="reveal-name"></h2>
+        <p id="reveal-en" class="reveal-en"></p>
+      </div>
+      <div id="reveal-skill" class="reveal-skill"></div>
+      <p id="reveal-points" class="reveal-points"></p>
+      <button id="btn-next" class="btn btn-primary">下一題 ➜</button>
+    </div>
+  </div>
+
+  <!-- ===== 結算畫面 ===== -->
+  <div id="screen-final" class="screen">
+    <div class="final-container">
+      <div id="final-badge" class="final-badge"></div>
+      <h1 id="final-title" class="final-title"></h1>
+      <p id="final-score" class="final-score"></p>
+      <div id="final-breakdown" class="final-breakdown"></div>
+      <button id="btn-restart" class="btn btn-primary">再玩一次</button>
+      <button id="btn-home" class="btn btn-secondary">回主選單</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
