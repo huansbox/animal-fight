@@ -39,7 +39,7 @@ npx serve .              # 從專案根目錄
 - **選角方式**：
   - **快速隨機** — 系統隨機分配，跳過選角直接開打
   - **選秀** — 系統抽 N 隻組成池，Snake Draft 輪選（A1 → B2 → A2 → B2 ...）
-  - **自選** — 全部 128 隻為池，Snake Draft 輪選，有搜尋 + 排序
+  - **自選** — 全部 132 隻為池，Snake Draft 輪選，有搜尋 + 排序
 
 ### 對戰
 
@@ -91,7 +91,7 @@ game/digital/
 │   ├── bracket.js        # 淘汰賽樹邏輯 + 橫向 bracket 渲染
 │   ├── animations.js     # 骰子滾動、天賦閃光、勝負特效
 │   └── utils.js          # Fisher-Yates shuffle
-└── data/animals.json     # 128 隻動物資料
+└── data/animals.json     # 132 隻動物資料
 ```
 
 ## 維護筆記
