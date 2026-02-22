@@ -26,6 +26,8 @@ let answered = false;
 let score = 0;
 let maxScore = 0;
 let results = [];             // { id, correct, hintsUsed, points }
+let isChallenge = false;
+const SAVE_KEY = 'animal-quiz-challenge';
 
 // ===== 初始化 =====
 async function init() {
@@ -46,6 +48,7 @@ async function init() {
     animalMap[a.id] = a;
   }
   bindEvents();
+  updateChallengeUI();
 }
 
 // ===== 事件綁定 =====
@@ -74,8 +77,14 @@ function bindEvents() {
   $('#btn-next').addEventListener('click', nextQuestion);
 
   // 再玩一次 / 回主選單
-  $('#btn-restart').addEventListener('click', startGame);
-  $('#btn-home').addEventListener('click', () => switchScreen('start'));
+  $('#btn-restart').addEventListener('click', () => isChallenge ? startChallenge() : startGame());
+  $('#btn-home').addEventListener('click', goHome);
+
+  // 全制霸模式
+  $('#btn-challenge').addEventListener('click', startChallenge);
+  $('#btn-resume').addEventListener('click', resumeChallenge);
+  $('#btn-reset-save').addEventListener('click', resetChallenge);
+  $('#btn-save-exit').addEventListener('click', goHome);
 }
 
 // ===== 畫面切換 =====
@@ -86,6 +95,8 @@ function switchScreen(name) {
 
 // ===== 開始遊戲 =====
 function startGame() {
+  isChallenge = false;
+  $('#btn-save-exit').classList.add('hidden');
   // 只使用有提示的動物
   const available = MVP_ANIMAL_IDS.filter((id) => animalMap[id]);
   questionPool = shuffle(available).slice(0, Math.min(questionCount, available.length));
@@ -203,6 +214,9 @@ function handleAnswer(btn) {
     points,
   });
 
+  // 全制霸模式自動存檔
+  if (isChallenge) saveChallengeProgress();
+
   // 標記選項
   $$('.btn-option').forEach((b) => {
     if (b.dataset.id === currentAnimalId) {
@@ -306,7 +320,91 @@ function showFinal() {
     <div class="row"><span class="label">😢 答錯</span><span class="value">${wrongCount} 題</span></div>
   `;
 
+  // 全制霸模式結算
+  if (isChallenge) {
+    clearChallengeProgress();
+    $('#btn-save-exit').classList.add('hidden');
+    $('#btn-restart').textContent = '再挑戰一次';
+  } else {
+    $('#btn-restart').textContent = '再玩一次';
+  }
+
   switchScreen('final');
+}
+
+// ===== 全制霸模式 =====
+function goHome() {
+  switchScreen('start');
+  updateChallengeUI();
+}
+
+function startChallenge() {
+  isChallenge = true;
+  const available = MVP_ANIMAL_IDS.filter((id) => animalMap[id]);
+  questionPool = shuffle(available);
+  currentIdx = 0;
+  score = 0;
+  maxScore = questionPool.length * 3;
+  results = [];
+  saveChallengeProgress();
+  $('#btn-save-exit').classList.remove('hidden');
+  switchScreen('quiz');
+  loadQuestion();
+}
+
+function resumeChallenge() {
+  const save = loadChallengeProgress();
+  if (!save) return startChallenge();
+  isChallenge = true;
+  questionPool = save.questionPool;
+  score = save.score;
+  results = save.results;
+  currentIdx = results.length;
+  maxScore = questionPool.length * 3;
+  if (currentIdx >= questionPool.length) {
+    showFinal();
+    return;
+  }
+  $('#btn-save-exit').classList.remove('hidden');
+  switchScreen('quiz');
+  loadQuestion();
+}
+
+function resetChallenge() {
+  clearChallengeProgress();
+  startChallenge();
+}
+
+function saveChallengeProgress() {
+  localStorage.setItem(SAVE_KEY, JSON.stringify({
+    questionPool, score, results, timestamp: Date.now(),
+  }));
+}
+
+function loadChallengeProgress() {
+  try {
+    return JSON.parse(localStorage.getItem(SAVE_KEY));
+  } catch { return null; }
+}
+
+function clearChallengeProgress() {
+  localStorage.removeItem(SAVE_KEY);
+}
+
+function updateChallengeUI() {
+  const save = loadChallengeProgress();
+  const newEl = $('#challenge-new');
+  const resumeEl = $('#challenge-resume');
+  if (save && save.results.length < save.questionPool.length) {
+    newEl.classList.add('hidden');
+    $('#resume-progress').textContent = save.results.length;
+    $('#resume-total').textContent = save.questionPool.length;
+    $('#resume-score').textContent = save.score;
+    resumeEl.classList.remove('hidden');
+  } else {
+    newEl.classList.remove('hidden');
+    resumeEl.classList.add('hidden');
+  }
 }
 
 // ===== 工具函式 =====
