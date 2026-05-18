@@ -7,3 +7,4 @@ __pycache__/
 card/batch_input.jsonl
 card/.batch_state.json
 card/batch_errors.jsonl
+.venv/
