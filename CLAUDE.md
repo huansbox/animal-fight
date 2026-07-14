@@ -7,6 +7,8 @@
 
 適合 6-12 歲兒童。Print & Play 自製桌遊格式。
 
+> `wiki/` + `.github/workflows/publish-wiki.yml` = GitHub wiki 唯一編輯處，CI 自動發佈到 `.wiki.git`，**不要在網頁上編輯**。穩定頁（Home / Maintenance）跟機制變更的 commit 順手改；快照頁（Plan / Roadmap / Tech-Debt）標快照日期，milestone 或每月用 `/repo-wiki refresh` 刷新。
+
 ## 專案結構
 ```
 animal-fight/
@@ -52,6 +54,7 @@ animal-fight/
 │       ├── index.html        # 進入點（4 個畫面）
 │       ├── css/style.css     # 樣式
 │       └── js/               # app.js（遊戲邏輯）, hints.js（132 隻提示 + 干擾分組）
+├── wiki/                     # GitHub wiki 頁面（CI 自動發佈，見上方索引行）
 └── sim/                      # 對戰模擬器（v3~v5 + shared_dice）
     └── results/              # 模擬結果
 ```
