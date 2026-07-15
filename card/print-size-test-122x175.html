@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動物守護者 12.2 × 17.5 cm 卡片尺寸測試</title>
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #ccc;
+            color: #000;
+            font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            width: 297mm;
+            height: 210mm;
+            margin: 10mm auto;
+            padding: 8mm 21.5mm 0;
+            background: #fff;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        .cards {
+            display: flex;
+            gap: 10mm;
+        }
+
+        .card {
+            width: 122mm;
+            height: 175mm;
+            flex: 0 0 auto;
+            display: grid;
+            grid-template-rows: 18mm 58mm 40mm 1fr;
+            gap: 2mm;
+            padding: 3mm;
+            border: 0.7mm solid #000;
+            border-radius: 4mm;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .name-row {
+            min-width: 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 2mm;
+            border-bottom: 0.5mm solid #000;
+            white-space: nowrap;
+        }
+
+        .animal-name {
+            font-size: 28pt;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .animal-name.long {
+            font-size: 24pt;
+        }
+
+        .animal-name-en {
+            min-width: 0;
+            overflow: hidden;
+            font-size: 10pt;
+            font-weight: 700;
+            text-overflow: ellipsis;
+        }
+
+        .image-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5mm;
+            border: 0.4mm dashed #000;
+            border-radius: 2mm;
+            text-align: center;
+        }
+
+        .placeholder-title {
+            font-size: 13pt;
+            font-weight: 700;
+        }
+
+        .font-10 { font-size: 10pt; }
+        .font-11 { font-size: 11pt; font-weight: 700; }
+        .font-12 { font-size: 12pt; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border: 0.5mm solid #000;
+            border-radius: 2mm;
+            overflow: hidden;
+        }
+
+        .stat {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-right: 0.35mm solid #000;
+        }
+
+        .stat:last-child {
+            border-right: 0;
+        }
+
+        .stat-label {
+            font-size: 9.5pt;
+            font-weight: 700;
+        }
+
+        .dice-label {
+            font-size: 9pt;
+            line-height: 1;
+        }
+
+        .stat-value {
+            font-size: 30pt;
+            font-weight: 900;
+            line-height: 1;
+            margin: 1mm 0;
+        }
+
+        .stat-bonus {
+            min-height: 3.5mm;
+            font-size: 8.5pt;
+            font-weight: 700;
+        }
+
+        .skill-box {
+            padding: 2.5mm 3mm;
+            border: 0.5mm solid #000;
+            border-radius: 2mm;
+            overflow: hidden;
+        }
+
+        .skill-title {
+            margin-bottom: 1.5mm;
+            font-size: 14pt;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .skill-desc {
+            font-size: 11pt;
+            font-weight: 600;
+            line-height: 1.35;
+        }
+
+        .skill-bonus {
+            margin-top: 1.5mm;
+            padding-top: 1.5mm;
+            border-top: 0.3mm dashed #000;
+            font-size: 10pt;
+            font-weight: 700;
+        }
+
+        .footer {
+            height: 20mm;
+            margin-top: 4mm;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            font-size: 9pt;
+        }
+
+        .instructions {
+            max-width: 120mm;
+            line-height: 1.4;
+        }
+
+        .calibration {
+            display: flex;
+            align-items: flex-start;
+            gap: 8mm;
+        }
+
+        .scale-wrap {
+            padding-top: 4mm;
+        }
+
+        .scale {
+            position: relative;
+            width: 100mm;
+            height: 7mm;
+            border-top: 0.5mm solid #000;
+        }
+
+        .tick {
+            position: absolute;
+            top: -1mm;
+            height: 4mm;
+            border-left: 0.4mm solid #000;
+            font-size: 8pt;
+            padding-top: 4mm;
+        }
+
+        .tick-0 { left: 0; }
+        .tick-50 { left: 50mm; }
+        .tick-100 { right: 0; }
+
+        .square-wrap {
+            text-align: center;
+            font-size: 8pt;
+        }
+
+        .square {
+            width: 20mm;
+            height: 20mm;
+            border: 0.5mm solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8pt;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+
+        @media screen {
+            .page {
+                box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <section class="cards" aria-label="12.2 × 17.5 公分卡片測試">
+            <article class="card">
+                <header class="name-row">
+                    <span class="animal-name">非洲象</span>
+                    <span class="animal-name-en">AFRICAN ELEPHANT</span>
+                </header>
+
+                <section class="image-placeholder">
+                    <div class="placeholder-title">動物圖片預留區（58mm 高）</div>
+                    <div class="font-10">10pt：孩子可以輕鬆讀完這一行嗎？</div>
+                    <div class="font-11">11pt：預計使用的技能說明文字大小</div>
+                    <div class="font-12">12pt：閱讀較舒服，但會占用更多空間</div>
+                </section>
+
+                <section class="stats-grid" aria-label="五項屬性">
+                    <div class="stat">
+                        <div class="stat-label">力量</div>
+                        <div class="dice-label">骰 1</div>
+                        <div class="stat-value">9</div>
+                        <div class="stat-bonus"></div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">速度</div>
+                        <div class="dice-label">骰 2</div>
+                        <div class="stat-value">2</div>
+                        <div class="stat-bonus"></div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">攻擊</div>
+                        <div class="dice-label">骰 3</div>
+                        <div class="stat-value">3</div>
+                        <div class="stat-bonus">技能 +1</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">防禦</div>
+                        <div class="dice-label">骰 4</div>
+                        <div class="stat-value">8</div>
+                        <div class="stat-bonus">技能 +3</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">智慧</div>
+                        <div class="dice-label">骰 5</div>
+                        <div class="stat-value">8</div>
+                        <div class="stat-bonus"></div>
+                    </div>
+                </section>
+
+                <section class="skill-box">
+                    <div class="skill-title">特殊能力：鼻子噴水</div>
+                    <div class="skill-desc">用長鼻子吸水再噴出去，可以澆熄森林大火，或洗掉擋路的泥濘。</div>
+                    <div class="skill-bonus">技能加成：攻擊 +1｜防禦 +3</div>
+                </section>
+            </article>
+
+            <article class="card">
+                <header class="name-row">
+                    <span class="animal-name long">加拉巴哥象龜</span>
+                    <span class="animal-name-en">GALAPAGOS TORTOISE</span>
+                </header>
+
+                <section class="image-placeholder">
+                    <div class="placeholder-title">長名稱與長文字壓力測試</div>
+                    <div class="font-10">10pt：黑白雷射列印後是否太細或太小？</div>
+                    <div class="font-11">11pt：請讓孩子在正常桌面距離直接閱讀</div>
+                    <div class="font-12">12pt：不拿起卡片時是否仍能看清楚？</div>
+                </section>
+
+                <section class="stats-grid" aria-label="五項屬性">
+                    <div class="stat">
+                        <div class="stat-label">力量</div>
+                        <div class="dice-label">骰 1</div>
+                        <div class="stat-value">3</div>
+                        <div class="stat-bonus"></div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">速度</div>
+                        <div class="dice-label">骰 2</div>
+                        <div class="stat-value">1</div>
+                        <div class="stat-bonus"></div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">攻擊</div>
+                        <div class="dice-label">骰 3</div>
+                        <div class="stat-value">1</div>
+                        <div class="stat-bonus"></div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">防禦</div>
+                        <div class="dice-label">骰 4</div>
+                        <div class="stat-value">9</div>
+                        <div class="stat-bonus">技能 +3</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">智慧</div>
+                        <div class="dice-label">骰 5</div>
+                        <div class="stat-value">2</div>
+                        <div class="stat-bonus">技能 +1</div>
+                    </div>
+                </section>
+
+                <section class="skill-box">
+                    <div class="skill-title">特殊能力：龜殼堡壘</div>
+                    <div class="skill-desc">縮進堅硬的殼裡，變成一座移動堡壘，能擋住攻擊並保護身後的同伴安全通過。</div>
+                    <div class="skill-bonus">技能加成：防禦 +3｜智慧 +1</div>
+                </section>
+            </article>
+        </section>
+
+        <footer class="footer">
+            <div class="instructions">
+                <strong>列印設定：</strong>A4 橫式、縮放 100%／實際大小、邊界設為無、關閉頁首與頁尾。<br>
+                列印後先量右側 100mm 刻度與 20mm 方框；尺寸正確再裁切卡片外框。
+            </div>
+            <div class="calibration">
+                <div class="scale-wrap">
+                    <div class="scale">
+                        <span class="tick tick-0">0</span>
+                        <span class="tick tick-50">50</span>
+                        <span class="tick tick-100">100mm</span>
+                    </div>
+                </div>
+                <div class="square-wrap">
+                    <div class="square">20 × 20mm</div>
+                </div>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>

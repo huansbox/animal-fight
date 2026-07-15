@@ -39,6 +39,13 @@
 3. 目前已實測的原型做法是 A4 全頁、黑白雷射列印
 4. 可先只列印 4、8 或 16 隻動物，不需一次製作全部 132 張
 
+**放大版 Poker 尺寸測試**
+
+- 暫定卡面為 122×175mm，使用 A4 黑白雷射標籤紙，每張 A4 橫式排 2 張。
+- 無圖測試版：[`card/print-size-test-122x175.html`](card/print-size-test-122x175.html)
+- 可直接列印 PDF：[`output/pdf/animal-fight-card-size-test-122x175.pdf`](output/pdf/animal-fight-card-size-test-122x175.pdf)
+- 目前試印大小可接受；等放大版 Poker 到貨並量測實際尺寸後，再調整最終卡面與貼紙內縮量。
+
 **目前實玩方式**
 
 - 採 4 強、8 強或 16 強單淘汰
@@ -88,7 +95,8 @@ python3 batch_generate.py download                   # 下載至 images-realisti
 ```
 animal-fight/
 ├── card/
-│   ├── final_cards.html      # A4 列印版（128 張動物卡）
+│   ├── final_cards.html      # A4 列印版（132 張動物卡）
+│   ├── print-size-test-122x175.html # 放大版 Poker 卡面尺寸測試
 │   ├── batch_generate.py     # Batch API 批次生成寫實圖片
 │   ├── generate_from_jsonl.py # 單張即時生成（舊版）
 │   ├── data/                 # 結構化動物資料（per-wave JSON）

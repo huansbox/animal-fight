@@ -18,6 +18,7 @@ animal-fight/
 │   └── docs/                 # 歷史設計文件
 ├── card/                     # 卡片相關檔案
 │   ├── final_cards.html      # A4 全頁列印版（132 張動物卡，v2.5 數值）
+│   ├── print-size-test-122x175.html # 放大版 Poker 尺寸測試（A4 橫式 2 張／頁）
 │   ├── batch_generate.py     # Batch API 批次生成寫實風格大頭照（4 子命令）
 │   ├── generate_from_jsonl.py      # 單張圖片生成腳本（舊版）
 │   ├── data/                 # 結構化動物資料（per-wave JSON）
@@ -52,6 +53,8 @@ animal-fight/
 │       ├── index.html        # 進入點（4 個畫面）
 │       ├── css/style.css     # 樣式
 │       └── js/               # app.js（遊戲邏輯）, hints.js（132 隻提示 + 干擾分組）
+├── output/pdf/
+│   └── animal-fight-card-size-test-122x175.pdf # 可直接列印的尺寸測試 PDF
 └── sim/                      # 對戰模擬器（v3~v5 + shared_dice）
     └── results/              # 模擬結果
 ```
@@ -143,7 +146,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 | 9 | 22 | 10–30 | 補至 128 張 |
 | 10 | 4 | 17–21 | 上野動物園特區 |
 
-> 後續擴充 35 隻待建，見 [`docs/backlog.md`](docs/backlog.md)
+> 後續擴充 39 隻待建，見 [`docs/backlog.md`](docs/backlog.md)
 
 ## 遊戲模式
 
@@ -166,12 +169,13 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 
 ## 當前狀態
 
-**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試
+**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受）
 
 **待完成**：
 - [ ] 數位版實際遊玩測試
 - [ ] 團隊任務 v0.4 實際遊玩測試
-- [ ] 最終實體卡片尺寸與製作方式定案
+- [ ] 放大版 Poker 到貨後量測實際尺寸，微調 122×175mm 卡面與貼紙內縮量
+- [ ] 加入圖片並完成最終放大版 Poker 卡面
 
 ## 對戰模擬結果（64 隻淘汰賽 v5）⚠️ 尚未納入補充 4 隻
 
@@ -182,8 +186,10 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 ## 卡片實體製作
 - **討論文件**：[`docs/plans/2026-02-10-card-size-production.md`](docs/plans/2026-02-10-card-size-production.md)
 - **目前原型**：A4 全頁、黑白雷射列印，已用於親子遊玩，孩子喜歡
-- **狀態**：原型可繼續測試；最終尺寸與製作方式待定
-- **候選方向**：Tarot 尺寸（70×120mm）+ 卡套法
+- **暫定尺寸**：放大版 Poker 122×175mm；無圖測試 PDF 已試印，文字與數字大小可接受
+- **暫定工法**：A4 黑白雷射專用標籤紙，每張 A4 橫式排 2 張，裁切後貼在放大版 Poker 上
+- **測試檔**：[`card/print-size-test-122x175.html`](card/print-size-test-122x175.html)；可列印 PDF：[`output/pdf/animal-fight-card-size-test-122x175.pdf`](output/pdf/animal-fight-card-size-test-122x175.pdf)
+- **下一步**：等實體 Poker 到貨後量測，再調整卡面尺寸與四周內縮；目前不製作 132 張正式版
 
 ## 技術債 / 待建工具
 
