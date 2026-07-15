@@ -17,4 +17,4 @@
 
 ---
 
-🎮 [線上試玩](https://huansbox.github.io/animal-fight/)
+[線上試玩](https://huansbox.github.io/animal-fight/)

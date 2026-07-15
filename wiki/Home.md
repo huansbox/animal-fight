@@ -41,7 +41,7 @@
 
 <https://huansbox.github.io/animal-fight/>
 
-⚠️ **圖片是這個專案目前最大的坑，先讀再動手。** 所有卡片圖片都被 `.gitignore` 排除在版控外（240MB 的 PNG），造成兩件事：線上版的動物遊戲看不到任何圖片（世界盃小遊戲不吃圖，所以正常）；而列印版 `final_cards.html` 取圖的 `card/images/` 目錄目前是空的，**直接印會得到 132 張無圖卡片**。數位版用的 132 張寫實圖（`card/images-realistic/`）是完好的，只是沒進 git。成因與償還策略見 [Tech-Debt](Tech-Debt)。
+**圖片是這個專案目前最大的坑，先讀再動手。** 所有卡片圖片都被 `.gitignore` 排除在版控外（240MB 的 PNG），造成兩件事：線上版的動物遊戲看不到任何圖片（世界盃小遊戲不吃圖，所以正常）；而列印版 `final_cards.html` 取圖的 `card/images/` 目錄目前是空的，**直接印會得到 132 張無圖卡片**。數位版用的 132 張寫實圖（`card/images-realistic/`）是完好的，只是沒進 git。成因與償還策略見 [Tech-Debt](Tech-Debt)。
 
 ## Wiki 頁面導覽
 
