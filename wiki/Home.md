@@ -2,7 +2,7 @@
 
 自製兒童桌遊：132 隻動物卡，一套五維數值同時支撐「實體 Print & Play」與「離線網頁小遊戲」。個人專案，做給自己家兩個小孩玩（搭飛機／火車打發時間），非商業用途。
 
-目前 132 隻動物與兩個離線數位小遊戲已完成。實體版已用 A4 黑白雷射原型實際遊玩，孩子喜歡；「動物大對決」的一戰定勝負單淘汰核心玩法已通過實玩，「團隊任務」合作模式完成 v0.4 規則與三方 review，下一步是實際遊玩。
+目前 132 隻動物與兩個離線數位小遊戲已完成。實體版已用 A4 黑白雷射原型實際遊玩，孩子喜歡；「動物大對決」的一戰定勝負單淘汰核心玩法已通過實玩。「團隊任務」合作模式已收斂為 v0.6 逐關揭露規則，完成 3 Agents 共 6 局模擬、短回歸與三套固定劇情，下一步是真人親子實玩。
 
 ## 頂層約束
 
@@ -21,7 +21,7 @@
 | 數值規格 | 五維判斷原則、特殊能力設計、審核清單 | [`docs/attributes.md`](https://github.com/huansbox/animal-fight/blob/master/docs/attributes.md) |
 | 卡片列印 | A4 全頁原型；122×175mm 放大版 Poker 測試 | [`card/final_cards.html`](https://github.com/huansbox/animal-fight/blob/master/card/final_cards.html)、[`card/print-size-test-122x175.html`](https://github.com/huansbox/animal-fight/blob/master/card/print-size-test-122x175.html)、[測試 PDF](https://github.com/huansbox/animal-fight/blob/master/output/pdf/animal-fight-card-size-test-122x175.pdf) |
 | 圖片生成 | OpenAI Batch API 批次生成寫實動物大頭照 | [`card/batch_generate.py`](https://github.com/huansbox/animal-fight/blob/master/card/batch_generate.py) + [`card/img-prompt/`](https://github.com/huansbox/animal-fight/tree/master/card/img-prompt) |
-| 實體規則 | 團隊任務 v0.4（DM 帶隊）／動物大對決（1v1 淘汰賽） | [`docs/plans/2026-07-15-team-mission-v04-rules-review.md`](https://github.com/huansbox/animal-fight/blob/master/docs/plans/2026-07-15-team-mission-v04-rules-review.md)、[`game/battle-rules.md`](https://github.com/huansbox/animal-fight/blob/master/game/battle-rules.md) |
+| 實體規則 | 團隊任務 v0.6（DM 帶隊）／動物大對決（1v1 淘汰賽） | [`v0.6 規則`](https://github.com/huansbox/animal-fight/blob/master/docs/plans/2026-07-17-team-mission-v06-progressive-reveal-rules.md)、[`固定劇情模板`](https://github.com/huansbox/animal-fight/blob/master/docs/plans/2026-07-17-team-mission-story-template.md)、[`game/battle-rules.md`](https://github.com/huansbox/animal-fight/blob/master/game/battle-rules.md) |
 | 數位版・動物大對決 | 選角 → 對戰 → 淘汰賽樹，含 AI 對手 | [`game/digital/`](https://github.com/huansbox/animal-fight/tree/master/game/digital) |
 | 數位版・動物猜猜看 | 3 提示猜動物，含 132 題全制霸模式 | [`game/quiz/`](https://github.com/huansbox/animal-fight/tree/master/game/quiz) |
 | 平衡模擬器 | 大量對戰模擬驗證數值平衡 | [`sim/`](https://github.com/huansbox/animal-fight/tree/master/sim) |
@@ -30,9 +30,9 @@
 
 ## 專案階段
 
-**已完成**：10 波共 132 隻動物（數值 → 技能 → 繪圖 prompt → JSON → HTML 全打通）、132 張寫實風格圖片、兩個離線 Web 小遊戲、對戰模擬器 v3–v5、A4 黑白實體原型與首輪親子遊玩、團隊任務 v0.4 完整規則、122×175mm 無圖卡面 PDF 試印。
+**已完成**：10 波共 132 隻動物（數值 → 技能 → 繪圖 prompt → JSON → HTML 全打通）、132 張寫實風格圖片、兩個離線 Web 小遊戲、對戰模擬器 v3–v5、A4 黑白實體原型與首輪親子遊玩、團隊任務 v0.6 規則與 6 局 Agent 模擬、共用劇情模板與 3 套固定劇情、122×175mm 無圖卡面 PDF 試印。
 
-**進行中**：等待 122×175mm 放大版 Poker 到貨後量測實際尺寸；同時準備團隊任務 v0.4 的第一次實玩。詳見 [Plan](Plan)。
+**進行中**：等待 122×175mm 放大版 Poker 到貨後量測實際尺寸；同時準備團隊任務 v0.6 的第一次真人親子實玩。詳見 [Plan](Plan)。
 
 **暫定但未定案**：放大版 Poker 122×175mm + A4 黑白雷射標籤紙，每張 A4 橫式排 2 張。無圖測試大小可接受，最終尺寸與貼紙內縮量等實物到貨後確認。
 

@@ -89,9 +89,10 @@ animal-fight/
 - **離線運行**：同數位版，需從專案根目錄啟動 HTTP server
 
 ### 數值系統分歧
-- 合作闘關（rulebook.md）：v1 數值系統（天賦為單一分數 8-12，總和 34-39）
+- 舊合作闘關（rulebook.md）：v1 數值系統（天賦為單一分數 8-12，總和 34-39）
+- 團隊任務 v0.6：沿用 v2.5 卡面五維數值與 `skillBonus` 標記，但改用 1-3 顆骰的合作判定；不計卡面技能加分數字
 - 動物大對決（battle-rules.md）：v2.5 數值系統（天賦為 +4 分配，總和 11-33）
-- 兩模式獨立運作，待實際遊玩測試後再決定是否統一
+- 三套規則獨立運作；團隊任務 v0.6 是目前合作玩法候選，等待真人實玩
 
 ### 圖片生成策略（寫實風格 + Batch API）
 
@@ -157,7 +158,12 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - 勝利：累積 5 前進標記 → 終局
 - **團隊任務模式 v0.2 草案**：[`docs/plans/2026-07-15-team-mission-simulation-review.md`](docs/plans/2026-07-15-team-mission-simulation-review.md)（完整文字模擬、三方 blind review、下一次實測規則）
 - **團隊任務 v0.3 後援制**：[`docs/plans/2026-07-15-team-mission-v03-reserve-simulation-review.md`](docs/plans/2026-07-15-team-mission-v03-reserve-simulation-review.md)（8 隻配置、完整模擬、三方 blind review、v0.4 建議）
-- **團隊任務 v0.4 完整規則**：[`docs/plans/2026-07-15-team-mission-v04-rules-review.md`](docs/plans/2026-07-15-team-mission-v04-rules-review.md)（完整流程、單向支援、後援替換、Boss 門檻、三方 review）
+- **團隊任務 v0.4 歷史候選**：[`docs/plans/2026-07-15-team-mission-v04-rules-review.md`](docs/plans/2026-07-15-team-mission-v04-rules-review.md)（六格全公開、開局先排陣；保留為候選隊長策略模式）
+- **團隊任務 v0.5 停止版本**：[`docs/plans/2026-07-17-team-mission-v05-rules.md`](docs/plans/2026-07-17-team-mission-v05-rules.md)（v0.4 文字修訂；回歸期間轉向逐關揭露）
+- **團隊任務 v0.6 現行候選**：[`docs/plans/2026-07-17-team-mission-v06-progressive-reveal-rules.md`](docs/plans/2026-07-17-team-mission-v06-progressive-reveal-rules.md)（Boss 先提示、前三關逐關揭露、待命／再挑戰／休息三區、兩次後援；6 局 Agent 模擬與短回歸通過）
+- **v0.6 模擬整併**：[`docs/plans/2026-07-17-team-mission-v06-agent-simulation-review.md`](docs/plans/2026-07-17-team-mission-v06-agent-simulation-review.md)（5 歲、9 歲、兄弟模式各自然局＋邊界局；後援 A／B 難度比較）
+- **v0.6 固定劇情模板**：[`docs/plans/2026-07-17-team-mission-story-template.md`](docs/plans/2026-07-17-team-mission-story-template.md)（批次產生欄位、區間理由、失敗旁白與檢查清單）
+- **v0.6 固定劇情原型**：[`docs/plans/scenarios/`](docs/plans/scenarios/)（災難救援／調查解謎／遠征運送各 1 套；基礎版先固定使用）
 
 ### 動物大對決（battle-rules.md）
 - 賽制：淘汰賽，每輪 1 戰定勝負（進階：3 戰 2 勝）
@@ -169,11 +175,11 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 
 ## 當前狀態
 
-**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受）
+**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受） → 團隊任務 v0.6 逐關揭露規則、6 局 Agent 模擬、共用劇情模板與 3 套固定劇情
 
 **待完成**：
 - [ ] 數位版實際遊玩測試
-- [ ] 團隊任務 v0.4 實際遊玩測試
+- [ ] 團隊任務 v0.6 實際親子遊玩測試（優先記錄逐關選角節奏、三區理解、後援 A 是否過難）
 - [ ] 放大版 Poker 到貨後量測實際尺寸，微調 122×175mm 卡面與貼紙內縮量
 - [ ] 加入圖片並完成最終放大版 Poker 卡面
 

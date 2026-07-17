@@ -1,18 +1,21 @@
 # 執行中計畫
 
-> 快照日期：2026-07-15。**Source of truth = repo 內的 [`AGENTS.md`](https://github.com/huansbox/animal-fight/blob/master/AGENTS.md)「當前狀態」段、[`docs/plans/`](https://github.com/huansbox/animal-fight/tree/master/docs/plans) 與 [GitHub issues](https://github.com/huansbox/animal-fight/issues)。** 本頁只是導覽快照，衝突時以 repo 為準。
+> 快照日期：2026-07-17。**Source of truth = repo 內的 [`AGENTS.md`](https://github.com/huansbox/animal-fight/blob/master/AGENTS.md)「當前狀態」段、[`docs/plans/`](https://github.com/huansbox/animal-fight/tree/master/docs/plans) 與 [GitHub issues](https://github.com/huansbox/animal-fight/issues)。** 本頁只是導覽快照，衝突時以 repo 為準。
 
-## 主戰場一：團隊任務 v0.4 實玩
+## 主戰場一：團隊任務 v0.6 實玩
 
-團隊任務已完成三輪文字模擬、三方 review 與 v0.4 規則收斂。核心流程：
+團隊任務已由「六格全公開、開局先排陣」改為較貼近卡通情節的 v0.6 逐關揭露。3 Agents 已完成 6 局自然／邊界模擬與短回歸；文字規則可一致執行，仍需真人親子實玩驗證娛樂性與難度。核心流程：
 
-1. 隨機抽 8 隻動物，6 隻前線、2 隻後援。
-2. 前三關成功會打破 Boss 護盾，最後由兩隻動物合作挑戰 Boss。
-3. 單向支援以多出的成功讓夥伴重擲失敗骰。
-4. 只要提升 1 隻動物的結果就可能通關，即可派後援取代該位置並取較高結果；若必須同時救 2 隻則不能後援。
-5. 故事描述增加參與感，但不改變骰子與勝負。
+1. 隨機抽 8 隻動物，全部面朝上放在待命區；雙孩子各持 4 張但不設個人出場配額。
+2. 開場只公開大目標與 Boss 兩個工作；前三關抵達時才逐關公開。
+3. 基礎結構固定為單動物、雙動物、單動物、雙動物 Boss，共 6 個主要位置。
+4. 第一次得到 0 成功的動物進再挑戰區，之後只能再擔任一次後援；完成工作或用完第二次機會則進休息區。
+5. 全隊有 2 枚後援標記，每關最多呼叫 1 隻；基準結算採原位置與後援取較高、不相加。
+6. 故事描述增加想像與參與感，但不改變骰子與勝負。
 
-完整規則與 review：[`docs/plans/2026-07-15-team-mission-v04-rules-review.md`](https://github.com/huansbox/animal-fight/blob/master/docs/plans/2026-07-15-team-mission-v04-rules-review.md)。下一步是用實體卡進行第一次完整實玩，記錄排陣時間、支援／後援理解度與 Boss 難度。
+文件入口：[`v0.6 完整規則`](https://github.com/huansbox/animal-fight/blob/master/docs/plans/2026-07-17-team-mission-v06-progressive-reveal-rules.md)、[`6 局模擬整併`](https://github.com/huansbox/animal-fight/blob/master/docs/plans/2026-07-17-team-mission-v06-agent-simulation-review.md)、[`固定劇情模板`](https://github.com/huansbox/animal-fight/blob/master/docs/plans/2026-07-17-team-mission-story-template.md)、[`三套固定劇情`](https://github.com/huansbox/animal-fight/tree/master/docs/plans/scenarios)。
+
+下一步只做真人親子實玩，優先記錄：逐關選角是否比開局排陣更有娛樂性、5 歲孩子是否理解三區、兄弟是否能協調 `3＋3`／`4＋2`、兩枚後援是否足夠，以及 A「取較高」是否讓 Boss 過難。B「補足缺口」只同步記錄可能結果，不在第一次教學中使用。
 
 ## 主戰場二：放大版 Poker 卡片
 
@@ -57,5 +60,5 @@
 ## 開工守則
 
 - **動任何動物數值或新增動物之前**：讀 `CLAUDE.md` 的「動物設計全流程 SOP」，走 10 步流程。
-- **動團隊任務規則之前**：先跑完一次 v0.4 實玩並留下具體觀察，不因文字模擬繼續加規則。
+- **動團隊任務規則之前**：先跑完一次 v0.6 真人實玩並留下具體觀察，不因文字模擬繼續加規則。
 - **完工回寫**：每次實玩只記錄會影響下一個決定的觀察，不做過度記錄。
