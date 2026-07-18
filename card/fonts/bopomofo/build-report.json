@@ -1,0 +1,163 @@
+{
+  "source": {
+    "version": "v1.500",
+    "url": "https://github.com/ButTaiwan/bpmfvs/releases/download/v1.500/BpmfGenSenRounded.zip",
+    "zipSha256": "01548ac7216758bd2a2a46143ed41b26004198df2b07ab24b337c88505f8e558"
+  },
+  "animals": 132,
+  "fixedBoldText": "力量速度攻擊防禦聰明特殊能力",
+  "knownUnsupported": {
+    "㺢": "㺢㹢狓",
+    "㹢": "㺢㹢狓",
+    "狓": "㺢㹢狓",
+    "獴": "狐獴"
+  },
+  "pronunciationOverrides": {
+    "variationSequences": 89,
+    "manualRuby": 7
+  },
+  "sourceCoverage": {
+    "bold": {
+      "requestedCodepoints": 463,
+      "supportedCodepoints": 459,
+      "allowedUnsupported": [
+        "㹢",
+        "㺢",
+        "狓",
+        "獴"
+      ]
+    },
+    "medium": {
+      "requestedCodepoints": 665,
+      "supportedCodepoints": 665,
+      "allowedUnsupported": []
+    }
+  },
+  "outputs": {
+    "bold": {
+      "path": "card/fonts/bopomofo/rounded-bold.woff2",
+      "bytes": 124816,
+      "sha256": "b7e666affe1e0e6c4718f8567d9d8b6e73faa8aadbbb0f9b32af07c28a23f7a3",
+      "cmapCodepoints": 459,
+      "gsubFeatures": [
+        "aalt",
+        "ss01",
+        "ss02",
+        "ss03",
+        "ss10",
+        "vert",
+        "vrt2"
+      ],
+      "requiredVariationSequences": [
+        "U+5B50 U+E01E1",
+        "U+51A0 U+E01E1",
+        "U+722A U+E01E1",
+        "U+722A U+E01E1",
+        "U+5B50 U+E01E1",
+        "U+5687 U+E01E1"
+      ]
+    },
+    "medium": {
+      "path": "card/fonts/bopomofo/rounded-medium.woff2",
+      "bytes": 158520,
+      "sha256": "575fe44476b2ad05366dbb1a9ee66e79faaad04ade2080d4cdb1b4bbd6fac3cf",
+      "cmapCodepoints": 665,
+      "gsubFeatures": [
+        "aalt",
+        "ss01",
+        "ss02",
+        "ss03",
+        "ss04",
+        "ss05",
+        "ss10",
+        "vert",
+        "vrt2"
+      ],
+      "requiredVariationSequences": [
+        "U+5F97 U+E01E1",
+        "U+5F48 U+E01E1",
+        "U+5F97 U+E01E1",
+        "U+897F U+E01E1",
+        "U+9AA8 U+E01E2",
+        "U+982D U+E01E1",
+        "U+897F U+E01E1",
+        "U+6735 U+E01E1",
+        "U+8655 U+E01E1",
+        "U+5D17 U+E01E1",
+        "U+5730 U+E01E1",
+        "U+722A U+E01E1",
+        "U+5DF4 U+E01E1",
+        "U+9732 U+E01E1",
+        "U+897F U+E01E1",
+        "U+8655 U+E01E1",
+        "U+5B50 U+E01E1",
+        "U+5B50 U+E01E1",
+        "U+5DF4 U+E01E1",
+        "U+5687 U+E01E1",
+        "U+722A U+E01E1",
+        "U+982D U+E01E1",
+        "U+5730 U+E01E1",
+        "U+897F U+E01E1",
+        "U+5DF4 U+E01E1",
+        "U+5687 U+E01E1",
+        "U+4E2D U+E01E1",
+        "U+5B50 U+E01E1",
+        "U+897F U+E01E1",
+        "U+5730 U+E01E1",
+        "U+5DF4 U+E01E1",
+        "U+5B50 U+E01E1",
+        "U+5F48 U+E01E1",
+        "U+5B50 U+E01E1",
+        "U+5DF4 U+E01E1",
+        "U+56BC U+E01E1",
+        "U+5DF4 U+E01E1",
+        "U+4E2D U+E01E1",
+        "U+9AA8 U+E01E2",
+        "U+982D U+E01E1",
+        "U+4E86 U+E01E1",
+        "U+9732 U+E01E1",
+        "U+5B50 U+E01E1",
+        "U+5730 U+E01E1",
+        "U+897F U+E01E1",
+        "U+5B50 U+E01E1",
+        "U+982D U+E01E1",
+        "U+9732 U+E01E1",
+        "U+5B50 U+E01E1",
+        "U+5B50 U+E01E1",
+        "U+4E86 U+E01E1",
+        "U+5F97 U+E01E1",
+        "U+5B50 U+E01E1",
+        "U+6559 U+E01E1",
+        "U+5B50 U+E01E1",
+        "U+500B U+E01E1",
+        "U+5F97 U+E01E1",
+        "U+897F U+E01E1",
+        "U+4E86 U+E01E1",
+        "U+89BA U+E01E1",
+        "U+982D U+E01E1",
+        "U+982D U+E01E1",
+        "U+5207 U+E01E1",
+        "U+5F97 U+E01E1",
+        "U+897F U+E01E1",
+        "U+5F97 U+E01E1",
+        "U+5DF4 U+E01E1",
+        "U+5F97 U+E01E1",
+        "U+5B50 U+E01E1",
+        "U+5B50 U+E01E1",
+        "U+5DF4 U+E01E1",
+        "U+5DF4 U+E01E1",
+        "U+5F97 U+E01E1",
+        "U+982D U+E01E1",
+        "U+5F97 U+E01E1",
+        "U+9577 U+E01E1",
+        "U+5F97 U+E01E1",
+        "U+897F U+E01E1",
+        "U+6C92 U+E01E1",
+        "U+982D U+E01E1",
+        "U+5730 U+E01E1",
+        "U+8655 U+E01E1",
+        "U+6735 U+E01E1"
+      ]
+    }
+  }
+}

@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "policy": {
+    "yiBuSandhi": "dictionary-tone",
+    "description": "一、不採字典本調；名詞尾與助詞輕聲依語境校正。IVS selector 1 對應 U+E01E1（第二讀音），依此類推。"
+  },
+  "fields": {
+    "elephant.skillName": [
+      { "index": 1, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "鼻子詞尾讀輕聲" }
+    ],
+    "owl.skillDesc": [
+      { "index": 14, "char": "得", "selector": 1, "reading": "˙ㄉㄜ", "reason": "看得很清楚的結構助詞讀輕聲" }
+    ],
+    "tortoise.skillDesc": [
+      { "index": 22, "char": "彈", "selector": 1, "reading": "ㄊㄢˊ", "reason": "彈開讀 ㄊㄢˊ" }
+    ],
+    "impala.skillDesc": [
+      { "index": 1, "char": "得", "selector": 1, "reading": "˙ㄉㄜ", "reason": "跳得又高又遠的結構助詞讀輕聲" }
+    ],
+    "crocodile.skillDesc": [
+      { "index": 14, "char": "西", "selector": 1, "reading": "˙ㄒㄧ", "reason": "東西詞尾讀輕聲" }
+    ],
+    "hyena.skillDesc": [
+      { "index": 7, "char": "骨", "selector": 2, "reading": "ㄍㄨˊ", "reason": "骨頭讀 ㄍㄨˊ ˙ㄊㄡ" },
+      { "index": 8, "char": "頭", "selector": 1, "reading": "˙ㄊㄡ", "reason": "骨頭詞尾讀輕聲" }
+    ],
+    "bison.skillDesc": [
+      { "index": 13, "char": "西", "selector": 1, "reading": "˙ㄒㄧ", "reason": "東西詞尾讀輕聲" }
+    ],
+    "fennec_fox.skillDesc": [
+      { "index": 3, "char": "朵", "selector": 1, "reading": "˙ㄉㄨㄛ", "reason": "耳朵詞尾讀輕聲" },
+      { "index": 13, "char": "處", "selector": 1, "reading": "ㄔㄨˋ", "reason": "遠處讀 ㄔㄨˋ" }
+    ],
+    "meerkat.skillDesc": [
+      { "index": 1, "char": "崗", "selector": 1, "reading": "ㄍㄤˇ", "reason": "站崗讀 ㄍㄤˇ" }
+    ],
+    "weasel.skillDesc": [
+      { "index": 2, "char": "地", "selector": 1, "reading": "˙ㄉㄜ", "reason": "瘋狂地的結構助詞讀輕聲" }
+    ],
+    "gibbon.skillName": [
+      { "index": 1, "char": "冠", "selector": 1, "reading": "ㄍㄨㄢ", "reason": "樹冠讀 ㄍㄨㄢ" }
+    ],
+    "anteater.skillName": [
+      { "index": 1, "char": "爪", "selector": 1, "reading": "ㄓㄠˇ", "reason": "利爪讀 ㄓㄠˇ" }
+    ],
+    "anteater.skillDesc": [
+      { "index": 8, "char": "爪", "selector": 1, "reading": "ㄓㄠˇ", "reason": "利爪讀 ㄓㄠˇ" }
+    ],
+    "hippopotamus.skillDesc": [
+      { "index": 5, "char": "巴", "selector": 1, "reading": "˙ㄅㄚ", "reason": "嘴巴詞尾讀輕聲" },
+      { "index": 6, "char": "露", "selector": 1, "reading": "ㄌㄡˋ", "reason": "露出讀 ㄌㄡˋ" }
+    ],
+    "rhinoceros.skillDesc": [
+      { "index": 18, "char": "西", "selector": 1, "reading": "˙ㄒㄧ", "reason": "東西詞尾讀輕聲" }
+    ],
+    "leopard.skillDesc": [
+      { "index": 3, "char": "處", "selector": 1, "reading": "ㄔㄨˋ", "reason": "暗處讀 ㄔㄨˋ" }
+    ],
+    "giraffe.skillDesc": [
+      { "index": 5, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "脖子詞尾讀輕聲" },
+      { "index": 8, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "鞭子詞尾讀輕聲" }
+    ],
+    "pelican.skillDesc": [
+      { "index": 6, "char": "巴", "selector": 1, "reading": "˙ㄅㄚ", "reason": "嘴巴詞尾讀輕聲" }
+    ],
+    "red_crowned_crane.skillDesc": [
+      { "index": 7, "char": "嚇", "selector": 1, "reading": "ㄏㄜˋ", "reason": "威嚇讀 ㄏㄜˋ" }
+    ],
+    "bald_eagle.skillName": [
+      { "index": 1, "char": "爪", "selector": 1, "reading": "ㄓㄠˇ", "reason": "鷹爪讀 ㄓㄠˇ" }
+    ],
+    "bald_eagle.skillDesc": [
+      { "index": 13, "char": "爪", "selector": 1, "reading": "ㄓㄠˇ", "reason": "鷹爪讀 ㄓㄠˇ" }
+    ],
+    "sea_otter.skillDesc": [
+      { "index": 6, "char": "頭", "selector": 1, "reading": "˙ㄊㄡ", "reason": "石頭詞尾讀輕聲" },
+      { "index": 14, "char": "地", "selector": 1, "reading": "˙ㄉㄜ", "reason": "聰明地的結構助詞讀輕聲" }
+    ],
+    "raccoon.skillDesc": [
+      { "index": 12, "char": "西", "selector": 1, "reading": "˙ㄒㄧ", "reason": "東西詞尾讀輕聲" }
+    ],
+    "scorpion.name": [
+      { "index": 1, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "蠍子詞尾讀輕聲" }
+    ],
+    "scorpion.skillDesc": [
+      { "index": 3, "char": "巴", "selector": 1, "reading": "˙ㄅㄚ", "reason": "尾巴詞尾讀輕聲" }
+    ],
+    "peacock.skillDesc": [
+      { "index": 8, "char": "嚇", "selector": 1, "reading": "ㄏㄜˋ", "reason": "威嚇讀 ㄏㄜˋ" }
+    ],
+    "poison_dart_frog.skillDesc": [
+      { "index": 11, "char": "中", "selector": 1, "reading": "ㄓㄨㄥˋ", "reason": "中毒讀 ㄓㄨㄥˋ" }
+    ],
+    "domestic_pig.skillDesc": [
+      { "index": 5, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "鼻子詞尾讀輕聲" },
+      { "index": 17, "char": "西", "selector": 1, "reading": "˙ㄒㄧ", "reason": "東西詞尾讀輕聲" }
+    ],
+    "eurasian_lynx.skillDesc": [
+      { "index": 4, "char": "地", "selector": 1, "reading": "˙ㄉㄜ", "reason": "無聲無息地的結構助詞讀輕聲" }
+    ],
+    "green_iguana.skillDesc": [
+      { "index": 7, "char": "巴", "selector": 1, "reading": "˙ㄅㄚ", "reason": "尾巴詞尾讀輕聲" },
+      { "index": 10, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "鞭子詞尾讀輕聲" }
+    ],
+    "brown_bear.skillDesc": [
+      { "index": 22, "char": "彈", "selector": 1, "reading": "ㄊㄢˊ", "reason": "動彈讀 ㄊㄢˊ" }
+    ],
+    "giant_panda.skillDesc": [
+      { "index": 11, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "竹子詞尾讀輕聲" }
+    ],
+    "striped_skunk.skillDesc": [
+      { "index": 3, "char": "巴", "selector": 1, "reading": "˙ㄅㄚ", "reason": "尾巴詞尾讀輕聲" }
+    ],
+    "gila_monster.skillDesc": [
+      { "index": 10, "char": "嚼", "selector": 1, "reading": "ㄐㄩㄝˊ", "reason": "咀嚼讀 ㄐㄩㄝˊ" }
+    ],
+    "toco_toucan.skillDesc": [
+      { "index": 8, "char": "巴", "selector": 1, "reading": "˙ㄅㄚ", "reason": "嘴巴詞尾讀輕聲" }
+    ],
+    "pufferfish.skillDesc": [
+      { "index": 15, "char": "中", "selector": 1, "reading": "ㄓㄨㄥˋ", "reason": "中毒讀 ㄓㄨㄥˋ" }
+    ],
+    "snapping_turtle.skillDesc": [
+      { "index": 19, "char": "骨", "selector": 2, "reading": "ㄍㄨˊ", "reason": "骨頭讀 ㄍㄨˊ ˙ㄊㄡ" },
+      { "index": 20, "char": "頭", "selector": 1, "reading": "˙ㄊㄡ", "reason": "骨頭詞尾讀輕聲" }
+    ],
+    "tarantula.skillDesc": [
+      { "index": 22, "char": "了", "selector": 1, "reading": "ㄌㄧㄠˇ", "reason": "不了讀 ㄌㄧㄠˇ" }
+    ],
+    "capybara.skillDesc": [
+      { "index": 5, "char": "露", "selector": 1, "reading": "ㄌㄡˋ", "reason": "露出讀 ㄌㄡˋ" },
+      { "index": 11, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "鼻子詞尾讀輕聲" },
+      { "index": 15, "char": "地", "selector": 1, "reading": "˙ㄉㄜ", "reason": "安靜地的結構助詞讀輕聲" }
+    ],
+    "kea.skillDesc": [
+      { "index": 17, "char": "西", "selector": 1, "reading": "˙ㄒㄧ", "reason": "東西詞尾讀輕聲" },
+      { "index": 21, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "車子詞尾讀輕聲" }
+    ],
+    "opossum.skillDesc": [
+      { "index": 6, "char": "頭", "selector": 1, "reading": "˙ㄊㄡ", "reason": "舌頭詞尾讀輕聲" }
+    ],
+    "tuatara.skillDesc": [
+      { "index": 3, "char": "露", "selector": 1, "reading": "ㄌㄡˋ", "reason": "露出讀 ㄌㄡˋ" }
+    ],
+    "red_panda.skillName": [
+      { "index": 3, "char": "嚇", "selector": 1, "reading": "ㄏㄜˋ", "reason": "威嚇讀 ㄏㄜˋ" }
+    ],
+    "red_panda.skillDesc": [
+      { "index": 11, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "爪子詞尾讀輕聲" }
+    ],
+    "echidna.skillDesc": [
+      { "index": 5, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "爪子詞尾讀輕聲" },
+      { "index": 22, "char": "了", "selector": 1, "reading": "ㄌㄧㄠˇ", "reason": "不了讀 ㄌㄧㄠˇ" }
+    ],
+    "coyote.skillDesc": [
+      { "index": 21, "char": "得", "selector": 1, "reading": "˙ㄉㄜ", "reason": "用得出來的結構助詞讀輕聲" }
+    ],
+    "black_panther.skillDesc": [
+      { "index": 16, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "影子詞尾讀輕聲" }
+    ],
+    "japanese_macaque.skillDesc": [
+      { "index": 15, "char": "教", "selector": 1, "reading": "ㄐㄧㄠ", "reason": "教會讀 ㄐㄧㄠ" },
+      { "index": 20, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "猴子詞尾讀輕聲" }
+    ],
+    "eastern_gray_squirrel.skillDesc": [
+      { "index": 6, "char": "個", "selector": 1, "reading": "˙ㄍㄜ", "reason": "幾百個的量詞讀輕聲" },
+      { "index": 11, "char": "得", "selector": 1, "reading": "˙ㄉㄜ", "reason": "記得住的結構助詞讀輕聲" },
+      { "index": 20, "char": "西", "selector": 1, "reading": "˙ㄒㄧ", "reason": "東西詞尾讀輕聲" }
+    ],
+    "hedgehog.skillDesc": [
+      { "index": 20, "char": "了", "selector": 1, "reading": "ㄌㄧㄠˇ", "reason": "不了讀 ㄌㄧㄠˇ" }
+    ],
+    "koala.skillDesc": [
+      { "index": 14, "char": "覺", "selector": 1, "reading": "ㄐㄧㄠˋ", "reason": "睡覺讀 ㄐㄧㄠˋ" }
+    ],
+    "chameleon.skillDesc": [
+      { "index": 16, "char": "頭", "selector": 1, "reading": "˙ㄊㄡ", "reason": "舌頭詞尾讀輕聲" }
+    ],
+    "chimpanzee.skillDesc": [
+      { "index": 2, "char": "頭", "selector": 1, "reading": "˙ㄊㄡ", "reason": "石頭詞尾讀輕聲" }
+    ],
+    "sea_turtle.skillDesc": [
+      { "index": 12, "char": "切", "selector": 1, "reading": "ㄑㄧㄝˋ", "reason": "一切讀 ㄑㄧㄝˋ" },
+      { "index": 20, "char": "得", "selector": 1, "reading": "˙ㄉㄜ", "reason": "游得又遠又穩的結構助詞讀輕聲" }
+    ],
+    "jellyfish.skillDesc": [
+      { "index": 14, "char": "西", "selector": 1, "reading": "˙ㄒㄧ", "reason": "東西詞尾讀輕聲" },
+      { "index": 19, "char": "得", "selector": 1, "reading": "˙ㄉㄜ", "reason": "螫得超痛的結構助詞讀輕聲" }
+    ],
+    "scarlet_macaw.skillDesc": [
+      { "index": 13, "char": "巴", "selector": 1, "reading": "˙ㄅㄚ", "reason": "嘴巴詞尾讀輕聲" },
+      { "index": 23, "char": "得", "selector": 1, "reading": "˙ㄉㄜ", "reason": "咬得開的結構助詞讀輕聲" }
+    ],
+    "woolly_mammoth.skillDesc": [
+      { "index": 8, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "鏟子詞尾讀輕聲" }
+    ],
+    "harpy_eagle.skillDesc": [
+      { "index": 11, "char": "子", "selector": 1, "reading": "˙ㄗ", "reason": "爪子詞尾讀輕聲" }
+    ],
+    "swordfish.skillDesc": [
+      { "index": 7, "char": "巴", "selector": 1, "reading": "˙ㄅㄚ", "reason": "嘴巴詞尾讀輕聲" }
+    ],
+    "bobcat.skillDesc": [
+      { "index": 3, "char": "巴", "selector": 1, "reading": "˙ㄅㄚ", "reason": "尾巴詞尾讀輕聲" },
+      { "index": 10, "char": "得", "selector": 1, "reading": "˙ㄉㄜ", "reason": "跑得又快又穩的結構助詞讀輕聲" }
+    ],
+    "raven.skillDesc": [
+      { "index": 3, "char": "頭", "selector": 1, "reading": "˙ㄊㄡ", "reason": "石頭詞尾讀輕聲" },
+      { "index": 24, "char": "得", "selector": 1, "reading": "˙ㄉㄜ", "reason": "想得出來的結構助詞讀輕聲" }
+    ],
+    "walking_stick.skillDesc": [
+      { "index": 4, "char": "長", "selector": 1, "reading": "ㄓㄤˇ", "reason": "長得讀 ㄓㄤˇ" },
+      { "index": 5, "char": "得", "selector": 1, "reading": "˙ㄉㄜ", "reason": "長得的結構助詞讀輕聲" }
+    ],
+    "army_ant.skillDesc": [
+      { "index": 19, "char": "西", "selector": 1, "reading": "˙ㄒㄧ", "reason": "東西詞尾讀輕聲" },
+      { "index": 24, "char": "沒", "selector": 1, "reading": "ㄇㄛˋ", "reason": "淹沒讀 ㄇㄛˋ" }
+    ],
+    "okapi.skillDesc": [
+      { "index": 5, "char": "頭", "selector": 1, "reading": "˙ㄊㄡ", "reason": "舌頭詞尾讀輕聲" },
+      { "index": 8, "char": "地", "selector": 1, "reading": "˙ㄉㄜ", "reason": "靈活地的結構助詞讀輕聲" },
+      { "index": 12, "char": "處", "selector": 1, "reading": "ㄔㄨˋ", "reason": "高處讀 ㄔㄨˋ" },
+      { "index": 18, "char": "朵", "selector": 1, "reading": "˙ㄉㄨㄛ", "reason": "耳朵詞尾讀輕聲" }
+    ]
+  },
+  "manualRuby": {
+    "meerkat.name": [
+      { "index": 1, "char": "獴", "reading": "ㄇㄥˊ", "reason": "源泉注音圓體 v1.500 無此字形" }
+    ],
+    "wombat.skillDesc": [
+      { "index": 12, "char": "股", "reading": "˙ㄍㄨ", "reason": "屁股詞尾讀輕聲；字型沒有此讀音的 IVS" }
+    ],
+    "chimpanzee.skillDesc": [
+      { "index": 15, "char": "袋", "reading": "˙ㄉㄞ", "reason": "腦袋詞尾讀輕聲；字型沒有此讀音的 IVS" }
+    ],
+    "firefly.skillDesc": [
+      { "index": 1, "char": "股", "reading": "˙ㄍㄨ", "reason": "屁股詞尾讀輕聲；字型沒有此讀音的 IVS" }
+    ],
+    "okapi.name": [
+      { "index": 0, "char": "㺢", "reading": "ㄏㄨㄛˋ", "reason": "源泉注音圓體 v1.500 無此字形" },
+      { "index": 1, "char": "㹢", "reading": "ㄐㄧㄚ", "reason": "源泉注音圓體 v1.500 無此字形" },
+      { "index": 2, "char": "狓", "reading": "ㄆㄧˊ", "reason": "源泉注音圓體 v1.500 無此字形" }
+    ]
+  }
+}

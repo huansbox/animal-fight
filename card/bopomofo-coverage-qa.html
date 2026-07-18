@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>132 張動物卡注音覆蓋 QA</title>
+    <style>
+        @font-face {
+            font-family: "Animal Bopomofo Rounded";
+            src: url("fonts/bopomofo/rounded-medium.woff2") format("woff2");
+            font-weight: 500;
+            font-display: block;
+        }
+
+        @font-face {
+            font-family: "Animal Bopomofo Rounded";
+            src: url("fonts/bopomofo/rounded-bold.woff2") format("woff2");
+            font-weight: 700;
+            font-display: block;
+        }
+
+        @page { size: A4 landscape; margin: 0; }
+
+        :root {
+            --bpmf-font: "Animal Bopomofo Rounded";
+            --system-font: "PingFang TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: #ccc;
+            color: #000;
+            font-family: var(--system-font);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .screen-header {
+            position: sticky;
+            z-index: 2;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 18px;
+            border-bottom: 2px solid #000;
+            background: #fff;
+            font-size: 13px;
+        }
+
+        .screen-header h1 { margin: 0; font-size: 17px; }
+        .screen-header p { margin: 0; font-weight: 700; }
+        #pages { padding: 12px 0 32px; }
+
+        .sheet {
+            position: relative;
+            width: 297mm;
+            height: 210mm;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 4mm;
+            margin: 0 auto 12px;
+            padding: 11mm 12mm 12mm;
+            background: #fff;
+            break-after: page;
+            overflow: hidden;
+        }
+
+        .page-title {
+            position: absolute;
+            top: 3.5mm;
+            left: 12mm;
+            font-size: 9pt;
+            font-weight: 800;
+        }
+
+        .page-number {
+            position: absolute;
+            right: 12mm;
+            bottom: 3.5mm;
+            font-size: 8.5pt;
+            font-weight: 700;
+        }
+
+        .qa-card {
+            min-width: 0;
+            padding: 3.2mm 4mm 2.8mm;
+            border: .45mm solid #000;
+            border-radius: 2mm;
+            overflow: hidden;
+            break-inside: avoid;
+        }
+
+        .priority .qa-card { border-width: .7mm; }
+
+        .name-row {
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            gap: 2.5mm;
+            padding-bottom: 1.5mm;
+            border-bottom: .25mm solid #000;
+            white-space: nowrap;
+        }
+
+        .zh-bold,
+        .zh-medium {
+            font-family: var(--bpmf-font), var(--system-font);
+            font-synthesis: none;
+            letter-spacing: .04em;
+        }
+
+        .zh-bold { font-weight: 700; }
+        .zh-medium { font-weight: 500; }
+
+        .animal-name {
+            flex: 0 0 auto;
+            font-size: 23pt;
+            line-height: 1;
+        }
+
+        .animal-name-en {
+            min-width: 0;
+            overflow: hidden;
+            font-size: 10.5pt;
+            font-weight: 800;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+        }
+
+        .animal-name-en.is-long { font-size: 9.5pt; }
+
+        .skill-title {
+            margin-top: 2.2mm;
+            font-size: 15pt;
+            line-height: 1.1;
+        }
+
+        .skill-desc {
+            margin-top: 1.2mm;
+            font-size: 13pt;
+            line-height: 1.42;
+        }
+
+        .flags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1mm;
+            margin-top: 1.5mm;
+            font-size: 7.5pt;
+            line-height: 1.2;
+        }
+
+        .flag {
+            padding: .6mm 1.2mm;
+            border: .25mm solid #000;
+            border-radius: 1mm;
+            background: #fff;
+            font-weight: 700;
+        }
+
+        .flag.manual { color: #fff; background: #000; }
+
+        .manual-bpmf-unit {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            letter-spacing: 0;
+        }
+
+        .manual-han {
+            font-family: var(--system-font);
+            font-weight: inherit;
+            line-height: 1;
+        }
+
+        .manual-reading {
+            min-width: .47em;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-left: .04em;
+            font-family: var(--system-font);
+            font-size: .28em;
+            font-weight: 700;
+            line-height: .88;
+            letter-spacing: 0;
+        }
+
+        .manual-reading > span { display: block; }
+
+        .load-error {
+            width: 260mm;
+            margin: 20mm auto;
+            padding: 10mm;
+            border: 1mm solid #000;
+            background: #fff;
+            font-size: 14pt;
+            font-weight: 700;
+        }
+
+        @media print {
+            body { background: #fff; }
+            .screen-header { display: none; }
+            #pages { padding: 0; }
+            .sheet { margin: 0; }
+            .sheet:last-child { break-after: auto; }
+        }
+    </style>
+</head>
+<body>
+    <header class="screen-header">
+        <h1>132 張動物卡注音覆蓋 QA</h1>
+        <p id="qa-status">載入中</p>
+    </header>
+    <main id="pages" aria-live="polite"></main>
+
+    <script>
+        const DATA_URL = "../game/digital/data/animals.json";
+        const OVERRIDES_URL = "data/bopomofo-overrides.json";
+        const PRIORITY_IDS = [
+            "snapping_turtle",
+            "scorpion",
+            "meerkat",
+            "okapi",
+            "wombat",
+            "chimpanzee"
+        ];
+        const IVS_BASE = 0xE01E0;
+        const ANIMALS_PER_PAGE = 6;
+
+        const pages = document.querySelector("#pages");
+        const qaStatus = document.querySelector("#qa-status");
+
+        function fieldKey(animal, fieldName) {
+            return `${animal.id}.${fieldName}`;
+        }
+
+        function appendManualReading(parent, reading) {
+            const readingNode = document.createElement("span");
+            readingNode.className = "manual-reading";
+            [...reading].forEach((symbol) => {
+                const symbolNode = document.createElement("span");
+                symbolNode.textContent = symbol;
+                readingNode.append(symbolNode);
+            });
+            parent.append(readingNode);
+        }
+
+        function renderAnnotated(target, text, key, overrides) {
+            const ivsByIndex = new Map(
+                (overrides.fields[key] || []).map((entry) => [entry.index, entry])
+            );
+            const manualByIndex = new Map(
+                (overrides.manualRuby[key] || []).map((entry) => [entry.index, entry])
+            );
+
+            [...text].forEach((character, index) => {
+                const manual = manualByIndex.get(index);
+                if (manual) {
+                    const unit = document.createElement("span");
+                    unit.className = "manual-bpmf-unit";
+                    unit.setAttribute("aria-label", `${character} ${manual.reading}`);
+
+                    const han = document.createElement("span");
+                    han.className = "manual-han";
+                    han.textContent = character;
+                    unit.append(han);
+                    appendManualReading(unit, manual.reading);
+                    target.append(unit);
+                    return;
+                }
+
+                const ivs = ivsByIndex.get(index);
+                target.append(document.createTextNode(character));
+                if (ivs) {
+                    target.append(document.createTextNode(
+                        String.fromCodePoint(IVS_BASE + ivs.selector)
+                    ));
+                }
+            });
+        }
+
+        function flagsFor(animal, overrides) {
+            const container = document.createElement("div");
+            container.className = "flags";
+
+            ["name", "skillName", "skillDesc"].forEach((fieldName) => {
+                const key = fieldKey(animal, fieldName);
+                (overrides.fields[key] || []).forEach((entry) => {
+                    const flag = document.createElement("span");
+                    flag.className = "flag";
+                    flag.textContent = `${fieldName}：${entry.char} → ${entry.reading}`;
+                    container.append(flag);
+                });
+                (overrides.manualRuby[key] || []).forEach((entry) => {
+                    const flag = document.createElement("span");
+                    flag.className = "flag manual";
+                    flag.textContent = `人工注音：${entry.char} → ${entry.reading}`;
+                    container.append(flag);
+                });
+            });
+
+            if (!container.childElementCount) {
+                const flag = document.createElement("span");
+                flag.className = "flag";
+                flag.textContent = "預設讀音";
+                container.append(flag);
+            }
+            return container;
+        }
+
+        function createCard(animal, overrides) {
+            const card = document.createElement("article");
+            card.className = "qa-card";
+            card.dataset.animalId = animal.id;
+
+            const nameRow = document.createElement("div");
+            nameRow.className = "name-row";
+
+            const name = document.createElement("span");
+            name.className = "animal-name zh-bold";
+            renderAnnotated(name, animal.name, fieldKey(animal, "name"), overrides);
+
+            const english = document.createElement("span");
+            english.className = "animal-name-en";
+            english.classList.toggle("is-long", animal.en.length > 20);
+            english.textContent = animal.en;
+            nameRow.append(name, english);
+
+            const skillName = document.createElement("div");
+            skillName.className = "skill-title zh-bold";
+            renderAnnotated(
+                skillName,
+                animal.skillName,
+                fieldKey(animal, "skillName"),
+                overrides
+            );
+
+            const skillDesc = document.createElement("div");
+            skillDesc.className = "skill-desc zh-medium";
+            renderAnnotated(
+                skillDesc,
+                animal.skillDesc,
+                fieldKey(animal, "skillDesc"),
+                overrides
+            );
+
+            card.append(nameRow, skillName, skillDesc, flagsFor(animal, overrides));
+            return card;
+        }
+
+        function createSheet(title, pageNumber, animals, overrides, priority = false) {
+            const sheet = document.createElement("section");
+            sheet.className = `sheet${priority ? " priority" : ""}`;
+
+            const heading = document.createElement("div");
+            heading.className = "page-title";
+            heading.textContent = title;
+
+            const number = document.createElement("div");
+            number.className = "page-number";
+            number.textContent = `第 ${pageNumber} 頁`;
+
+            sheet.append(heading, ...animals.map((animal) => createCard(animal, overrides)), number);
+            return sheet;
+        }
+
+        async function render() {
+            try {
+                const [animalsResponse, overridesResponse] = await Promise.all([
+                    fetch(DATA_URL),
+                    fetch(OVERRIDES_URL)
+                ]);
+                if (!animalsResponse.ok || !overridesResponse.ok) {
+                    throw new Error("資料載入失敗；請從專案根目錄啟動 HTTP server。");
+                }
+
+                const [animals, overrides] = await Promise.all([
+                    animalsResponse.json(),
+                    overridesResponse.json()
+                ]);
+                if (animals.length !== 132) {
+                    throw new Error(`預期 132 隻動物，實際為 ${animals.length}。`);
+                }
+
+                const animalsById = new Map(animals.map((animal) => [animal.id, animal]));
+                const priorityAnimals = PRIORITY_IDS.map((id) => animalsById.get(id));
+                let pageNumber = 1;
+
+                pages.append(createSheet(
+                    "優先檢查：鱷字、IVS 多音字、人工注音",
+                    pageNumber++,
+                    priorityAnimals,
+                    overrides,
+                    true
+                ));
+
+                for (let index = 0; index < animals.length; index += ANIMALS_PER_PAGE) {
+                    const group = animals.slice(index, index + ANIMALS_PER_PAGE);
+                    pages.append(createSheet(
+                        `132 張正式文字覆蓋：${index + 1}–${index + group.length}`,
+                        pageNumber++,
+                        group,
+                        overrides
+                    ));
+                }
+
+                await document.fonts.ready;
+                const ivsCount = Object.values(overrides.fields)
+                    .reduce((total, entries) => total + entries.length, 0);
+                const manualCount = Object.values(overrides.manualRuby)
+                    .reduce((total, entries) => total + entries.length, 0);
+                const overflowCards = [...document.querySelectorAll(".qa-card")]
+                    .filter((card) => (
+                        card.scrollHeight > card.clientHeight + 1
+                        || card.scrollWidth > card.clientWidth + 1
+                    ));
+                qaStatus.textContent = `${animals.length} 隻｜${ivsCount} 個 IVS｜${manualCount} 個人工注音｜${pageNumber - 1} 頁｜溢出 ${overflowCards.length}`;
+                window.qaSummary = {
+                    animals: animals.length,
+                    ivs: ivsCount,
+                    manual: manualCount,
+                    pages: pageNumber - 1,
+                    overflow: overflowCards.map((card) => card.dataset.animalId)
+                };
+                document.documentElement.dataset.qaReady = "true";
+                document.documentElement.dataset.qaOverflow = String(overflowCards.length);
+                window.qaReady = true;
+            } catch (error) {
+                pages.innerHTML = `<p class="load-error">${error.message}</p>`;
+                qaStatus.textContent = "載入失敗";
+                window.qaError = error.message;
+                window.qaReady = false;
+            }
+        }
+
+        render();
+    </script>
+</body>
+</html>
