@@ -46,6 +46,14 @@
 - 可直接列印 PDF：[`output/pdf/animal-fight-card-size-test-122x175.pdf`](output/pdf/animal-fight-card-size-test-122x175.pdf)
 - 目前試印大小可接受；等放大版 Poker 到貨並量測實際尺寸後，再調整最終卡面與貼紙內縮量。
 
+**團隊任務 v0.6 黑白列印測試包**
+
+- 製作規格：[`docs/plans/2026-07-18-team-mission-physical-production.md`](docs/plans/2026-07-18-team-mission-physical-production.md)
+- 普通 A4 單面控制板：[`output/pdf/team-mission-v06-control-board-a4.pdf`](output/pdf/team-mission-v06-control-board-a4.pdf)
+- A4 四分標籤揭露卡：[`output/pdf/storm-forest-rescue-reveal-cards-four-up-a4.pdf`](output/pdf/storm-forest-rescue-reveal-cards-four-up-a4.pdf)
+- 普通 A4 雙面 DM 指南：[`output/pdf/storm-forest-rescue-dm-guide-a4-duplex.pdf`](output/pdf/storm-forest-rescue-dm-guide-a4-duplex.pdf)
+- 全部使用黑白雷射印表機，以 `100%`／「實際大小」列印；DM 指南選橫式、雙面、短邊翻頁。
+
 **目前實玩方式**
 
 - 採 4 強、8 強或 16 強單淘汰
