@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動物卡屬性情境插圖比較</title>
+    <style>
+        @font-face {
+            font-family: "Animal Bopomofo Rounded";
+            src: url("fonts/bopomofo-prototype/rounded-medium-subset.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Animal Bopomofo Rounded";
+            src: url("fonts/bopomofo-prototype/rounded-bold-subset.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        :root {
+            --bpmf-font: "Animal Bopomofo Rounded";
+            --system-font: "PingFang TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-width: 1500px;
+            margin: 0;
+            background: #d4d4d4;
+            color: #000;
+            font-family: var(--system-font);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page-header {
+            position: sticky;
+            z-index: 10;
+            top: 0;
+            padding: 12px 24px;
+            border-bottom: 2px solid #000;
+            background: rgba(255, 255, 255, 0.97);
+        }
+
+        .page-header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .page-header p {
+            margin: 5px 0 0;
+            font-size: 13px;
+        }
+
+        .comparison {
+            width: max-content;
+            display: grid;
+            grid-template-columns: repeat(3, 122mm);
+            gap: 18px;
+            margin: 22px auto 48px;
+        }
+
+        .option-heading {
+            min-height: 65px;
+            margin-bottom: 9px;
+            padding: 8px 10px;
+            border: 1.5px solid #000;
+            background: #fff;
+        }
+
+        .option-heading strong,
+        .option-heading span {
+            display: block;
+        }
+
+        .option-heading strong {
+            font-size: 16px;
+        }
+
+        .option-heading span {
+            margin-top: 4px;
+            font-size: 12px;
+            line-height: 1.35;
+        }
+
+        .card {
+            width: 122mm;
+            height: 175mm;
+            display: grid;
+            grid-template-rows: 18mm 70mm 44mm 28.5mm;
+            gap: 1.5mm;
+            padding: 3mm;
+            overflow: hidden;
+            border: 0.7mm solid #000;
+            border-radius: 4mm;
+            background: #fff;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+        }
+
+        .zh-bold,
+        .zh-medium {
+            font-family: var(--bpmf-font), var(--system-font);
+            font-synthesis: none;
+            letter-spacing: 0.04em;
+        }
+
+        .zh-bold {
+            font-weight: 700;
+        }
+
+        .zh-medium {
+            font-weight: 500;
+        }
+
+        .name-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2mm;
+            border-bottom: 0.5mm solid #000;
+            white-space: nowrap;
+        }
+
+        .animal-name {
+            font-size: 23pt;
+            line-height: 1;
+        }
+
+        .animal-name-en {
+            font-size: 8.5pt;
+            font-weight: 800;
+        }
+
+        .image-wrap {
+            overflow: hidden;
+            border: 0.45mm solid #000;
+            border-radius: 2mm;
+            background: #eee;
+        }
+
+        .image-wrap img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center 47%;
+            filter: grayscale(1) contrast(1.08);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            overflow: hidden;
+            border: 0.5mm solid #000;
+            border-radius: 2mm;
+        }
+
+        .stat {
+            min-width: 0;
+            display: grid;
+            grid-template-rows: 5mm 16mm 5mm 9mm 4mm;
+            align-items: center;
+            justify-items: center;
+            padding: 1mm 0.4mm;
+            overflow: hidden;
+            border-right: 0.35mm solid #000;
+        }
+
+        .stat:last-child {
+            border-right: 0;
+        }
+
+        .attribute-die {
+            width: 4.5mm;
+            height: 4.5mm;
+        }
+
+        .scene {
+            height: 16mm;
+            display: block;
+            overflow: hidden;
+        }
+
+        .stat-label {
+            font-size: 9.5pt;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .stat-value {
+            font-size: 24pt;
+            font-weight: 900;
+            line-height: 0.9;
+        }
+
+        .stat-bonus {
+            min-height: 4mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7mm;
+            font-size: 8.5pt;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .bonus-die {
+            width: 3.8mm;
+            height: 3.8mm;
+        }
+
+        .skill-box {
+            padding: 1.8mm 3mm;
+            overflow: hidden;
+            border: 0.5mm solid #000;
+            border-radius: 2mm;
+        }
+
+        .skill-title {
+            margin-bottom: 0.8mm;
+            font-size: 14pt;
+            line-height: 1.1;
+        }
+
+        .skill-desc {
+            font-size: 12pt;
+            line-height: 1.35;
+        }
+
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                min-width: 0;
+                background: #fff;
+            }
+
+            .page-header {
+                display: none;
+            }
+
+            .comparison {
+                width: auto;
+                display: block;
+                margin: 0;
+            }
+
+            .option {
+                width: 210mm;
+                height: 297mm;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                break-after: page;
+                page-break-after: always;
+            }
+
+            .option:last-child {
+                break-after: auto;
+                page-break-after: auto;
+            }
+
+            .option-heading {
+                width: 122mm;
+                margin-bottom: 6mm;
+            }
+
+            .card {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <h1>屬性情境插圖放入卡片後的比較</h1>
+        <p>三張皆為實際 122×175mm 卡面；骰子固定在情境插圖正上方。請先看縮小後能否理解，再比較畫風。</p>
+    </header>
+
+    <main class="comparison" id="comparison"></main>
+
+    <script>
+        const attributes = [
+            { label: "力量", value: 9, die: 1 },
+            { label: "速度", value: 2, die: 2 },
+            { label: "攻擊", value: 3, die: 3, bonus: 1 },
+            { label: "防禦", value: 8, die: 4, bonus: 3 },
+            { label: "聰明", value: 8, die: 5 }
+        ];
+
+        const styles = [
+            {
+                name: "A｜兒童科普書粗線稿",
+                note: "線條最少、動作最直接；人物偏兒童插畫。",
+                image: "attribute-illustration-prototype/set-a-science-book.png",
+                width: 2172,
+                height: 724,
+                cropY: 10,
+                cropHeight: 704,
+                panels: [[8, 418], [443, 417], [877, 417], [1312, 417], [1746, 418]]
+            },
+            {
+                name: "B｜簡化寫實鋼筆插畫",
+                note: "人物與物件較自然，但縮小後細線可能變淡。",
+                image: "attribute-illustration-prototype/set-b-pen-ink.png",
+                width: 1774,
+                height: 887,
+                cropY: 106,
+                cropHeight: 625,
+                panels: [[32, 340], [410, 309], [756, 294], [1086, 313], [1436, 303]]
+            },
+            {
+                name: "C｜高對比黑白版畫",
+                note: "黑白最強、列印最穩，但黑色面積與視覺重量最大。",
+                image: "attribute-illustration-prototype/set-c-linocut.png",
+                width: 1920,
+                height: 819,
+                cropY: 35,
+                cropHeight: 730,
+                panels: [[5, 390], [408, 356], [782, 354], [1154, 354], [1526, 389]]
+            }
+        ];
+
+        function sceneMarkup(style, index) {
+            const [x, width] = style.panels[index];
+            const displayWidth = 16 * width / style.cropHeight;
+            return `
+                <svg class="scene" style="width: ${displayWidth}mm" viewBox="${x} ${style.cropY} ${width} ${style.cropHeight}" role="img" aria-label="${attributes[index].label}情境插圖" preserveAspectRatio="xMidYMid meet">
+                    <image href="${style.image}" x="0" y="0" width="${style.width}" height="${style.height}"></image>
+                </svg>`;
+        }
+
+        function statMarkup(style, attribute, index) {
+            const bonus = attribute.bonus === undefined
+                ? '<span class="stat-bonus"></span>'
+                : `<span class="stat-bonus"><img class="bonus-die" src="icons/die-6.svg" alt="骰到六">+${attribute.bonus}</span>`;
+
+            return `
+                <div class="stat">
+                    <img class="attribute-die" src="icons/die-${attribute.die}.svg" alt="骰面 ${attribute.die}">
+                    ${sceneMarkup(style, index)}
+                    <span class="stat-label zh-bold">${attribute.label}</span>
+                    <strong class="stat-value">${attribute.value}</strong>
+                    ${bonus}
+                </div>`;
+        }
+
+        function cardMarkup(style) {
+            return `
+                <article class="option">
+                    <div class="option-heading">
+                        <strong>${style.name}</strong>
+                        <span>${style.note}</span>
+                    </div>
+                    <section class="card" aria-label="非洲象動物卡片，${style.name}">
+                        <header class="name-row">
+                            <span class="animal-name zh-bold">非洲象</span>
+                            <span class="animal-name-en">ELEPHANT</span>
+                        </header>
+                        <div class="image-wrap">
+                            <img src="images-print-prototype/african-elephant-high-contrast-print.png" alt="非洲象鼻子噴水">
+                        </div>
+                        <section class="stats-grid" aria-label="動物屬性">
+                            ${attributes.map((attribute, index) => statMarkup(style, attribute, index)).join("")}
+                        </section>
+                        <section class="skill-box">
+                            <div class="skill-title zh-bold">鼻子噴水</div>
+                            <div class="skill-desc zh-medium">可以澆熄森林大火，或是洗掉擋路的泥濘。</div>
+                        </section>
+                    </section>
+                </article>`;
+        }
+
+        document.querySelector("#comparison").innerHTML = styles.map(cardMarkup).join("");
+    </script>
+</body>
+</html>

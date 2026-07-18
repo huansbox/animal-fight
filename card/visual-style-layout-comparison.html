@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動物卡圖片、Icon 與骰子位置比較</title>
+    <style>
+        @font-face {
+            font-family: "Animal Bopomofo Rounded";
+            src: url("fonts/bopomofo-prototype/rounded-bold-subset.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        :root {
+            --system-font: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            --bpmf-font: "Animal Bopomofo Rounded";
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-width: 1400px;
+            margin: 0;
+            background: #d5d5d5;
+            color: #000;
+            font-family: var(--system-font);
+        }
+
+        header {
+            position: sticky;
+            z-index: 10;
+            top: 0;
+            padding: 13px 24px;
+            border-bottom: 2px solid #000;
+            background: rgba(255, 255, 255, 0.97);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 13px;
+        }
+
+        main {
+            width: max-content;
+            margin: 24px auto 60px;
+        }
+
+        section {
+            margin-bottom: 34px;
+            padding: 20px;
+            border: 1.5px solid #000;
+            background: #eee;
+        }
+
+        section h2 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        .section-note {
+            margin: 0 0 18px;
+            font-size: 13px;
+        }
+
+        .three-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 114mm);
+            gap: 16px;
+        }
+
+        .option {
+            position: relative;
+        }
+
+        .option-heading {
+            min-height: 67px;
+            margin-bottom: 8px;
+            padding: 8px 10px;
+            border: 1.5px solid #000;
+            background: #fff;
+        }
+
+        .option-heading strong {
+            display: block;
+            font-size: 16px;
+        }
+
+        .option-heading span {
+            display: block;
+            margin-top: 4px;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .recommended {
+            position: absolute;
+            top: -8px;
+            right: 8px;
+            padding: 3px 7px;
+            background: #000;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .image-frame {
+            width: 114mm;
+            height: 70mm;
+            overflow: hidden;
+            border: 0.55mm solid #000;
+            border-radius: 2mm;
+            background: #fff;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .stat-row {
+            width: 114mm;
+            height: 40mm;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border: 0.5mm solid #000;
+            border-radius: 2mm;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .stat-cell {
+            position: relative;
+            min-width: 0;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            padding: 1mm 0.8mm;
+            border-right: 0.35mm solid #000;
+        }
+
+        .stat-cell:last-child {
+            border-right: 0;
+        }
+
+        .attr-icon {
+            width: 7.5mm;
+            height: 7.5mm;
+        }
+
+        .map-die {
+            width: 4.3mm;
+            height: 4.3mm;
+        }
+
+        .attr-label {
+            font-family: var(--bpmf-font), var(--system-font);
+            font-size: 9pt;
+            font-weight: 700;
+            font-synthesis: none;
+            letter-spacing: 0.04em;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .attr-value {
+            font-size: 25pt;
+            font-weight: 900;
+            line-height: 0.9;
+        }
+
+        .bonus {
+            min-height: 4.3mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7mm;
+            font-size: 8.5pt;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .bonus img {
+            width: 3.8mm;
+            height: 3.8mm;
+        }
+
+        .layout-current .stat-cell {
+            grid-template-rows: 8mm 5mm 10mm 4mm;
+        }
+
+        .layout-current .map-die {
+            position: absolute;
+            top: 1.2mm;
+            right: 1.1mm;
+        }
+
+        .layout-current .attr-icon {
+            grid-row: 1;
+        }
+
+        .layout-current .attr-label {
+            grid-row: 2;
+        }
+
+        .layout-current .attr-value {
+            grid-row: 3;
+        }
+
+        .layout-current .bonus {
+            grid-row: 4;
+        }
+
+        .layout-above .stat-cell {
+            grid-template-rows: 5mm 7mm 4.5mm 9mm 4mm;
+        }
+
+        .layout-above .map-die { grid-row: 1; }
+        .layout-above .attr-icon { grid-row: 2; width: 6.8mm; height: 6.8mm; }
+        .layout-above .attr-label { grid-row: 3; }
+        .layout-above .attr-value { grid-row: 4; font-size: 23pt; }
+        .layout-above .bonus { grid-row: 5; }
+
+        .layout-below .stat-cell {
+            grid-template-rows: 8mm 4.5mm 10mm 5mm;
+        }
+
+        .layout-below .attr-icon { grid-row: 1; }
+        .layout-below .attr-label { grid-row: 2; }
+        .layout-below .attr-value { grid-row: 3; }
+
+        .layout-below .bottom-dice {
+            grid-row: 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2mm;
+        }
+
+        .layout-below .bonus {
+            min-height: 0;
+        }
+
+        .takeaway {
+            max-width: calc(342mm + 32px);
+            margin: 0;
+            padding: 14px 16px;
+            border: 1.5px solid #000;
+            background: #fff;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>動物卡視覺方向比較</h1>
+        <p>所有圖片框與屬性列皆使用實際卡面尺寸：圖片 114×70mm、屬性列 114×40mm。</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>一、動物圖片細節量</h2>
+            <p class="section-note">同一隻非洲象、同一個「鼻子噴水」動作，只改繪製方式。C 的水流方向差異來自生成隨機性，不是刻意設計；正式 prompt 會固定動作朝向。</p>
+            <div class="three-columns">
+                <article class="option">
+                    <div class="option-heading">
+                        <strong>A｜現有高寫實</strong>
+                        <span>皮膚與地面細節最多；螢幕效果好，黑白雷射最可能糊成灰。</span>
+                    </div>
+                    <div class="image-frame"><img src="images-print-prototype/african-elephant-skill-prototype.png" alt="高寫實非洲象"></div>
+                </article>
+
+                <article class="option">
+                    <div class="option-heading">
+                        <strong>B｜簡化寫實插畫</strong>
+                        <span>灰階區塊清楚、耗碳粉少；可能稍微接近插畫感，作為簡化邊界。</span>
+                    </div>
+                    <div class="image-frame"><img src="images-print-prototype/african-elephant-simplified-realism.png" alt="簡化寫實非洲象"></div>
+                </article>
+
+                <article class="option">
+                    <span class="recommended">我較推薦</span>
+                    <div class="option-heading">
+                        <strong>C｜高對比自然史版畫</strong>
+                        <span>保留寫實輪廓，以黑、灰、白和較粗線條呈現；預期雷射列印最穩。</span>
+                    </div>
+                    <div class="image-frame"><img src="images-print-prototype/african-elephant-high-contrast-print.png" alt="高對比自然史版畫非洲象"></div>
+                </article>
+            </div>
+        </section>
+
+        <section>
+            <h2>二、屬性 icon 與骰子位置</h2>
+            <p class="section-note">骰面 1–5 已統一置中放在 icon 正上方；三個版本只比較 icon 風格。</p>
+            <div class="three-columns" id="layout-options"></div>
+        </section>
+
+        <p class="takeaway">
+            目前建議：骰子固定放 icon 正上方；icon 優先測 H「具象線面混合」，兼顧孩子辨識與較成熟的黑白造型。圖片先保留 A、B、C，等 icon 定案後一起做實際雷射列印。
+        </p>
+    </main>
+
+    <script>
+        const attributes = [
+            { label: "力量", value: 9, die: 1, icon: "strength" },
+            { label: "速度", value: 2, die: 2, icon: "speed" },
+            { label: "攻擊", value: 3, die: 3, icon: "attack", bonus: 1 },
+            { label: "防禦", value: 8, die: 4, icon: "defense", bonus: 3 },
+            { label: "聰明", value: 8, die: 5, icon: "smart" }
+        ];
+
+        const layouts = [
+            {
+                key: "current",
+                title: "D｜原本圓角線稿具象 icon",
+                note: "物件最容易理解，但線條與細節比較像卡通。",
+                iconFolder: "icons",
+                className: "layout-above"
+            },
+            {
+                key: "above",
+                title: "H｜具象線面混合 icon",
+                note: "肌肉手臂、跑鞋、雙劍、盾牌、大腦；以黑色剪影＋白色刻線呈現。",
+                iconFolder: "icons/concrete",
+                className: "layout-above",
+                recommended: true
+            },
+            {
+                key: "above",
+                title: "E｜幾何實心抽象 icon",
+                note: "大人視角最俐落，但箭頭與斜線對 5 歲孩子較抽象。",
+                iconFolder: "icons/solid",
+                className: "layout-above"
+            }
+        ];
+
+        const target = document.querySelector("#layout-options");
+
+        function bonusMarkup(value) {
+            if (value === undefined) return "<span class=\"bonus\"></span>";
+            return `<span class="bonus"><img src="icons/die-6.svg" alt="">+${value}</span>`;
+        }
+
+        function createCell(attribute, layout) {
+            const cell = document.createElement("div");
+            cell.className = "stat-cell";
+            const icon = `${layout.iconFolder}/attribute-${attribute.icon}.svg`;
+            const die = `icons/die-${attribute.die}.svg`;
+            const bonus = bonusMarkup(attribute.bonus);
+
+            if (layout.key === "below") {
+                cell.innerHTML = `
+                    <img class="attr-icon" src="${icon}" alt="">
+                    <span class="attr-label">${attribute.label}</span>
+                    <strong class="attr-value">${attribute.value}</strong>
+                    <div class="bottom-dice">
+                        <img class="map-die" src="${die}" alt="">
+                        ${bonus}
+                    </div>`;
+            } else {
+                cell.innerHTML = `
+                    <img class="map-die" src="${die}" alt="">
+                    <img class="attr-icon" src="${icon}" alt="">
+                    <span class="attr-label">${attribute.label}</span>
+                    <strong class="attr-value">${attribute.value}</strong>
+                    ${bonus}`;
+            }
+
+            return cell;
+        }
+
+        for (const layout of layouts) {
+            const option = document.createElement("article");
+            option.className = "option";
+            if (layout.recommended) {
+                option.insertAdjacentHTML("beforeend", '<span class="recommended">我較推薦</span>');
+            }
+
+            option.insertAdjacentHTML("beforeend", `
+                <div class="option-heading">
+                    <strong>${layout.title}</strong>
+                    <span>${layout.note}</span>
+                </div>`);
+
+            const row = document.createElement("div");
+            row.className = `stat-row ${layout.className}`;
+            for (const attribute of attributes) row.append(createCell(attribute, layout));
+            option.append(row);
+            target.append(option);
+        }
+    </script>
+</body>
+</html>

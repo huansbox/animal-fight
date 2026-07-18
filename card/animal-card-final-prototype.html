@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動物卡片版面定稿 Prototype</title>
+    <style>
+        @font-face {
+            font-family: "Animal Bopomofo Rounded";
+            src: url("fonts/bopomofo/rounded-medium.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Animal Bopomofo Rounded";
+            src: url("fonts/bopomofo/rounded-bold.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        :root {
+            --bpmf-font: "Animal Bopomofo Rounded";
+            --system-font: "PingFang TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #d4d4d4;
+            color: #000;
+            font-family: var(--system-font);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            min-height: 58px;
+            padding: 10px 24px;
+            border-bottom: 2px solid #000;
+            background: #fff;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .animal-switcher {
+            display: flex;
+            gap: 6px;
+        }
+
+        .animal-switcher button {
+            padding: 6px 10px;
+            border: 1.5px solid #000;
+            border-radius: 5px;
+            background: #fff;
+            font-family: var(--system-font);
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .animal-switcher button[aria-pressed="true"] {
+            background: #000;
+            color: #fff;
+        }
+
+        .preview {
+            width: max-content;
+            margin: 24px auto 48px;
+        }
+
+        .card {
+            width: 122mm;
+            height: 175mm;
+            display: grid;
+            grid-template-rows: 18mm 70mm 44mm 31mm;
+            gap: 1.5mm;
+            padding: 3mm;
+            border: 0.7mm solid #000;
+            border-radius: 4mm;
+            background: #fff;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+        }
+
+        .zh-bold,
+        .zh-medium {
+            font-family: var(--bpmf-font), var(--system-font);
+            font-synthesis: none;
+            letter-spacing: 0.04em;
+        }
+
+        .zh-bold {
+            font-weight: 700;
+        }
+
+        .zh-medium {
+            font-weight: 500;
+        }
+
+        .name-row {
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2mm;
+            border-bottom: 0.5mm solid #000;
+            white-space: nowrap;
+        }
+
+        .animal-name {
+            font-size: 23pt;
+            line-height: 1;
+        }
+
+        .animal-name-en {
+            min-width: 0;
+            overflow: hidden;
+            font-size: 10.5pt;
+            font-weight: 800;
+            letter-spacing: 0.01em;
+            text-overflow: ellipsis;
+        }
+
+        .animal-name-en.is-long {
+            font-size: 9.5pt;
+        }
+
+        .image-wrap {
+            overflow: hidden;
+            border: 0.45mm solid #000;
+            border-radius: 2mm;
+            background: #eee;
+        }
+
+        .image-wrap img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            filter: grayscale(1) contrast(1.08);
+            object-fit: cover;
+            object-position: center 43%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border: 0.5mm solid #000;
+            border-radius: 2mm;
+            overflow: hidden;
+        }
+
+        .stat {
+            min-width: 0;
+            display: grid;
+            grid-template-rows: 5mm 16mm 5mm 9mm 4mm;
+            align-items: center;
+            justify-items: center;
+            padding: 1mm 0.4mm;
+            overflow: hidden;
+            border-right: 0.35mm solid #000;
+        }
+
+        .stat:last-child {
+            border-right: 0;
+        }
+
+        .attribute-die {
+            width: 4.5mm;
+            height: 4.5mm;
+        }
+
+        .attribute-scene {
+            width: 16mm;
+            height: 16mm;
+            display: block;
+            object-fit: contain;
+            filter: grayscale(1) contrast(1.12);
+        }
+
+        .stat-label {
+            font-size: 9.5pt;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .stat-value {
+            font-size: 24pt;
+            font-weight: 900;
+            line-height: 0.9;
+        }
+
+        .stat-bonus {
+            min-height: 4mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8mm;
+            font-size: 8.5pt;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .bonus-die {
+            width: 3.8mm;
+            height: 3.8mm;
+        }
+
+        .skill-box {
+            padding: 2.2mm 3mm;
+            border: 0.5mm solid #000;
+            border-radius: 2mm;
+            overflow: hidden;
+        }
+
+        .skill-title {
+            margin-bottom: 1.2mm;
+            font-size: 15pt;
+            line-height: 1.15;
+        }
+
+        .skill-desc {
+            font-size: 13pt;
+            line-height: 1.46;
+        }
+
+        .manual-bpmf-unit {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            letter-spacing: 0;
+        }
+
+        .manual-han {
+            font-family: var(--system-font);
+            font-weight: inherit;
+            line-height: 1;
+        }
+
+        .manual-reading {
+            min-width: 0.47em;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 0.04em;
+            font-family: var(--system-font);
+            font-size: 0.28em;
+            font-weight: 700;
+            line-height: 0.88;
+            letter-spacing: 0;
+        }
+
+        .specs {
+            width: 122mm;
+            margin-top: 12px;
+            padding: 10px 12px;
+            border: 1.5px solid #000;
+            background: #fff;
+            font-size: 12px;
+            line-height: 1.55;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+
+            .header,
+            .specs {
+                display: none;
+            }
+
+            .preview {
+                width: 210mm;
+                height: 297mm;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0;
+            }
+
+            .card {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>動物卡片版面定稿 Prototype</h1>
+        <p>122×175mm｜黑白雷射列印｜三張新圖片 prototype</p>
+        <nav class="animal-switcher" aria-label="切換測試動物">
+            <button type="button" data-animal="elephant" aria-pressed="true">非洲象</button>
+            <button type="button" data-animal="blackPanther" aria-pressed="false">黑豹</button>
+            <button type="button" data-animal="pufferfish" aria-pressed="false">河豚</button>
+            <button type="button" data-animal="tortoise" aria-pressed="false">舊圖比較</button>
+            <button type="button" data-animal="snappingTurtle" aria-pressed="false">最長英文名</button>
+        </nav>
+    </header>
+
+    <main class="preview">
+        <article class="card" id="animal-card" aria-label="非洲象動物卡片">
+            <header class="name-row">
+                <span class="animal-name zh-bold" id="animal-name">非洲象</span>
+                <span class="animal-name-en" id="animal-name-en">ELEPHANT</span>
+            </header>
+
+            <div class="image-wrap">
+                <img id="animal-image" src="images-print-prototype/african-elephant-skill-prototype.png" alt="非洲象特殊能力圖片">
+            </div>
+
+            <section class="stats-grid" aria-label="動物屬性">
+                <div class="stat">
+                    <img class="attribute-die" src="icons/die-1.svg" alt="骰面一">
+                    <img class="attribute-scene" src="attribute-illustrations/strength.png" alt="搬起大石頭，表示力量">
+                    <span class="stat-label zh-bold">力量</span>
+                    <strong class="stat-value" data-stat="0">9</strong>
+                    <span class="stat-bonus" data-bonus="0"></span>
+                </div>
+                <div class="stat">
+                    <img class="attribute-die" src="icons/die-2.svg" alt="骰面二">
+                    <img class="attribute-scene" src="attribute-illustrations/speed.png" alt="向前奔跑，表示速度">
+                    <span class="stat-label zh-bold">速度</span>
+                    <strong class="stat-value" data-stat="1">2</strong>
+                    <span class="stat-bonus" data-bonus="1"></span>
+                </div>
+                <div class="stat">
+                    <img class="attribute-die" src="icons/die-3.svg" alt="骰面三">
+                    <img class="attribute-scene" src="attribute-illustrations/attack.png" alt="擊破木板，表示攻擊">
+                    <span class="stat-label zh-bold">攻擊</span>
+                    <strong class="stat-value" data-stat="2">3</strong>
+                    <span class="stat-bonus" data-bonus="2"><img class="bonus-die" src="icons/die-6.svg" alt="骰到六">+1</span>
+                </div>
+                <div class="stat">
+                    <img class="attribute-die" src="icons/die-4.svg" alt="骰面四">
+                    <img class="attribute-scene" src="attribute-illustrations/defense.png" alt="盾牌擋住飛石，表示防禦">
+                    <span class="stat-label zh-bold">防禦</span>
+                    <strong class="stat-value" data-stat="3">8</strong>
+                    <span class="stat-bonus" data-bonus="3"><img class="bonus-die" src="icons/die-6.svg" alt="骰到六">+3</span>
+                </div>
+                <div class="stat">
+                    <img class="attribute-die" src="icons/die-5.svg" alt="骰面五">
+                    <img class="attribute-scene" src="attribute-illustrations/smart.png" alt="查看地圖找到路線，表示聰明">
+                    <span class="stat-label zh-bold">聰明</span>
+                    <strong class="stat-value" data-stat="4">8</strong>
+                    <span class="stat-bonus" data-bonus="4"></span>
+                </div>
+            </section>
+
+            <section class="skill-box">
+                <div class="skill-title zh-bold" id="skill-title">鼻子噴水</div>
+                <div class="skill-desc zh-medium" id="skill-desc">可以澆熄森林大火，或是洗掉擋路的泥濘。</div>
+            </section>
+        </article>
+
+        <p class="specs">
+            圖片 prototype：非洲象測水花與灰階、黑豹測深色毛皮、河豚測特殊輪廓；「舊圖比較」保留數位版肖像。卡面圖示、文字與數值會一起切換。
+        </p>
+    </main>
+
+    <script>
+        const animals = {
+            elephant: {
+                id: "elephant",
+                name: "非洲象",
+                en: "ELEPHANT",
+                image: "images-print-prototype/african-elephant-skill-prototype.png",
+                stats: [9, 2, 3, 8, 8],
+                skillName: "鼻子噴水",
+                skillDesc: "可以澆熄森林大火，或是洗掉擋路的泥濘。",
+                bonuses: { 2: 1, 3: 3 }
+            },
+            blackPanther: {
+                id: "black_panther",
+                name: "黑豹",
+                en: "BLACK PANTHER",
+                image: "images-print-prototype/black-panther-skill-prototype.png",
+                stats: [5, 6, 8, 3, 7],
+                skillName: "暗夜飛撲",
+                skillDesc: "在黑夜裡悄悄靠近獵物，看不見的影子突然飛撲！",
+                bonuses: { 2: 2, 4: 2 }
+            },
+            pufferfish: {
+                id: "pufferfish",
+                name: "河豚",
+                en: "PUFFERFISH",
+                image: "images-print-prototype/pufferfish-skill-prototype.png",
+                stats: [1, 2, 1, 8, 2],
+                skillName: "膨脹毒球",
+                skillDesc: "吸水膨脹成帶刺的大球，碰到就會中毒。",
+                bonuses: { 2: 1, 3: 3 }
+            },
+            tortoise: {
+                id: "tortoise",
+                name: "加拉巴哥象龜",
+                en: "TORTOISE",
+                image: "images-realistic/tortoise.png",
+                stats: [3, 1, 1, 9, 2],
+                skillName: "龜殼堡壘",
+                skillDesc: "縮進堅硬的殼裡，變成一座移動堡壘，任何攻擊都彈開。",
+                bonuses: { 3: 3, 4: 1 }
+            },
+            snappingTurtle: {
+                id: "snapping_turtle",
+                name: "鱷龜",
+                en: "ALLIGATOR SNAPPING TURTLE",
+                image: "images-realistic/snapping_turtle.png",
+                stats: [5, 2, 7, 7, 2],
+                skillName: "鋼喙猛咬",
+                skillDesc: "用像鷹嘴一樣堅硬的喙，突然猛咬一口，連骨頭都能咬碎！",
+                bonuses: { 0: 1, 2: 3 }
+            }
+        };
+
+        const card = document.querySelector("#animal-card");
+        const animalName = document.querySelector("#animal-name");
+        const animalNameEn = document.querySelector("#animal-name-en");
+        const animalImage = document.querySelector("#animal-image");
+        const skillTitle = document.querySelector("#skill-title");
+        const skillDesc = document.querySelector("#skill-desc");
+        const statValues = [...document.querySelectorAll("[data-stat]")];
+        const bonusFields = [...document.querySelectorAll("[data-bonus]")];
+        const IVS_BASE = 0xE01E0;
+        let pronunciationOverrides = { fields: {}, manualRuby: {} };
+        let currentAnimalKey = "elephant";
+
+        function renderAnnotatedText(target, text, key) {
+            const ivsByIndex = new Map(
+                (pronunciationOverrides.fields[key] || [])
+                    .map((entry) => [entry.index, entry])
+            );
+            const manualByIndex = new Map(
+                (pronunciationOverrides.manualRuby[key] || [])
+                    .map((entry) => [entry.index, entry])
+            );
+
+            target.replaceChildren();
+            [...text].forEach((character, index) => {
+                const manual = manualByIndex.get(index);
+                if (manual) {
+                    const unit = document.createElement("span");
+                    unit.className = "manual-bpmf-unit";
+                    const han = document.createElement("span");
+                    han.className = "manual-han";
+                    han.textContent = character;
+                    const reading = document.createElement("span");
+                    reading.className = "manual-reading";
+                    [...manual.reading].forEach((symbol) => {
+                        const symbolNode = document.createElement("span");
+                        symbolNode.textContent = symbol;
+                        reading.append(symbolNode);
+                    });
+                    unit.append(han, reading);
+                    target.append(unit);
+                    return;
+                }
+
+                const ivs = ivsByIndex.get(index);
+                target.append(document.createTextNode(character));
+                if (ivs) {
+                    target.append(document.createTextNode(
+                        String.fromCodePoint(IVS_BASE + ivs.selector)
+                    ));
+                }
+            });
+        }
+
+        function renderAnimal(key) {
+            const animal = animals[key];
+            currentAnimalKey = key;
+            renderAnnotatedText(animalName, animal.name, `${animal.id}.name`);
+            animalNameEn.textContent = animal.en;
+            animalNameEn.classList.toggle("is-long", animal.en.length > 20);
+            animalImage.src = animal.image;
+            animalImage.alt = `${animal.name}特殊能力圖片`;
+            renderAnnotatedText(
+                skillTitle,
+                animal.skillName,
+                `${animal.id}.skillName`
+            );
+            renderAnnotatedText(
+                skillDesc,
+                animal.skillDesc,
+                `${animal.id}.skillDesc`
+            );
+            card.setAttribute("aria-label", `${animal.name}動物卡片`);
+
+            statValues.forEach((field, index) => {
+                field.textContent = animal.stats[index];
+            });
+
+            bonusFields.forEach((field, index) => {
+                field.replaceChildren();
+                const bonus = animal.bonuses[index];
+                if (bonus === undefined) return;
+
+                const die = document.createElement("img");
+                die.className = "bonus-die";
+                die.src = "icons/die-6.svg";
+                die.alt = "骰到六";
+                field.append(die, document.createTextNode(`+${bonus}`));
+            });
+        }
+
+        document.querySelectorAll("[data-animal]").forEach((button) => {
+            button.addEventListener("click", () => {
+                renderAnimal(button.dataset.animal);
+                document.querySelectorAll("[data-animal]").forEach((peer) => {
+                    peer.setAttribute("aria-pressed", String(peer === button));
+                });
+            });
+        });
+
+        const requestedAnimal = new URLSearchParams(window.location.search).get("animal");
+        if (requestedAnimal && animals[requestedAnimal]) {
+            renderAnimal(requestedAnimal);
+            document.querySelectorAll("[data-animal]").forEach((button) => {
+                button.setAttribute("aria-pressed", String(button.dataset.animal === requestedAnimal));
+            });
+        }
+
+        fetch("data/bopomofo-overrides.json")
+            .then((response) => {
+                if (!response.ok) throw new Error("注音 override 載入失敗");
+                return response.json();
+            })
+            .then((data) => {
+                pronunciationOverrides = data;
+                renderAnimal(currentAnimalKey);
+            })
+            .catch((error) => {
+                console.warn(error.message);
+            });
+    </script>
+</body>
+</html>

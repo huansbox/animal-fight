@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="攻擊">
+  <g fill="none" stroke="#000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 11l7 2 29 29-8 8-29-29z"/>
+    <path d="M50 11l-7 2-29 29 8 8 29-29z"/>
+    <path d="M8 47l9 9M47 56l9-9M10 54l6-6M54 54l-6-6"/>
+  </g>
+</svg>

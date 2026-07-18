@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="聰明">
+  <g fill="none" stroke="#000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M31 15c-2-5-10-7-14-2-5-1-9 4-7 9-5 3-5 11 0 14-3 6 1 12 7 12 2 6 10 7 14 3z"/>
+    <path d="M33 15c2-5 10-7 14-2 5-1 9 4 7 9 5 3 5 11 0 14 3 6-1 12-7 12-2 6-10 7-14 3z"/>
+    <path d="M31 15v36M18 21c5 0 8 3 8 7M11 36c4-2 8-1 11 2M19 48c0-4 3-7 7-8M46 21c-5 0-8 3-8 7M53 36c-4-2-8-1-11 2M45 48c0-4-3-7-7-8"/>
+  </g>
+</svg>
