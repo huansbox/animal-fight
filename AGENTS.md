@@ -19,6 +19,10 @@ animal-fight/
 ├── card/                     # 卡片相關檔案
 │   ├── final_cards.html      # A4 全頁列印版（132 張動物卡，v2.5 數值）
 │   ├── print-size-test-122x175.html # 放大版 Poker 尺寸測試（A4 橫式 2 張／頁）
+│   ├── animal-card-final-prototype.html # 122×175mm 全卡注音版面原型
+│   ├── bopomofo-coverage-qa.html # 132 張正式文字注音與缺字 QA
+│   ├── build_bopomofo_fonts.py # 從官方來源重建正式 Bold／Medium WOFF2 subset
+│   ├── generate_team_mission_print_kit.py # 產生 v0.6 控制板、揭露卡與 DM 指南 PDF
 │   ├── batch_generate.py     # Batch API 批次生成寫實風格大頭照（4 子命令）
 │   ├── generate_from_jsonl.py      # 單張圖片生成腳本（舊版）
 │   ├── data/                 # 結構化動物資料（per-wave JSON）
@@ -26,6 +30,7 @@ animal-fight/
 │   ├── images/               # 列印版動物圖片
 │   │   └── archive-cartoon/  # 封存的卡通風格測試圖片（10 張）
 │   ├── images-realistic/     # 數位版動物圖片（寫實風格 132 張）
+│   ├── fonts/bopomofo/       # 正式卡片注音字型、corpus、授權與 build report
 │   └── img-prompt/           # 圖片生成 prompt
 │       ├── prompt-guidelines.md          # Prompt 撰寫指南與審核條件
 │       ├── animal-ai-prompts{-N}.md      # 各波繪圖 prompt（1~10）
@@ -54,7 +59,11 @@ animal-fight/
 │       ├── css/style.css     # 樣式
 │       └── js/               # app.js（遊戲邏輯）, hints.js（132 隻提示 + 干擾分組）
 ├── output/pdf/
-│   └── animal-fight-card-size-test-122x175.pdf # 可直接列印的尺寸測試 PDF
+│   ├── animal-fight-card-size-test-122x175.pdf # 放大版 Poker 尺寸測試
+│   ├── team-mission-v06-control-board-a4.pdf # 團隊任務 A4 控制板
+│   ├── storm-forest-rescue-reveal-cards-four-up-a4.pdf # 四分標籤揭露卡
+│   ├── storm-forest-rescue-dm-guide-a4-duplex.pdf # A4 雙面 DM 指南
+│   └── bopomofo-font-coverage-qa.pdf # 132 張正式文字注音覆蓋 QA
 └── sim/                      # 對戰模擬器（v3~v5 + shared_dice）
     └── results/              # 模擬結果
 ```
@@ -65,6 +74,10 @@ animal-fight/
 - **5 屬性**：力量、速度、攻擊、防禦、智慧（骰子 1-5）
 - **骰子 6**：特殊能力觸發，顯示加成 icon 和分數
 - **特殊能力加成**：固定 +4 分，分配到 2-3 個屬性
+- **卡片用語**：實體兒童版將「智慧」顯示為「聰明」
+- **全卡注音**：動物名與特殊能力使用源泉注音圓體 Bold；能力說明使用 Medium；正式 subset 由 `card/build_bopomofo_fonts.py` 依 132 張文字重建
+- **讀音校正**：89 個 IVS 多音字／輕聲校正，另有 7 個人工排注音實例；`一、不`維持字典本調
+- **列管例外**：官方字型缺 `獴、㺢、㹢、狓`；`屁股`的「股」與`腦袋`的「袋」沒有本案採用的輕聲 IVS，統一由 `card/data/bopomofo-overrides.json` 處理
 
 ### 數位版（game/digital/）
 - **詳細文件**：[`game/digital/README.md`](game/digital/README.md)（啟動、規則、維護指南）
@@ -164,6 +177,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - **v0.6 模擬整併**：[`docs/plans/2026-07-17-team-mission-v06-agent-simulation-review.md`](docs/plans/2026-07-17-team-mission-v06-agent-simulation-review.md)（5 歲、9 歲、兄弟模式各自然局＋邊界局；後援 A／B 難度比較）
 - **v0.6 固定劇情模板**：[`docs/plans/2026-07-17-team-mission-story-template.md`](docs/plans/2026-07-17-team-mission-story-template.md)（批次產生欄位、區間理由、失敗旁白與檢查清單）
 - **v0.6 固定劇情原型**：[`docs/plans/scenarios/`](docs/plans/scenarios/)（災難救援／調查解謎／遠征運送各 1 套；基礎版先固定使用）
+- **v0.6 實體製作規格**：[`docs/plans/2026-07-18-team-mission-physical-production.md`](docs/plans/2026-07-18-team-mission-physical-production.md)（二分動物標籤、四分揭露標籤、A4 控制板與 DM 指南；全套黑白雷射列印）
 
 ### 動物大對決（battle-rules.md）
 - 賽制：淘汰賽，每輪 1 戰定勝負（進階：3 戰 2 勝）
@@ -175,11 +189,11 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 
 ## 當前狀態
 
-**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受） → 團隊任務 v0.6 逐關揭露規則、6 局 Agent 模擬、共用劇情模板與 3 套固定劇情
+**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受） → 團隊任務 v0.6 逐關揭露規則、6 局 Agent 模擬、共用劇情模板與 3 套固定劇情 → 團隊任務第一套黑白雷射列印測試包（控制板、暴雨揭露卡、DM 雙面指南） → 實體動物卡文字版面與全卡注音規格定案 → 132 張正式文字字型 subset 與 QA PDF
 
 **待完成**：
 - [ ] 數位版實際遊玩測試
-- [ ] 團隊任務 v0.6 實際親子遊玩測試（優先記錄逐關選角節奏、三區理解、後援 A 是否過難）
+- [ ] 列印團隊任務第一套測試包並實際親子遊玩（優先記錄四分標籤可讀性、逐關選角節奏、三區理解、後援 A 是否過難）
 - [ ] 放大版 Poker 到貨後量測實際尺寸，微調 122×175mm 卡面與貼紙內縮量
 - [ ] 加入圖片並完成最終放大版 Poker 卡面
 
@@ -191,11 +205,18 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 
 ## 卡片實體製作
 - **討論文件**：[`docs/plans/2026-02-10-card-size-production.md`](docs/plans/2026-02-10-card-size-production.md)
+- **團隊任務製作規格**：[`docs/plans/2026-07-18-team-mission-physical-production.md`](docs/plans/2026-07-18-team-mission-physical-production.md)
 - **目前原型**：A4 全頁、黑白雷射列印，已用於親子遊玩，孩子喜歡
 - **暫定尺寸**：放大版 Poker 122×175mm；無圖測試 PDF 已試印，文字與數字大小可接受
-- **暫定工法**：A4 黑白雷射專用標籤紙，每張 A4 橫式排 2 張，裁切後貼在放大版 Poker 上
+- **動物卡工法**：A4 二分黑白雷射標籤紙，每張 A4 排 2 張，卡面暫定 170×118.5mm，裁切後貼在放大版 Poker 上
+- **屬性視覺定案**：骰面 1-5 置於插圖正上方；五屬性採 B「簡化寫實鋼筆插畫」情境圖，不使用抽象 icon
+- **屬性插圖**：[`card/attribute-illustrations/`](card/attribute-illustrations/)（力量搬石、速度奔跑、攻擊碎木、防禦擋石、聰明看地圖；卡面顯示高度 16mm）
+- **動物卡版面原型**：[`card/animal-card-final-prototype.html`](card/animal-card-final-prototype.html)（122×175mm、全卡注音、黑白雷射列印）
+- **正式注音字型**：[`card/fonts/bopomofo/`](card/fonts/bopomofo/)（v1.500 固定來源、Bold／Medium subset、corpus、授權、build report）；QA：[`card/bopomofo-coverage-qa.html`](card/bopomofo-coverage-qa.html)、[`output/pdf/bopomofo-font-coverage-qa.pdf`](output/pdf/bopomofo-font-coverage-qa.pdf)
+- **團隊任務工法**：每套 4 張揭露卡使用 1 張 A4 四分標籤紙；控制板與雙面 DM 指南使用普通 A4
 - **測試檔**：[`card/print-size-test-122x175.html`](card/print-size-test-122x175.html)；可列印 PDF：[`output/pdf/animal-fight-card-size-test-122x175.pdf`](output/pdf/animal-fight-card-size-test-122x175.pdf)
-- **下一步**：等實體 Poker 到貨後量測，再調整卡面尺寸與四周內縮；目前不製作 132 張正式版
+- **團隊任務列印檔**：[`output/pdf/team-mission-v06-control-board-a4.pdf`](output/pdf/team-mission-v06-control-board-a4.pdf)、[`output/pdf/storm-forest-rescue-reveal-cards-four-up-a4.pdf`](output/pdf/storm-forest-rescue-reveal-cards-four-up-a4.pdf)、[`output/pdf/storm-forest-rescue-dm-guide-a4-duplex.pdf`](output/pdf/storm-forest-rescue-dm-guide-a4-duplex.pdf)
+- **下一步**：先確認動物圖片的黑白印刷風格，再處理正式動物圖；等實體 Poker 到貨後量測，再調整動物卡面尺寸與四周內縮；目前不製作 132 張正式版
 
 ## 技術債 / 待建工具
 
