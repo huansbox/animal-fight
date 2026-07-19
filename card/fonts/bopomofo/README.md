@@ -1,6 +1,6 @@
 # 正式卡片注音字型
 
-此目錄由 [`card/build_bopomofo_fonts.py`](../../build_bopomofo_fonts.py) 依 132 張正式卡片文字產生，不應手動編輯 WOFF2 或 corpus。
+此目錄由 [`card/build_bopomofo_fonts.py`](../../build_bopomofo_fonts.py) 依 132 張正式動物卡與團隊任務寶物／後援／區域卡文字產生，不應手動編輯 WOFF2 或 corpus。
 
 ## 建置
 

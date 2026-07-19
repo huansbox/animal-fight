@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暴雨森林救援隊揭露卡｜A4 二分標籤</title>
+    <style>
+        @page { size: A4 portrait; margin: 0; }
+
+        @font-face {
+            font-family: "Bpmf Rounded";
+            src: url("fonts/bopomofo/rounded-medium.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 500;
+            font-display: block;
+        }
+
+        @font-face {
+            font-family: "Bpmf Rounded";
+            src: url("fonts/bopomofo/rounded-bold.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 800;
+            font-display: block;
+        }
+
+        :root {
+            --font: "Bpmf Rounded", "PingFang TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        html,
+        body {
+            margin: 0;
+            background: #ccc;
+            color: #000;
+            font-family: var(--font);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            position: relative;
+            width: 210mm;
+            height: 297mm;
+            display: grid;
+            grid-template-rows: repeat(2, 148.5mm);
+            margin: 8mm auto;
+            overflow: hidden;
+            background: #fff;
+            break-after: page;
+            page-break-after: always;
+        }
+
+        .page:last-child {
+            break-after: auto;
+            page-break-after: auto;
+        }
+
+        .label-cell {
+            position: relative;
+            display: grid;
+            place-items: center;
+            width: 210mm;
+            height: 148.5mm;
+            border-bottom: 0.15mm solid #bbb;
+        }
+
+        .card-shell {
+            position: relative;
+            width: 170mm;
+            height: 118.5mm;
+            outline: 0.3mm dashed #666;
+            outline-offset: 0;
+        }
+
+        .reveal-card {
+            position: absolute;
+            inset: 2mm;
+            display: grid;
+            grid-template-rows: 13mm 47mm 1fr;
+            overflow: hidden;
+            border: 0.65mm solid #000;
+            border-radius: 4mm;
+            background: #fff;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 3mm;
+            padding: 1.5mm 4mm;
+            border-bottom: 0.45mm solid #000;
+        }
+
+        .card-number {
+            width: 8mm;
+            height: 8mm;
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            background: #000;
+            color: #fff;
+            font-size: 11pt;
+            font-weight: 900;
+        }
+
+        .card-title {
+            min-width: 0;
+            margin: 0;
+            overflow: hidden;
+            font-size: 15pt;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: 0.06em;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .player-count {
+            margin-left: auto;
+            font-size: 7.8pt;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .scene {
+            position: relative;
+            overflow: hidden;
+            border-bottom: 0.45mm solid #000;
+            background: #eee;
+        }
+
+        .scene img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            filter: grayscale(1) contrast(1.08);
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 47mm 1fr;
+            gap: 3mm;
+            min-height: 0;
+            padding: 3mm 4mm;
+        }
+
+        .reason {
+            align-self: center;
+            font-size: 9pt;
+            font-weight: 500;
+            line-height: 1.45;
+        }
+
+        .reason strong {
+            display: block;
+            margin-bottom: 1mm;
+            font-size: 10pt;
+        }
+
+        .requirement {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-rows: 19mm 1fr;
+            gap: 1.5mm 3mm;
+            align-items: stretch;
+        }
+
+        .attr {
+            display: grid;
+            grid-row: 2;
+            grid-template-columns: 18mm 1fr;
+            align-items: center;
+            min-width: 0;
+            padding: 0 2mm;
+        }
+
+        .attr img {
+            width: 15mm;
+            height: 15mm;
+            object-fit: contain;
+            filter: grayscale(1) contrast(1.12);
+        }
+
+        .attr-name {
+            font-size: 10pt;
+            font-weight: 800;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .range {
+            display: grid;
+            grid-column: 1 / -1;
+            grid-row: 1;
+            place-items: center;
+            font-size: 28pt;
+            font-weight: 950;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        .dual .reveal-card,
+        .briefing .reveal-card {
+            grid-template-rows: 13mm 44mm 1fr;
+        }
+
+        .dual-content,
+        .boss-preview {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5mm;
+            min-height: 0;
+            padding: 3mm 4mm 4mm;
+        }
+
+        .job {
+            min-width: 0;
+            display: grid;
+            grid-template-rows: 8mm 10mm 1fr;
+            padding: 2mm;
+            border: 0.45mm solid #000;
+            border-radius: 2mm;
+        }
+
+        .job:nth-child(2) { border-style: dashed; }
+
+        .job-title {
+            font-size: 9pt;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .job-reason {
+            margin: 0;
+            align-self: center;
+            font-size: 7.2pt;
+            font-weight: 500;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .job .requirement {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-rows: 12mm 1fr;
+            gap: 1mm 1.5mm;
+        }
+
+        .job .attr {
+            grid-template-columns: 12mm 1fr;
+            padding: 0 1mm;
+        }
+
+        .job .attr img {
+            width: 12mm;
+            height: 12mm;
+        }
+
+        .job .attr-name { font-size: 9pt; }
+        .job .range { font-size: 21pt; }
+
+        .briefing .scene::after {
+            content: "沿途完成三次救援，尋找冒險寶物";
+            position: absolute;
+            right: 3mm;
+            bottom: 2mm;
+            padding: 1.2mm 2.5mm;
+            border: 0.35mm solid #000;
+            border-radius: 1.5mm;
+            background: rgba(255,255,255,.9);
+            font-size: 7.5pt;
+            font-weight: 800;
+        }
+
+        .sheet-note {
+            position: absolute;
+            right: 5mm;
+            bottom: 2mm;
+            left: 5mm;
+            color: #777;
+            font-size: 6.5pt;
+            text-align: center;
+        }
+
+        @media print {
+            html,
+            body { background: #fff; }
+            .page { margin: 0; }
+            .label-cell { border-color: transparent; }
+            .sheet-note { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <main id="pages"></main>
+
+    <script>
+        const attrs = {
+            strength: { name: "力量", image: "attribute-illustrations/strength.png" },
+            speed: { name: "速度", image: "attribute-illustrations/speed.png" },
+            attack: { name: "攻擊", image: "attribute-illustrations/attack.png" },
+            defense: { name: "防禦", image: "attribute-illustrations/defense.png" },
+            smart: { name: "聰明", image: "attribute-illustrations/smart.png" }
+        };
+
+        const cards = [
+            {
+                number: "0",
+                title: "暴雨森林救援隊",
+                count: "任務簡報＋Boss 預告",
+                image: "mission-art/storm-forest-rescue/00-mission-briefing.png",
+                className: "briefing",
+                jobs: [
+                    { title: "Boss A｜突破水牆", reason: "水牆又厚又重，要大力突破。", attrs: ["strength", "attack"], range: "7–9" },
+                    { title: "Boss B｜穩住避難區", reason: "要保護大家，也要隨時調整位置。", attrs: ["defense", "smart"], range: "4–6" }
+                ]
+            },
+            {
+                number: "1",
+                title: "找出安全道路",
+                count: "選 1 隻動物",
+                image: "mission-art/storm-forest-rescue/01-flooded-road.png",
+                reasonTitle: "積水和倒木擋住路",
+                reason: "要及時找出安全路線，也不能滑倒。",
+                attrs: ["speed", "smart"],
+                range: "4–6"
+            },
+            {
+                number: "2",
+                title: "搖晃藤橋上的幼獸",
+                count: "選 2 隻動物",
+                image: "mission-art/storm-forest-rescue/02-vine-bridge.png",
+                className: "dual",
+                jobs: [
+                    { title: "2A｜固定藤橋", reason: "拉住粗藤，擋住洪水和漂流木。", attrs: ["strength", "defense"], range: "7–9" },
+                    { title: "2B｜慢慢解開細藤", reason: "慢慢靠近，只處理細藤，不傷到小鹿。", attrs: ["speed", "attack"], range: "1–3" }
+                ]
+            },
+            {
+                number: "3",
+                title: "搬運易碎藥品",
+                count: "選 1 隻動物",
+                image: "mission-art/storm-forest-rescue/03-medicine-crate.png",
+                reasonTitle: "藥瓶不能摔，也不能壓破",
+                reason: "要輕輕拿、慢慢越過濕滑樹根。",
+                attrs: ["strength", "speed"],
+                range: "1–3"
+            }
+        ];
+
+        function attrMarkup(key) {
+            const attr = attrs[key];
+            return `<div class="attr"><img src="${attr.image}" alt=""><span class="attr-name">${attr.name}</span></div>`;
+        }
+
+        function requirementMarkup(job) {
+            return `<div class="requirement">${job.attrs.map(attrMarkup).join("")}<div class="range">${job.range}</div></div>`;
+        }
+
+        function cardMarkup(card) {
+            const body = card.jobs ? `
+                <div class="${card.className === "briefing" ? "boss-preview" : "dual-content"}">
+                    ${card.jobs.map((job) => `<section class="job"><div class="job-title">${job.title}</div><p class="job-reason">${job.reason}</p>${requirementMarkup(job)}</section>`).join("")}
+                </div>
+            ` : `
+                <div class="content">
+                    <div class="reason"><strong>${card.reasonTitle}</strong>${card.reason}</div>
+                    ${requirementMarkup(card)}
+                </div>
+            `;
+            return `
+                <div class="card-shell">
+                    <article class="reveal-card">
+                        <header class="card-header">
+                            <span class="card-number">${card.number}</span>
+                            <h2 class="card-title">${card.title}</h2>
+                            <span class="player-count">${card.count}</span>
+                        </header>
+                        <div class="scene"><img src="${card.image}" alt=""></div>
+                        ${body}
+                    </article>
+                </div>
+            `;
+        }
+
+        const root = document.querySelector("#pages");
+        for (let pageIndex = 0; pageIndex < 2; pageIndex += 1) {
+            const page = document.createElement("section");
+            page.className = "page";
+            cards.slice(pageIndex * 2, pageIndex * 2 + 2).forEach((card) => {
+                const cell = document.createElement("div");
+                cell.className = `label-cell ${card.className || ""}`;
+                cell.innerHTML = cardMarkup(card);
+                page.appendChild(cell);
+            });
+            const note = document.createElement("p");
+            note.className = "sheet-note";
+            note.textContent = `第 ${pageIndex + 1} / 2 張｜A4 二分標籤紙｜裁切 170×118.5mm｜黑白｜100% 實際大小`;
+            page.appendChild(note);
+            root.appendChild(page);
+        }
+
+        document.fonts.ready.then(() => {
+            document.documentElement.dataset.ready = "true";
+        });
+    </script>
+</body>
+</html>

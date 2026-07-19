@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build production Bopomofo WOFF2 subsets for all 132 animal cards."""
+"""Build production Bopomofo WOFF2 subsets for animal and team-mission cards."""
 
 from __future__ import annotations
 
@@ -49,6 +49,10 @@ ANIMALS_PATH = REPO_ROOT / "game" / "digital" / "data" / "animals.json"
 OVERRIDES_PATH = SCRIPT_DIR / "data" / "bopomofo-overrides.json"
 DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "fonts" / "bopomofo"
 DEFAULT_CACHE_DIR = REPO_ROOT / "tmp" / "fonts" / "bpmfvs-v1.500-build"
+TEAM_MISSION_CARD_PATHS = (
+    SCRIPT_DIR / "team-mission-status-cards-quarter-label.html",
+    SCRIPT_DIR / "storm-forest-rescue-reveal-cards-half-label.html",
+)
 
 
 def sha256(path: Path) -> str:
@@ -126,8 +130,18 @@ def apply_ivs(text: str, entries: list[dict]) -> str:
 
 def build_corpora(animals: list[dict], overrides: dict) -> dict[str, str]:
     fields = overrides.get("fields", {})
-    bold_parts = [FIXED_BOLD_TEXT]
-    medium_parts: list[str] = []
+    missing_cards = [str(path) for path in TEAM_MISSION_CARD_PATHS if not path.exists()]
+    if missing_cards:
+        raise SystemExit(f"找不到團隊任務卡面：{', '.join(missing_cards)}")
+    team_mission_text = "\n".join(
+        path.read_text(encoding="utf-8") for path in TEAM_MISSION_CARD_PATHS
+    )
+    team_mission_characters = "".join(
+        char for char in team_mission_text if is_card_font_character(char)
+    )
+
+    bold_parts = [FIXED_BOLD_TEXT, team_mission_characters]
+    medium_parts: list[str] = [team_mission_characters]
     all_parts: list[str] = []
 
     for animal in animals:
@@ -145,7 +159,7 @@ def build_corpora(animals: list[dict], overrides: dict) -> dict[str, str]:
         medium_parts.append(description)
         all_parts.append(description)
 
-    all_parts.append(FIXED_BOLD_TEXT)
+    all_parts.extend([FIXED_BOLD_TEXT, team_mission_characters])
     return {
         "bold": "\n".join(bold_parts),
         "medium": "\n".join(medium_parts),

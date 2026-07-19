@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>揭露卡直向資訊層級測試</title>
+    <style>
+        @page { size: A4 portrait; margin: 0; }
+
+        @font-face {
+            font-family: "Bpmf Rounded";
+            src: url("fonts/bopomofo/rounded-medium.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 500;
+            font-display: block;
+        }
+
+        @font-face {
+            font-family: "Bpmf Rounded";
+            src: url("fonts/bopomofo/rounded-bold.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 800;
+            font-display: block;
+        }
+
+        :root {
+            --font: "Bpmf Rounded", "PingFang TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        html,
+        body {
+            margin: 0;
+            background: #ccc;
+            color: #000;
+            font-family: var(--font);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            position: relative;
+            width: 210mm;
+            height: 297mm;
+            display: grid;
+            grid-template-rows: repeat(2, 148.5mm);
+            margin: 8mm auto;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .label-cell {
+            position: relative;
+            display: grid;
+            place-items: center;
+            width: 210mm;
+            height: 148.5mm;
+            border-bottom: 0.15mm solid #bbb;
+        }
+
+        .prototype-label {
+            position: absolute;
+            top: 4mm;
+            left: 8mm;
+            z-index: 2;
+            padding: 1.2mm 2.5mm;
+            border: 0.35mm solid #000;
+            border-radius: 1.5mm;
+            background: #fff;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .card-shell {
+            position: relative;
+            width: 170mm;
+            height: 118.5mm;
+            outline: 0.3mm dashed #666;
+        }
+
+        .reveal-card {
+            position: absolute;
+            inset: 2mm;
+            display: grid;
+            grid-template-rows: 13mm 47mm 1fr;
+            overflow: hidden;
+            border: 0.65mm solid #000;
+            border-radius: 4mm;
+            background: #fff;
+        }
+
+        .dual .reveal-card {
+            grid-template-rows: 13mm 44mm 1fr;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 3mm;
+            padding: 1.5mm 4mm;
+            border-bottom: 0.45mm solid #000;
+        }
+
+        .card-number {
+            width: 8mm;
+            height: 8mm;
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            background: #000;
+            color: #fff;
+            font-size: 11pt;
+            font-weight: 800;
+        }
+
+        .card-title {
+            min-width: 0;
+            margin: 0;
+            overflow: hidden;
+            font-size: 15pt;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: 0.06em;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .player-count {
+            margin-left: auto;
+            font-size: 7.8pt;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .scene {
+            overflow: hidden;
+            border-bottom: 0.45mm solid #000;
+            background: #eee;
+        }
+
+        .scene img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            filter: grayscale(1) contrast(1.08);
+        }
+
+        .stacked-content {
+            display: grid;
+            grid-template-rows: 13mm 15mm 1fr;
+            row-gap: 1mm;
+            min-height: 0;
+            padding: 2mm 5mm 3mm;
+        }
+
+        .reason {
+            display: grid;
+            place-content: center;
+            min-width: 0;
+            text-align: center;
+        }
+
+        .reason strong {
+            margin-bottom: 0.5mm;
+            font-size: 9.5pt;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .reason span {
+            font-size: 8.4pt;
+            font-weight: 500;
+            line-height: 1.35;
+        }
+
+        .range {
+            display: grid;
+            place-items: center;
+            width: 56mm;
+            height: 13mm;
+            place-self: center;
+            border: 0.5mm solid #000;
+            border-radius: 7mm;
+            background: #f4f4f4;
+            font-family: "Arial Rounded MT Bold", "PingFang TC", sans-serif;
+            font-size: 26pt;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: 0.04em;
+        }
+
+        .attributes {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 8mm minmax(0, 1fr);
+            min-height: 0;
+        }
+
+        .stacked-content > .attributes {
+            width: 96mm;
+            justify-self: center;
+        }
+
+        .attribute {
+            display: grid;
+            grid-template-rows: 15mm 1fr;
+            place-items: center;
+            min-width: 0;
+            padding-top: 0.5mm;
+        }
+
+        .attribute img {
+            width: 15mm;
+            height: 15mm;
+            object-fit: contain;
+            filter: grayscale(1) contrast(1.12);
+        }
+
+        .attribute-name {
+            align-self: start;
+            padding-top: 0.3mm;
+            font-size: 10pt;
+            font-weight: 800;
+            line-height: 1.1;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .choice-or {
+            width: 7mm;
+            height: 7mm;
+            display: grid;
+            place-items: center;
+            place-self: center;
+            border-radius: 50%;
+            background: #000;
+            color: #fff;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            font-size: 7.5pt;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .dual-content {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2.5mm;
+            min-height: 0;
+            padding: 2.5mm 4mm 3.5mm;
+        }
+
+        .job {
+            display: grid;
+            grid-template-rows: 7mm 9mm 11mm 1fr;
+            row-gap: 0.5mm;
+            min-width: 0;
+            min-height: 0;
+            padding: 1.5mm 2mm 2mm;
+            overflow: hidden;
+            border: 0.45mm solid #000;
+            border-radius: 2mm;
+        }
+
+        .job:nth-child(2) { border-style: dashed; }
+
+        .job-title {
+            align-self: center;
+            font-size: 8.6pt;
+            font-weight: 800;
+            line-height: 1.2;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .job-reason {
+            display: grid;
+            place-items: center;
+            margin: 0;
+            overflow: hidden;
+            font-size: 6.8pt;
+            font-weight: 500;
+            line-height: 1.25;
+            text-align: center;
+        }
+
+        .job .range {
+            width: 34mm;
+            height: 9mm;
+            border-width: 0.4mm;
+            border-radius: 5mm;
+            font-size: 18pt;
+        }
+
+        .job .attributes {
+            grid-template-columns: minmax(0, 1fr) 5.5mm minmax(0, 1fr);
+        }
+
+        .job .attribute {
+            grid-template-rows: 11.5mm 1fr;
+            padding-top: 0.5mm;
+        }
+
+        .job .attribute img {
+            width: 11.5mm;
+            height: 11.5mm;
+        }
+
+        .job .attribute-name {
+            padding-top: 0.5mm;
+            font-size: 8.2pt;
+        }
+
+        .job .choice-or {
+            width: 5mm;
+            height: 5mm;
+            font-size: 6pt;
+        }
+
+        @media print {
+            html,
+            body { background: #fff; }
+            .page { margin: 0; }
+            .label-cell { border-color: transparent; }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <section class="label-cell">
+            <span class="prototype-label">單動物任務</span>
+            <div class="card-shell">
+                <article class="reveal-card">
+                    <header class="card-header">
+                        <span class="card-number">1</span>
+                        <h2 class="card-title">找出安全道路</h2>
+                        <span class="player-count">選 1 隻動物</span>
+                    </header>
+                    <div class="scene">
+                        <img src="mission-art/storm-forest-rescue/01-flooded-road.png" alt="暴雨後積水與倒木阻擋道路">
+                    </div>
+                    <div class="stacked-content">
+                        <div class="reason">
+                            <strong>積水和倒木擋住路</strong>
+                            <span>要及時找出安全路線，也不能滑倒。</span>
+                        </div>
+                        <div class="range">4、5、6</div>
+                        <div class="attributes">
+                            <div class="attribute">
+                                <img src="attribute-illustrations/speed.png" alt="">
+                                <span class="attribute-name">速度</span>
+                            </div>
+                            <span class="choice-or">或</span>
+                            <div class="attribute">
+                                <img src="attribute-illustrations/smart.png" alt="">
+                                <span class="attribute-name">聰明</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="label-cell dual">
+            <span class="prototype-label">雙動物任務</span>
+            <div class="card-shell">
+                <article class="reveal-card">
+                    <header class="card-header">
+                        <span class="card-number">2</span>
+                        <h2 class="card-title">搖晃藤橋上的幼獸</h2>
+                        <span class="player-count">選 2 隻動物</span>
+                    </header>
+                    <div class="scene">
+                        <img src="mission-art/storm-forest-rescue/02-vine-bridge.png" alt="暴雨中的藤橋與受困幼獸">
+                    </div>
+                    <div class="dual-content">
+                        <section class="job">
+                            <div class="job-title">2A｜固定藤橋</div>
+                            <p class="job-reason">拉住粗藤，擋住洪水和漂流木。</p>
+                            <div class="range">7、8、9</div>
+                            <div class="attributes">
+                                <div class="attribute">
+                                    <img src="attribute-illustrations/strength.png" alt="">
+                                    <span class="attribute-name">力量</span>
+                                </div>
+                                <span class="choice-or">或</span>
+                                <div class="attribute">
+                                    <img src="attribute-illustrations/defense.png" alt="">
+                                    <span class="attribute-name">防禦</span>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="job">
+                            <div class="job-title">2B｜慢慢解開細藤</div>
+                            <p class="job-reason">慢慢靠近，只處理細藤，不傷到小鹿。</p>
+                            <div class="range">1、2、3</div>
+                            <div class="attributes">
+                                <div class="attribute">
+                                    <img src="attribute-illustrations/speed.png" alt="">
+                                    <span class="attribute-name">速度</span>
+                                </div>
+                                <span class="choice-or">或</span>
+                                <div class="attribute">
+                                    <img src="attribute-illustrations/attack.png" alt="">
+                                    <span class="attribute-name">攻擊</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
