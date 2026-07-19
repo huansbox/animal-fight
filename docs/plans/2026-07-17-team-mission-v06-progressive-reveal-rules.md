@@ -1,13 +1,16 @@
 # 團隊任務 v0.6 候選規則：逐關揭露
 
 > 日期：2026-07-17
-> 狀態：3 Agents 共 6 局模擬與短回歸通過；等待真人實玩
+> 狀態：歷史基準；3 Agents 共 6 局模擬與短回歸通過，Boss 護盾已由 v0.7 寶物規則取代
 > 適用：一位孩子與家長，或兩位孩子合作、家長擔任 DM
 > 卡片：沿用現有 132 張動物卡
 > 核心改動：不再開局公開並排好六個位置；改為 Boss 先提示、前三關逐關揭露
 
 > 測試協定：`2026-07-17-team-mission-v06-agent-test-protocol.md`
 > 六局整併：`2026-07-17-team-mission-v06-agent-simulation-review.md`
+> 後續版本：[`2026-07-19-team-mission-v07-treasure-boss-design.md`](2026-07-19-team-mission-v07-treasure-boss-design.md)
+
+本文件保留 v0.6 逐關揭露、動物出場、三區、單向支援與後援的完整模擬基準。現行候選規則沿用上述部分，但不再使用 3 面 Boss 護盾；一般任務成功改為抽取 Boss 寶物，Boss 固定以 `2＋2` 為原始門檻。
 
 ## 一、遊戲目標
 

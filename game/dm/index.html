@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#17212b">
+    <meta name="description" content="動物守護者團隊任務 DM 專注模式">
+    <title>動物守護者｜DM 專注模式</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">ANIMAL GUARDIANS</p>
+                <h1>DM 專注模式</h1>
+            </div>
+            <button class="ghost-button" id="home-button" type="button" hidden>回到首頁</button>
+        </header>
+
+        <main id="app" tabindex="-1"></main>
+    </div>
+
+    <template id="home-template">
+        <section class="home-view">
+            <div class="hero-copy">
+                <p class="section-tag">團隊任務 v0.7</p>
+                <h2>一次只看現在這一步</h2>
+                <p>桌上的 Poker 卡記錄寶物、後援與動物區域；這裡只提供爸爸當下要念的故事與私下操作。</p>
+            </div>
+
+            <section class="scenario-card">
+                <div>
+                    <p class="section-tag">第一套劇情</p>
+                    <h3 id="scenario-title"></h3>
+                    <p id="scenario-summary"></p>
+                </div>
+                <div class="setup-list" id="scenario-setup"></div>
+            </section>
+
+            <fieldset class="mode-picker">
+                <legend>這局誰一起玩？</legend>
+                <label><input type="radio" name="play-mode" value="dad-younger" checked><span>爸爸＋弟弟</span></label>
+                <label><input type="radio" name="play-mode" value="dad-older"><span>爸爸＋哥哥</span></label>
+                <label><input type="radio" name="play-mode" value="siblings"><span>兄弟合作</span></label>
+            </fieldset>
+
+            <div class="home-actions">
+                <button class="primary-button" id="start-button" type="button">開始新的一局</button>
+                <button class="secondary-button" id="resume-button" type="button" hidden>繼續上次進度</button>
+                <button class="text-button" id="records-button" type="button">查看測試紀錄</button>
+            </div>
+        </section>
+    </template>
+
+    <template id="game-template">
+        <section class="game-view">
+            <div class="progress-wrap" aria-label="任務進度">
+                <div class="progress-label" id="progress-label"></div>
+                <div class="progress-track" id="progress-track"></div>
+            </div>
+
+            <article class="focus-card">
+                <header class="focus-header">
+                    <div>
+                        <p class="section-tag" id="step-label"></p>
+                        <h2 id="step-title"></h2>
+                    </div>
+                    <div class="physical-cue" id="physical-cue"></div>
+                </header>
+
+                <section class="read-aloud">
+                    <p class="panel-label">直接念給孩子</p>
+                    <div id="narration"></div>
+                </section>
+
+                <section class="requirements" id="requirements" hidden></section>
+
+                <section class="child-question" id="child-question-wrap" hidden>
+                    <p class="panel-label">讓孩子說故事</p>
+                    <p id="child-question"></p>
+                </section>
+
+                <details class="dm-panel" id="dm-panel" open>
+                    <summary>DM 私下操作</summary>
+                    <div class="dm-grid">
+                        <div id="dm-rules"></div>
+                        <div id="dm-outcomes"></div>
+                    </div>
+                </details>
+
+                <details class="hint-panel" id="hint-panel" hidden>
+                    <summary>孩子卡住時才看提示</summary>
+                    <div id="hints"></div>
+                </details>
+
+                <section class="boss-tools" id="boss-tools" hidden>
+                    <p class="panel-label">只結算桌上已取得的寶物</p>
+                    <div class="treasure-flow" id="treasure-flow"></div>
+                    <p class="panel-label">手電筒結果／本局門檻</p>
+                    <div class="threshold-picker" id="threshold-picker"></div>
+                    <div class="threshold-result" id="threshold-result"></div>
+                </section>
+            </article>
+
+            <nav class="step-nav" aria-label="關卡導覽">
+                <button class="secondary-button" id="previous-button" type="button">上一步</button>
+                <button class="primary-button" id="next-button" type="button">下一步</button>
+            </nav>
+        </section>
+    </template>
+
+    <template id="debrief-template">
+        <section class="debrief-view">
+            <div class="hero-copy compact">
+                <p class="section-tag">本局結束</p>
+                <h2>花 30 秒留下測試紀錄</h2>
+                <p>不記錄孩子姓名與每次骰子，只留下會影響規則調整的摘要。</p>
+            </div>
+
+            <form id="debrief-form" class="debrief-form">
+                <label>第一關結果
+                    <select name="task1Result" required>
+                        <option value="success">成功</option>
+                        <option value="failure">失敗</option>
+                    </select>
+                </label>
+                <label>第二關結果
+                    <select name="task2Result" required>
+                        <option value="success">成功</option>
+                        <option value="failure">失敗</option>
+                    </select>
+                </label>
+                <label>第三關結果
+                    <select name="task3Result" required>
+                        <option value="success">成功</option>
+                        <option value="failure">失敗</option>
+                    </select>
+                </label>
+                <label>使用後援
+                    <select name="reservesUsed" required>
+                        <option value="0">0 次</option>
+                        <option value="1">1 次</option>
+                        <option value="2">2 次</option>
+                    </select>
+                </label>
+                <fieldset class="wide option-grid">
+                    <legend>本局取得的寶物</legend>
+                    <label><input type="checkbox" name="treasures" value="backpack">萬用背包</label>
+                    <label><input type="checkbox" name="treasures" value="flashlight">探險手電筒</label>
+                    <label><input type="checkbox" name="treasures" value="mirror">變化魔鏡</label>
+                </fieldset>
+                <label>Boss 原始骰池 A
+                    <select name="bossPoolA" required>
+                        <option value="1">1 顆</option>
+                        <option value="2" selected>2 顆</option>
+                        <option value="3">3 顆</option>
+                    </select>
+                </label>
+                <label>Boss 原始骰池 B
+                    <select name="bossPoolB" required>
+                        <option value="1">1 顆</option>
+                        <option value="2" selected>2 顆</option>
+                        <option value="3">3 顆</option>
+                    </select>
+                </label>
+                <label>背包增加骰數
+                    <select name="backpackDice" required>
+                        <option value="none">未取得</option>
+                        <option value="1">＋1 顆</option>
+                        <option value="2">＋2 顆</option>
+                        <option value="3">＋3 顆</option>
+                    </select>
+                </label>
+                <label>手電筒降低門檻
+                    <select name="flashlightLevel" required>
+                        <option value="none">未取得</option>
+                        <option value="1">降低 1 級</option>
+                        <option value="2">降低 2 級</option>
+                        <option value="3">降低 3 級</option>
+                    </select>
+                </label>
+                <label class="wide">魔鏡結果
+                    <select name="mirrorResult" required>
+                        <option value="none">未取得</option>
+                        <option value="1">1 點</option>
+                        <option value="2">2 點</option>
+                        <option value="3">3 點</option>
+                        <option value="4">4 點</option>
+                        <option value="5">5 點</option>
+                        <option value="reverse">三顆同號：魔鏡反轉</option>
+                    </select>
+                </label>
+                <fieldset>
+                    <legend>後援前是否已打敗 Boss</legend>
+                    <label><input type="radio" name="bossBeforeReserve" value="yes" required>是</label>
+                    <label><input type="radio" name="bossBeforeReserve" value="no">否</label>
+                </fieldset>
+                <fieldset>
+                    <legend>最終 Boss 結果</legend>
+                    <label><input type="radio" name="bossResult" value="success" required>成功完成</label>
+                    <label><input type="radio" name="bossResult" value="continue">危機未解除</label>
+                </fieldset>
+                <label>孩子理解程度
+                    <select name="understanding" required>
+                        <option value="easy">大多能自己理解</option>
+                        <option value="prompted">偶爾需要提醒</option>
+                        <option value="confused">經常搞混</option>
+                    </select>
+                </label>
+                <label>DM 操作負擔
+                    <select name="dmLoad" required>
+                        <option value="light">輕鬆</option>
+                        <option value="normal">普通</option>
+                        <option value="busy">很忙</option>
+                    </select>
+                </label>
+                <label class="wide">一行備註
+                    <textarea name="note" maxlength="240" rows="3" placeholder="例如：弟弟一直忘記再挑戰區只能當後援"></textarea>
+                </label>
+                <div class="form-actions wide">
+                    <button class="primary-button" type="submit">儲存本局紀錄</button>
+                    <button class="text-button" id="skip-record-button" type="button">不記錄，直接回首頁</button>
+                </div>
+            </form>
+        </section>
+    </template>
+
+    <template id="records-template">
+        <section class="records-view">
+            <div class="records-header">
+                <div>
+                    <p class="section-tag">只存在這個瀏覽器</p>
+                    <h2>測試紀錄</h2>
+                </div>
+                <div class="records-actions">
+                    <button class="secondary-button" id="copy-records-button" type="button">複製 Markdown</button>
+                    <button class="secondary-button" id="export-records-button" type="button">匯出 JSON</button>
+                    <button class="danger-button" id="clear-records-button" type="button">清除全部</button>
+                </div>
+            </div>
+            <div id="records-list" class="records-list"></div>
+        </section>
+    </template>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
