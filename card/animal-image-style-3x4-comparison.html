@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動物圖片黑白印刷風格 3×4 比較</title>
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 0;
+        }
+
+        :root {
+            --system-font: "PingFang TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            background: #d8d8d8;
+            color: #000;
+            font-family: var(--system-font);
+        }
+
+        .page {
+            position: relative;
+            width: 297mm;
+            height: 210mm;
+            margin: 8mm auto;
+            overflow: hidden;
+            break-after: page;
+            page-break-after: always;
+            background: #fff;
+        }
+
+        .page:last-child {
+            break-after: auto;
+            page-break-after: auto;
+        }
+
+        .page-header {
+            position: absolute;
+            top: 8mm;
+            left: 14mm;
+            right: 14mm;
+            height: 14mm;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            border-bottom: 0.45mm solid #000;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 17pt;
+            line-height: 1;
+        }
+
+        .print-note {
+            margin: 0;
+            font-size: 8.5pt;
+            font-weight: 600;
+        }
+
+        .grid {
+            position: absolute;
+            top: 27mm;
+            left: 27.5mm;
+            width: 242mm;
+            display: grid;
+            grid-template-columns: repeat(2, 114mm);
+            grid-template-rows: repeat(2, 78mm);
+            column-gap: 14mm;
+            row-gap: 4mm;
+        }
+
+        .sample {
+            width: 114mm;
+        }
+
+        .sample.v3 {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .sample-label {
+            height: 8mm;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1mm;
+            font-size: 10pt;
+            font-weight: 800;
+        }
+
+        .sample-label small {
+            font-size: 7.5pt;
+            font-weight: 500;
+        }
+
+        .image-frame {
+            position: relative;
+            width: 114mm;
+            height: 70mm;
+            overflow: hidden;
+            border: 0.55mm solid #000;
+            background: #fff;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            filter: grayscale(100%);
+        }
+
+        .size-mark {
+            position: absolute;
+            right: 1.5mm;
+            bottom: 1.2mm;
+            padding: 0.7mm 1.2mm;
+            border: 0.25mm solid #000;
+            background: rgba(255, 255, 255, 0.88);
+            font-size: 6.5pt;
+            font-weight: 700;
+        }
+
+        .check-panel {
+            grid-column: 2;
+            grid-row: 2;
+            width: 114mm;
+            height: 78mm;
+            padding: 7mm 8mm;
+            border: 0.4mm solid #000;
+            background: #f5f5f5;
+        }
+
+        .check-panel h2 {
+            margin: 0 0 4mm;
+            font-size: 12pt;
+        }
+
+        .check-panel p {
+            margin: 0 0 3mm;
+            font-size: 9pt;
+            line-height: 1.45;
+        }
+
+        .choice-row {
+            display: flex;
+            gap: 7mm;
+            margin-top: 5mm;
+            font-size: 10pt;
+            font-weight: 800;
+        }
+
+        .box {
+            display: inline-block;
+            width: 4.2mm;
+            height: 4.2mm;
+            margin-right: 1.5mm;
+            border: 0.45mm solid #000;
+            vertical-align: -0.7mm;
+            background: #fff;
+        }
+
+        .footer {
+            position: absolute;
+            right: 14mm;
+            bottom: 5mm;
+            left: 14mm;
+            display: flex;
+            justify-content: space-between;
+            font-size: 7.5pt;
+        }
+
+        @media print {
+            html,
+            body {
+                background: #fff;
+            }
+
+            .page {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main id="pages"></main>
+
+    <script>
+        const animals = [
+            {
+                id: "elephant",
+                name: "非洲象",
+                action: "鼻子噴出弧形水流"
+            },
+            {
+                id: "black-panther",
+                name: "黑豹",
+                action: "從低處向前撲躍"
+            },
+            {
+                id: "pufferfish",
+                name: "河豚",
+                action: "鼓起身體、短刺展開"
+            },
+            {
+                id: "army-ant",
+                name: "行軍蟻",
+                action: "沿落葉旁形成前進隊伍"
+            }
+        ];
+
+        const variants = [
+            {
+                id: "v1",
+                label: "V1｜細節較多",
+                description: "五階灰階、細輪廓、少量自然紋理"
+            },
+            {
+                id: "v2",
+                label: "V2｜中間版本",
+                description: "五階灰階、中粗輪廓、必要辨識紋理"
+            },
+            {
+                id: "v3",
+                label: "V3｜最精簡",
+                description: "四階灰階、粗輪廓、近乎無表面紋理"
+            }
+        ];
+
+        const pages = document.querySelector("#pages");
+
+        function sampleMarkup(animal, variant) {
+            return `
+                <article class="sample ${variant.id}">
+                    <div class="sample-label">
+                        <span>${variant.label}</span>
+                        <small>${variant.description}</small>
+                    </div>
+                    <div class="image-frame">
+                        <img src="images-print-style-test/${variant.id}/${animal.id}.png" alt="${animal.name} ${variant.label}">
+                        <span class="size-mark">114×70mm</span>
+                    </div>
+                </article>
+            `;
+        }
+
+        animals.forEach((animal, index) => {
+            const page = document.createElement("section");
+            page.className = "page";
+            page.innerHTML = `
+                <header class="page-header">
+                    <h1>${animal.name}｜${animal.action}</h1>
+                    <p class="print-note">A4 橫向・100%／實際大小・黑白雷射</p>
+                </header>
+                <div class="grid">
+                    ${variants.map((variant) => sampleMarkup(animal, variant)).join("")}
+                    <aside class="check-panel">
+                        <h2>試印檢查</h2>
+                        <p>孩子能否立刻認出「${animal.name}」與「${animal.action}」？</p>
+                        <p>輪廓是否清楚？黑、灰、白是否仍能分開？細節有沒有糊成一片？</p>
+                        <div class="choice-row">
+                            <span><i class="box"></i>V1</span>
+                            <span><i class="box"></i>V2</span>
+                            <span><i class="box"></i>V3</span>
+                        </div>
+                    </aside>
+                </div>
+                <footer class="footer">
+                    <span>動物圖片黑白印刷風格 3×4 測試</span>
+                    <span>${index + 1} / ${animals.length}</span>
+                </footer>
+            `;
+            pages.appendChild(page);
+        });
+    </script>
+</body>
+</html>
