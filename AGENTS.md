@@ -53,6 +53,7 @@ animal-fight/
 │   ├── 260209-animal-wave6.md  # 第六波設計文件
 │   ├── 260210-animal-wave7.md  # 第七波設計文件
 │   ├── handoffs/               # 跨 session 接手快照
+│   │   └── handoff.md          # 最新單一接手入口；先讀此檔再看日期版細節
 │   └── design-versions/      # 設計迭代版本（6 個）
 ├── game/
 │   ├── rulebook.md           # 合作闘關規則書
@@ -93,6 +94,7 @@ animal-fight/
 - **卡片用語**：實體兒童版將「智慧」顯示為「聰明」
 - **全卡注音**：動物名、特殊能力與團隊任務實體卡使用源泉注音圓體 Bold／Medium；正式 subset 由 `card/build_bopomofo_fonts.py` 依 132 張動物文字及團隊任務卡文字重建
 - **讀音校正**：89 個 IVS 多音字／輕聲校正，另有 7 個人工排注音實例；`一、不`維持字典本調
+- **骰子讀音**：依教育部《國語辭典簡編本》維持正式讀音 `ㄊㄡˊ ˙ㄗ`；日常常見的 `ㄕㄞˇ ˙ㄗ` 不覆寫到正式卡面
 - **列管例外**：官方字型缺 `獴、㺢、㹢、狓`；`屁股`的「股」與`腦袋`的「袋」沒有本案採用的輕聲 IVS，統一由 `card/data/bopomofo-overrides.json` 處理
 
 ### 數位版（game/digital/）
@@ -196,7 +198,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - **v0.7 固定劇情原型**：[`docs/plans/scenarios/`](docs/plans/scenarios/)（災難救援／調查解謎／遠征運送各 1 套；三套皆已遷移為抽寶物與固定 `2＋2` Boss）
 - **v0.6 舊實體測試包**：[`docs/plans/2026-07-18-team-mission-physical-production.md`](docs/plans/2026-07-18-team-mission-physical-production.md)（已被 7/19 原型取代，保留歷史）
 - **v0.7 現行實體／DM 規格**：[`docs/plans/2026-07-19-team-mission-props-dm-web-design.md`](docs/plans/2026-07-19-team-mission-props-dm-web-design.md)（3 張寶物、2 張後援、3 張區域 Poker、4 張大型揭露卡、DM 專注模式 Web App；正式列印 PDF 均已完成畫面 QA）
-- **目前接手快照**：[`docs/handoffs/2026-07-19-team-mission-print-layout.md`](docs/handoffs/2026-07-19-team-mission-print-layout.md)（v0.7 正式列印檔狀態、驗收重點與下一步真人試印／實玩）
+- **目前接手快照**：[`docs/handoffs/handoff.md`](docs/handoffs/handoff.md)（首批 16 張動物卡與 v0.7 團隊任務整合現況、驗收重點及下一步）
 
 ### 動物大對決（battle-rules.md）
 - 賽制：淘汰賽，每輪 1 戰定勝負（進階：3 戰 2 勝）
@@ -234,7 +236,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - **屬性插圖**：[`card/attribute-illustrations/`](card/attribute-illustrations/)（力量搬石、速度奔跑、攻擊碎木、防禦擋石、聰明看地圖；卡面顯示高度 16mm）
 - **動物圖片風格測試**：[`card/animal-image-style-3x4-comparison.html`](card/animal-image-style-3x4-comparison.html)（V1／V2／V3 × 非洲象、黑豹、河豚、行軍蟻，圖片框實際 114×70mm）；Prompt：[`card/img-prompt/animal-print-bplus-3x4.md`](card/img-prompt/animal-print-bplus-3x4.md)；PDF：[`output/pdf/animal-image-bplus-3x4-comparison.pdf`](output/pdf/animal-image-bplus-3x4-comparison.pdf)
 - **動物圖片風格定案**：V2「圖鑑平衡版」（五階灰階、中粗外輪廓、只保留物種辨識所需紋理）；四種測試動物全部採用 V2，V1／V3 僅保留為比較紀錄
-- **首批 16 張 V2 動物卡**：[`card/animal-cards-v2-first-16-half-label.html`](card/animal-cards-v2-first-16-half-label.html)；Prompt／審核：[`card/img-prompt/animal-print-v2-first-16.md`](card/img-prompt/animal-print-v2-first-16.md)；列印 PDF：[`output/pdf/animal-fight-v2-first-16-half-label-a4.pdf`](output/pdf/animal-fight-v2-first-16-half-label-a4.pdf)；接手快照：[`docs/handoffs/2026-07-20-animal-v2-first-16.md`](docs/handoffs/2026-07-20-animal-v2-first-16.md)
+- **首批 16 張 V2 動物卡**：[`card/animal-cards-v2-first-16-half-label.html`](card/animal-cards-v2-first-16-half-label.html)；Prompt／審核：[`card/img-prompt/animal-print-v2-first-16.md`](card/img-prompt/animal-print-v2-first-16.md)；列印 PDF：[`output/pdf/animal-fight-v2-first-16-half-label-a4.pdf`](output/pdf/animal-fight-v2-first-16-half-label-a4.pdf)；日期版細節：[`docs/handoffs/2026-07-20-animal-v2-first-16.md`](docs/handoffs/2026-07-20-animal-v2-first-16.md)；最新接手入口：[`docs/handoffs/handoff.md`](docs/handoffs/handoff.md)
 - **動物卡版面原型**：[`card/animal-card-final-prototype.html`](card/animal-card-final-prototype.html)（122×175mm、全卡注音、黑白雷射列印）
 - **正式注音字型**：[`card/fonts/bopomofo/`](card/fonts/bopomofo/)（v1.500 固定來源、Bold／Medium subset、corpus、授權、build report）；QA：[`card/bopomofo-coverage-qa.html`](card/bopomofo-coverage-qa.html)、[`output/pdf/bopomofo-font-coverage-qa.pdf`](output/pdf/bopomofo-font-coverage-qa.pdf)
 - **團隊任務工法**：萬用背包／探險手電筒／變化魔鏡各 1 張、後援 2 張、待命／再挑戰／休息各 1 張，共用 2 張 A4 四分標籤；4 張大型揭露卡使用 2 張 A4 二分標籤；全部貼在放大版 Poker 上

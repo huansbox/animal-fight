@@ -17,6 +17,7 @@
 - 團隊任務不再使用 A4 控制板與紙本 DM 指南；已製作 8 張狀態／區域 Poker、4 張大型揭露卡與 DM 專注模式 Web App 原型。
 - 放大版 Poker 尚未到貨；到貨後先量實際尺寸，再調整卡面與四周內縮量，不先批量製作 132 張。
 - 2026-07-20 已完成首批 16 張 V2 圖片、3 Agent Prompt／圖片 QA、全卡注音卡面與 8 頁 A4 二分標籤 PDF；來源為 [`card/animal-cards-v2-first-16-half-label.html`](../../card/animal-cards-v2-first-16-half-label.html)，列印檔為 [`output/pdf/animal-fight-v2-first-16-half-label-a4.pdf`](../../output/pdf/animal-fight-v2-first-16-half-label-a4.pdf)。
+- 已確認注音字型將「骰子」標為 `ㄊㄡˊ ˙ㄗ` 是教育部正式讀音，不是 PDF 錯誤；正式卡面維持此讀音。
 
 ---
 

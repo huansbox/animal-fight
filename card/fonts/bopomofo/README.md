@@ -32,7 +32,7 @@ uv run --with-requirements card/requirements-fonts.txt python card/build_bopomof
 
 `屁股`的「股」與`腦袋`的「袋」雖有字形，但官方字型沒有本專案採用的輕聲讀音 IVS，也由同一份 override 資料人工排注音。
 
-讀音政策：`一、不`維持字典本調；名詞尾與助詞輕聲依語境以 IVS 校正。
+讀音政策：`一、不`維持字典本調；名詞尾與助詞輕聲依語境以 IVS 校正。「骰子」依[教育部《國語辭典簡編本》](https://dict.concised.moe.edu.tw/dictView.jsp?ID=10343&la=0&powerMode=0)維持正式讀音 `ㄊㄡˊ ˙ㄗ`；不以日常常見的 `ㄕㄞˇ ˙ㄗ` 覆寫。
 
 ## QA
 
