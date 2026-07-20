@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動物卡 V2 首批 16 張｜A4 二分標籤</title>
+    <style>
+        @font-face {
+            font-family: "Animal Bopomofo Rounded";
+            src: url("fonts/bopomofo/rounded-medium.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Animal Bopomofo Rounded";
+            src: url("fonts/bopomofo/rounded-bold.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        @page {
+            size: A4 landscape;
+            margin: 0;
+        }
+
+        :root {
+            --bpmf-font: "Animal Bopomofo Rounded";
+            --system-font: "PingFang TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #cfcfcf;
+            color: #000;
+            font-family: var(--system-font);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .screen-header {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            padding: 12px 20px;
+            border-bottom: 2px solid #000;
+            background: #fff;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .page {
+            width: 297mm;
+            height: 210mm;
+            display: grid;
+            grid-template-columns: repeat(2, 148.5mm);
+            margin: 10mm auto;
+            background: #fff;
+            overflow: hidden;
+            break-after: page;
+            page-break-after: always;
+        }
+
+        .page:last-child {
+            break-after: auto;
+            page-break-after: auto;
+        }
+
+        .label-cell {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 148.5mm;
+            height: 210mm;
+        }
+
+        .label-cell:first-child {
+            border-right: 0.25mm dashed #9a9a9a;
+        }
+
+        .card {
+            width: 118.5mm;
+            height: 170mm;
+            display: grid;
+            grid-template-rows: 17.5mm 67.5mm 42.5mm 29.5mm;
+            gap: 1.5mm;
+            padding: 3mm;
+            border: 0.7mm solid #000;
+            border-radius: 4mm;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .zh-bold,
+        .zh-medium {
+            font-family: var(--bpmf-font), var(--system-font);
+            font-synthesis: none;
+            letter-spacing: 0.04em;
+        }
+
+        .zh-bold {
+            font-weight: 700;
+        }
+
+        .zh-medium {
+            font-weight: 500;
+        }
+
+        .name-row {
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2mm;
+            border-bottom: 0.5mm solid #000;
+            white-space: nowrap;
+        }
+
+        .animal-name {
+            font-size: 22.5pt;
+            line-height: 1;
+        }
+
+        .animal-name-en {
+            min-width: 0;
+            overflow: hidden;
+            font-size: 10pt;
+            font-weight: 800;
+            letter-spacing: 0.01em;
+            text-overflow: ellipsis;
+        }
+
+        .animal-name-en.is-long {
+            font-size: 9pt;
+        }
+
+        .image-wrap {
+            overflow: hidden;
+            border: 0.45mm solid #000;
+            border-radius: 2mm;
+            background: #fff;
+        }
+
+        .image-wrap img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            filter: grayscale(1) contrast(1.08);
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border: 0.5mm solid #000;
+            border-radius: 2mm;
+            overflow: hidden;
+        }
+
+        .stat {
+            min-width: 0;
+            display: grid;
+            grid-template-rows: 5mm 15.5mm 5mm 8.5mm 4mm;
+            align-items: center;
+            justify-items: center;
+            padding: 1mm 0.3mm;
+            overflow: hidden;
+            border-right: 0.35mm solid #000;
+        }
+
+        .stat:last-child {
+            border-right: 0;
+        }
+
+        .attribute-die {
+            width: 4.5mm;
+            height: 4.5mm;
+        }
+
+        .attribute-scene {
+            width: 15.5mm;
+            height: 15.5mm;
+            display: block;
+            object-fit: contain;
+            filter: grayscale(1) contrast(1.12);
+        }
+
+        .stat-label {
+            font-size: 9pt;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .stat-value {
+            font-size: 23pt;
+            font-weight: 900;
+            line-height: 0.9;
+        }
+
+        .stat-bonus {
+            min-height: 4mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8mm;
+            font-size: 8pt;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .bonus-die {
+            width: 3.6mm;
+            height: 3.6mm;
+        }
+
+        .skill-box {
+            padding: 2mm 2.8mm;
+            border: 0.5mm solid #000;
+            border-radius: 2mm;
+            overflow: hidden;
+        }
+
+        .skill-title {
+            margin-bottom: 1mm;
+            font-size: 14.5pt;
+            line-height: 1.1;
+        }
+
+        .skill-desc {
+            font-size: 12.3pt;
+            line-height: 1.42;
+        }
+
+        .manual-bpmf-unit {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            letter-spacing: 0;
+        }
+
+        .manual-han {
+            font-family: var(--system-font);
+            font-weight: inherit;
+            line-height: 1;
+        }
+
+        .manual-reading {
+            min-width: 0.47em;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 0.04em;
+            font-family: var(--system-font);
+            font-size: 0.28em;
+            font-weight: 700;
+            line-height: 0.88;
+            letter-spacing: 0;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+
+            .screen-header {
+                display: none;
+            }
+
+            .page {
+                margin: 0;
+            }
+        }
+
+        @media screen {
+            .page {
+                box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="screen-header">
+        動物卡 V2 首批 16 張｜8 頁 A4 橫式｜每頁 2 張｜卡面 118.5×170mm｜100% 實際大小
+    </header>
+    <main id="pages"></main>
+
+    <template id="card-template">
+        <article class="card">
+            <header class="name-row">
+                <span class="animal-name zh-bold"></span>
+                <span class="animal-name-en"></span>
+            </header>
+            <div class="image-wrap">
+                <img alt="">
+            </div>
+            <section class="stats-grid" aria-label="動物屬性"></section>
+            <section class="skill-box">
+                <div class="skill-title zh-bold"></div>
+                <div class="skill-desc zh-medium"></div>
+            </section>
+        </article>
+    </template>
+
+    <script>
+        const animals = [
+            { id: "lion", name: "非洲獅", en: "LION", stats: [7, 6, 8, 4, 5], skillName: "大吼", skillDesc: "嚇跑體型比你小的動物，或讓敵人嚇到不敢亂動。", skillBonus: [{ attr: 0, val: 2 }, { attr: 2, val: 2 }] },
+            { id: "elephant", name: "非洲象", en: "ELEPHANT", stats: [9, 2, 3, 8, 8], skillName: "鼻子噴水", skillDesc: "可以澆熄森林大火，或是洗掉擋路的泥濘。", skillBonus: [{ attr: 2, val: 1 }, { attr: 3, val: 3 }] },
+            { id: "cheetah", name: "獵豹", en: "CHEETAH", stats: [4, 9, 6, 2, 4], skillName: "極限衝刺", skillDesc: "瞬間爆發速度，用來躲避陷阱或是追上逃跑的敵人。", skillBonus: [{ attr: 2, val: 1 }, { attr: 3, val: 1 }, { attr: 1, val: 2 }] },
+            { id: "crocodile", name: "灣鱷", en: "CROCODILE", stats: [8, 3, 9, 7, 2], skillName: "死亡翻滾", skillDesc: "咬住獵物後瘋狂旋轉，把任何東西都撕成碎片。", skillBonus: [{ attr: 0, val: 2 }, { attr: 3, val: 2 }] },
+            { id: "kangaroo", name: "紅袋鼠", en: "KANGAROO", stats: [5, 6, 5, 4, 3], skillName: "拳擊踢腿", skillDesc: "用強壯的後腿踢出致命一擊，可以踢飛比自己大的敵人。", skillBonus: [{ attr: 0, val: 1 }, { attr: 1, val: 1 }, { attr: 2, val: 2 }] },
+            { id: "giraffe", name: "長頸鹿", en: "GIRAFFE", stats: [7, 6, 5, 5, 3], skillName: "長頸橫掃", skillDesc: "用超長的脖子像鞭子一樣橫掃，擊退靠近的敵人。", skillBonus: [{ attr: 0, val: 2 }, { attr: 1, val: 1 }, { attr: 2, val: 1 }] },
+            { id: "sea_otter", name: "海獺", en: "SEA OTTER", stats: [3, 4, 2, 4, 7], skillName: "石擊破殼", skillDesc: "躺在水上用石頭敲開貝殼，聰明地使用工具。", skillBonus: [{ attr: 2, val: 2 }, { attr: 4, val: 2 }] },
+            { id: "emperor_penguin", name: "皇帝企鵝", en: "EMPEROR PENGUIN", stats: [3, 3, 2, 4, 5], skillName: "極地潛行", skillDesc: "潛入冰冷深海中快速游動，從水下發動突襲。", skillBonus: [{ attr: 1, val: 2 }, { attr: 3, val: 2 }] },
+            { id: "giant_panda", name: "大熊貓", en: "GIANT PANDA", stats: [6, 3, 3, 6, 4], skillName: "鐵掌劈竹", skillDesc: "用強壯的熊掌一掌劈開竹子，展現和平坦克的力量。", skillBonus: [{ attr: 0, val: 2 }, { attr: 2, val: 2 }] },
+            { id: "pufferfish", name: "河豚", en: "PUFFERFISH", stats: [1, 2, 1, 8, 2], skillName: "膨脹毒球", skillDesc: "吸水膨脹成帶刺的大球，碰到就會中毒。", skillBonus: [{ attr: 3, val: 3 }, { attr: 2, val: 1 }] },
+            { id: "orangutan", name: "紅毛猩猩", en: "ORANGUTAN", stats: [6, 2, 3, 4, 9], skillName: "巧手造物", skillDesc: "用樹枝當工具挖蟲吃，還會做雨傘擋雨，超級聰明。", skillBonus: [{ attr: 4, val: 2 }, { attr: 0, val: 1 }, { attr: 3, val: 1 }] },
+            { id: "black_panther", name: "黑豹", en: "BLACK PANTHER", stats: [5, 6, 8, 3, 7], skillName: "暗夜飛撲", skillDesc: "在黑夜裡悄悄靠近獵物，看不見的影子突然飛撲！", skillBonus: [{ attr: 2, val: 2 }, { attr: 4, val: 2 }] },
+            { id: "chameleon", name: "變色龍", en: "CHAMELEON", stats: [1, 2, 6, 2, 6], skillName: "瞬舌獵擊", skillDesc: "眼睛能各看不同方向，發現獵物後舌頭像閃電一樣快速黏住！", skillBonus: [{ attr: 2, val: 3 }, { attr: 1, val: 1 }] },
+            { id: "hummingbird", name: "蜂鳥", en: "HUMMINGBIRD", stats: [1, 8, 1, 1, 3], skillName: "懸停疾閃", skillDesc: "翅膀快到看不見，懸停在空中像直升機，閃躲超靈活！", skillBonus: [{ attr: 1, val: 3 }, { attr: 4, val: 1 }] },
+            { id: "scarlet_macaw", name: "金剛鸚鵡", en: "SCARLET MACAW", stats: [2, 3, 5, 4, 6], skillName: "彩翼破殼", skillDesc: "聰明到能學人說話，超硬大嘴巴連最硬的堅果殼都咬得開！", skillBonus: [{ attr: 4, val: 3 }, { attr: 2, val: 1 }] },
+            { id: "army_ant", name: "行軍蟻", en: "ARMY ANT", stats: [2, 2, 3, 1, 4], skillName: "蟻海吞噬", skillDesc: "幾十萬隻小螞蟻排成大軍一起前進，什麼東西都會被淹沒！", skillBonus: [{ attr: 0, val: 3 }, { attr: 4, val: 1 }] }
+        ];
+
+        const attributes = [
+            { label: "力量", image: "strength.png", alt: "搬起大石頭，表示力量" },
+            { label: "速度", image: "speed.png", alt: "向前奔跑，表示速度" },
+            { label: "攻擊", image: "attack.png", alt: "擊破木板，表示攻擊" },
+            { label: "防禦", image: "defense.png", alt: "盾牌擋住飛石，表示防禦" },
+            { label: "聰明", image: "smart.png", alt: "查看地圖找到路線，表示聰明" }
+        ];
+
+        const IVS_BASE = 0xE01E0;
+        let pronunciationOverrides = { fields: {}, manualRuby: {} };
+
+        function renderAnnotatedText(target, text, key) {
+            const ivsByIndex = new Map(
+                (pronunciationOverrides.fields[key] || []).map((entry) => [entry.index, entry])
+            );
+            const manualByIndex = new Map(
+                (pronunciationOverrides.manualRuby[key] || []).map((entry) => [entry.index, entry])
+            );
+
+            target.replaceChildren();
+            [...text].forEach((character, index) => {
+                const manual = manualByIndex.get(index);
+                if (manual) {
+                    const unit = document.createElement("span");
+                    unit.className = "manual-bpmf-unit";
+                    const han = document.createElement("span");
+                    han.className = "manual-han";
+                    han.textContent = character;
+                    const reading = document.createElement("span");
+                    reading.className = "manual-reading";
+                    [...manual.reading].forEach((symbol) => {
+                        const symbolNode = document.createElement("span");
+                        symbolNode.textContent = symbol;
+                        reading.append(symbolNode);
+                    });
+                    unit.append(han, reading);
+                    target.append(unit);
+                    return;
+                }
+
+                const ivs = ivsByIndex.get(index);
+                target.append(document.createTextNode(character));
+                if (ivs) {
+                    target.append(document.createTextNode(String.fromCodePoint(IVS_BASE + ivs.selector)));
+                }
+            });
+        }
+
+        function buildStat(animal, index) {
+            const stat = document.createElement("div");
+            stat.className = "stat";
+
+            const die = document.createElement("img");
+            die.className = "attribute-die";
+            die.src = `icons/die-${index + 1}.svg`;
+            die.alt = `骰面${index + 1}`;
+
+            const scene = document.createElement("img");
+            scene.className = "attribute-scene";
+            scene.src = `attribute-illustrations/${attributes[index].image}`;
+            scene.alt = attributes[index].alt;
+
+            const label = document.createElement("span");
+            label.className = "stat-label zh-bold";
+            label.textContent = attributes[index].label;
+
+            const value = document.createElement("strong");
+            value.className = "stat-value";
+            value.textContent = animal.stats[index];
+
+            const bonus = document.createElement("span");
+            bonus.className = "stat-bonus";
+            const bonusValue = animal.skillBonus.find((entry) => entry.attr === index)?.val;
+            if (bonusValue !== undefined) {
+                const bonusDie = document.createElement("img");
+                bonusDie.className = "bonus-die";
+                bonusDie.src = "icons/die-6.svg";
+                bonusDie.alt = "骰到六";
+                bonus.append(bonusDie, document.createTextNode(`+${bonusValue}`));
+            }
+
+            stat.append(die, scene, label, value, bonus);
+            return stat;
+        }
+
+        function buildCard(animal) {
+            const fragment = document.querySelector("#card-template").content.cloneNode(true);
+            const card = fragment.querySelector(".card");
+            card.setAttribute("aria-label", `${animal.name}動物卡片`);
+
+            renderAnnotatedText(fragment.querySelector(".animal-name"), animal.name, `${animal.id}.name`);
+            const englishName = fragment.querySelector(".animal-name-en");
+            englishName.textContent = animal.en;
+            englishName.classList.toggle("is-long", animal.en.length > 15);
+
+            const image = fragment.querySelector(".image-wrap img");
+            image.src = `images/${animal.id}.png`;
+            image.alt = `${animal.name}${animal.skillName}圖片`;
+
+            const statsGrid = fragment.querySelector(".stats-grid");
+            attributes.forEach((_, index) => statsGrid.append(buildStat(animal, index)));
+            renderAnnotatedText(fragment.querySelector(".skill-title"), animal.skillName, `${animal.id}.skillName`);
+            renderAnnotatedText(fragment.querySelector(".skill-desc"), animal.skillDesc, `${animal.id}.skillDesc`);
+            return fragment;
+        }
+
+        function renderPages() {
+            const pages = document.querySelector("#pages");
+            pages.replaceChildren();
+            for (let index = 0; index < animals.length; index += 2) {
+                const page = document.createElement("section");
+                page.className = "page";
+                page.setAttribute("aria-label", `第 ${index / 2 + 1} 頁`);
+                animals.slice(index, index + 2).forEach((animal) => {
+                    const cell = document.createElement("div");
+                    cell.className = "label-cell";
+                    cell.append(buildCard(animal));
+                    page.append(cell);
+                });
+                pages.append(page);
+            }
+        }
+
+        fetch("data/bopomofo-overrides.json")
+            .then((response) => {
+                if (!response.ok) throw new Error("注音 override 載入失敗");
+                return response.json();
+            })
+            .then((data) => {
+                pronunciationOverrides = data;
+                renderPages();
+                document.documentElement.dataset.ready = "true";
+            })
+            .catch((error) => {
+                console.warn(error.message);
+                renderPages();
+                document.documentElement.dataset.ready = "fallback";
+            });
+    </script>
+</body>
+</html>
