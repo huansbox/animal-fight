@@ -191,8 +191,8 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - **v0.7 固定劇情模板**：[`docs/plans/2026-07-17-team-mission-story-template.md`](docs/plans/2026-07-17-team-mission-story-template.md)（批次產生欄位、區間理由、寶物銜接、失敗旁白與檢查清單）
 - **v0.7 固定劇情原型**：[`docs/plans/scenarios/`](docs/plans/scenarios/)（災難救援／調查解謎／遠征運送各 1 套；三套皆已遷移為抽寶物與固定 `2＋2` Boss）
 - **v0.6 舊實體測試包**：[`docs/plans/2026-07-18-team-mission-physical-production.md`](docs/plans/2026-07-18-team-mission-physical-production.md)（已被 7/19 原型取代，保留歷史）
-- **v0.7 現行實體／DM 規格**：[`docs/plans/2026-07-19-team-mission-props-dm-web-design.md`](docs/plans/2026-07-19-team-mission-props-dm-web-design.md)（3 張寶物、2 張後援、3 張區域 Poker、4 張大型揭露卡、DM 專注模式 Web App；狀態卡與 Web App 已遷移，揭露卡等待新版面確認）
-- **目前接手快照**：[`docs/handoffs/2026-07-19-team-mission-print-layout.md`](docs/handoffs/2026-07-19-team-mission-print-layout.md)（揭露卡最新 prototype、正式檔差異、下一步與重建指令）
+- **v0.7 現行實體／DM 規格**：[`docs/plans/2026-07-19-team-mission-props-dm-web-design.md`](docs/plans/2026-07-19-team-mission-props-dm-web-design.md)（3 張寶物、2 張後援、3 張區域 Poker、4 張大型揭露卡、DM 專注模式 Web App；正式列印 PDF 均已完成畫面 QA）
+- **目前接手快照**：[`docs/handoffs/2026-07-19-team-mission-print-layout.md`](docs/handoffs/2026-07-19-team-mission-print-layout.md)（v0.7 正式列印檔狀態、驗收重點與下一步真人試印／實玩）
 
 ### 動物大對決（battle-rules.md）
 - 賽制：淘汰賽，每輪 1 戰定勝負（進階：3 戰 2 勝）
@@ -204,12 +204,11 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 
 ## 當前狀態
 
-**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受） → 團隊任務 v0.6 逐關揭露規則、6 局 Agent 模擬、共用劇情模板與 3 套固定劇情 → 團隊任務第一套黑白雷射列印測試包（控制板、暴雨揭露卡、DM 雙面指南） → 實體動物卡文字版面與全卡注音規格定案 → 132 張正式文字字型 subset 與 QA PDF → 動物圖片 B+ 黑白印刷風格 3×4 試印套組 → 動物圖片正式採用 V2「圖鑑平衡版」 → 團隊任務舊護盾實體道具原型與 DM 專注模式 Web App → v0.7 三寶物 Boss 規則、結算順序與機率基準定案 → 三套劇情、DM App、寶物／後援／三區卡與兩頁列印 PDF 完成 v0.7 遷移 → 揭露卡單一路徑版面 prototype 完成單／雙動物 A4 實際尺寸 render
+**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受） → 團隊任務 v0.6 逐關揭露規則、6 局 Agent 模擬、共用劇情模板與 3 套固定劇情 → 團隊任務第一套黑白雷射列印測試包（控制板、暴雨揭露卡、DM 雙面指南） → 實體動物卡文字版面與全卡注音規格定案 → 132 張正式文字字型 subset 與 QA PDF → 動物圖片 B+ 黑白印刷風格 3×4 試印套組 → 動物圖片正式採用 V2「圖鑑平衡版」 → 團隊任務舊護盾實體道具原型與 DM 專注模式 Web App → v0.7 三寶物 Boss 規則、結算順序與機率基準定案 → 三套劇情、DM App、寶物／後援／三區卡與兩頁列印 PDF 完成 v0.7 遷移 → 揭露卡單一路徑版面完成單／雙動物確認並遷移至正式 4 張揭露卡與 2 頁 PDF，逐頁畫面 QA 通過
 
 **待完成**：
 - [ ] 數位版實際遊玩測試
-- [ ] 列印 v0.7 寶物／後援／三區卡，實際記錄寶物操作、Boss 骰池、後援前／後勝負與 DM 負擔
-- [ ] 先確認揭露卡單動物 `96mm` 屬性組間距，再把最新直向資訊層級遷移回正式 4 張揭露卡與 2 頁 PDF
+- [ ] 列印 v0.7 寶物／後援／三區卡與 4 張大型揭露卡，實際記錄寶物操作、Boss 骰池、後援前／後勝負與 DM 負擔
 - [ ] 依黑白試印與親子實玩結果，定案 3 張寶物、2 張後援、3 張區域卡、4 張大型揭露卡與 DM 網頁
 - [ ] 放大版 Poker 到貨後量測實際尺寸，微調 122×175mm 卡面與貼紙內縮量
 - [ ] 先完成包含 4 張 V2 測試圖在內的 16–24 隻安全牌動物首批，用於實際遊玩與完整卡面試印
@@ -234,12 +233,12 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - **動物卡版面原型**：[`card/animal-card-final-prototype.html`](card/animal-card-final-prototype.html)（122×175mm、全卡注音、黑白雷射列印）
 - **正式注音字型**：[`card/fonts/bopomofo/`](card/fonts/bopomofo/)（v1.500 固定來源、Bold／Medium subset、corpus、授權、build report）；QA：[`card/bopomofo-coverage-qa.html`](card/bopomofo-coverage-qa.html)、[`output/pdf/bopomofo-font-coverage-qa.pdf`](output/pdf/bopomofo-font-coverage-qa.pdf)
 - **團隊任務工法**：萬用背包／探險手電筒／變化魔鏡各 1 張、後援 2 張、待命／再挑戰／休息各 1 張，共用 2 張 A4 四分標籤；4 張大型揭露卡使用 2 張 A4 二分標籤；全部貼在放大版 Poker 上
-- **揭露卡候選版面**：情境圖片 → 白話原因 → 淺灰圓角數字牌 → 兩個屬性；直接列 `1、2、3`／`4、5、6`／`7、8、9`，不用區間符號或橫向分隔線；屬性圖片在上、名稱在下，中間以黑底「或」表示選擇。單動物屬性組置中限寬 `96mm`；雙動物版已確認，單動物最新版待下次確認
+- **揭露卡正式版面**：情境圖片 → 白話原因 → 淺灰圓角數字牌 → 兩個屬性；直接列 `1、2、3`／`4、5、6`／`7、8、9`，不用區間符號或橫向分隔線；屬性圖片在上、名稱在下，中間以黑底「或」表示選擇。單動物屬性組置中限寬 `96mm`；單／雙動物版均已確認並遷移到正式 4 張揭露卡
 - **DM 專注模式**：[`game/dm/`](game/dm/)；Vanilla HTML／CSS／JS、無 build、Cloudflare Pages-ready、逐關顯示、v0.7 Boss 寶物結算、`localStorage` 保存進度與最近 50 局摘要，可匯出 Markdown／JSON
 - **測試檔**：[`card/print-size-test-122x175.html`](card/print-size-test-122x175.html)；可列印 PDF：[`output/pdf/animal-fight-card-size-test-122x175.pdf`](output/pdf/animal-fight-card-size-test-122x175.pdf)
 - **團隊任務列印檔**：[`output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf`](output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf)（v0.7 三寶物版）、[`output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf`](output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf)
-- **揭露卡正式檔狀態**：`storm-forest-rescue-reveal-cards-half-label.*` 仍是較早排版；最新候選只在 `reveal-card-stacked-layout-prototype.*`，不可把舊正式 PDF 當成目前定稿
-- **下一步**：確認最新單動物間距 → 遷移並 QA 正式 4 張揭露卡 → 黑白試印 v0.7 寶物／後援／三區／揭露卡並跑第一局真人測試；之後以 V2 規格製作包含現有 4 張測試圖在內的 16–24 隻安全牌首批；等實體 Poker 到貨後量測，再調整動物卡面尺寸與四周內縮
+- **揭露卡正式檔狀態**：`storm-forest-rescue-reveal-cards-half-label.*` 已套用確認版直向資訊層級；正式 PDF 為 2 頁 A4 二分標籤、共 4 張揭露卡，逐頁畫面 QA 通過。`reveal-card-stacked-layout-prototype.*` 僅保留為版面測試紀錄
+- **下一步**：黑白試印 v0.7 寶物／後援／三區／揭露卡並跑第一局真人測試；之後以 V2 規格製作包含現有 4 張測試圖在內的 16–24 隻安全牌首批；等實體 Poker 到貨後量測，再調整動物卡面尺寸與四周內縮
 
 ## 技術債 / 待建工具
 

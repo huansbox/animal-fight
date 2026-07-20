@@ -1,7 +1,7 @@
 # 團隊任務實體道具與 DM 網頁原型設計
 
 > 日期：2026-07-19
-> 狀態：狀態／區域卡與 DM App 已遷移；揭露卡直向資訊層級 prototype 待確認後遷移回正式 4 張 PDF
+> 狀態：狀態／區域卡、DM App 與正式 4 張揭露卡均已完成；列印 PDF 已通過逐頁畫面 QA，等待黑白試印與真人實玩
 > 第一套劇情：暴雨森林救援隊
 > 規則依據：[`2026-07-19-team-mission-v07-treasure-boss-design.md`](2026-07-19-team-mission-v07-treasure-boss-design.md)
 
@@ -71,7 +71,7 @@ Boss 抵達時重新查看第 1 張，不增加第五張 Boss 卡。
 
 兩個屬性左右並排，以小型黑底「或」標記表示選擇關係；不加個別屬性外框。屬性圖片在上、名稱與注音在圖片正下方，與動物卡片的閱讀方向一致。單動物屬性組置中並限制為 `96mm` 寬，避免兩張圖片距離過遠；雙動物任務各自在 2A／2B 分區內使用同一結構。
 
-此順序同時適用單動物、雙動物與開場 Boss 預告，不得改回「屬性在左、數字在右」。雙動物版本已口頭確認可接受；單動物版本完成 `96mm` 內縮後仍待下一次明確確認。正式 4 張揭露卡尚未遷移到此版面。
+此順序同時適用單動物、雙動物與開場 Boss 預告，不得改回「屬性在左、數字在右」。單動物 `96mm` 內縮與雙動物版本均已確認，並已遷移到正式 4 張揭露卡。
 
 不再顯示「小格／剛好格／大格」。卡片直接寫：
 
@@ -155,12 +155,12 @@ Boss 畫面固定依序顯示：
 
 - 8 張寶物／後援／區域卡來源：[`card/team-mission-status-cards-quarter-label.html`](../../card/team-mission-status-cards-quarter-label.html)；三件寶物、兩張後援與三張區域皆使用 V2 黑白插圖
 - 8 張寶物／後援／區域卡 PDF：[`output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf`](../../output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf)；2 頁 A4 四分標籤，已完成逐頁畫面 QA，等待實際黑白列印
-- 4 張大型揭露卡舊版來源：[`card/storm-forest-rescue-reveal-cards-half-label.html`](../../card/storm-forest-rescue-reveal-cards-half-label.html)；目前仍是較早的排版，不視為最新定稿
-- 4 張大型揭露卡舊版 PDF：[`output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf`](../../output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf)；待新排版確認後重建
-- 最新直向資訊層級 prototype：[`card/reveal-card-stacked-layout-prototype.html`](../../card/reveal-card-stacked-layout-prototype.html)；PDF：[`output/pdf/reveal-card-stacked-layout-prototype-a4.pdf`](../../output/pdf/reveal-card-stacked-layout-prototype-a4.pdf)
+- 4 張大型揭露卡正式來源：[`card/storm-forest-rescue-reveal-cards-half-label.html`](../../card/storm-forest-rescue-reveal-cards-half-label.html)；已套用確認版直向資訊層級
+- 4 張大型揭露卡正式 PDF：[`output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf`](../../output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf)；2 頁 A4 二分標籤，已完成逐頁畫面 QA，等待實際黑白列印
+- 直向資訊層級 prototype 紀錄：[`card/reveal-card-stacked-layout-prototype.html`](../../card/reveal-card-stacked-layout-prototype.html)；PDF：[`output/pdf/reveal-card-stacked-layout-prototype-a4.pdf`](../../output/pdf/reveal-card-stacked-layout-prototype-a4.pdf)
 - 早期 A／B 比例比較稿：[`card/reveal-card-requirement-ab-comparison.html`](../../card/reveal-card-requirement-ab-comparison.html)；只保留為比較紀錄，不再延伸
 - 揭露卡情境圖：[`card/mission-art/storm-forest-rescue/`](../../card/mission-art/storm-forest-rescue/)
 - 寶物／後援／三區插圖：[`card/images-team-status/`](../../card/images-team-status/)；Prompt：[`card/img-prompt/team-mission-status-card-v2-prompts.md`](../../card/img-prompt/team-mission-status-card-v2-prompts.md)
 - DM 專注模式：[`game/dm/`](../../game/dm/)；Boss 固定依手電筒、魔鏡、背包顯示，結束摘要記錄三關、寶物、原始骰池、寶物結果與後援前／後勝負
 
-狀態／區域卡 PDF 為 2 頁 A4，使用 A4 四分標籤。揭露卡最終仍會使用 2 頁 A4 二分標籤、沿虛線裁切後貼到放大版 Poker；目前最新排版只有 1 頁 prototype，同頁測試單動物與雙動物卡，不可當成完整 4 張正式列印檔。全部使用黑白雷射列印與 `100%`／「實際大小」。
+狀態／區域卡 PDF 為 2 頁 A4，使用 A4 四分標籤。揭露卡正式 PDF 為 2 頁 A4 二分標籤，共 4 張卡，沿虛線裁切後貼到放大版 Poker。全部使用黑白雷射列印與 `100%`／「實際大小」。

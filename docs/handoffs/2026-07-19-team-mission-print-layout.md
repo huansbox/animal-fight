@@ -2,13 +2,11 @@
 
 ## 接手結論
 
-本 session 已完成 v0.7 寶物／後援／三區卡、DM 專注模式與揭露卡新版面探索。下一個 session 不要從規則重新討論；先確認最新單動物揭露卡的屬性間距，再把已確認的直向資訊層級遷移回正式 4 張揭露卡。
+v0.7 寶物／後援／三區卡、DM 專注模式與正式 4 張揭露卡均已完成。單動物 `96mm` 屬性間距與雙動物版面已確認，直向資訊層級已遷移回正式兩頁 PDF 並通過逐頁畫面 QA。下一個 session 不要從規則或揭露卡版面重新討論；直接進行黑白試印與第一局真人測試。
 
 目前 branch：`feat/team-mission-props-prototype`
 
-目前 HEAD：`3182b34 feat(cards): finalize monochrome animal art style`
-
-工作目錄有大量本 session 的已修改與未追蹤檔案，尚未 commit／push。這些都是專案進度，不可用 `git reset --hard`、`git checkout --` 或清理未追蹤檔案。
+目前正式進度已提交到此 branch；開始新工作前仍應先用 `git status` 核對工作目錄。
 
 ## 已完成且可延續
 
@@ -51,32 +49,33 @@
 - 單動物屬性整組置中、寬度限制為 `96mm`，避免左右距離過遠。
 - 雙動物 2A／2B 各自保留工作名稱、原因、數字牌與兩個屬性。
 
-使用者已明確表示雙動物版「看起來 ok」。單動物版先被指出屬性距離太遠，已改為 `96mm` 置中，但調整後尚未得到下一次明確確認。
+使用者已明確確認雙動物版與單動物 `96mm` 置中版「看起來 ok」。兩種版面均已遷移到正式 4 張揭露卡。
 
 ## 揭露卡檔案狀態
 
-### 最新候選
+### 正式列印檔
+
+- HTML：[`../../card/storm-forest-rescue-reveal-cards-half-label.html`](../../card/storm-forest-rescue-reveal-cards-half-label.html)
+- PDF：[`../../output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf`](../../output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf)
+- 內容：2 頁 A4、每頁 2 張，共 4 張正式揭露卡；卡面皆為實際 `170×118.5mm`。
+- 狀態：已重建注音字型 subset，PDF 頁數／A4 尺寸與逐頁 render QA 均通過，等待黑白雷射試印。
+
+### 版面測試紀錄
 
 - HTML：[`../../card/reveal-card-stacked-layout-prototype.html`](../../card/reveal-card-stacked-layout-prototype.html)
 - PDF：[`../../output/pdf/reveal-card-stacked-layout-prototype-a4.pdf`](../../output/pdf/reveal-card-stacked-layout-prototype-a4.pdf)
 - 內容：1 頁 A4，上半張測單動物、下半張測雙動物；卡面皆為實際 `170×118.5mm`。
-- Dropbox：`/Users/linshuhuan/Library/CloudStorage/Dropbox/handoff/animal-fight/reveal-card-stacked-layout-prototype-a4.pdf`
-
-### 不要誤認為最新版
-
-- [`../../card/storm-forest-rescue-reveal-cards-half-label.html`](../../card/storm-forest-rescue-reveal-cards-half-label.html) 與 [`../../output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf`](../../output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf) 仍是較早版面，尚未套用最新直向資訊層級。
+- Dropbox prototype：`/Users/linshuhuan/Library/CloudStorage/Dropbox/handoff/animal-fight/reveal-card-stacked-layout-prototype-a4.pdf`
+- 此檔只保留版面測試紀錄，正式列印請使用上一節的完整兩頁 PDF。
 - [`../../card/reveal-card-requirement-ab-comparison.html`](../../card/reveal-card-requirement-ab-comparison.html) 與對應 PDF 是早期比例比較稿，只保留為歷史參考。
 
 ## 下一個 session 的執行順序
 
-1. 先讓使用者開啟最新 prototype，確認單動物 `96mm` 屬性間距。
-2. 若確認，將 `reveal-card-stacked-layout-prototype.html` 的需求區結構與 CSS 遷移到 `storm-forest-rescue-reveal-cards-half-label.html`。
-3. 套用到全部 4 張卡：任務簡報／Boss 預告、第一關單動物、第二關雙動物、第三關單動物。
-4. Boss A／B 與 2A／2B 必須各自保留工作名稱和一句原因。
-5. 重建注音字型 subset，因正式揭露卡文字 corpus 會變更。
-6. 重新產生正式 2 頁 PDF，render 每頁 PNG，檢查裁切、注音、數字牌、屬性間距與雙工作密度。
-7. 將正式 PDF 複製到 Dropbox handoff，再進行黑白雷射試印。
-8. 揭露卡定案後，再做 16–24 隻 V2 安全牌動物首批。
+1. 用黑白雷射、`100%`／「實際大小」列印 2 頁狀態／區域卡與 2 頁正式揭露卡。
+2. 沿揭露卡虛線裁切，確認貼到放大版 Poker 後的安全邊界與實際閱讀距離。
+3. 跑第一局真人測試，記錄寶物操作、Boss 骰池、後援前／後勝負、孩子理解度與 DM 負擔。
+4. 依試印與實玩結果決定是否只做小幅字級／間距修正；沒有實體問題就不再重開版面。
+5. 之後製作 16–24 隻 V2 安全牌動物首批。
 
 ## 常用指令
 
