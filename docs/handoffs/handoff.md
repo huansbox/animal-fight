@@ -2,7 +2,7 @@
 
 > 更新：2026-07-21
 > Branch：`feat/animal-ability-audit`
-> 狀態：完成 132 隻特殊能力機械掃描與 P0／P1 修訂候選；正式動物資料尚未改寫，等待確認候選後才重建卡面文字
+> 狀態：完成 132 隻特殊能力機械掃描與 P0／P1 三方 review；正式動物資料尚未改寫，等待確認整併候選後才重建卡面文字
 
 ## 接手後先做什麼
 
@@ -20,9 +20,9 @@
 
 - 新增 [`../../card/audit_animal_skills.py`](../../card/audit_animal_skills.py)，掃描四字技能名、15–25 字描述、複合動作、外部角色、群體依賴、暴力字詞、抽象效果與誇張語句。
 - 132 隻中有 10 隻格式問題；102 隻命中至少一項 Prompt 風險候選，但關鍵字命中不等於必須改文案。
-- P0 核心能力與 P1 兒童文案候選整理於 [`../plans/2026-07-21-animal-skill-description-audit.md`](../plans/2026-07-21-animal-skill-description-audit.md)。正式資料目前完全未改。
+- P0 核心能力與 P1 兒童文案候選已由兒童文案、`artAction`／V2.0 相容性、臺灣用語／物種 plausibility 三個角度獨立 review，整併結果整理於 [`../plans/2026-07-21-animal-skill-description-audit.md`](../plans/2026-07-21-animal-skill-description-audit.md)。正式資料目前完全未改。
 - 生圖 SOP 新增 `artAction`：`skillDesc` 不再直接餵給模型，先收斂為一個可見動作、單一瞬間與必要物件。
-- 發現 `id=king_cobra`、英文 `King Cobra` 的中文名誤寫為「眼鏡蛇」；候選改為「眼鏡王蛇」，可避免與 backlog 的印度眼鏡蛇撞物種。
+- 使用者確認原意是臺灣常見眼鏡蛇；候選應改為 `id=chinese_cobra`、英文 `Chinese Cobra`、中文維持「眼鏡蛇」。`Cobra` 是泛稱，`King Cobra` 則是不同物種「眼鏡王蛇」。
 - 對齊大對決逐骰天賦規則：相同最終骰面仍各算一次命中加成，多次骰到 6 再依觸發次數疊加。數位版已修正並有 regression test。
 
 ### 首批 16 張 V2 動物卡
