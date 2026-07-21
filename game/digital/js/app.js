@@ -608,7 +608,7 @@ function startBattle() {
         if (totalTriggers > 0) {
             for (const b of animal.skillBonus) {
                 if (b.attr === res.attr1) bonus1 += b.val;
-                if (b.attr === res.attr2 && !res.doubled) bonus2 += b.val;
+                if (b.attr === res.attr2) bonus2 += b.val;
             }
         }
 

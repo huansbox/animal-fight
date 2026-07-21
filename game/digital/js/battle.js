@@ -50,13 +50,16 @@ function calculateScore(animal, d1, d2) {
         baseScore = animal.stats[attr1] + animal.stats[attr2];
     }
 
-    // 天賦加分：每次觸發 → 檢查最終骰面命中的加成屬性 → 加總命中的 bonus
+    // 天賦加分：每次觸發 → 逐顆檢查最終骰面命中的加成屬性
+    // 兩顆骰面相同時仍各自加分，不把同一屬性合併為一次。
     let bonusPerTrigger = 0;
     if (totalTriggers > 0) {
         const hitAttrs = [attr1, attr2];
-        for (const b of animal.skillBonus) {
-            if (hitAttrs.includes(b.attr)) {
-                bonusPerTrigger += b.val;
+        for (const attr of hitAttrs) {
+            for (const b of animal.skillBonus) {
+                if (b.attr === attr) {
+                    bonusPerTrigger += b.val;
+                }
             }
         }
     }
@@ -129,8 +132,10 @@ function scoreFromResolved(animal, d1Final, d2Final, totalTriggers) {
     let bonusPerTrigger = 0;
     if (totalTriggers > 0) {
         const hitAttrs = [attr1, attr2];
-        for (const b of animal.skillBonus) {
-            if (hitAttrs.includes(b.attr)) bonusPerTrigger += b.val;
+        for (const attr of hitAttrs) {
+            for (const b of animal.skillBonus) {
+                if (b.attr === attr) bonusPerTrigger += b.val;
+            }
         }
     }
     const totalBonus = totalTriggers * bonusPerTrigger;
