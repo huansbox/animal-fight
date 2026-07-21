@@ -2,15 +2,15 @@
 
 > 更新：2026-07-21
 > Branch：`feat/animal-ability-audit`
-> 狀態：完成 132 隻特殊能力機械掃描與 P0／P1 三方 review；正式動物資料尚未改寫，等待確認整併候選後才重建卡面文字
+> 狀態：P0／P1／格式修訂已寫回 132 隻正式資料；注音字型、文字 QA 與首批 16 張 PDF 已重建並通過畫面檢查
 
 ## 接手後先做什麼
 
 不要直接擴充剩餘 116 張，也不要覆蓋現有 16 張正式圖片。依序進行：
 
-1. 先讀 [`../plans/2026-07-21-animal-skill-description-audit.md`](../plans/2026-07-21-animal-skill-description-audit.md)，確認 P0 的核心能力與 P1 的兒童文案候選。
-2. 候選確認前不要寫回 `animals.json`、不要重建注音字型，也不要產生剩餘圖片。
-3. 實體測試仍照原計畫進行：重印一頁 `117×170mm`，以及等孩子有空用現有 16 張 V2.0 跑完整淘汰賽。
+1. 先讀 [`../plans/2026-07-21-animal-skill-description-audit.md`](../plans/2026-07-21-animal-skill-description-audit.md)，沿用已定案的能力與 `artAction` 原則。
+2. 重印一頁 `117×170mm`，確認新版文案與貼合容錯；等孩子有空再用現有 16 張 V2.0 跑完整淘汰賽。
+3. 實體驗證沒有問題後，才逐波建立剩餘 116 張 V2.0 Prompt；圖片風格不再重開選型。
 
 目前手邊沒有 Poker 可重新量測，先依標示尺寸 `122×175mm` 計算；日後有實物時仍需量 3–5 張並取最小長寬。
 
@@ -19,10 +19,11 @@
 ### 132 隻特殊能力描述審核
 
 - 新增 [`../../card/audit_animal_skills.py`](../../card/audit_animal_skills.py)，掃描四字技能名、15–25 字描述、複合動作、外部角色、群體依賴、暴力字詞、抽象效果與誇張語句。
-- 132 隻中有 10 隻格式問題；102 隻命中至少一項 Prompt 風險候選，但關鍵字命中不等於必須改文案。
-- P0 核心能力與 P1 兒童文案候選已由兒童文案、`artAction`／V2.0 相容性、臺灣用語／物種 plausibility 三個角度獨立 review，整併結果整理於 [`../plans/2026-07-21-animal-skill-description-audit.md`](../plans/2026-07-21-animal-skill-description-audit.md)。正式資料目前完全未改。
+- 修訂前 132 隻中有 10 隻格式問題、102 隻命中至少一項 Prompt 風險候選；正式寫回後四字技能名與 15–25 字描述問題均歸零，Prompt 風險候選降為 77 隻。
+- P0 核心能力與 P1 兒童文案已由兒童文案、`artAction`／V2.0 相容性、臺灣用語／物種 plausibility 三個角度獨立 review，整併結果已同步至正式資料、卡面、規則表與相關 Prompt，詳見 [`../plans/2026-07-21-animal-skill-description-audit.md`](../plans/2026-07-21-animal-skill-description-audit.md)。
 - 生圖 SOP 新增 `artAction`：`skillDesc` 不再直接餵給模型，先收斂為一個可見動作、單一瞬間與必要物件。
-- 使用者確認原意是臺灣常見眼鏡蛇；候選應改為 `id=chinese_cobra`、英文 `Chinese Cobra`、中文維持「眼鏡蛇」。`Cobra` 是泛稱，`King Cobra` 則是不同物種「眼鏡王蛇」。
+- 使用者確認原意是臺灣常見眼鏡蛇；正式資料已改為 `id=chinese_cobra`、英文 `Chinese Cobra`、中文維持「眼鏡蛇」。`Cobra` 是泛稱，`King Cobra` 則是不同物種「眼鏡王蛇」。本機被 `.gitignore` 排除的數位版圖片也已改名為 `card/images-realistic/chinese_cobra.png`；其他既有 workspace 若仍保留舊檔，需自行做相同 rename。
+- 注音 corpus 與 Bold／Medium subset 已依新版文字重建；正式 QA 為 132 隻、83 個 IVS、6 個人工注音、23 頁、溢出 0。首批 16 張 PDF 維持 8 頁 A4 橫式，逐頁畫面抽查無裁切、重疊、缺字或空白頁。
 - 對齊大對決逐骰天賦規則：相同最終骰面仍各算一次命中加成，多次骰到 6 再依觸發次數疊加。數位版已修正並有 regression test。
 
 ### 首批 16 張 V2 動物卡
@@ -88,10 +89,13 @@
 ## Git 狀態與既有提交
 
 - 工作 branch：`feat/animal-ability-audit`
-- `00d9eaf feat(cards): finalize team mission reveal cards`
-- `5394b65 feat(cards): define first 16 V2 animal artworks`
-- `504fa34 feat(cards): build first 16 animal print sheets`
-- 接手時先執行 `git status -sb`，確認 branch 已與 remote 同步且沒有使用者未提交修改。
+- `46c4176 fix(battle): count talent bonus per die`
+- `54faf4a feat(cards): add skill description audit`
+- `a6910da docs(cards): record three-way ability review`
+- `e5544e6 feat(cards): apply reviewed animal abilities`
+- `e41583a docs(prompts): align revised animal actions`
+- 本接手快照、注音字型與 PDF 重建另由最後一個 `docs(project)` commit 收尾。
+- 接手時先執行 `git status -sb`，預期 branch 已與 remote 同步且沒有未提交修改。
 
 ## 常用指令
 
@@ -100,6 +104,7 @@ open output/pdf/animal-fight-v2-first-16-half-label-a4.pdf
 open output/pdf/animal-action-v2-comparison-a4.pdf
 open output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf
 open output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf
+python3 card/audit_animal_skills.py --format text
 git status -sb
 ```
 

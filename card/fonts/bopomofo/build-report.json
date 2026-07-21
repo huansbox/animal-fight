@@ -13,13 +13,13 @@
     "獴": "狐獴"
   },
   "pronunciationOverrides": {
-    "variationSequences": 89,
-    "manualRuby": 7
+    "variationSequences": 83,
+    "manualRuby": 6
   },
   "sourceCoverage": {
     "bold": {
-      "requestedCodepoints": 604,
-      "supportedCodepoints": 600,
+      "requestedCodepoints": 601,
+      "supportedCodepoints": 597,
       "allowedUnsupported": [
         "㹢",
         "㺢",
@@ -28,17 +28,17 @@
       ]
     },
     "medium": {
-      "requestedCodepoints": 747,
-      "supportedCodepoints": 747,
+      "requestedCodepoints": 737,
+      "supportedCodepoints": 737,
       "allowedUnsupported": []
     }
   },
   "outputs": {
     "bold": {
       "path": "card/fonts/bopomofo/rounded-bold.woff2",
-      "bytes": 155168,
-      "sha256": "d60fa247ecf77811ba6e2cef0f2bc77f096562ce2c0ab81053cc39286c9d9110",
-      "cmapCodepoints": 600,
+      "bytes": 154316,
+      "sha256": "a2f55d6b15e59810f98fbba012c73586bab1521418a9a9602a54501e8ec8cc6e",
+      "cmapCodepoints": 597,
       "gsubFeatures": [
         "aalt",
         "ss01",
@@ -61,9 +61,9 @@
     },
     "medium": {
       "path": "card/fonts/bopomofo/rounded-medium.woff2",
-      "bytes": 176904,
-      "sha256": "79fb2da4385424cc8e9d6a9adf9fb0092716b247cc986908328f495ad4cea9ff",
-      "cmapCodepoints": 747,
+      "bytes": 174572,
+      "sha256": "9c986dd22ba7d76f06d074a33f75b61ae3037c27631f98152cf2b5231ced5719",
+      "cmapCodepoints": 737,
       "gsubFeatures": [
         "aalt",
         "ss01",
@@ -77,9 +77,10 @@
       ],
       "requiredVariationSequences": [
         "U+5F97 U+E01E1",
+        "U+5DF4 U+E01E1",
+        "U+5B50 U+E01E1",
         "U+5F48 U+E01E1",
         "U+5F97 U+E01E1",
-        "U+897F U+E01E1",
         "U+9AA8 U+E01E2",
         "U+982D U+E01E1",
         "U+897F U+E01E1",
@@ -88,10 +89,11 @@
         "U+5D17 U+E01E1",
         "U+5730 U+E01E1",
         "U+722A U+E01E1",
-        "U+5DF4 U+E01E1",
         "U+9732 U+E01E1",
         "U+897F U+E01E1",
-        "U+8655 U+E01E1",
+        "U+5DF4 U+E01E1",
+        "U+897F U+E01E1",
+        "U+5F97 U+E01E1",
         "U+5B50 U+E01E1",
         "U+5B50 U+E01E1",
         "U+5DF4 U+E01E1",
@@ -108,12 +110,8 @@
         "U+5730 U+E01E1",
         "U+5DF4 U+E01E1",
         "U+5B50 U+E01E1",
-        "U+5F48 U+E01E1",
         "U+5B50 U+E01E1",
         "U+5DF4 U+E01E1",
-        "U+56BC U+E01E1",
-        "U+5DF4 U+E01E1",
-        "U+4E2D U+E01E1",
         "U+9AA8 U+E01E2",
         "U+982D U+E01E1",
         "U+4E86 U+E01E1",
@@ -123,7 +121,6 @@
         "U+897F U+E01E1",
         "U+5B50 U+E01E1",
         "U+982D U+E01E1",
-        "U+9732 U+E01E1",
         "U+5B50 U+E01E1",
         "U+5B50 U+E01E1",
         "U+4E86 U+E01E1",
@@ -138,11 +135,10 @@
         "U+89BA U+E01E1",
         "U+982D U+E01E1",
         "U+982D U+E01E1",
+        "U+5B50 U+E01E1",
         "U+5207 U+E01E1",
         "U+5F97 U+E01E1",
         "U+897F U+E01E1",
-        "U+5F97 U+E01E1",
-        "U+5DF4 U+E01E1",
         "U+5F97 U+E01E1",
         "U+5B50 U+E01E1",
         "U+5B50 U+E01E1",
@@ -153,8 +149,6 @@
         "U+5F97 U+E01E1",
         "U+9577 U+E01E1",
         "U+5F97 U+E01E1",
-        "U+897F U+E01E1",
-        "U+6C92 U+E01E1",
         "U+982D U+E01E1",
         "U+5730 U+E01E1",
         "U+8655 U+E01E1",

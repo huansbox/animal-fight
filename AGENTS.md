@@ -91,11 +91,12 @@ animal-fight/
 - **5 屬性**：力量、速度、攻擊、防禦、智慧（骰子 1-5）
 - **骰子 6**：特殊能力觸發，顯示加成 icon 和分數
 - **特殊能力加成**：固定 +4 分，分配到 2-3 個屬性
+- **特殊能力文字／圖片分層**：`skillDesc` 給孩子閱讀與說故事；生圖前另收斂為單一可見動作、單一瞬間與必要物件的 `artAction`，不可直接把完整描述餵給圖片模型
 - **卡片用語**：實體兒童版將「智慧」顯示為「聰明」
 - **全卡注音**：動物名、特殊能力與團隊任務實體卡使用源泉注音圓體 Bold／Medium；正式 subset 由 `card/build_bopomofo_fonts.py` 依 132 張動物文字及團隊任務卡文字重建
-- **讀音校正**：89 個 IVS 多音字／輕聲校正，另有 7 個人工排注音實例；`一、不`維持字典本調
+- **讀音校正**：83 個 IVS 多音字／輕聲校正，另有 6 個人工排注音實例；`一、不`維持字典本調
 - **骰子讀音**：依教育部《國語辭典簡編本》維持正式讀音 `ㄊㄡˊ ˙ㄗ`；日常常見的 `ㄕㄞˇ ˙ㄗ` 不覆寫到正式卡面
-- **列管例外**：官方字型缺 `獴、㺢、㹢、狓`；`屁股`的「股」與`腦袋`的「袋」沒有本案採用的輕聲 IVS，統一由 `card/data/bopomofo-overrides.json` 處理
+- **列管例外**：官方字型缺 `獴、㺢、㹢、狓`；`屁股`的「股」沒有本案採用的輕聲 IVS，由 `card/data/bopomofo-overrides.json` 人工排注音處理
 
 ### 數位版（game/digital/）
 - **詳細文件**：[`game/digital/README.md`](game/digital/README.md)（啟動、規則、維護指南）
@@ -210,10 +211,9 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 
 ## 當前狀態
 
-**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受） → 團隊任務 v0.6 逐關揭露規則、6 局 Agent 模擬、共用劇情模板與 3 套固定劇情 → 團隊任務第一套黑白雷射列印測試包（控制板、暴雨揭露卡、DM 雙面指南） → 實體動物卡文字版面與全卡注音規格定案 → 132 張正式文字字型 subset 與 QA PDF → 動物圖片 B+ 黑白印刷風格 3×4 試印套組 → 動物圖片正式採用 V2「圖鑑平衡版」 → 團隊任務舊護盾實體道具原型與 DM 專注模式 Web App → v0.7 三寶物 Boss 規則、結算順序與機率基準定案 → 三套劇情、DM App、寶物／後援／三區卡與兩頁列印 PDF 完成 v0.7 遷移 → 揭露卡單一路徑版面完成單／雙動物確認並遷移至正式 4 張揭露卡與 2 頁 PDF，逐頁畫面 QA 通過 → 首批 16 張 V2 動物圖完成 3 Agent Prompt／生成圖 QA，整合為全卡注音卡面與 8 頁 A4 二分標籤 PDF，逐頁畫面 QA 通過 → 首批 16 張完成黑白試印，卡面縮為 `117×170mm` 增加貼合容錯 → 4 隻動物完成 V2／V2.1／V2.2 動作強度比較，確認正式圖片維持 V2.0 → 132 隻特殊能力描述完成機械掃描與 P0／P1 修訂候選，生圖 SOP 改為先固定 `artAction`
+**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受） → 團隊任務 v0.6 逐關揭露規則、6 局 Agent 模擬、共用劇情模板與 3 套固定劇情 → 團隊任務第一套黑白雷射列印測試包（控制板、暴雨揭露卡、DM 雙面指南） → 實體動物卡文字版面與全卡注音規格定案 → 132 張正式文字字型 subset 與 QA PDF → 動物圖片 B+ 黑白印刷風格 3×4 試印套組 → 動物圖片正式採用 V2「圖鑑平衡版」 → 團隊任務舊護盾實體道具原型與 DM 專注模式 Web App → v0.7 三寶物 Boss 規則、結算順序與機率基準定案 → 三套劇情、DM App、寶物／後援／三區卡與兩頁列印 PDF 完成 v0.7 遷移 → 揭露卡單一路徑版面完成單／雙動物確認並遷移至正式 4 張揭露卡與 2 頁 PDF，逐頁畫面 QA 通過 → 首批 16 張 V2 動物圖完成 3 Agent Prompt／生成圖 QA，整合為全卡注音卡面與 8 頁 A4 二分標籤 PDF，逐頁畫面 QA 通過 → 首批 16 張完成黑白試印，卡面縮為 `117×170mm` 增加貼合容錯 → 4 隻動物完成 V2／V2.1／V2.2 動作強度比較，確認正式圖片維持 V2.0 → 132 隻特殊能力完成機械掃描、P0／P1 三方審核與正式寫回，`artAction` 納入生圖 SOP，眼鏡蛇遷移為 `Chinese Cobra`，注音字型與列印 PDF 重建後畫面 QA 通過
 
 **待完成**：
-- [ ] 確認 [`docs/plans/2026-07-21-animal-skill-description-audit.md`](docs/plans/2026-07-21-animal-skill-description-audit.md) 的 P0 核心能力與 P1 文案候選，再寫回正式資料並重建注音／卡面文字 QA
 - [ ] 數位版實際遊玩測試
 - [ ] 列印 v0.7 寶物／後援／三區卡與 4 張大型揭露卡，實際記錄寶物操作、Boss 骰池、後援前／後勝負與 DM 負擔
 - [ ] 依黑白試印與親子實玩結果，定案 3 張寶物、2 張後援、3 張區域卡、4 張大型揭露卡與 DM 網頁
@@ -247,8 +247,8 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - **測試檔**：[`card/print-size-test-122x175.html`](card/print-size-test-122x175.html)；可列印 PDF：[`output/pdf/animal-fight-card-size-test-122x175.pdf`](output/pdf/animal-fight-card-size-test-122x175.pdf)
 - **團隊任務列印檔**：[`output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf`](output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf)（v0.7 三寶物版）、[`output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf`](output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf)
 - **揭露卡正式檔狀態**：`storm-forest-rescue-reveal-cards-half-label.*` 已套用確認版直向資訊層級；正式 PDF 為 2 頁 A4 二分標籤、共 4 張揭露卡，逐頁畫面 QA 通過。`reveal-card-stacked-layout-prototype.*` 僅保留為版面測試紀錄
-- **特殊能力審核**：[`docs/plans/2026-07-21-animal-skill-description-audit.md`](docs/plans/2026-07-21-animal-skill-description-audit.md)（132 隻機械掃描、P0 核心能力、P1 兒童文案與 `artAction` 生圖分層；正式資料尚未改）
-- **下一步**：先確認特殊能力修訂候選；實體面重印新版 `117×170mm` 一頁確認貼合容錯，等孩子有空用現有 16 張 V2.0 跑完整淘汰賽，同時列印 v0.7 團隊任務道具跑第一局真人測試；完成前不要擴充剩餘 116 張
+- **特殊能力審核**：[`docs/plans/2026-07-21-animal-skill-description-audit.md`](docs/plans/2026-07-21-animal-skill-description-audit.md)（132 隻機械掃描、P0 核心能力、P1 兒童文案與 `artAction` 生圖分層；正式資料、Prompt、注音與 PDF 已同步）
+- **下一步**：實體面重印新版 `117×170mm` 一頁確認貼合容錯，等孩子有空用現有 16 張 V2.0 跑完整淘汰賽，同時列印 v0.7 團隊任務道具跑第一局真人測試；驗證完成後再逐波建立剩餘 116 張 `artAction` 與 V2.0 Prompt
 
 ## 技術債 / 待建工具
 
