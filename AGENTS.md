@@ -155,7 +155,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 | 數值 | 3.5 | **自動化前置檢查** → `docs/attributes.md` §8（bonus 加總、skillName 撞名、加成模式重疊、差異分數） |
 | 數值 | 4 | **3 Agent 數值審核** → `docs/attributes.md` §8（A=科學合理性 / B=特殊能力設計 / C=全局平衡與辨識度） |
 | 數值 | 5 | **產出 JSON** → `card/data/animals-wave{N}.json`（7 欄位：id, name, en, img, stats, skillName, skillDesc, skillBonus）。img 格式固定為 `"images/{id}.png"` |
-| Prompt | 5.5 | **物種特徵研究** → `prompt-guidelines.md` §0（每隻列出 2-3 個最高辨識度外觀特徵） |
+| Prompt | 5.5 | **物種特徵研究＋固定 artAction** → `prompt-guidelines.md` §0（每隻列出 2-3 個最高辨識度外觀特徵，另把 skillDesc 收斂為單一可見動作） |
 | Prompt | 6 | **撰寫繪圖 Prompt** → `prompt-guidelines.md` §1-§6（模板 + 動作轉換 + 風格後綴），含 §7 黑化/特殊毛色處理 |
 | Prompt | 7 | **3 Agent Prompt 審核** → `prompt-guidelines.md` §3 + §7-§12 + §13（12 項審核清單 + 審核分工） |
 | Prompt | 8 | **產出 .md + .jsonl** → `prompt-guidelines.md` §14（JSONL 轉換規範） |
@@ -204,15 +204,16 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - 賽制：淘汰賽，每輪 1 戰定勝負（進階：3 戰 2 勝）
 - 擲骰：雙方各擲 2d6，比總和
 - 骰到相同：該屬性 ×2
-- 骰到 6：重骰＋觸發 1 次天賦加分（僅加骰面命中的屬性加成）
+- 骰到 6：重骰＋觸發 1 次天賦加分（逐顆計算最終骰面命中的屬性加成；相同骰面仍各算一次）
 - 連續骰 6：每次都重骰＋再觸發 1 次（可累加）
 - 平手：加賽
 
 ## 當前狀態
 
-**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受） → 團隊任務 v0.6 逐關揭露規則、6 局 Agent 模擬、共用劇情模板與 3 套固定劇情 → 團隊任務第一套黑白雷射列印測試包（控制板、暴雨揭露卡、DM 雙面指南） → 實體動物卡文字版面與全卡注音規格定案 → 132 張正式文字字型 subset 與 QA PDF → 動物圖片 B+ 黑白印刷風格 3×4 試印套組 → 動物圖片正式採用 V2「圖鑑平衡版」 → 團隊任務舊護盾實體道具原型與 DM 專注模式 Web App → v0.7 三寶物 Boss 規則、結算順序與機率基準定案 → 三套劇情、DM App、寶物／後援／三區卡與兩頁列印 PDF 完成 v0.7 遷移 → 揭露卡單一路徑版面完成單／雙動物確認並遷移至正式 4 張揭露卡與 2 頁 PDF，逐頁畫面 QA 通過 → 首批 16 張 V2 動物圖完成 3 Agent Prompt／生成圖 QA，整合為全卡注音卡面與 8 頁 A4 二分標籤 PDF，逐頁畫面 QA 通過 → 首批 16 張完成黑白試印，卡面縮為 `117×170mm` 增加貼合容錯 → 4 隻動物完成 V2／V2.1／V2.2 動作強度比較，確認正式圖片維持 V2.0
+**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受） → 團隊任務 v0.6 逐關揭露規則、6 局 Agent 模擬、共用劇情模板與 3 套固定劇情 → 團隊任務第一套黑白雷射列印測試包（控制板、暴雨揭露卡、DM 雙面指南） → 實體動物卡文字版面與全卡注音規格定案 → 132 張正式文字字型 subset 與 QA PDF → 動物圖片 B+ 黑白印刷風格 3×4 試印套組 → 動物圖片正式採用 V2「圖鑑平衡版」 → 團隊任務舊護盾實體道具原型與 DM 專注模式 Web App → v0.7 三寶物 Boss 規則、結算順序與機率基準定案 → 三套劇情、DM App、寶物／後援／三區卡與兩頁列印 PDF 完成 v0.7 遷移 → 揭露卡單一路徑版面完成單／雙動物確認並遷移至正式 4 張揭露卡與 2 頁 PDF，逐頁畫面 QA 通過 → 首批 16 張 V2 動物圖完成 3 Agent Prompt／生成圖 QA，整合為全卡注音卡面與 8 頁 A4 二分標籤 PDF，逐頁畫面 QA 通過 → 首批 16 張完成黑白試印，卡面縮為 `117×170mm` 增加貼合容錯 → 4 隻動物完成 V2／V2.1／V2.2 動作強度比較，確認正式圖片維持 V2.0 → 132 隻特殊能力描述完成機械掃描與 P0／P1 修訂候選，生圖 SOP 改為先固定 `artAction`
 
 **待完成**：
+- [ ] 確認 [`docs/plans/2026-07-21-animal-skill-description-audit.md`](docs/plans/2026-07-21-animal-skill-description-audit.md) 的 P0 核心能力與 P1 文案候選，再寫回正式資料並重建注音／卡面文字 QA
 - [ ] 數位版實際遊玩測試
 - [ ] 列印 v0.7 寶物／後援／三區卡與 4 張大型揭露卡，實際記錄寶物操作、Boss 骰池、後援前／後勝負與 DM 負擔
 - [ ] 依黑白試印與親子實玩結果，定案 3 張寶物、2 張後援、3 張區域卡、4 張大型揭露卡與 DM 網頁
@@ -246,7 +247,8 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - **測試檔**：[`card/print-size-test-122x175.html`](card/print-size-test-122x175.html)；可列印 PDF：[`output/pdf/animal-fight-card-size-test-122x175.pdf`](output/pdf/animal-fight-card-size-test-122x175.pdf)
 - **團隊任務列印檔**：[`output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf`](output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf)（v0.7 三寶物版）、[`output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf`](output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf)
 - **揭露卡正式檔狀態**：`storm-forest-rescue-reveal-cards-half-label.*` 已套用確認版直向資訊層級；正式 PDF 為 2 頁 A4 二分標籤、共 4 張揭露卡，逐頁畫面 QA 通過。`reveal-card-stacked-layout-prototype.*` 僅保留為版面測試紀錄
-- **下一步**：重印新版 `117×170mm` 一頁確認貼合容錯；等孩子有空用現有 16 張 V2.0 跑完整淘汰賽，同時列印 v0.7 團隊任務道具跑第一局真人測試；完成前不要擴充剩餘 116 張
+- **特殊能力審核**：[`docs/plans/2026-07-21-animal-skill-description-audit.md`](docs/plans/2026-07-21-animal-skill-description-audit.md)（132 隻機械掃描、P0 核心能力、P1 兒童文案與 `artAction` 生圖分層；正式資料尚未改）
+- **下一步**：先確認特殊能力修訂候選；實體面重印新版 `117×170mm` 一頁確認貼合容錯，等孩子有空用現有 16 張 V2.0 跑完整淘汰賽，同時列印 v0.7 團隊任務道具跑第一局真人測試；完成前不要擴充剩餘 116 張
 
 ## 技術債 / 待建工具
 

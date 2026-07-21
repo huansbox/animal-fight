@@ -1,19 +1,29 @@
 # Animal Fight 最新接手文件
 
 > 更新：2026-07-21
-> Branch：`feat/team-mission-props-prototype`
-> 狀態：首批 16 張已完成黑白試印；卡面改為 `117×170mm` 增加貼合容錯；動作比較確認維持 V2.0，等待新版尺寸試貼與孩子實玩
+> Branch：`feat/animal-ability-audit`
+> 狀態：完成 132 隻特殊能力機械掃描與 P0／P1 修訂候選；正式動物資料尚未改寫，等待確認候選後才重建卡面文字
 
 ## 接手後先做什麼
 
 不要直接擴充剩餘 116 張，也不要覆蓋現有 16 張正式圖片。依序進行：
 
-1. 用新版 `117×170mm` 正式 PDF 重印至少一頁，確認名義 `122×175mm` Poker 四邊約 `2.5mm` 的容錯是否足夠。
-2. 等孩子有空，用現有 16 張 V2.0 跑完整淘汰賽，記錄能否只看圖說出動物與能力。
+1. 先讀 [`../plans/2026-07-21-animal-skill-description-audit.md`](../plans/2026-07-21-animal-skill-description-audit.md)，確認 P0 的核心能力與 P1 的兒童文案候選。
+2. 候選確認前不要寫回 `animals.json`、不要重建注音字型，也不要產生剩餘圖片。
+3. 實體測試仍照原計畫進行：重印一頁 `117×170mm`，以及等孩子有空用現有 16 張 V2.0 跑完整淘汰賽。
 
 目前手邊沒有 Poker 可重新量測，先依標示尺寸 `122×175mm` 計算；日後有實物時仍需量 3–5 張並取最小長寬。
 
 ## 這個 session 已完成
+
+### 132 隻特殊能力描述審核
+
+- 新增 [`../../card/audit_animal_skills.py`](../../card/audit_animal_skills.py)，掃描四字技能名、15–25 字描述、複合動作、外部角色、群體依賴、暴力字詞、抽象效果與誇張語句。
+- 132 隻中有 10 隻格式問題；102 隻命中至少一項 Prompt 風險候選，但關鍵字命中不等於必須改文案。
+- P0 核心能力與 P1 兒童文案候選整理於 [`../plans/2026-07-21-animal-skill-description-audit.md`](../plans/2026-07-21-animal-skill-description-audit.md)。正式資料目前完全未改。
+- 生圖 SOP 新增 `artAction`：`skillDesc` 不再直接餵給模型，先收斂為一個可見動作、單一瞬間與必要物件。
+- 發現 `id=king_cobra`、英文 `King Cobra` 的中文名誤寫為「眼鏡蛇」；候選改為「眼鏡王蛇」，可避免與 backlog 的印度眼鏡蛇撞物種。
+- 對齊大對決逐骰天賦規則：相同最終骰面仍各算一次命中加成，多次骰到 6 再依觸發次數疊加。數位版已修正並有 regression test。
 
 ### 首批 16 張 V2 動物卡
 
@@ -77,7 +87,7 @@
 
 ## Git 狀態與既有提交
 
-- 工作 branch：`feat/team-mission-props-prototype`
+- 工作 branch：`feat/animal-ability-audit`
 - `00d9eaf feat(cards): finalize team mission reveal cards`
 - `5394b65 feat(cards): define first 16 V2 animal artworks`
 - `504fa34 feat(cards): build first 16 animal print sheets`
