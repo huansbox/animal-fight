@@ -27,7 +27,7 @@ export const DISTRACTOR_GROUPS = {
   australian:      ['kangaroo', 'platypus', 'koala', 'wombat', 'echidna', 'flying_fox'],
   primates:        ['gorilla', 'chimpanzee', 'orangutan', 'gibbon', 'aye_aye', 'japanese_macaque', 'human'],
   canines:         ['gray_wolf', 'arctic_fox', 'hyena', 'raccoon', 'fennec_fox', 'coyote', 'wild_dog', 'border_collie'],
-  snakes:          ['anaconda', 'king_cobra', 'python'],
+  snakes:          ['anaconda', 'chinese_cobra', 'python'],
   ocean_mammals:   ['dolphin', 'orca', 'blue_whale', 'humpback_whale', 'walrus', 'sea_otter', 'elephant_seal'],
   raptors:         ['bald_eagle', 'falcon', 'owl', 'snowy_owl', 'harpy_eagle', 'andean_condor', 'griffon_vulture'],
   colorful:        ['peacock', 'scarlet_macaw', 'hummingbird', 'chameleon', 'mantis_shrimp', 'toco_toucan', 'poison_dart_frog', 'orchid_mantis', 'kea'],
@@ -430,11 +430,11 @@ export const HINTS = {
     ],
     groups: ['reptiles', 'snakes', 'swimmers', 'large', 'south_america'],
   },
-  king_cobra: {
+  chinese_cobra: {
     hints: [
-      '我是世界上最長的毒蛇，可以長到五公尺以上',
-      '我發怒的時候會把身體前段撐起來站得很高',
-      '我的脖子兩邊可以展開成一片扁扁的「頭巾」，看起來超帥超可怕',
+      '我是臺灣原生的毒蛇，常在低海拔的田野和草叢活動',
+      '遇到危險時，我會抬起前半身並把頸部展開發出警告',
+      '我展開的頸部像一副眼鏡，因此大家叫我眼鏡蛇',
     ],
     groups: ['reptiles', 'snakes'],
   },

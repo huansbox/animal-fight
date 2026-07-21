@@ -56,7 +56,7 @@
     "img": "images/orangutan.png",
     "stats": [6, 2, 3, 4, 9],
     "skillName": "巧手造物",
-    "skillDesc": "用樹枝當工具挖蟲吃，還會做雨傘擋雨，超級聰明。",
+    "skillDesc": "會挑選細樹枝當工具，伸進小洞找出藏在裡面的昆蟲。",
     "skillBonus": [{"attr": 4, "val": 2}, {"attr": 0, "val": 1}, {"attr": 3, "val": 1}]
   },
   {
@@ -85,8 +85,8 @@
     "en": "Tuatara",
     "img": "images/tuatara.png",
     "stats": [2, 2, 3, 5, 3],
-    "skillName": "鋸齒裂咬",
-    "skillDesc": "張開嘴露出跟顎骨合為一體的鋸齒，一口咬下撕裂獵物。",
+    "skillName": "剪刀咬合",
+    "skillDesc": "上顎有兩排、下顎有一排牙齒，咬合時像剪刀一樣夾住食物。",
     "skillBonus": [{"attr": 2, "val": 2}, {"attr": 3, "val": 2}]
   },
   {

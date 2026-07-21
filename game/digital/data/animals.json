@@ -11,8 +11,8 @@
       4,
       5
     ],
-    "skillName": "大吼",
-    "skillDesc": "嚇跑體型比你小的動物，或讓敵人嚇到不敢亂動。",
+    "skillName": "雄獅怒吼",
+    "skillDesc": "抬起頭張開嘴巴大聲吼叫，讓遠處動物知道獅子來了。",
     "skillBonus": [
       {
         "attr": 0,
@@ -119,8 +119,8 @@
       9,
       2
     ],
-    "skillName": "捲成球滾動",
-    "skillDesc": "保護自己不攻擊，並像輪胎一樣快速滾動過橋。",
+    "skillName": "鱗甲縮球",
+    "skillDesc": "遇到危險就把頭和腳收起來，縮成硬硬的圓球保護自己。",
     "skillBonus": [
       {
         "attr": 3,
@@ -144,7 +144,7 @@
       4,
       8
     ],
-    "skillName": "超音波定位",
+    "skillName": "超音定位",
     "skillDesc": "在深水或濃霧中發現看不見的隱藏小路。",
     "skillBonus": [
       {
@@ -169,7 +169,7 @@
       1,
       4
     ],
-    "skillName": "千里眼",
+    "skillName": "高空銳眼",
     "skillDesc": "從非常遠的高空看到重要的關鍵物品或危險。",
     "skillBonus": [
       {
@@ -198,8 +198,8 @@
       6,
       4
     ],
-    "skillName": "強酸口水",
-    "skillDesc": "吐出有腐蝕性的唾液，可以融化門鎖或繩索。",
+    "skillName": "毒液猛咬",
+    "skillDesc": "用鋒利牙齒緊緊咬住，毒液會讓對方慢慢失去力氣。",
     "skillBonus": [
       {
         "attr": 2,
@@ -328,7 +328,7 @@
       4
     ],
     "skillName": "隱密伏擊",
-    "skillDesc": "躲在草叢裡悄悄靠近，突然撲出給敵人致命一擊。",
+    "skillDesc": "壓低身體藏在草叢裡，安靜等待向前飛撲的時機。",
     "skillBonus": [
       {
         "attr": 0,
@@ -356,8 +356,8 @@
       7,
       2
     ],
-    "skillName": "死亡翻滾",
-    "skillDesc": "咬住獵物後瘋狂旋轉，把任何東西都撕成碎片。",
+    "skillName": "巨鱷翻滾",
+    "skillDesc": "把整個身體像滾筒一樣快速旋轉，發揮全身力量。",
     "skillBonus": [
       {
         "attr": 0,
@@ -410,8 +410,8 @@
       4,
       3
     ],
-    "skillName": "拳擊踢腿",
-    "skillDesc": "用強壯的後腿踢出致命一擊，可以踢飛比自己大的敵人。",
+    "skillName": "強腿飛踢",
+    "skillDesc": "用粗壯尾巴撐穩身體，再伸出強健後腿向前踢擊。",
     "skillBonus": [
       {
         "attr": 0,
@@ -469,7 +469,7 @@
       6
     ],
     "skillName": "碎骨利齒",
-    "skillDesc": "牙齒超有力，連骨頭都能咬碎。",
+    "skillDesc": "強壯牙齒能咬開堅硬骨頭，取得藏在裡面的食物。",
     "skillBonus": [
       {
         "attr": 0,
@@ -552,7 +552,7 @@
       3
     ],
     "skillName": "沙漠耐力",
-    "skillDesc": "不怕熱也不怕渴，比別人更能撐。",
+    "skillDesc": "能在炎熱乾燥的沙漠走很遠，長時間沒有水也能撐住。",
     "skillBonus": [
       {
         "attr": 1,
@@ -581,7 +581,7 @@
       3
     ],
     "skillName": "刺針反擊",
-    "skillDesc": "豎起尖刺，誰敢打我就刺傷誰。",
+    "skillDesc": "遇到危險就豎起全身尖刺，讓靠近的威脅停下腳步。",
     "skillBonus": [
       {
         "attr": 2,
@@ -739,7 +739,7 @@
       3
     ],
     "skillName": "巨角橫掃",
-    "skillDesc": "用巨大的鹿角橫掃，擊退多個敵人。",
+    "skillDesc": "低下巨大鹿角左右擺動，把靠近的障礙推到旁邊。",
     "skillBonus": [
       {
         "attr": 0,
@@ -880,7 +880,7 @@
       4
     ],
     "skillName": "毒刺反擊",
-    "skillDesc": "用後腿毒刺攻擊敵人，造成劇痛。",
+    "skillDesc": "雄性後腿長著尖刺，遇到威脅時可以用來保護自己。",
     "skillBonus": [
       {
         "attr": 2,
@@ -954,8 +954,8 @@
       5,
       4
     ],
-    "skillName": "致命撕咬",
-    "skillDesc": "高速衝向獵物，用鋸齒狀牙齒一口撕裂。",
+    "skillName": "鋸齒猛咬",
+    "skillDesc": "高速游近後張開大嘴，用一排排鋸齒狀牙齒快速咬合。",
     "skillBonus": [
       {
         "attr": 2,
@@ -979,8 +979,8 @@
       8,
       3
     ],
-    "skillName": "血盆大口",
-    "skillDesc": "張開超大嘴巴露出巨大獠牙，嚇跑或咬碎敵人。",
+    "skillName": "巨口威嚇",
+    "skillDesc": "張開大嘴露出長長獠牙，警告靠近的動物趕快退開。",
     "skillBonus": [
       {
         "attr": 2,
@@ -1054,8 +1054,8 @@
       3,
       5
     ],
-    "skillName": "伏擊撲殺",
-    "skillDesc": "躲在暗處悄悄靠近，突然撲出一擊必殺。",
+    "skillName": "伏身飛撲",
+    "skillDesc": "藏在樹影裡安靜等待，抓準距離後突然向前飛撲。",
     "skillBonus": [
       {
         "attr": 2,
@@ -1183,8 +1183,8 @@
       5,
       2
     ],
-    "skillName": "纏繞絞殺",
-    "skillDesc": "用強壯的身體緊緊纏住獵物，讓牠無法呼吸。",
+    "skillName": "強身纏繞",
+    "skillDesc": "用強壯身體一圈圈纏緊，把抓住的東西牢牢固定住。",
     "skillBonus": [
       {
         "attr": 0,
@@ -1291,8 +1291,8 @@
       4,
       7
     ],
-    "skillName": "翻浪獵殺",
-    "skillDesc": "從海面躍出翻浪撞擊，用鋒利牙齒獵殺獵物。",
+    "skillName": "尾浪拍擊",
+    "skillDesc": "用寬大尾鰭快速拍打水面，掀起一道強勁海浪。",
     "skillBonus": [
       {
         "attr": 0,
@@ -1424,8 +1424,8 @@
       2,
       6
     ],
-    "skillName": "無聲獵殺",
-    "skillDesc": "羽毛消音無聲飛行，悄悄靠近獵物精準捕捉。",
+    "skillName": "靜羽飛行",
+    "skillDesc": "張開翅膀安靜滑過，柔軟羽毛讓飛行聲變得很小。",
     "skillBonus": [
       {
         "attr": 1,
@@ -1554,7 +1554,7 @@
       2
     ],
     "skillName": "毒尾螫刺",
-    "skillDesc": "翹起尾巴用毒針狠狠刺下去，注入致命毒液。",
+    "skillDesc": "翹起尾巴快速刺下，從尾端毒針送出毒液保護自己。",
     "skillBonus": [
       {
         "attr": 2,
@@ -1807,8 +1807,8 @@
       7,
       5
     ],
-    "skillName": "熊抱鎖殺",
-    "skillDesc": "站起來用巨大前掌緊緊抱住敵人，壓制不讓對手動彈。",
+    "skillName": "巨掌翻石",
+    "skillDesc": "用強壯前掌翻開沉重大石，找出藏在下面的食物。",
     "skillBonus": [
       {
         "attr": 0,
@@ -1836,8 +1836,8 @@
       4,
       5
     ],
-    "skillName": "碎顱咬殺",
-    "skillDesc": "用超強咬合力直接咬穿敵人的頭骨，一擊必殺。",
+    "skillName": "鋼顎碎殼",
+    "skillDesc": "用強大咬合力咬開厚硬龜殼，取出藏在裡面的食物。",
     "skillBonus": [
       {
         "attr": 2,
@@ -1979,10 +1979,10 @@
     ]
   },
   {
-    "id": "king_cobra",
+    "id": "chinese_cobra",
     "name": "眼鏡蛇",
-    "en": "King Cobra",
-    "img": "king_cobra.png",
+    "en": "Chinese Cobra",
+    "img": "chinese_cobra.png",
     "stats": [
       2,
       4,
@@ -1991,7 +1991,7 @@
       3
     ],
     "skillName": "毒牙閃擊",
-    "skillDesc": "展開頸部撐傘，以閃電速度噴出致命毒液。",
+    "skillDesc": "抬起前半身展開頸部，看準方向後快速向前咬擊。",
     "skillBonus": [
       {
         "attr": 2,
@@ -2070,7 +2070,7 @@
       5
     ],
     "skillName": "口水飛彈",
-    "skillDesc": "瞄準敵人的臉，噴出一大口臭口水！",
+    "skillDesc": "遇到騷擾時會噴出一大口臭口水，把對方趕遠。",
     "skillBonus": [
       {
         "attr": 2,
@@ -2120,7 +2120,7 @@
       2
     ],
     "skillName": "鎖口毒咬",
-    "skillDesc": "咬住不放使勁嚼，靠咀嚼把毒液灌進傷口。",
+    "skillDesc": "咬住後會一直用力，讓毒液順著牙齒慢慢流出。",
     "skillBonus": [
       {
         "attr": 2,
@@ -2144,8 +2144,8 @@
       2,
       4
     ],
-    "skillName": "彩喙猛啄",
-    "skillDesc": "用色彩鮮豔的大嘴巴猛啄，嚇退比自己大的敵人。",
+    "skillName": "巨喙取果",
+    "skillDesc": "用又大又輕的長嘴伸向細枝，靈巧夾下遠處果實。",
     "skillBonus": [
       {
         "attr": 2,
@@ -2173,8 +2173,8 @@
       8,
       2
     ],
-    "skillName": "膨脹毒球",
-    "skillDesc": "吸水膨脹成帶刺的大球，碰到就會中毒。",
+    "skillName": "膨脹刺球",
+    "skillDesc": "遇到危險就吸水膨成刺球，讓想吃牠的動物很難吞下。",
     "skillBonus": [
       {
         "attr": 3,
@@ -2353,7 +2353,7 @@
       9
     ],
     "skillName": "巧手造物",
-    "skillDesc": "用樹枝當工具挖蟲吃，還會做雨傘擋雨，超級聰明。",
+    "skillDesc": "會挑選細樹枝當工具，伸進小洞找出藏在裡面的昆蟲。",
     "skillBonus": [
       {
         "attr": 4,
@@ -2431,8 +2431,8 @@
       5,
       3
     ],
-    "skillName": "鋸齒裂咬",
-    "skillDesc": "張開嘴露出跟顎骨合為一體的鋸齒，一口咬下撕裂獵物。",
+    "skillName": "剪刀咬合",
+    "skillDesc": "上顎有兩排、下顎有一排牙齒，咬合時像剪刀一樣夾住食物。",
     "skillBonus": [
       {
         "attr": 2,
@@ -2884,8 +2884,8 @@
       3,
       8
     ],
-    "skillName": "猿怒狂擊",
-    "skillDesc": "用石頭和木棍當武器猛敲，是靠腦袋打仗的天才格鬥家！",
+    "skillName": "石槌破果",
+    "skillDesc": "會挑選合適石頭當槌子，敲開堅硬果殼取得食物。",
     "skillBonus": [
       {
         "attr": 4,
@@ -3029,8 +3029,8 @@
       1,
       4
     ],
-    "skillName": "群齒撕裂",
-    "skillDesc": "一大群一起衝上來，幾百顆尖牙同時咬，幾秒就把獵物吃光光！",
+    "skillName": "群齒快咬",
+    "skillDesc": "許多食人魚一起游近，用交錯尖牙快速咬下小塊食物。",
     "skillBonus": [
       {
         "attr": 0,
@@ -3087,8 +3087,8 @@
       4,
       6
     ],
-    "skillName": "彩翼破殼",
-    "skillDesc": "聰明到能學人說話，超硬大嘴巴連最硬的堅果殼都咬得開！",
+    "skillName": "彩喙破殼",
+    "skillDesc": "用彎曲厚實的大嘴咬住堅果，連硬殼也能輕鬆咬開。",
     "skillBonus": [
       {
         "attr": 4,
@@ -3225,7 +3225,7 @@
       4
     ],
     "skillName": "閃光誘惑",
-    "skillDesc": "屁股發出神祕的光，模仿別種螢火蟲的燈號把它們騙過來！",
+    "skillDesc": "屁股發出神祕的光，模仿別種螢火蟲的燈號把對方騙過來！",
     "skillBonus": [
       {
         "attr": 4,
@@ -3386,8 +3386,8 @@
       1,
       4
     ],
-    "skillName": "蟻海吞噬",
-    "skillDesc": "幾十萬隻小螞蟻排成大軍一起前進，什麼東西都會被淹沒！",
+    "skillName": "蟻群行軍",
+    "skillDesc": "許多螞蟻排成長長隊伍，互相合作跨過障礙向前走。",
     "skillBonus": [
       {
         "attr": 0,

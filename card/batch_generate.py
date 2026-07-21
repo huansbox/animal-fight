@@ -59,7 +59,7 @@ BIRDS = {
 }
 
 REPTILES = {
-    "komodo", "crocodile", "tortoise", "green_iguana", "king_cobra",
+    "komodo", "crocodile", "tortoise", "green_iguana", "chinese_cobra",
     "gila_monster", "tuatara", "chameleon", "python", "snapping_turtle",
     "sea_turtle",
 }
