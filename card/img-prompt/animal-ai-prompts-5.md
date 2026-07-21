@@ -6,10 +6,10 @@
 
 ---
 
-## 1. 虎鯨（Orca）- 翻浪獵殺
+## 1. 虎鯨（Orca）- 尾浪拍擊
 
 ```
-black and white vector line art of Orca, breaching powerfully out of water with mouth open showing teeth, tall dorsal fin, streamlined muscular body, distinctive eye patch marking, dynamic hunting leap pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Orca at the water surface, broad tail flukes raised and slapping down to create one strong simple wave, tall dorsal fin, streamlined muscular body, distinctive eye patch marking, mouth closed, no prey, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---
@@ -46,10 +46,10 @@ black and white vector line art of Electric Eel, body arched with electric disch
 
 ---
 
-## 6. 雪鴞（Snowy Owl）- 無聲獵殺
+## 6. 雪鴞（Snowy Owl）- 靜羽飛行
 
 ```
-black and white vector line art of Snowy Owl, gliding low with broad rounded wings fully spread in flat horizontal flight, feathered legs and talons reaching down toward prey, round heavy body, smooth round head without ear tufts, large piercing forward-facing eyes, thick plumage covering legs completely, dynamic low hunting glide pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Snowy Owl, gliding horizontally with broad rounded wings fully spread, feathered legs and talons tucked close to the body, round heavy body, smooth round head without ear tufts, calm forward-facing eyes, thick soft plumage covering legs completely, no prey or sound symbols, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---
@@ -89,7 +89,7 @@ black and white vector line art of Raccoon, standing on hind legs reaching forwa
 ## 11. 蠍子（Scorpion）- 毒尾螫刺
 
 ```
-black and white vector line art of Scorpion, tail curled high overhead striking downward with venomous stinger, large pincers spread wide in attack stance, segmented body with detailed exoskeleton texture, aggressive striking pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Scorpion, tail curled high overhead with the stinger moving downward toward empty ground, large pincers visible but relaxed, segmented body with detailed exoskeleton texture, defensive posture, no target or wound, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---

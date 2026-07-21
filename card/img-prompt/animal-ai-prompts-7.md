@@ -59,7 +59,7 @@ black and white vector line art of Capybara, sinking low into water with only th
 ## 6. 紅毛猩猩（Orangutan）- 巧手造物
 
 ```
-black and white vector line art of Orangutan, leaning forward and carefully probing with a long stick tool held in dexterous fingers, very long shaggy hair covering entire body, extremely long arms with large hands, prominent flanged cheek pads on broad face, intelligent focused expression, gentle wise face, active tool-using pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Orangutan, leaning forward and carefully inserting one straight stick into one small round ground opening, stick held in dexterous fingers, very long shaggy hair, extremely long arms with large hands, prominent flanged cheek pads on broad face, intelligent focused expression, no insect or food, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 **姿態比對**：大猩猩＝爬樹向上，長臂猿＝擺盪，紅毛猩猩＝前傾使用工具
@@ -86,13 +86,13 @@ black and white vector line art of Virginia Opossum, lying on its side in a clas
 
 ---
 
-## 9. 喙頭蜥（Tuatara）- 鋸齒裂咬
+## 9. 喙頭蜥（Tuatara）- 剪刀咬合
 
 ```
-black and white vector line art of Tuatara, jaws open wide revealing unique serrated tooth-fused jawline in a powerful biting pose, prominent tall spiny crest running from head along entire back fully raised, sturdy reptilian body with textured scales, four strong legs with clawed feet braced wide, long thick tail, aggressive biting pose with dorsal spines erect, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Tuatara in side view, jaws open enough to clearly show two upper tooth rows and one lower tooth row aligned like scissors, prominent spiny crest running from head along the back, sturdy reptilian body with textured scales, four strong legs, long thick tail, calm focused pose, no prey, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
-**姿態比對**：鈍尾毒蜥＝鎖咬扭轉＋珠狀鱗，喙頭蜥＝張嘴露鋸齒＋背脊刺冠（外觀差異極大）
+**姿態比對**：鈍尾毒蜥＝低伏張嘴待咬＋珠狀鱗，喙頭蜥＝側面張嘴顯示三排牙齒＋背脊刺冠（外觀差異極大）
 
 ---
 

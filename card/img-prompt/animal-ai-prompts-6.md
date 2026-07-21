@@ -5,18 +5,18 @@
 
 ---
 
-## 1. 棕熊（Brown Bear）- 熊抱鎖殺
+## 1. 棕熊（Brown Bear）- 巨掌翻石
 
 ```
-black and white vector line art of Brown Bear, standing upright on hind legs with both massive front paws raised and curved inward in a crushing bear hug pose, prominent large shoulder hump, thick shaggy fur, long curved claws, powerful muscular build, fierce grappling expression, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Brown Bear, using one massive front paw to lift one rounded rock while the other paw and both hind feet stabilize the body, prominent large shoulder hump, thick shaggy fur, long curved claws, powerful muscular build, calm focused foraging expression, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---
 
-## 2. 美洲豹（Jaguar）- 碎顱咬殺
+## 2. 美洲豹（Jaguar）- 鋼顎碎殼
 
 ```
-black and white vector line art of Jaguar, biting down powerfully on a turtle shell with visible cracks spreading from the bite point, rosette spots with small central dots visible on coat, muscular stocky compact build, short powerful legs, thick neck muscles bulging, intense crushing bite expression, dynamic shell-crushing pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Jaguar, biting down powerfully on one empty turtle shell with one clean crack spreading from the bite point, rosette spots with small central dots visible on coat, muscular stocky compact build, short powerful legs, thick neck muscles, focused shell-cracking pose, no prey or injury, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---
@@ -61,10 +61,10 @@ black and white vector line art of Border Collie, in a low crouching herding sta
 
 ---
 
-## 8. 眼鏡蛇（King Cobra）- 毒牙閃擊
+## 8. 眼鏡蛇（Chinese Cobra）- 毒牙閃擊
 
 ```
-black and white vector line art of King Cobra, body raised one-third off ground in S-curve with hood fully spread wide striking forward, fangs exposed and dripping venom, detailed scale pattern on hood, long slender body coiled below, fierce aggressive expression, dynamic venom strike pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Chinese Cobra (Naja atra), body raised one-third off ground in an S-curve with hood fully spread and head moving a short distance forward, fangs visible but no dripping venom, detailed hood scale pattern, long slender body coiled below, alert defensive expression, no target, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---
@@ -88,7 +88,7 @@ black and white vector line art of Griffon Vulture, hunched forward with large h
 ## 11. 羊駝（Alpaca）- 口水飛彈
 
 ```
-black and white vector line art of Alpaca, head thrown forward with mouth open spitting forcefully with droplets flying outward, thick fluffy woolly body coat, long slender neck, large expressive eyes, banana-shaped upright ears, four slim legs, indignant fierce expression, dynamic spitting attack pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Alpaca, head moving forward with mouth open and one simple arc of large saliva droplets directed toward empty space, thick fluffy woolly body coat, long slender neck, large expressive eyes, banana-shaped upright ears, four slim legs, indignant but child-friendly expression, no target, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---
@@ -104,20 +104,20 @@ black and white vector line art of Striped Skunk, rear end raised high with bush
 ## 13. 鈍尾毒蜥（Gila Monster）- 鎖口毒咬
 
 ```
-black and white vector line art of Gila Monster, jaws clamped down tenaciously in a locked bite with head twisting to chew venom in, distinctive bead-like bumpy scales covering body, bold banded pattern on skin, thick rounded fat tail, stocky low body, short sturdy legs, aggressive lock-jaw bite pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Gila Monster, low side view with mouth open showing short teeth and head prepared to clamp toward empty space, distinctive bead-like bumpy scales covering body, bold banded pattern on skin, thick rounded fat tail, stocky low body, short sturdy legs, no venom or wound, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---
 
-## 14. 巨嘴鳥（Toco Toucan）- 彩喙猛啄
+## 14. 巨嘴鳥（Toco Toucan）- 巨喙取果
 
 ```
-black and white vector line art of Toco Toucan, lunging forward from a branch pecking powerfully with enormous oversized curved bill, compact rounded feathered body, large round eye with eye ring, short legs gripping branch, long tail feathers, bold pattern detail on massive bill, dynamic pecking strike pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Toco Toucan standing steadily and extending its enormous lightweight curved bill toward one fruit on a thin twig, bill gently gripping the fruit, compact rounded feathered body, large round eye with eye ring, short legs, long tail feathers, focused foraging pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---
 
-## 15. 河豚（Pufferfish）- 膨脹毒球
+## 15. 河豚（Pufferfish）- 膨脹刺球
 
 ```
 black and white vector line art of Pufferfish, fully inflated into a perfect round spiky ball with sharp spines extended in all directions, wide round panicked eyes, tiny puckered mouth, small pectoral fins fluttering, maximally puffed spherical body, defensive inflation pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
@@ -158,8 +158,8 @@ black and white vector line art of Rhinoceros Beetle, charging forward with larg
 
 | 動物 | 原問題 | 修正內容 |
 |------|--------|----------|
-| 棕熊 | `invisible target` AI 無法渲染不可見目標 | 移除 invisible target，改為雙臂舉起內彎的環抱姿態 |
-| 美洲豹 | 一般性 crushing bite 未呈現「碎顱」特殊性 | 改為 `clamping down in a bone-crushing skull bite` |
+| 棕熊 | 環抱姿態缺少物種辨識與兒童故事性 | 改為單掌翻開圓石的覓食動作 |
+| 美洲豹 | 咬穿頭骨會誘發受害者與血腥畫面 | 改為咬開空龜殼，保留強大咬合力 |
 | 斑馬 | 只有奔跑轉彎，缺乏「迷蹤」視覺混亂效果 | 加入 `creating dazzling pattern, motion blur lines trailing behind` |
 | 兀鷲 | `food` 過於模糊，可能生成不適合兒童的畫面 | 移除 food 互動物件，改為張嘴攻擊姿態 |
 | 螳螂蝦 | `impact burst lines` 漫畫效果線，AI 處理不一致 | 改為 `tremendous force`，讓姿態本身表現力量 |

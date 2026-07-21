@@ -6,18 +6,18 @@
 
 ---
 
-## 1. 大白鯊（Great White Shark）- 致命撕咬
+## 1. 大白鯊（Great White Shark）- 鋸齒猛咬
 
 ```
-black and white vector line art of Great White Shark, bursting forward with jaws wide open revealing rows of serrated teeth, powerful streamlined body, triangular dorsal fin, aggressive hunting pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Great White Shark, swimming forward in side view with jaws open revealing several rows of serrated teeth, powerful streamlined body, triangular dorsal fin, no prey or victim, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---
 
-## 2. 河馬（Hippopotamus）- 血盆大口
+## 2. 河馬（Hippopotamus）- 巨口威嚇
 
 ```
-black and white vector line art of Hippopotamus, mouth wide open at 150 degrees showing massive tusks and teeth, barrel-shaped body, small ears, aggressive territorial display, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Hippopotamus, mouth wide open in a warning display showing long tusks, barrel-shaped body, small ears, stable stance, no opponent, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---
@@ -38,10 +38,10 @@ black and white vector line art of Rhinoceros, head lowered with horn pointing f
 
 ---
 
-## 5. 花豹（Leopard）- 伏擊撲殺
+## 5. 花豹（Leopard）- 伏身飛撲
 
 ```
-black and white vector line art of Leopard, mid-leap pouncing forward with front claws extended, spotted coat pattern, intense focused eyes, powerful muscles tensed, dynamic ambush attack pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Leopard, crouching low beneath one simple overhanging branch shadow with hind legs loaded and body ready to pounce toward empty space, rosette coat pattern, calm focused eyes, claws not emphasized, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---
@@ -78,10 +78,10 @@ black and white vector line art of Giraffe, swinging long neck in a powerful swe
 
 ---
 
-## 10. 蟒蛇（Python）- 纏繞絞殺
+## 10. 蟒蛇（Python）- 強身纏繞
 
 ```
-black and white vector line art of Python, coiled tightly around prey in a constricting pose, muscular serpentine body, detailed scale pattern, head positioned to strike, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Python, muscular serpentine body wrapped in several firm coils around one plain fallen branch, head calm and clearly visible, detailed scale pattern, no prey or victim, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
 ---

@@ -138,20 +138,20 @@ black and white vector line art of [動物名稱], [技能動作描述], [關鍵
 
 | 動物 | 技能 | 良好 Prompt（動作描述部分） |
 |------|------|---------------------------|
-| 非洲獅 | 大吼 | `mouth wide open roaring, mane flowing` |
+| 非洲獅 | 雄獅怒吼 | `mouth naturally open roaring, mane flowing` |
 | 非洲象 | 鼻子噴水 | `raising its trunk high and spraying water` |
 | 獵豹 | 極限衝刺 | `running fast, dynamic pose` |
-| 穿山甲 | 捲成球 | `in the middle of curling into a ball` |
-| 海豚 | 超音波 | `jumping out of water, with circular sonar wave lines radiating from its head` |
-| 遊隼 | 千里眼 | `diving down from the sky, sharp eyes looking down` |
-| 科摩多龍 | 強酸口水 | `tongue out with corrosive saliva dripping` |
+| 穿山甲 | 鱗甲縮球 | `curling into a protective ball, head and legs tucked under overlapping scales` |
+| 海豚 | 超音定位 | `forehead aimed toward one simple rock opening, alert focused posture` |
+| 遊隼 | 高空銳眼 | `gliding high, sharp eyes looking down toward empty space` |
+| 科摩多龍 | 毒液猛咬 | `low body, mouth open showing serrated teeth, prepared to bite toward empty space` |
 | 大猩猩 | 攀爬高手 | `climbing a thick tree trunk, looking upwards` |
 | 蜜獾 | 百毒不侵 | `standing in a fierce defensive stance, looking fearless` |
 | 黑斑羚 | 靈活跳躍 | `leaping high in the air, legs extended, dynamic pose` |
-| 蘇門答臘虎 | 隱密伏擊 | `prowling low to the ground, intense eyes hunting, ready to pounce` |
-| 灣鱷 | 死亡翻滾 | `massive jaws open, powerful tail curved, aggressive stance` |
+| 蘇門答臘虎 | 隱密伏擊 | `crouching low in sparse grass, hind legs loaded, waiting to pounce` |
+| 灣鱷 | 巨鱷翻滾 | `one axial body roll, body nearly straight, lighter belly partly visible` |
 | 北極狐 | 雪地隱身 | `pouncing into snow, dynamic pose` |
-| 紅袋鼠 | 拳擊踢腿 | `standing upright in a boxing stance, looking ready to fight` |
+| 紅袋鼠 | 強腿飛踢 | `tail supporting the body, powerful hind leg extended toward empty space` |
 
 ---
 
@@ -210,10 +210,10 @@ centered composition, bold lines, coloring book style, white background, high co
 
 | 群組 | 成員 | 區隔策略 |
 |------|------|---------|
-| 大貓撲殺 | 非洲獅、花豹、猞猁、雪豹、雲豹、美洲豹 | 各自不同動作：吼叫/撲殺/草叢躍出/蹲伏/樹上俯撲/咬龜殼 |
-| 猛禽俯衝 | 遊隼、白頭海鵰、雪鴞、兀鷲 | 垂直俯衝/水面低掠/水平滑翔/地面張嘴 |
+| 大貓撲殺 | 非洲獅、花豹、猞猁、雪豹、雲豹、美洲豹 | 各自不同動作：吼叫/樹影待撲/草叢躍出/蹲伏/樹上俯撲/咬龜殼 |
+| 猛禽俯衝 | 遊隼、白頭海鵰、雪鴞、兀鷲 | 高空觀察/水面低掠/水平滑翔/地面張嘴 |
 | 護甲捲球 | 穿山甲、犰狳 | 鱗片重疊/矩形甲片帶狀紋理 |
-| 蛇類攻擊 | 蟒蛇、眼鏡蛇 | 纏繞絞殺/展頸噴毒 |
+| 蛇類攻擊 | 蟒蛇、眼鏡蛇 | 纏繞木頭/展頸待咬 |
 
 ### 比對流程
 1. 找出同科或相似體型的已有動物
@@ -402,7 +402,7 @@ AI 圖像生成器的能力邊界：只能畫「看得見的東西」。
 | 規則 | 範例 |
 |------|------|
 | 英文小寫 | `brown_bear`（非 `Brown_Bear`） |
-| 底線分隔 | `king_cobra`（非 `kingcobra` 或 `king-cobra`） |
+| 底線分隔 | `chinese_cobra`（非 `chinesecobra` 或 `chinese-cobra`） |
 | 與圖檔同名 | id `brown_bear` → 圖檔 `brown_bear.png` |
 | 簡稱優先 | `rhino_beetle`（非 `rhinoceros_beetle`），但卡片顯示名可為全名 |
 | 全域唯一 | 不得與歷史波次的 id 重複 |

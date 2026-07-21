@@ -64,14 +64,14 @@ Subject/action: a melanistic leopard with a lean powerful leopard build, not the
 Avoid: black or night background, featureless black silhouette, jaguar body proportions, prey, chase, biting, impact, snarling, visible fangs, emphasized claws, flattened ears, extra limbs, duplicated tail, twisted spine.
 ```
 
-### 河豚：膨脹毒球
+### 河豚：膨脹刺球
 
 ```text
 Subject/action: a true pufferfish, family Tetraodontidae, fully inflated by water into a rounded defensive body while preserving a clear head-to-tail fish shape. Keep two high-set lateral eyes, a small closed beak-like mouth, two small pectoral fins, one small dorsal fin and one anal fin near the tail, and a clearly separated tail fin; no pelvic fins. Use roughly twenty-four to thirty-two short tapered, well-separated representative silhouette prickles rather than dense needle-like spines, with clear gaps between their bases and only a few short internal prickles. Add only three to five large simple bubbles. Expression neutral and alert. Communicate inflation and defense only; do not visualize poison.
 Avoid: porcupinefish-style long needles, dense hairlike spikes, sea-mine symmetry, missing tail or fins, extra pelvic fins, smiling face, huge cute eyes, cheeks, poison cloud, dripping venom, skull symbol, predators, victims.
 ```
 
-### 行軍蟻：蟻海吞噬
+### 行軍蟻：蟻群行軍
 
 ```text
 Subject/action: exactly twelve anatomically plausible army ants moving together across pale ground from left to right. Place one soldier ant in the foreground, only moderately larger than the workers, with enlarged curved defensive mandibles held relaxed rather than attacking. Make five other foreground workers fully readable and arrange six slightly smaller midground workers in two clean staggered rows. Every clearly visible ant has three body sections, a narrow waist, six jointed legs, and two antennae. The group flows naturally around and partly over one simple fallen leaf as a harmless scale cue. Use overlap and the flowing formation to suggest a much larger raid beyond the frame without adding tiny distant ants.

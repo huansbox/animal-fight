@@ -36,13 +36,13 @@ black and white vector line art of Chameleon, perched on a thin branch with zygo
 
 ---
 
-## 4. 黑猩猩（chimpanzee）- 猿怒狂擊
+## 4. 黑猩猩（chimpanzee）- 石槌破果
 
 ```
-black and white vector line art of Chimpanzee, leaning forward aggressively on hind legs with one arm raised overhead gripping a rough stone in a powerful downward smashing motion, solid coat rendered in bold thick outline with coarse hair texture, prominent heavy brow ridge over deep-set intense eyes, large protruding round ears much bigger proportionally than a gorilla, bare wrinkled face with aggressive bared-teeth expression, slender agile build much smaller than a gorilla, long muscular arms much longer than legs, knuckle-walking hand on the other side bracing for balance, fierce tool-wielding attack pose with body angled forward, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Chimpanzee, leaning forward with one hand holding a rough rounded stone just above one hard-shelled fruit while the other hand steadies the fruit, prominent heavy brow ridge, large protruding round ears, bare wrinkled face with calm focused closed-mouth expression, slender agile build smaller than a gorilla, long muscular arms, clear tool-using pose, no weapon or victim, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
-**姿態比對**：大猩猩＝攀爬樹幹（向上），紅毛猩猩＝坐地用樹枝挖蟲（精細），黑猩猩＝站立舉石猛砸（暴力＋工具使用）
+**姿態比對**：大猩猩＝攀爬樹幹（向上），紅毛猩猩＝坐地用樹枝探洞（精細），黑猩猩＝用石頭敲開硬殼果（工具＋因果）
 
 ---
 
@@ -86,13 +86,13 @@ black and white vector line art of Humpback Whale, lunging diagonally forward wi
 
 ---
 
-## 9. 食人魚（piranha）- 群齒撕裂
+## 9. 食人魚（piranha）- 群齒快咬
 
 ```
-black and white vector line art of a group of three Red-bellied Piranhas, swimming in tight aggressive formation with the lead piranha showing jaws wide open revealing rows of sharp interlocking triangular teeth, prominent protruding lower jaw with underbite, compact disc-shaped muscular body, large round eyes, short blunt snout, forked tail fin, the two flanking piranhas slightly smaller with mouths also open in attack mode, coordinated pack-hunting attack pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of a small group of four Red-bellied Piranhas swimming in the same direction, each with mouth half open enough to show interlocking triangular teeth, prominent protruding lower jaws, compact disc-shaped bodies, large round eyes, short blunt snouts and forked tail fins, calm coordinated movement, no prey or feeding frenzy, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
-**姿態比對**：非洲野犬＝陸上群獵（三隻犬包圍），食人魚＝水中群攻（三隻魚三角陣型＋牙齒密集），媒介＋體態完全不同
+**姿態比對**：非洲野犬＝陸上群獵（三隻犬包圍），食人魚＝水中小群體同向游動＋交錯尖牙，媒介與體態完全不同
 
 ---
 
@@ -106,13 +106,13 @@ black and white vector line art of Jellyfish, floating with large bell-shaped do
 
 ---
 
-## 11. 金剛鸚鵡（scarlet_macaw）- 彩翼破殼
+## 11. 金剛鸚鵡（scarlet_macaw）- 彩喙破殼
 
 ```
-black and white vector line art of Scarlet Macaw, perched on a thick branch with one foot gripping and the other holding a large hard nut, massive powerful curved hooked beak clamping down and cracking the nut shell with visible crack lines, extremely long elegant tail feathers extending far behind with bold layered feather pattern, large bare facial patch around eyes with fine line texture, broad strong wings slightly raised showing detailed flight feather pattern, intelligent focused cracking expression, powerful nut-crushing pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of Scarlet Macaw standing steadily on one foot while the other foot holds one large hard nut near its massive curved beak, beak clamping down with one clean crack in the shell, extremely long elegant tail feathers, broad wings folded, large bare facial patch around calm focused eyes, no branch or flying fragments, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
-**姿態比對**：啄羊鸚鵡＝撕拆物件（破壞式），巨嘴鳥＝站枝猛啄（長嘴），金剛鸚鵡＝抓堅果咬碎＋超長尾羽（精準力量＋華麗外觀）
+**姿態比對**：啄羊鸚鵡＝撕拆物件（破壞式），巨嘴鳥＝伸長喙取果，金剛鸚鵡＝抓堅果咬開＋超長尾羽（精準力量＋華麗外觀）
 
 ---
 
@@ -122,7 +122,7 @@ black and white vector line art of Scarlet Macaw, perched on a thick branch with
 black and white vector line art of Green Anaconda, massive thick-bodied snake coiling tightly around a large tree log in shallow water with powerful muscular constriction, head positioned near the top of the coils with eyes and nostrils sitting high on top of the wide flat head distinctly broader than any python, enormously thick body much wider than any other snake, bold dark-bordered oval blotch pattern along the body distinct from diamond-shaped python markings, water splash lines around the base of the coils, powerful aquatic constriction pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
-**姿態比對**：蟒蛇＝纏繞絞殺（陸地＋三角頭），眼鏡蛇＝展頸噴毒（直立），森蚺＝水中纏繞木頭＋扁寬頭頂部眼鼻（水棲＋極粗體型）
+**姿態比對**：蟒蛇＝陸地纏繞木頭，眼鏡蛇＝展頸待咬（直立），森蚺＝水中纏繞木頭＋扁寬頭頂部眼鼻（水棲＋極粗體型）
 
 ---
 
@@ -159,10 +159,10 @@ black and white vector line art of Harpy Eagle, swooping diagonally forward with
 ## 16. 螢火蟲（firefly）- 閃光誘惑
 
 ```
-black and white vector line art of Firefly (lightning bug), flying with delicate thin elytra wing covers raised and membranous hind wings spread in flight, large prominent light organ on lower abdomen rendered with concentric ring pattern radiating outward to show active light organ structure, elongated soft oval body with clearly segmented thorax and abdomen, six jointed legs dangling below, small round head with large compound eyes and short antennae, detailed wing venation pattern, two smaller fireflies approaching from different angles drawn toward the main firefly, mid-flight light display pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of one Firefly (lightning bug), flying with elytra wing covers raised and membranous hind wings spread, large prominent light organ on the lower abdomen shown as one clean pale region with a bold edge, elongated oval body with segmented thorax and abdomen, six jointed legs, small head with compound eyes and short antennae, no other insects or abstract light rings, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
-**姿態比對**：糞金龜＝地面推球（圓形甲蟲），蘭花螳螂＝伏擊姿態，螢火蟲＝展翅飛行＋腹部發光圈紋（飛行姿態＋獨有發光器官）
+**姿態比對**：糞金龜＝地面推球（圓形甲蟲），蘭花螳螂＝伏擊姿態，螢火蟲＝單隻展翅飛行＋腹部發光區（飛行姿態＋獨有發光器官）
 
 ---
 
@@ -216,13 +216,13 @@ black and white vector line art of Walking Stick Insect, clinging motionlessly t
 
 ---
 
-## 22. 行軍蟻（army_ant）- 蟻海吞噬
+## 22. 行軍蟻（army_ant）- 蟻群行軍
 
 ```
-black and white vector line art of a massive swarm of Army Ants marching in an organized column formation, the lead ant in the front much larger and detailed showing oversized sharp curved mandibles opened wide, elongated segmented body with narrow waist, six strong jointed legs in marching stride, rows of smaller ants behind forming a dense flowing column of bodies stretching back, organized disciplined military march formation with dozens of smaller ants in clear outlines, powerful swarming army march pose, centered composition, bold lines, coloring book style, white background, high contrast, no shading
+black and white vector line art of exactly twelve Army Ants moving together in one flowing direction and crossing one simple fallen leaf, one moderately larger soldier ant in front with curved mandibles relaxed, each visible ant showing three body sections, a narrow waist, six jointed legs and two antennae, clean staggered rows with clear gaps, no prey or dense black swarm, centered composition, bold lines, coloring book style, white background, high contrast, no shading
 ```
 
-**姿態比對**：糞金龜＝單隻推球（圓甲蟲），螢火蟲＝單隻飛行，行軍蟻＝群體行軍大軍＋前方大顎特寫＋後方蟻流（群體構圖＋軍隊意象）
+**姿態比對**：糞金龜＝單隻推球（圓甲蟲），螢火蟲＝單隻飛行，行軍蟻＝少量群體跨過落葉＋單一行進方向（群體構圖＋合作意象）
 
 ---
 

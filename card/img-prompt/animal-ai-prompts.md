@@ -17,14 +17,14 @@
 
 | 動物 | 對應特殊能力 | 完整英文指令 (可直接複製) |
 | :--- | :--- | :--- |
-| **1. 非洲獅** | **大吼** | `black and white vector line art of a majestic Lion, full body side view, mouth wide open roaring, mane flowing, centered composition, bold lines, coloring book style, white background, high contrast, no shading ` |
+| **1. 非洲獅** | **雄獅怒吼** | `black and white vector line art of a majestic Lion, full body side view, mouth naturally open roaring, mane flowing, calm alert expression, centered composition, bold lines, coloring book style, white background, high contrast, no shading ` |
 | **2. 非洲象** | **鼻子噴水** | `black and white vector line art of an African Elephant, full body, raising its trunk high and spraying water, centered composition, bold lines, coloring book style, white background, high contrast, no shading ` |
 | **3. 貓頭鷹** | **黑夜視線** | `black and white vector line art of a Great Horned Owl perched on a branch, full body visible, large glowing eyes, looking forward, centered composition, bold lines, coloring book style, white background, high contrast, no shading ` |
 | **4. 獵豹** | **極限衝刺** | `black and white vector line art of a Cheetah running fast, full body visible including tail, dynamic pose, bold lines, coloring book style, white background, high contrast, no shading ` |
-| **5. 穿山甲** | **捲成球** | `black and white vector line art of a Pangolin in the middle of curling into a ball, head and tail visible, showing scales, centered composition, bold lines, coloring book style, white background, high contrast, no shading ` |
-| **6. 海豚** | **超音波** | `black and white vector line art of a Dolphin jumping out of water, full body, with circular sonar wave lines radiating from its head, centered, bold lines, coloring book style, white background, high contrast, no shading ` |
-| **7. 遊隼** | **千里眼** | `black and white vector line art of a Peregrine Falcon diving down from the sky, full body with wings partially folded, sharp eyes looking down, centered, bold lines, coloring book style, white background, high contrast, no shading ` |
-| **8. 科摩多龍**| **強酸口水** | `black and white vector line art of a Komodo Dragon, full body walking, tongue out with corrosive saliva dripping, centered, bold lines, coloring book style, white background, high contrast, no shading ` |
+| **5. 穿山甲** | **鱗甲縮球** | `black and white vector line art of a Pangolin curling into a protective ball, head and legs tucked under overlapping scales, tail wrapping around the outside, centered composition, bold lines, coloring book style, white background, high contrast, no shading ` |
+| **6. 海豚** | **超音定位** | `black and white vector line art of a Dolphin swimming in side view with its forehead aimed toward one simple rock opening, alert focused posture, no sonar symbols, centered, bold lines, coloring book style, white background, high contrast, no shading ` |
+| **7. 遊隼** | **高空銳眼** | `black and white vector line art of a Peregrine Falcon gliding high with full body visible, wings spread and sharp eyes looking down toward empty space, no prey, centered, bold lines, coloring book style, white background, high contrast, no shading ` |
+| **8. 科摩多龍**| **毒液猛咬** | `black and white vector line art of a Komodo Dragon, full body low to the ground, mouth open showing serrated teeth and head prepared to bite toward empty space, no venom or target, centered, bold lines, coloring book style, white background, high contrast, no shading ` |
 | **9. 大猩猩** | **攀爬高手** | `black and white vector line art of a Gorilla, full body, climbing a thick tree trunk, looking upwards, centered, bold lines, coloring book style, white background, high contrast, no shading ` |
 | **10. 蜜獾** | **百毒不侵** | `black and white vector line art of a Honey Badger standing in a fierce defensive stance, full body, showing thick fur and sharp claws, looking fearless, centered, bold lines, coloring book style, white background, high contrast, no shading ` |
 

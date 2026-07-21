@@ -21,7 +21,7 @@ Print construction: discrete flat grayscale regions only. No smooth gradients, c
 Child clarity: show only one action and one motion direction. Keep the expression calm and alert. No victim, injury, threat toward the viewer, horror, blood, prey, carcass, exposed teeth, attack impact, text, border, logo, or watermark.
 ```
 
-## 1. 非洲獅（lion）— 大吼
+## 1. 非洲獅（lion）— 雄獅怒吼
 
 辨識特徵：
 
@@ -60,7 +60,7 @@ Subject/action: one adult cheetah sprinting alone horizontally across the frame 
 Avoid: leopard or jaguar build, rosettes, prey, chase target, attack, open mouth, exposed teeth, claws, comic speed lines, multiple dust clouds, floating paws with impossible joints, duplicated legs or tail, cropped feet or tail.
 ```
 
-## 4. 灣鱷（crocodile）— 死亡翻滾
+## 4. 灣鱷（crocodile）— 巨鱷翻滾
 
 辨識特徵：
 
@@ -73,7 +73,7 @@ Subject/action: one adult saltwater crocodile alone in very shallow water, captu
 Avoid: C-shaped or U-shaped body, head and tail pointing toward each other, circular swimming turn, coiled crocodile, alligator-short snout, prey, victim, biting, torn object, open jaws, exposed teeth, blood, violent impact, helical spine, twisted vertebral column, legs attached to the back, more than four legs, detached legs, duplicated tail, full river scene, dense splash texture, attack toward the viewer.
 ```
 
-## 5. 紅袋鼠（kangaroo）— 拳擊踢腿
+## 5. 紅袋鼠（kangaroo）— 強腿飛踢
 
 辨識特徵：
 
@@ -138,7 +138,7 @@ Subject/action: one adult giant panda seated alone in a stable three-quarter sid
 Avoid: bamboo forest, extra stalks or leaves, eating pose, smiling cub face, oversized eyes, human hand, karate-chop gesture through empty air, flying fragments, violent impact lines, large solid-black body areas, extra paws, cropped ears, feet or bamboo.
 ```
 
-## 10. 河豚（pufferfish）— 膨脹毒球｜既有 V2 定錨圖
+## 10. 河豚（pufferfish）— 膨脹刺球｜既有 V2 定錨圖
 
 辨識特徵：
 
@@ -203,7 +203,7 @@ Subject/action: one adult hummingbird hovering alone in a clean horizontal side 
 Avoid: flower, feeder, insect, extra wing pairs, ghost wings, more than two motion crescents total, feather details inside motion crescents, dense motion blur, comic speed lines, hairline bill, vertical body, perched pose, oversized cute head or eyes, open bill, long legs, cropped bill, wings or tail, full garden scene.
 ```
 
-## 15. 金剛鸚鵡（scarlet_macaw）— 彩翼破殼
+## 15. 金剛鸚鵡（scarlet_macaw）— 彩喙破殼
 
 辨識特徵：
 
@@ -216,7 +216,7 @@ Subject/action: one adult scarlet macaw standing alone in a stable three-quarter
 Avoid: branch, extra nuts, food pieces, prey, open mouth, exposed tongue, smiling cartoon face, human speech symbols, flying shell fragments, spread wings, dense feather lines, extra toes, clipped beak, feet, wings or tail.
 ```
 
-## 16. 行軍蟻（army_ant）— 蟻海吞噬｜既有 V2 定錨圖
+## 16. 行軍蟻（army_ant）— 蟻群行軍｜既有 V2 定錨圖
 
 辨識特徵：
 
@@ -264,7 +264,7 @@ Avoid: queen, wings, giant leader ant, military rows, armor, weapons, flags, car
 |---|---|
 | Prompt 組裝 | 明定每次使用共用 V2 規格＋Subject/action＋Avoid，淘汰舊 `no shading` 後綴 |
 | 解剖 | 灣鱷改軸向翻滾；長頸鹿改重槓桿頸；海獺改短寬尾；皇帝企鵝修正嘴喙與頭頸 |
-| 動作 | 強化長頸鹿橫掃、灣鱷旋轉方向與紅袋鼠兩接地點；保留已確認的單腿踢與探洞概念 |
+| 動作 | 強化長頸鹿橫掃、灣鱷旋轉方向與紅袋鼠兩接地點；保留已確認的後腿前踢與探洞概念 |
 | 物種辨識 | 獵豹補尾環；紅毛猩猩補臉頰瓣；變色龍眼睛採教育性壓縮姿勢 |
 | 縮印 | 放大海獺道具、紅毛猩猩樹枝與洞、變色龍舌頭與樹枝、金剛鸚鵡裂紋 |
 | 多肢風險 | 灣鱷明定近遠側腿；蜂鳥限制一對真翅與兩道動態弧；趾與手指改用寬形群組 |

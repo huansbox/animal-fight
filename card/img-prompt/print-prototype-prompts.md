@@ -42,7 +42,7 @@ Constraints: child-friendly; claws may be visible but no victim; no text, no bor
 Avoid: headshot, portrait crop, cartoon, coloring-book line art, black background, large featureless solid-black areas, blood, prey, extra animals, clutter.
 ```
 
-## 河豚：膨脹毒球
+## 河豚：膨脹刺球
 
 ```text
 Use case: photorealistic-natural
