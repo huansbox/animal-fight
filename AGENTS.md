@@ -199,7 +199,8 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - **v0.7 固定劇情原型**：[`docs/plans/scenarios/`](docs/plans/scenarios/)（災難救援／調查解謎／遠征運送各 1 套；三套皆已遷移為抽寶物與固定 `2＋2` Boss）
 - **v0.6 舊實體測試包**：[`docs/plans/2026-07-18-team-mission-physical-production.md`](docs/plans/2026-07-18-team-mission-physical-production.md)（已被 7/19 原型取代，保留歷史）
 - **v0.7 現行實體／DM 規格**：[`docs/plans/2026-07-19-team-mission-props-dm-web-design.md`](docs/plans/2026-07-19-team-mission-props-dm-web-design.md)（3 張寶物、2 張後援、3 張區域 Poker、4 張大型揭露卡、DM 專注模式 Web App；正式列印 PDF 均已完成畫面 QA）
-- **目前接手快照**：[`docs/handoffs/handoff.md`](docs/handoffs/handoff.md)（首批 16 張動物卡與 v0.7 團隊任務整合現況、驗收重點及下一步）
+- **類 D&D d6 檢定方向稿**：[`docs/plans/2026-07-22-team-mission-dnd-check-design.md`](docs/plans/2026-07-22-team-mission-dnd-check-design.md)（孩子先說行動、DM 再裁定屬性／尺度／DC、`最高 d6＋0～2` 候選、5 歲／9 歲故事接力、Boss／寶物未決；尚未改 code）
+- **目前接手快照**：[`docs/handoffs/handoff.md`](docs/handoffs/handoff.md)（特殊能力審核完成狀態、首批 16 張動物卡、類 D&D 團隊任務方向與下一步）
 
 ### 動物大對決（battle-rules.md）
 - 賽制：淘汰賽，每輪 1 戰定勝負（進階：3 戰 2 勝）
@@ -211,11 +212,12 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 
 ## 當前狀態
 
-**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受） → 團隊任務 v0.6 逐關揭露規則、6 局 Agent 模擬、共用劇情模板與 3 套固定劇情 → 團隊任務第一套黑白雷射列印測試包（控制板、暴雨揭露卡、DM 雙面指南） → 實體動物卡文字版面與全卡注音規格定案 → 132 張正式文字字型 subset 與 QA PDF → 動物圖片 B+ 黑白印刷風格 3×4 試印套組 → 動物圖片正式採用 V2「圖鑑平衡版」 → 團隊任務舊護盾實體道具原型與 DM 專注模式 Web App → v0.7 三寶物 Boss 規則、結算順序與機率基準定案 → 三套劇情、DM App、寶物／後援／三區卡與兩頁列印 PDF 完成 v0.7 遷移 → 揭露卡單一路徑版面完成單／雙動物確認並遷移至正式 4 張揭露卡與 2 頁 PDF，逐頁畫面 QA 通過 → 首批 16 張 V2 動物圖完成 3 Agent Prompt／生成圖 QA，整合為全卡注音卡面與 8 頁 A4 二分標籤 PDF，逐頁畫面 QA 通過 → 首批 16 張完成黑白試印，卡面縮為 `117×170mm` 增加貼合容錯 → 4 隻動物完成 V2／V2.1／V2.2 動作強度比較，確認正式圖片維持 V2.0 → 132 隻特殊能力完成機械掃描、P0／P1 三方審核與正式寫回，`artAction` 納入生圖 SOP，眼鏡蛇遷移為 `Chinese Cobra`，注音字型與列印 PDF 重建後畫面 QA 通過
+**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受） → 團隊任務 v0.6 逐關揭露規則、6 局 Agent 模擬、共用劇情模板與 3 套固定劇情 → 團隊任務第一套黑白雷射列印測試包（控制板、暴雨揭露卡、DM 雙面指南） → 實體動物卡文字版面與全卡注音規格定案 → 132 張正式文字字型 subset 與 QA PDF → 動物圖片 B+ 黑白印刷風格 3×4 試印套組 → 動物圖片正式採用 V2「圖鑑平衡版」 → 團隊任務舊護盾實體道具原型與 DM 專注模式 Web App → v0.7 三寶物 Boss 規則、結算順序與機率基準定案 → 三套劇情、DM App、寶物／後援／三區卡與兩頁列印 PDF 完成 v0.7 遷移 → 揭露卡單一路徑版面完成單／雙動物確認並遷移至正式 4 張揭露卡與 2 頁 PDF，逐頁畫面 QA 通過 → 首批 16 張 V2 動物圖完成 3 Agent Prompt／生成圖 QA，整合為全卡注音卡面與 8 頁 A4 二分標籤 PDF，逐頁畫面 QA 通過 → 首批 16 張完成黑白試印，卡面縮為 `117×170mm` 增加貼合容錯 → 4 隻動物完成 V2／V2.1／V2.2 動作強度比較，確認正式圖片維持 V2.0 → 132 隻特殊能力完成機械掃描、P0／P1 三方審核與正式寫回，`artAction` 納入生圖 SOP，眼鏡蛇遷移為 `Chinese Cobra`，注音字型與列印 PDF 重建後畫面 QA 通過 → DM 網頁由 iPad Safari 完成區網載入與首頁版面人工確認，並建立類 D&D d6 檢定方向稿
 
 **待完成**：
 - [ ] 數位版實際遊玩測試
-- [ ] 列印 v0.7 寶物／後援／三區卡與 4 張大型揭露卡，實際記錄寶物操作、Boss 骰池、後援前／後勝負與 DM 負擔
+- [ ] 對齊類 D&D d6 候選的核心公式、一般關 DC、Boss 與三寶物；規則定案前不改 DM 網頁
+- [ ] 對齊類 D&D 候選後，決定是否先列印 v0.7 作 A／B 基準；若執行，記錄寶物操作、Boss 骰池、後援前／後勝負與 DM 負擔
 - [ ] 依黑白試印與親子實玩結果，定案 3 張寶物、2 張後援、3 張區域卡、4 張大型揭露卡與 DM 網頁
 - [ ] 手邊重新取得放大版 Poker 後量測 3–5 張實際尺寸，複核 `117×170mm` 卡面
 - [ ] 重印新版 `117×170mm` 至少一頁，驗證貼歪容錯；再用 16 張跑完整淘汰賽
@@ -248,7 +250,8 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - **團隊任務列印檔**：[`output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf`](output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf)（v0.7 三寶物版）、[`output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf`](output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf)
 - **揭露卡正式檔狀態**：`storm-forest-rescue-reveal-cards-half-label.*` 已套用確認版直向資訊層級；正式 PDF 為 2 頁 A4 二分標籤、共 4 張揭露卡，逐頁畫面 QA 通過。`reveal-card-stacked-layout-prototype.*` 僅保留為版面測試紀錄
 - **特殊能力審核**：[`docs/plans/2026-07-21-animal-skill-description-audit.md`](docs/plans/2026-07-21-animal-skill-description-audit.md)（132 隻機械掃描、P0 核心能力、P1 兒童文案與 `artAction` 生圖分層；正式資料、Prompt、注音與 PDF 已同步）
-- **下一步**：實體面重印新版 `117×170mm` 一頁確認貼合容錯，等孩子有空用現有 16 張 V2.0 跑完整淘汰賽，同時列印 v0.7 團隊任務道具跑第一局真人測試；驗證完成後再逐波建立剩餘 116 張 `artAction` 與 V2.0 Prompt
+- **團隊任務玩法調整**：[`docs/plans/2026-07-22-team-mission-dnd-check-design.md`](docs/plans/2026-07-22-team-mission-dnd-check-design.md)（v0.7 保留為基準；新方向先完成規則討論、概率與文字模擬，再決定 DM 網頁 prototype）
+- **下一步**：動物卡可獨立重印新版 `117×170mm` 一頁並跑 16 張淘汰賽；團隊任務先暫停改版與重印，對齊類 D&D d6 候選的核心公式、Boss 與寶物後，再決定 v0.7 基準試玩或 v0.8 紙筆 A／B 測試
 
 ## 技術債 / 待建工具
 

@@ -1,20 +1,31 @@
 # Animal Fight 最新接手文件
 
-> 更新：2026-07-21
-> Branch：`feat/animal-ability-audit`
-> 狀態：P0／P1／格式修訂已寫回 132 隻正式資料；注音字型、文字 QA 與首批 16 張 PDF 已重建並通過畫面檢查
+> 更新：2026-07-22
+> Branch：`feat/team-mission-dnd-check-design`
+> 狀態：特殊能力審核 branch 已完成；團隊任務轉入類 D&D d6 檢定設計，規則對齊前不改 DM 網頁或實體道具
 
 ## 接手後先做什麼
 
-不要直接擴充剩餘 116 張，也不要覆蓋現有 16 張正式圖片。依序進行：
+先把團隊任務規則對齊，再決定 prototype；不要直接改現行 v0.7：
 
-1. 先讀 [`../plans/2026-07-21-animal-skill-description-audit.md`](../plans/2026-07-21-animal-skill-description-audit.md)，沿用已定案的能力與 `artAction` 原則。
-2. 重印一頁 `117×170mm`，確認新版文案與貼合容錯；等孩子有空再用現有 16 張 V2.0 跑完整淘汰賽。
-3. 實體驗證沒有問題後，才逐波建立剩餘 116 張 V2.0 Prompt；圖片風格不再重開選型。
+1. 先讀 [`../plans/2026-07-22-team-mission-dnd-check-design.md`](../plans/2026-07-22-team-mission-dnd-check-design.md)。
+2. 依序對齊核心公式、一般關 DC、Boss、三寶物與後援；這些會互相影響，不能只改其中一項。
+3. 做概率與文字模擬後，先用紙筆執行一局候選規則；規則穩定才修改 `game/dm/`。
+
+動物卡是獨立工作線：不要覆蓋現有 16 張 V2.0 圖片，也不要直接擴充剩餘 116 張。可照原計畫重印一頁 `117×170mm` 並跑 16 張淘汰賽。
 
 目前手邊沒有 Poker 可重新量測，先依標示尺寸 `122×175mm` 計算；日後有實物時仍需量 3–5 張並取最小長寬。
 
 ## 這個 session 已完成
+
+### 團隊任務類 D&D 方向
+
+- 使用者傾向讓團隊任務更接近 D&D：孩子先說目標與行動，DM 再判斷是否檢定、使用哪個屬性與 DC，最後由骰子加角色能力決定結果。
+- 5 歲孩子可處理個位數加減；目前推薦候選為 `最高一顆 d6＋屬性適合 1 分＋特殊能力 1 分 ≥ DC 4／5`，後援與寶物以多骰取最高、降低 DC、加值或重骰處理。
+- 5 歲與 9 歲採三句故事接力：卡片主人說行動、另一位孩子補一個細節、DM 說明屬性與 DC；哥哥不能替弟弟改動物或決定出場。
+- 完整方向、成功率、現行劇情映射、DM 網頁兩階段候選、實作骨架與 10 個未決項已整理於 [`../plans/2026-07-22-team-mission-dnd-check-design.md`](../plans/2026-07-22-team-mission-dnd-check-design.md)。
+- 現行 v0.7 保留為比較基準；本輪沒有修改 `game/dm/`、揭露卡、寶物或規則程式。
+- iPad Safari 已透過同一 Wi-Fi 開啟 `game/dm/`；HTML、CSS、JS 與 scenario 資料皆成功載入，使用者確認首頁版面正常。缺少 favicon／apple-touch-icon 的 404 不影響遊戲。
 
 ### 132 隻特殊能力描述審核
 
@@ -58,6 +69,8 @@
 
 揭露卡的直向閱讀順序、單動物 `96mm` 屬性組與雙動物版面都已由使用者確認並遷移到正式 PDF。不要回頭使用 prototype 或早期 A／B 比較稿當正式列印檔。
 
+v0.7 的 DM 網頁與列印檔保持可用，但目前不再視為下一步直接定案版本；Boss、寶物與檢定可能在類 D&D 候選中一起改寫。
+
 ## 已確認的注音決策
 
 - 「骰子」正式卡面維持 `ㄊㄡˊ ˙ㄗ`。
@@ -75,9 +88,10 @@
 
 ### 團隊任務
 
-1. 黑白列印 2 頁四分狀態／區域卡與 2 頁二分正式揭露卡。
-2. 跑第一局真人測試，記錄寶物操作、Boss 原始骰池、後援前／後勝負、孩子理解度與 DM 負擔。
-3. 沒有實體問題就不重新開版面設計，只依證據做小幅修正。
+1. 先完成類 D&D 候選的核心公式、Boss 與寶物對齊，不急著重印或改網頁。
+2. 做概率試算與 5 歲／9 歲／兄弟合作文字模擬。
+3. 用紙筆搭配現有旁白跑一局候選規則，記錄孩子原話、DM 裁定、加法理解、哥哥是否主導與 DM 負擔。
+4. 再決定是否另跑一局 v0.7 作 A／B 基準，以及何時修改 DM 網頁與實體揭露卡。
 
 ## 列印設定
 
@@ -88,13 +102,14 @@
 
 ## Git 狀態與既有提交
 
-- 工作 branch：`feat/animal-ability-audit`
+- 工作 branch：`feat/team-mission-dnd-check-design`
 - `46c4176 fix(battle): count talent bonus per die`
 - `54faf4a feat(cards): add skill description audit`
 - `a6910da docs(cards): record three-way ability review`
 - `e5544e6 feat(cards): apply reviewed animal abilities`
 - `e41583a docs(prompts): align revised animal actions`
-- 本接手快照、注音字型與 PDF 重建另由最後一個 `docs(project)` commit 收尾。
+- `db3ccd6 build(cards): rebuild revised ability print assets`
+- 新 branch 從已完成的 `feat/animal-ability-audit` 切出；本輪只新增玩法方向文件與接手連結。
 - 接手時先執行 `git status -sb`，預期 branch 已與 remote 同步且沒有未提交修改。
 
 ## 常用指令
@@ -104,8 +119,9 @@ open output/pdf/animal-fight-v2-first-16-half-label-a4.pdf
 open output/pdf/animal-action-v2-comparison-a4.pdf
 open output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf
 open output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf
+open docs/plans/2026-07-22-team-mission-dnd-check-design.md
 python3 card/audit_animal_skills.py --format text
 git status -sb
 ```
 
-本 session 已關閉 PDF 預覽用的本機 HTTP server，沒有需要接手的背景程序。
+本 session 已關閉 iPad 測試用的本機 HTTP server，沒有需要接手的背景程序。
