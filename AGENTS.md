@@ -124,9 +124,9 @@ animal-fight/
 - 舊合作闘關（rulebook.md）：v1 數值系統（天賦為單一分數 8-12，總和 34-39）
 - 團隊任務 v0.7：沿用 v2.5 卡面五維數值與 `skillBonus` 標記，但改用 1-3 顆骰的合作判定；不計卡面技能加分數字
 - 團隊任務 v0.8-H 停止比較組：第一題即再次出現「為什麼聰明只能 4、5、6」；不同屬性共用同一需求範圍的方向停止
-- 團隊任務 v0.8-M 紙筆候選：每個位置預寫兩條 DM 隱藏裁定基準，各有一至兩個必要步驟、一個屬性與需求數字。孩子先從手牌自由想方法；DM 公布裁定後才正式選卡，原動物不合可免費更換。DM 判斷卡住時，同時揭露兩條基準作為提示。設計端只使用 `1–3`、`4–6`、`4–9`、`7–9`，其中 `4–6` 只在過低與過高都確實有壞處時使用。核心仍為 `1d6＋屬性符合 1 分＋特殊能力直接完成必要步驟且對應所選屬性 1 分 ≥ DC 4`
+- 團隊任務 v0.8-M 紙筆候選：每個位置預寫兩條 DM 隱藏裁定基準，各有一至兩個必要步驟、一個屬性與需求數字。孩子先從手牌自由想方法；DM 公布裁定後才正式選卡，原動物不合可免費更換。DM 判斷卡住時，同時揭露兩條基準作為提示。設計端只使用 `1–3`、`4–6`、`4–9`、`7–9`，其中 `4–6` 只在過低與過高都確實有壞處時使用。核心仍為 `1d6＋屬性符合 1 分＋特殊能力直接完成必要步驟且對應所選屬性 1 分 ≥ DC 4`。一句話包含兩個可能的主動作時，孩子決定故事主要靠哪一步，DM 再轉成屬性與需求
 - 動物大對決（battle-rules.md）：v2.5 數值系統（天賦為 +4 分配，總和 11-33）
-- 現行三套正式規則獨立運作；v0.7 保留為可用基準，純 v0.8 完成成人 dry run 後暫停，v0.8-H 第一題後停止；v0.8-M 四情境成人測試中自由方法與裁定初步通過，提示未驗證
+- 現行三套正式規則獨立運作；v0.7 保留為可用基準，純 v0.8 完成成人 dry run 後暫停，v0.8-H 第一題後停止；v0.8-M 十二條正式隱藏基準與完整成人紙筆局通過，可進孩子真人測試，提示仍未驗證
 
 ### 圖片生成策略（寫實風格 + Batch API）
 
@@ -201,9 +201,9 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - **v0.7 固定劇情原型**：[`docs/plans/scenarios/`](docs/plans/scenarios/)（災難救援／調查解謎／遠征運送各 1 套；三套皆已遷移為抽寶物與固定 `2＋2` Boss）
 - **v0.6 舊實體測試包**：[`docs/plans/2026-07-18-team-mission-physical-production.md`](docs/plans/2026-07-18-team-mission-physical-production.md)（已被 7/19 原型取代，保留歷史）
 - **v0.7 現行實體／DM 規格**：[`docs/plans/2026-07-19-team-mission-props-dm-web-design.md`](docs/plans/2026-07-19-team-mission-props-dm-web-design.md)（3 張寶物、2 張後援、3 張區域 Poker、4 張大型揭露卡、DM 專注模式 Web App；正式列印 PDF 均已完成畫面 QA）
-- **類 D&D d6 設計稿**：[`docs/plans/2026-07-22-team-mission-dnd-check-design.md`](docs/plans/2026-07-22-team-mission-dnd-check-design.md)（純 v0.8 歷史基礎、固定 `1d6＋0～2 ≥ 4`、雙位置 Boss、三寶物與後援；2026-08-04 更新為 v0.8-M 下一候選）
+- **類 D&D d6 設計稿**：[`docs/plans/2026-07-22-team-mission-dnd-check-design.md`](docs/plans/2026-07-22-team-mission-dnd-check-design.md)（純 v0.8 歷史基礎、固定 `1d6＋0～2 ≥ 4`、雙位置 Boss、三寶物與後援；2026-08-06 更新為 v0.8-M 完整成人局通過）
 - **純 v0.8 成人代演與分齡審查**：[`docs/plans/2026-07-31-team-mission-v08-adult-dry-run.md`](docs/plans/2026-07-31-team-mission-v08-adult-dry-run.md)、[`docs/plans/2026-07-31-team-mission-v08-child-playability-review.md`](docs/plans/2026-07-31-team-mission-v08-child-playability-review.md)（完整對話、3 Agent 的 5 歲／9 歲／重玩性 review、v0.7／v0.8 取捨）
-- **v0.8-M 隱藏基準／提示制成人測試單**：[`docs/plans/2026-08-04-team-mission-v08m-hidden-prompt-adult-test.md`](docs/plans/2026-08-04-team-mission-v08m-hidden-prompt-adult-test.md)（四個情境、DM 預寫裁定基準、自由方法轉換、卡關提示與通過門檻）；停止的 H／M 測試 [`docs/plans/2026-08-04-team-mission-v08m-adult-ab-test.md`](docs/plans/2026-08-04-team-mission-v08m-adult-ab-test.md)、舊分齡測試單與完整局試玩單保留為歷史
+- **v0.8-M 隱藏基準／提示制成人測試**：[`docs/plans/2026-08-04-team-mission-v08m-hidden-prompt-adult-test.md`](docs/plans/2026-08-04-team-mission-v08m-hidden-prompt-adult-test.md)（四情境微測）、[`docs/plans/2026-08-06-team-mission-v08m-full-adult-playtest.md`](docs/plans/2026-08-06-team-mission-v08m-full-adult-playtest.md)（十二條正式基準、132 張覆蓋審查、完整成人局、資源流程與通過結論）；停止的 H／M 測試及舊分齡測試單保留為歷史
 - **目前接手快照**：[`docs/handoffs/handoff.md`](docs/handoffs/handoff.md)（特殊能力審核完成狀態、首批 16 張動物卡、類 D&D 團隊任務方向與下一步）
 
 ### 動物大對決（battle-rules.md）
@@ -216,12 +216,11 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 
 ## 當前狀態
 
-**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受） → 團隊任務 v0.6 逐關揭露規則、6 局 Agent 模擬、共用劇情模板與 3 套固定劇情 → 團隊任務第一套黑白雷射列印測試包（控制板、暴雨揭露卡、DM 雙面指南） → 實體動物卡文字版面與全卡注音規格定案 → 132 張正式文字字型 subset 與 QA PDF → 動物圖片 B+ 黑白印刷風格 3×4 試印套組 → 動物圖片正式採用 V2「圖鑑平衡版」 → 團隊任務舊護盾實體道具原型與 DM 專注模式 Web App → v0.7 三寶物 Boss 規則、結算順序與機率基準定案 → 三套劇情、DM App、寶物／後援／三區卡與兩頁列印 PDF 完成 v0.7 遷移 → 揭露卡單一路徑版面完成單／雙動物確認並遷移至正式 4 張揭露卡與 2 頁 PDF，逐頁畫面 QA 通過 → 首批 16 張 V2 動物圖完成 3 Agent Prompt／生成圖 QA，整合為全卡注音卡面與 8 頁 A4 二分標籤 PDF，逐頁畫面 QA 通過 → 首批 16 張完成黑白試印，卡面縮為 `117×170mm` 增加貼合容錯 → 4 隻動物完成 V2／V2.1／V2.2 動作強度比較，確認正式圖片維持 V2.0 → 132 隻特殊能力完成機械掃描、P0／P1 三方審核與正式寫回，`artAction` 納入生圖 SOP，眼鏡蛇遷移為 `Chinese Cobra`，注音字型與列印 PDF 重建後畫面 QA 通過 → DM 網頁由 iPad Safari 完成區網載入與首頁版面人工確認 → 類 D&D 純 v0.8 完成核心規則、Boss、三寶物、後援、精確概率與最終 3 Agent 模擬 → 完成一局成人代演及 3 Agent 分齡／重玩性審查 → v0.8-H 第一題後停止，確認 v0.8-M 隱藏基準／提示制為下一個成人測試候選
+**已完成**：需求分析 → 多版本設計 → 審查選定 → 10 波 132 隻動物（數值 + 技能 + prompt + JSON + HTML） → 寫實風格圖片 132 張（Batch API） → 數位版 Web App（選角 + AI + 對戰 + 淘汰賽樹 + 動畫 + 動物園特區篩選） → 對戰模擬器 v3-v5 → 動物猜猜看小遊戲（132 隻 × 3 提示） → A4 黑白雷射列印實體原型與首輪親子遊玩測試 → 122×175mm 無圖卡面 PDF 尺寸試印（大小可接受） → 團隊任務 v0.6 逐關揭露規則、6 局 Agent 模擬、共用劇情模板與 3 套固定劇情 → 團隊任務第一套黑白雷射列印測試包（控制板、暴雨揭露卡、DM 雙面指南） → 實體動物卡文字版面與全卡注音規格定案 → 132 張正式文字字型 subset 與 QA PDF → 動物圖片 B+ 黑白印刷風格 3×4 試印套組 → 動物圖片正式採用 V2「圖鑑平衡版」 → 團隊任務舊護盾實體道具原型與 DM 專注模式 Web App → v0.7 三寶物 Boss 規則、結算順序與機率基準定案 → 三套劇情、DM App、寶物／後援／三區卡與兩頁列印 PDF 完成 v0.7 遷移 → 揭露卡單一路徑版面完成單／雙動物確認並遷移至正式 4 張揭露卡與 2 頁 PDF，逐頁畫面 QA 通過 → 首批 16 張 V2 動物圖完成 3 Agent Prompt／生成圖 QA，整合為全卡注音卡面與 8 頁 A4 二分標籤 PDF，逐頁畫面 QA 通過 → 首批 16 張完成黑白試印，卡面縮為 `117×170mm` 增加貼合容錯 → 4 隻動物完成 V2／V2.1／V2.2 動作強度比較，確認正式圖片維持 V2.0 → 132 隻特殊能力完成機械掃描、P0／P1 三方審核與正式寫回，`artAction` 納入生圖 SOP，眼鏡蛇遷移為 `Chinese Cobra`，注音字型與列印 PDF 重建後畫面 QA 通過 → DM 網頁由 iPad Safari 完成區網載入與首頁版面人工確認 → 類 D&D 純 v0.8 完成核心規則、Boss、三寶物、後援、精確概率與最終 3 Agent 模擬 → 完成一局成人代演及 3 Agent 分齡／重玩性審查 → v0.8-H 第一題後停止 → v0.8-M 四情境微測、十二條正式基準與完整成人《暴雨森林救援隊》通過，可進孩子真人測試
 
 **待完成**：
 - [ ] 數位版實際遊玩測試
-- [ ] 依四情境結果改寫六個正式位置的十二條預寫基準，再跑一局完整成人《暴雨森林救援隊》，驗證技能、魔鏡／後援與 Boss；若自然卡住才觀察兩個提示
-- [ ] 完成成人完整局且紙筆規則穩定後，才讓孩子學習接近定案的版本；再依結果定案 3 張寶物、2 張後援、3 張區域卡、4 張大型揭露卡與 DM 網頁
+- [ ] 另開孩子真人測試工作，讓孩子學習 v0.8-M 接近定案版本；自然卡住時才觀察兩個提示，再依結果決定是否修改 3 張寶物、2 張後援、3 張區域卡、4 張大型揭露卡與 DM 網頁
 - [ ] 手邊重新取得放大版 Poker 後量測 3–5 張實際尺寸，複核 `117×170mm` 卡面
 - [ ] 重印新版 `117×170mm` 至少一頁，驗證貼歪容錯；再用 16 張跑完整淘汰賽
 - [ ] 依首批試印結果調整圖片對比、卡面內縮或個別構圖，再擴充剩餘 116 張
@@ -253,8 +252,8 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - **團隊任務列印檔**：[`output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf`](output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf)（v0.7 三寶物版）、[`output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf`](output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf)
 - **揭露卡正式檔狀態**：`storm-forest-rescue-reveal-cards-half-label.*` 已套用確認版直向資訊層級；正式 PDF 為 2 頁 A4 二分標籤、共 4 張揭露卡，逐頁畫面 QA 通過。`reveal-card-stacked-layout-prototype.*` 僅保留為版面測試紀錄
 - **特殊能力審核**：[`docs/plans/2026-07-21-animal-skill-description-audit.md`](docs/plans/2026-07-21-animal-skill-description-audit.md)（132 隻機械掃描、P0 核心能力、P1 兒童文案與 `artAction` 生圖分層；正式資料、Prompt、注音與 PDF 已同步）
-- **團隊任務玩法調整**：[`docs/plans/2026-07-22-team-mission-dnd-check-design.md`](docs/plans/2026-07-22-team-mission-dnd-check-design.md)（v0.7 保留為基準；純 v0.8 已完成成人 dry run，v0.8-H 已停止，v0.8-M 隱藏基準／提示制為下一測試候選）
-- **下一步**：動物卡可獨立重印新版 `117×170mm` 一頁並跑 16 張淘汰賽；團隊任務依四情境結果改寫十二條預寫基準並跑完整成人紙筆局；規則穩定前不修改網頁／實體檔
+- **團隊任務玩法調整**：[`docs/plans/2026-07-22-team-mission-dnd-check-design.md`](docs/plans/2026-07-22-team-mission-dnd-check-design.md)（v0.7 保留為基準；純 v0.8 已完成成人 dry run，v0.8-H 已停止，v0.8-M 完整成人紙筆局通過，可進孩子真人測試）
+- **下一步**：動物卡可獨立重印新版 `117×170mm` 一頁並跑 16 張淘汰賽；團隊任務另開孩子真人測試工作，孩子證據出來前不修改網頁／實體檔
 
 ## 技術債 / 待建工具
 
