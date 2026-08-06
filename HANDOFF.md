@@ -1,21 +1,21 @@
 # HANDOFF
 
-- Status: active
-- Task/issue: 無 tracker — v0.8-M 成人紙筆試玩
-- Branch: feat/team-mission-dnd-check-design
-- Updated: 2026-08-04
+- Status: idle
+- Task/issue: GitHub #6 — 完成 v0.8-M《暴雨森林救援隊》成人紙筆驗證
+- Branch: master
+- Updated: 2026-08-06
 
 ## Progress
 
-已 commit 並 push `c3e4708`，納入 v0.8 設計歷程與成人微型測試紀錄。v0.8-M 四情境測試顯示自由方法與 DM 裁定初步可行；備選提示與實際兒童理解仍未驗證。權威狀態見 `docs/plans/2026-08-04-team-mission-v08m-hidden-prompt-adult-test.md` 與 `docs/plans/2026-07-22-team-mission-dnd-check-design.md`。
+完成並關閉 GitHub #6；commit `641c22a` 已 fast-forward 合併及推送至 `master`，原 local／remote 工作分支均已刪除。完整成人局通過，權威結果見 `docs/plans/2026-08-06-team-mission-v08m-full-adult-playtest.md`。獨立後續孩子真人測試已建立為 GitHub #7。
 
 ## Next step
 
-把《暴雨森林救援隊》六個正式位置改寫為十二條 DM 隱藏裁定基準，再跑一局完整成人紙筆試玩；只有自然卡住時才觀察備選提示。目前沒有 tracker entry；若要納入 issue 追蹤，先執行 `/to-issues`。
+None
 
 ## Validation
 
-清理 Markdown 行尾空白後，`git diff --cached --check` 通過。Commit `c3e4708` 已推送至 `origin/feat/team-mission-dnd-check-design`，其後 `git status --short --branch` 顯示工作樹乾淨且已同步。本次只有文件變更，不適用 code tests、lint 或 type checks。
+`git diff --check` 通過；`master...origin/master` 為 `0 0`。GitHub #6 為 `CLOSED`、所有 acceptance checkboxes 已勾選且完成留言已發布；GitHub #7 body 經 SHA-256 round-trip 精確比對後為 `OPEN`。本次只有文件與 tracker 變更，不適用 code tests、lint 或 type checks。
 
 ## Blockers
 
