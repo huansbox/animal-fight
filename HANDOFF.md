@@ -1,17 +1,17 @@
 # HANDOFF
 
-- Status: active
-- Task/issue: GitHub #8 — 實作團隊任務 v0.9 2d6 prototype
-- Branch: feat/issue-8-v09-prototype
+- Status: idle
+- Task/issue: GitHub #8 — 實作團隊任務 v0.9 2d6 prototype（completed）
+- Branch: master
 - Updated: 2026-08-07
 
 ## Progress
 
-Issue #8 已完成團隊任務 v0.9 的 DM Web、寶物卡、孩子版揭露卡、注音字型 subset 與兩份 2 頁 A4 PDF 實作。自動測試、Browser smoke test、逐頁 PDF 畫面 QA 與 fresh read-only review 已完成；review findings 已採用，正在進行最後驗證、提交與合併。owner 明確略過原訂最小兒童回歸，因此交付是 owner-approved prototype，不是 child-validated 版本。
+Issue #8 已完成團隊任務 v0.9 的 DM Web、寶物卡、孩子版揭露卡、注音字型 subset 與兩份 2 頁 A4 PDF 實作。自動測試、Browser smoke test、逐頁 PDF 畫面 QA 與 fresh read-only review 均完成；review findings 已採用，實作已提交並 fast-forward 合併至 `master`。owner 明確略過原訂最小兒童回歸，因此交付是 owner-approved prototype，不是 child-validated 版本。
 
 ## Next step
 
-完成最終驗證，提交並合併至 `master`，同步關閉 Issue #8。
+None
 
 ## Validation
 
