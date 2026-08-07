@@ -2,7 +2,7 @@
 
 > 日期：2026-08-06
 > Issue：[#7](https://github.com/huansbox/animal-fight/issues/7)
-> 狀態：完整局已通關；2026-08-07 證據檢討已選擇「局部修正後最小兒童回歸」，新候選見 [`2026-08-07-team-mission-v09-2d6-design-review.md`](2026-08-07-team-mission-v09-2d6-design-review.md)
+> 狀態：完整局已通關；2026-08-07 證據檢討已選擇「局部修正後最小兒童回歸」，新候選見 [`2026-08-07-team-mission-v09-2d6-design-review.md`](2026-08-07-team-mission-v09-2d6-design-review.md)；使用者取消剩餘驗收後，Issue #7 以 `not planned` 關閉
 > 性質：5 歲與 9 歲孩子的首次 end-to-end 真人觀察；不是規則教學示範局，也不以完成整局為通過條件
 
 ## 本局只回答什麼
