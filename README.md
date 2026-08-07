@@ -46,15 +46,17 @@
 - 可直接列印 PDF：[`output/pdf/animal-fight-card-size-test-122x175.pdf`](output/pdf/animal-fight-card-size-test-122x175.pdf)
 - 目前試印大小可接受；等放大版 Poker 到貨並量測實際尺寸後，再調整最終卡面與貼紙內縮量。
 
-**團隊任務黑白列印原型**
+**團隊任務 v0.9 黑白列印原型**
 
-- v0.7 寶物規則：[`docs/plans/2026-07-19-team-mission-v07-treasure-boss-design.md`](docs/plans/2026-07-19-team-mission-v07-treasure-boss-design.md)
+- v0.9 規則與證據界線：[`docs/plans/2026-08-07-team-mission-v09-2d6-design-review.md`](docs/plans/2026-08-07-team-mission-v09-2d6-design-review.md)
 - 現行原型規格：[`docs/plans/2026-07-19-team-mission-props-dm-web-design.md`](docs/plans/2026-07-19-team-mission-props-dm-web-design.md)
-- 8 張寶物／後援／區域卡：[`output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf`](output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf)（A4 四分標籤 2 張；三寶物、兩後援、三區域）
-- 4 張大型揭露卡：[`output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf`](output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf)（A4 二分標籤 2 張；已套用確認版直向資訊層級並完成逐頁畫面 QA）
+- 8 張寶物／後援／區域卡：[`output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf`](output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf)（A4 四分標籤 2 張；三件 v0.9 Boss 寶物、兩後援、三區域）
+- 4 張大型揭露卡：[`output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf`](output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf)（A4 二分標籤 2 張；只顯示孩子可見的情境與目標）
 - 揭露卡排版測試紀錄：[`output/pdf/reveal-card-stacked-layout-prototype-a4.pdf`](output/pdf/reveal-card-stacked-layout-prototype-a4.pdf)（單頁單／雙動物比較稿，正式列印請使用上一項完整套件）
-- 家長逐關指南：[`game/dm/`](game/dm/)（Cloudflare Pages-ready Web App；含 v0.7 寶物結算與實玩摘要）
+- 家長逐關指南：[`game/dm/`](game/dm/)（Cloudflare Pages-ready Web App；含 tutorial-in-play、隱藏裁定、v0.9 Boss 流程與實玩摘要）
 - 全部使用黑白雷射印表機，以 `100%`／「實際大小」列印；揭露卡沿虛線裁切後貼到放大版 Poker。
+
+本版由 owner 核准直接製作 prototype，略過原訂最小兒童回歸；可供實玩，不代表已完成 v0.9 兒童驗證。
 
 **目前實玩方式**
 
@@ -71,7 +73,7 @@
 
 ```bash
 cd animal-fight
-python -m http.server 8080
+uv run python -m http.server 8080
 # 動物大對決 http://localhost:8080/game/digital/
 # 動物猜猜看 http://localhost:8080/game/quiz/
 ```

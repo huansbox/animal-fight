@@ -18,8 +18,8 @@
   },
   "sourceCoverage": {
     "bold": {
-      "requestedCodepoints": 601,
-      "supportedCodepoints": 597,
+      "requestedCodepoints": 621,
+      "supportedCodepoints": 617,
       "allowedUnsupported": [
         "㹢",
         "㺢",
@@ -28,17 +28,17 @@
       ]
     },
     "medium": {
-      "requestedCodepoints": 737,
-      "supportedCodepoints": 737,
+      "requestedCodepoints": 744,
+      "supportedCodepoints": 744,
       "allowedUnsupported": []
     }
   },
   "outputs": {
     "bold": {
       "path": "card/fonts/bopomofo/rounded-bold.woff2",
-      "bytes": 154316,
-      "sha256": "a2f55d6b15e59810f98fbba012c73586bab1521418a9a9602a54501e8ec8cc6e",
-      "cmapCodepoints": 597,
+      "bytes": 157920,
+      "sha256": "22ec0f5e2b0b92f8dbc90e94022a41cd5fb1c08eb73904577b7d327aaf0df982",
+      "cmapCodepoints": 617,
       "gsubFeatures": [
         "aalt",
         "ss01",
@@ -61,9 +61,9 @@
     },
     "medium": {
       "path": "card/fonts/bopomofo/rounded-medium.woff2",
-      "bytes": 174572,
-      "sha256": "9c986dd22ba7d76f06d074a33f75b61ae3037c27631f98152cf2b5231ced5719",
-      "cmapCodepoints": 737,
+      "bytes": 175900,
+      "sha256": "af76df368ef1d93db882792fd2749517c40d1c75adadb61b93c36fb6e9631d1f",
+      "cmapCodepoints": 744,
       "gsubFeatures": [
         "aalt",
         "ss01",

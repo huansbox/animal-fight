@@ -1,21 +1,21 @@
 # HANDOFF
 
-- Status: idle
-- Task/issue: GitHub #7 — 執行 v0.8-M 兄弟真人完整局（closed as not planned）
-- Branch: master
+- Status: active
+- Task/issue: GitHub #8 — 實作團隊任務 v0.9 2d6 prototype
+- Branch: feat/issue-8-v09-prototype
 - Updated: 2026-08-07
 
 ## Progress
 
-完成 Issue #7 兄弟真人局、事後證據檢討與 v0.9 分流；commits `9991214`、`4e39a19` 已合併至 `master`。使用者決定取消剩餘工作後，已發布結案說明並將 Issue #7 以 `not planned` 關閉；原始 acceptance criteria 保持 6 項完成、5 項未完成，沒有追溯勾選或刪除。v0.9 最小兒童回歸保留在專案待辦，但尚未建立新 Issue 或啟動新 task。未修改 DM Web、卡片或 PDF。
+Issue #8 已完成團隊任務 v0.9 的 DM Web、寶物卡、孩子版揭露卡、注音字型 subset 與兩份 2 頁 A4 PDF 實作。自動測試、Browser smoke test、逐頁 PDF 畫面 QA 與 fresh read-only review 已完成；review findings 已採用，正在進行最後驗證、提交與合併。owner 明確略過原訂最小兒童回歸，因此交付是 owner-approved prototype，不是 child-validated 版本。
 
 ## Next step
 
-None
+完成最終驗證，提交並合併至 `master`，同步關閉 Issue #8。
 
 ## Validation
 
-GitHub Issue #7 為 `CLOSED`，`state_reason` 為 `not_planned`，原始 checklist 保持 6 項完成、5 項未完成；結案 comment 已發布。`git diff --check` 與 `git diff --cached --check` 通過。本次只有文件與 tracker 變更，不適用 code tests、lint 或 type checks。
+`node --test game/dm/rules.test.mjs` 6/6 通過；`node --check` 通過 `app.js`、`scenarios.js`、`rules.js`；`git diff --check` 通過。Browser smoke test 已驗證首頁、開始／續玩、孩子情境優先、預設收合的 DM 裁定、雙提示同時揭露、第二關雙位置、Boss DC 8 與五步結算、v3 紀錄及 Markdown 匯出。兩份正式 PDF 均為 2 頁 A4，四頁 PNG 渲染逐頁檢視無裁切、溢位或缺圖；揭露卡 PDF 未出現屬性、需求數字或 DC。
 
 ## Blockers
 

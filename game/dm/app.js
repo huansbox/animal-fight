@@ -1,7 +1,8 @@
 import { scenario } from "./scenarios.js";
+import { conditionLabel } from "./rules.js";
 
-const ACTIVE_KEY = "animalFight.dm.active.v2";
-const RECORDS_KEY = "animalFight.dm.records.v2";
+const ACTIVE_KEY = "animalFight.dm.active.v3";
+const RECORDS_KEY = "animalFight.dm.records.v3";
 const modeNames = {
     "dad-younger": "爸爸＋弟弟",
     "dad-older": "爸爸＋哥哥",
@@ -105,18 +106,30 @@ function showHome() {
     setView(fragment, { showHome: false });
 }
 
-function renderRequirements(container, requirements = []) {
+function renderChecks(container, checks = []) {
     container.replaceChildren();
-    container.hidden = requirements.length === 0;
-    requirements.forEach((requirement) => {
-        const card = document.createElement("section");
-        card.className = "requirement-card";
-        card.innerHTML = `
-            <h3>${requirement.title}</h3>
-            <div class="requirement-main"><span>${requirement.attributes.join(" 或 ")}</span><strong>${requirement.range}</strong></div>
-            <p>${requirement.reason}</p>
+    container.hidden = checks.length === 0;
+    checks.forEach((check) => {
+        const section = document.createElement("section");
+        section.className = "check-card";
+        section.innerHTML = `
+            <header class="check-header">
+                <div><p class="panel-label">隱藏裁定 ${check.id}</p><h3>${check.title}</h3></div>
+                <strong class="check-dc">DC ${check.dc}</strong>
+            </header>
+            <div class="route-grid">
+                ${check.routes.map((route) => `
+                    <article class="route-card">
+                        <h4>${route.title}</h4>
+                        <p><strong>必要步驟：</strong>${route.necessarySteps}</p>
+                        <div class="route-fit"><span>${route.attribute}</span><strong>${conditionLabel(route.condition)}</strong></div>
+                        <p>${route.reason}</p>
+                    </article>
+                `).join("")}
+            </div>
+            <p class="formula-strip">基本 2d6 相加｜屬性符合：3d6 取高 2｜技能符合：總分 ＋1</p>
         `;
-        container.appendChild(card);
+        container.appendChild(section);
     });
 }
 
@@ -130,38 +143,27 @@ function renderOutcomes(container, outcomes = []) {
     `).join("") : "";
 }
 
-function renderHints(panel, container, hints = []) {
-    panel.hidden = hints.length === 0;
-    container.innerHTML = `<div class="hint-grid">${hints.map((group) => `
-        <section class="hint-group"><h3>${group.attribute}</h3><ul>${group.items.map((item) => `<li>${item}</li>`).join("")}</ul></section>
-    `).join("")}</div>`;
+function renderHints(panel, container, checks = []) {
+    panel.hidden = checks.length === 0;
+    container.innerHTML = `<div class="hint-grid">${checks.flatMap((check) => check.routes.map((route) => `
+        <section class="hint-group">
+            <h3>${check.id}｜${route.title}</h3>
+            <p>${route.hint}</p>
+            <strong>${route.attribute}：${conditionLabel(route.condition)}</strong>
+        </section>
+    `)).join("")}</div>`;
 }
 
 function renderBossTools(section, step) {
     section.hidden = !step.treasures;
     if (!step.treasures) return;
     const flow = section.querySelector("#treasure-flow");
-    const picker = section.querySelector("#threshold-picker");
-    const result = section.querySelector("#threshold-result");
-    flow.innerHTML = step.treasures.map((treasure, index) => `
+    flow.innerHTML = step.treasures.map((treasure) => `
         <section class="treasure-step">
-            <span>${index + 1}</span>
-            <div><h3>${treasure.name}</h3><p>${treasure.dice}</p><strong>${treasure.action}</strong></div>
+            <span>${treasure.order}</span>
+            <div><h3>${treasure.name}</h3><p>${treasure.timing}</p><strong>${treasure.action}</strong></div>
         </section>
     `).join("");
-    picker.replaceChildren();
-    step.thresholds.forEach((threshold, index) => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.textContent = threshold.label;
-        button.addEventListener("click", () => {
-            picker.querySelectorAll("button").forEach((item) => item.classList.remove("active"));
-            button.classList.add("active");
-            result.textContent = threshold.line;
-        });
-        picker.appendChild(button);
-        if (index === 0) button.click();
-    });
 }
 
 function showGame() {
@@ -178,11 +180,11 @@ function showGame() {
         track.appendChild(dot);
     });
 
-    fragment.querySelector("#step-label").textContent = step.label;
+    fragment.querySelector("#step-label").textContent = `v${scenario.version}｜${step.label}`;
     fragment.querySelector("#step-title").textContent = step.title;
     fragment.querySelector("#physical-cue").textContent = step.physicalCue;
     fragment.querySelector("#narration").innerHTML = step.narration.map((paragraph) => `<p>${paragraph}</p>`).join("");
-    renderRequirements(fragment.querySelector("#requirements"), step.requirements);
+    renderChecks(fragment.querySelector("#checks"), step.checks);
 
     const questionWrap = fragment.querySelector("#child-question-wrap");
     questionWrap.hidden = !step.question;
@@ -190,7 +192,7 @@ function showGame() {
 
     renderList(fragment.querySelector("#dm-rules"), "這一步的規則", step.rules);
     renderOutcomes(fragment.querySelector("#dm-outcomes"), step.outcomes);
-    renderHints(fragment.querySelector("#hint-panel"), fragment.querySelector("#hints"), step.hints);
+    renderHints(fragment.querySelector("#hint-panel"), fragment.querySelector("#hints"), step.checks);
     renderBossTools(fragment.querySelector("#boss-tools"), step);
 
     const previous = fragment.querySelector("#previous-button");
@@ -239,8 +241,8 @@ function showDebrief() {
                 b: Number(data.get("bossPoolB"))
             },
             treasureResults: {
-                backpackDice: data.get("backpackDice"),
-                flashlightLevel: data.get("flashlightLevel"),
+                backpackTarget: data.get("backpackTarget"),
+                flashlightTarget: data.get("flashlightTarget"),
                 mirror: data.get("mirrorResult")
             },
             reservesUsed: Number(data.get("reservesUsed")),
@@ -273,8 +275,8 @@ function recordMarkdown(records) {
         `- 時間：${record.durationMinutes} 分鐘`,
         `- 一般任務：${record.taskResults.map((result, index) => `${index + 1}.${result === "success" ? "成功" : "失敗"}`).join("、")}`,
         `- 寶物（${record.treasures.length}）：${record.treasures.map((key) => treasureNames[key] || key).join("、") || "無"}`,
-        `- Boss 原始骰池：A ${record.bossPool.a}／B ${record.bossPool.b}`,
-        `- 寶物結果：背包 ${formatTreasureValue(record.treasureResults.backpackDice, " 顆")}；手電筒 ${formatFlashlight(record.treasureResults.flashlightLevel)}；魔鏡 ${formatMirror(record.treasureResults.mirror)}`,
+        `- Boss 原始骰池：A ${record.bossPool.a}d6／B ${record.bossPool.b}d6，皆取高 2`,
+        `- 寶物結果：背包 ${formatTarget(record.treasureResults.backpackTarget, "多擲 1 顆")}；手電筒 ${formatTarget(record.treasureResults.flashlightTarget, "總分 ＋1")}；魔鏡 ${formatMirror(record.treasureResults.mirror)}`,
         `- 使用後援：${record.reservesUsed}`,
         `- 後援前打敗 Boss：${record.bossBeforeReserve ? "是" : "否"}`,
         `- Boss：${record.bossResult === "success" ? "成功完成" : "危機未解除"}`,
@@ -284,18 +286,15 @@ function recordMarkdown(records) {
     ].join("\n")).join("\n\n");
 }
 
-function formatTreasureValue(value, unit) {
-    return value === "none" ? "未取得" : `＋${value}${unit}`;
+function formatTarget(value, effect) {
+    if (value === "none") return "未取得／未使用";
+    return `${value.toUpperCase()} ${effect}`;
 }
 
 function formatMirror(value) {
-    if (value === "none") return "未取得";
-    if (value === "reverse") return "魔鏡反轉";
-    return `${value} 點`;
-}
-
-function formatFlashlight(value) {
-    return value === "none" ? "未取得" : `降低 ${value} 級`;
+    if (value === "none") return "未取得／未使用";
+    const [target, result] = value.split("-");
+    return `${target.toUpperCase()} 重擲${result === "success" ? "成功" : "失敗"}`;
 }
 
 function showRecords() {
@@ -311,7 +310,7 @@ function showRecords() {
             </div>
             <div>
                 <p>一般任務 ${record.taskResults.filter((result) => result === "success").length}/3｜寶物 ${record.treasures.length}｜後援用 ${record.reservesUsed}</p>
-                <p>Boss 骰池 ${record.bossPool.a}＋${record.bossPool.b}｜後援前 ${record.bossBeforeReserve ? "已成功" : "未成功"}｜最終 ${record.bossResult === "success" ? "成功" : "未完成"}</p>
+                <p>Boss 原始骰池 A ${record.bossPool.a}d6／B ${record.bossPool.b}d6｜後援前 ${record.bossBeforeReserve ? "已成功" : "未成功"}｜最終 ${record.bossResult === "success" ? "成功" : "未完成"}</p>
                 <p>理解：${escapeHtml(understandingNames[record.understanding] || record.understanding)}｜DM：${escapeHtml(dmLoadNames[record.dmLoad] || record.dmLoad)}</p>
                 <p>${escapeHtml(record.note || "沒有備註")}</p>
             </div>

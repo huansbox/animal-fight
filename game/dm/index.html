@@ -24,7 +24,7 @@
     <template id="home-template">
         <section class="home-view">
             <div class="hero-copy">
-                <p class="section-tag">團隊任務 v0.7</p>
+                <p class="section-tag">團隊任務 v0.9</p>
                 <h2>一次只看現在這一步</h2>
                 <p>桌上的 Poker 卡記錄寶物、後援與動物區域；這裡只提供爸爸當下要念的故事與私下操作。</p>
             </div>
@@ -74,19 +74,22 @@
                     <div id="narration"></div>
                 </section>
 
-                <section class="requirements" id="requirements" hidden></section>
-
                 <section class="child-question" id="child-question-wrap" hidden>
                     <p class="panel-label">讓孩子說故事</p>
                     <p id="child-question"></p>
                 </section>
 
-                <details class="dm-panel" id="dm-panel" open>
-                    <summary>DM 私下操作</summary>
+                <details class="dm-panel" id="dm-panel">
+                    <summary>孩子說完後：打開 DM 私下裁定</summary>
+                    <div class="requirements" id="checks" hidden></div>
                     <div class="dm-grid">
                         <div id="dm-rules"></div>
                         <div id="dm-outcomes"></div>
                     </div>
+                    <section class="boss-tools" id="boss-tools" hidden>
+                        <p class="panel-label">只結算桌上已取得的寶物</p>
+                        <div class="treasure-flow" id="treasure-flow"></div>
+                    </section>
                 </details>
 
                 <details class="hint-panel" id="hint-panel" hidden>
@@ -94,13 +97,6 @@
                     <div id="hints"></div>
                 </details>
 
-                <section class="boss-tools" id="boss-tools" hidden>
-                    <p class="panel-label">只結算桌上已取得的寶物</p>
-                    <div class="treasure-flow" id="treasure-flow"></div>
-                    <p class="panel-label">手電筒結果／本局門檻</p>
-                    <div class="threshold-picker" id="threshold-picker"></div>
-                    <div class="threshold-result" id="threshold-result"></div>
-                </section>
             </article>
 
             <nav class="step-nav" aria-label="關卡導覽">
@@ -113,7 +109,7 @@
     <template id="debrief-template">
         <section class="debrief-view">
             <div class="hero-copy compact">
-                <p class="section-tag">本局結束</p>
+                <p class="section-tag">團隊任務 v0.9｜本局結束</p>
                 <h2>花 30 秒留下測試紀錄</h2>
                 <p>不記錄孩子姓名與每次骰子，只留下會影響規則調整的摘要。</p>
             </div>
@@ -152,47 +148,41 @@
                 </fieldset>
                 <label>Boss 原始骰池 A
                     <select name="bossPoolA" required>
-                        <option value="1">1 顆</option>
                         <option value="2" selected>2 顆</option>
                         <option value="3">3 顆</option>
                     </select>
                 </label>
                 <label>Boss 原始骰池 B
                     <select name="bossPoolB" required>
-                        <option value="1">1 顆</option>
                         <option value="2" selected>2 顆</option>
                         <option value="3">3 顆</option>
                     </select>
                 </label>
-                <label>背包增加骰數
-                    <select name="backpackDice" required>
-                        <option value="none">未取得</option>
-                        <option value="1">＋1 顆</option>
-                        <option value="2">＋2 顆</option>
-                        <option value="3">＋3 顆</option>
+                <label>萬用背包分配
+                    <select name="backpackTarget" required>
+                        <option value="none">未取得／未使用</option>
+                        <option value="a">A 多擲 1 顆</option>
+                        <option value="b">B 多擲 1 顆</option>
                     </select>
                 </label>
-                <label>手電筒降低門檻
-                    <select name="flashlightLevel" required>
-                        <option value="none">未取得</option>
-                        <option value="1">降低 1 級</option>
-                        <option value="2">降低 2 級</option>
-                        <option value="3">降低 3 級</option>
+                <label>探險手電筒使用
+                    <select name="flashlightTarget" required>
+                        <option value="none">未取得／未使用</option>
+                        <option value="a">A 第一次總分 ＋1</option>
+                        <option value="b">B 第一次總分 ＋1</option>
                     </select>
                 </label>
-                <label class="wide">魔鏡結果
+                <label class="wide">變化魔鏡結果
                     <select name="mirrorResult" required>
-                        <option value="none">未取得</option>
-                        <option value="1">1 點</option>
-                        <option value="2">2 點</option>
-                        <option value="3">3 點</option>
-                        <option value="4">4 點</option>
-                        <option value="5">5 點</option>
-                        <option value="reverse">三顆同號：魔鏡反轉</option>
+                        <option value="none">未取得／未使用</option>
+                        <option value="a-success">重擲 A：成功</option>
+                        <option value="a-failure">重擲 A：失敗</option>
+                        <option value="b-success">重擲 B：成功</option>
+                        <option value="b-failure">重擲 B：失敗</option>
                     </select>
                 </label>
                 <fieldset>
-                    <legend>後援前是否已打敗 Boss</legend>
+                    <legend>全隊後援前是否已完成 Boss</legend>
                     <label><input type="radio" name="bossBeforeReserve" value="yes" required>是</label>
                     <label><input type="radio" name="bossBeforeReserve" value="no">否</label>
                 </fieldset>
