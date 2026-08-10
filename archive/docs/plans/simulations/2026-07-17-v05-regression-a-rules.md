@@ -1,7 +1,7 @@
 # 團隊任務 v0.5 回歸 A：規則與後援快速表
 
 > 日期：2026-07-17
-> 規則：`docs/plans/2026-07-17-team-mission-v05-rules.md`
+> 規則：`archive/docs/plans/2026-07-17-team-mission-v05-rules.md`
 > 動物資料：`game/digital/data/animals.json`
 > 結論：通過
 

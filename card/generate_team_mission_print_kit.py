@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the black-and-white team mission v0.6 print kit.
+"""Regenerate the archived black-and-white team mission v0.6 print kit.
 
 Outputs:
 - A4 landscape player control board on plain paper.
@@ -26,7 +26,7 @@ from reportlab.platypus import Paragraph
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_DIR = ROOT / "output" / "pdf"
+OUTPUT_DIR = ROOT / "archive" / "v0.6" / "output" / "pdf"
 
 CONTROL_BOARD_PDF = OUTPUT_DIR / "team-mission-v06-control-board-a4.pdf"
 REVEAL_CARDS_PDF = OUTPUT_DIR / "storm-forest-rescue-reveal-cards-four-up-a4.pdf"

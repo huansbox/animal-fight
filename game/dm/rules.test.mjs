@@ -86,7 +86,7 @@ test("Web storage 與正式實體來源已切到 v0.9", () => {
     const dmPanelEnd = index.indexOf("</details>", dmPanelStart);
     assert.ok(dmPanelStart >= 0 && bossTools > dmPanelStart && bossTools < dmPanelEnd);
     assert.match(statusCards, /該位置<br>總分 ＋1/);
-    assert.match(statusCards, /這個位置不能後援/);
+    assert.match(statusCards, /這一邊不能後援/);
     assert.doesNotMatch(statusCards, /降低 [123] 級|最大－最小|＋3 顆/);
     assert.doesNotMatch(revealData, /attrs:|range:|7、8、9|4、5、6|1、2、3/);
 });

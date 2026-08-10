@@ -1,7 +1,7 @@
 # 團隊任務 v0.6 實體測試包製作規格
 
 > 日期：2026-07-18
-> 狀態：歷史版本；已由 [`2026-07-19-team-mission-props-dm-web-design.md`](2026-07-19-team-mission-props-dm-web-design.md) 取代
+> 狀態：歷史版本；已由 [`2026-07-19-team-mission-props-dm-web-design.md`](../../../docs/plans/2026-07-19-team-mission-props-dm-web-design.md) 取代
 > 適用底板：175×122mm 放大版 Poker
 > 紙材限制：普通 A4、A4 二分雷射標籤紙、A4 四分雷射標籤紙
 
@@ -113,17 +113,16 @@ Boss 抵達時重新看 `0` 號卡。孩子在開場已看過 Boss 工作；DM �
 
 | 檔案 | 用途 |
 |---|---|
-| [`team-mission-v06-control-board-a4.pdf`](../../output/pdf/team-mission-v06-control-board-a4.pdf) | 普通 A4 單面控制板 |
-| [`storm-forest-rescue-reveal-cards-four-up-a4.pdf`](../../output/pdf/storm-forest-rescue-reveal-cards-four-up-a4.pdf) | 四分標籤紙，4 張玩家揭露卡 |
-| [`storm-forest-rescue-dm-guide-a4-duplex.pdf`](../../output/pdf/storm-forest-rescue-dm-guide-a4-duplex.pdf) | 普通 A4 雙面 DM 指南 |
+| [`team-mission-v06-control-board-a4.pdf`](../../v0.6/output/pdf/team-mission-v06-control-board-a4.pdf) | 普通 A4 單面控制板 |
+| [`storm-forest-rescue-reveal-cards-four-up-a4.pdf`](../../v0.6/output/pdf/storm-forest-rescue-reveal-cards-four-up-a4.pdf) | 四分標籤紙，4 張玩家揭露卡 |
+| [`storm-forest-rescue-dm-guide-a4-duplex.pdf`](../../v0.6/output/pdf/storm-forest-rescue-dm-guide-a4-duplex.pdf) | 普通 A4 雙面 DM 指南 |
 
-產生來源：[`card/generate_team_mission_print_kit.py`](../../card/generate_team_mission_print_kit.py)。
+產生來源：[`card/generate_team_mission_print_kit.py`](../../../card/generate_team_mission_print_kit.py)。
 
 重新產生需要 Python 3、`reportlab`，檢查 PDF 建議另裝 `pdfplumber` 與 `pypdf`：
 
 ```bash
-uv pip install reportlab pdfplumber pypdf
-python card/generate_team_mission_print_kit.py
+uv run --with reportlab --with pdfplumber --with pypdf python card/generate_team_mission_print_kit.py
 ```
 
 ## 七、實際列印後檢查

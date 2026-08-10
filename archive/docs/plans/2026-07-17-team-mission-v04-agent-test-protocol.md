@@ -3,7 +3,7 @@
 > 日期：2026-07-17
 > 狀態：測試規則凍結，等待 3 agents 完成 6 局
 > 規則來源：[`2026-07-15-team-mission-v04-rules-review.md`](2026-07-15-team-mission-v04-rules-review.md) 第一至九節
-> 動物資料：[`game/digital/data/animals.json`](../../game/digital/data/animals.json)
+> 動物資料：[`game/digital/data/animals.json`](../../../game/digital/data/animals.json)
 
 ## 一、目的與限制
 

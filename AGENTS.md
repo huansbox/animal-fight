@@ -7,6 +7,8 @@
 
 適合 6-12 歲兒童。Print & Play 自製桌遊格式。
 
+> `wiki/` + `.github/workflows/publish-wiki.yml` 是 GitHub wiki 的唯一編輯處，CI 會發佈到 `.wiki.git`；不要直接在 GitHub wiki 網頁編輯。wiki 是人類導覽快照，規格與工作狀態仍以 `AGENTS.md`、`HANDOFF.md`、`docs/` 與 tracker 為準。
+
 ## 專案結構
 ```
 animal-fight/
@@ -15,8 +17,10 @@ animal-fight/
 ├── README.md                 # 環境設置與快速開始
 ├── start-game.command        # 雙擊啟動遊戲（選單選擇對決/猜猜看）
 ├── archive/
+│   ├── README.md             # 封存範圍與現行入口
+│   ├── v0.6/output/pdf/      # v0.6 實體測試包 PDF
 │   ├── v1/                   # v1 數值封存（歷史備份）
-│   └── docs/                 # 歷史設計文件
+│   └── docs/                 # 舊規則、測試、handoff 與設計迭代
 ├── card/                     # 卡片相關檔案
 │   ├── final_cards.html      # A4 全頁列印版（132 張動物卡，v2.5 數值）
 │   ├── animal-cards-v2-first-16-half-label.html # 首批 16 張 V2 圖片完整卡面（A4 二分標籤）
@@ -25,10 +29,11 @@ animal-fight/
 │   ├── bopomofo-coverage-qa.html # 132 張正式文字注音與缺字 QA
 │   ├── team-mission-status-cards-quarter-label.html # 3 寶物＋2 後援＋3 區域卡，A4 四分標籤
 │   ├── storm-forest-rescue-reveal-cards-half-label.html # 4 張大型揭露卡，A4 二分標籤
-│   ├── reveal-card-stacked-layout-prototype.html # 最新揭露卡直向資訊層級候選，單／雙動物同頁測試
+│   ├── reveal-card-stacked-layout-prototype.html # 揭露卡歷史版面測試紀錄
 │   ├── reveal-card-requirement-ab-comparison.html # 揭露卡早期比例比較稿，僅保留紀錄
+│   ├── storm-forest-rescue-reveal-image-scale-ab-comparison.html # v0.9 繪本式圖片比例 A／B 決策稿
 │   ├── build_bopomofo_fonts.py # 從官方來源重建正式 Bold／Medium WOFF2 subset
-│   ├── generate_team_mission_print_kit.py # 產生 v0.6 控制板、揭露卡與 DM 指南 PDF
+│   ├── generate_team_mission_print_kit.py # 重建 archive/v0.6 的控制板、揭露卡與 DM 指南 PDF
 │   ├── batch_generate.py     # Batch API 批次生成寫實風格大頭照（4 子命令）
 │   ├── generate_from_jsonl.py      # 單張圖片生成腳本（舊版）
 │   ├── data/                 # 結構化動物資料（per-wave JSON）
@@ -46,19 +51,15 @@ animal-fight/
 │       ├── animal-ai-prompts{-N}.md      # 各波繪圖 prompt（1~10）
 │       └── animal-prompts-api{-N}.jsonl  # 各波 JSONL（API 用）
 ├── docs/
-│   ├── prompt.txt            # 原始需求 prompt
-│   ├── review-result.md      # 審查報告
 │   ├── attributes.md         # v2.5 完整屬性（數值+判斷原則+特殊能力設計）
 │   ├── backlog.md            # 後續擴充動物清單（39 隻）
 │   ├── 260118-animal-wave4.md  # 第四波設計文件
 │   ├── 260209-animal-wave6.md  # 第六波設計文件
 │   ├── 260210-animal-wave7.md  # 第七波設計文件
-│   ├── handoffs/               # 跨 session 接手快照
-│   │   └── handoff.md          # 舊流程歷史接手快照；目前 session 狀態以 repo root HANDOFF.md 為準
-│   └── design-versions/      # 設計迭代版本（6 個）
+│   └── plans/                # 現行規格與仍在使用的設計文件
 ├── game/
 │   ├── rulebook.md           # 合作闘關規則書
-│   ├── battle-rules.md       # 動物大對決淘汰賽規則（v2.4 數值）
+│   ├── battle-rules.md       # 動物大對決淘汰賽規則（v2.5 數值）
 │   ├── dm/                   # 團隊任務 DM 專注模式（Cloudflare Pages 靜態 Web App）
 │   ├── digital/              # 動物大對決數位版（離線 Web App）
 │   │   ├── README.md         # 啟動方式、遊戲規則、維護指南
@@ -76,11 +77,9 @@ animal-fight/
 │   ├── animal-fight-card-size-test-122x175.pdf # 放大版 Poker 尺寸測試
 │   ├── team-mission-status-zone-cards-quarter-label-a4.pdf # 8 張狀態／區域卡
 │   ├── storm-forest-rescue-reveal-cards-half-label-a4.pdf # 4 張大型劇情揭露卡
-│   ├── reveal-card-stacked-layout-prototype-a4.pdf # 最新揭露卡單／雙動物排版測試
+│   ├── reveal-card-stacked-layout-prototype-a4.pdf # 揭露卡歷史版面測試
 │   ├── reveal-card-requirement-ab-comparison-a4.pdf # 揭露卡早期 A／B 比例比較
-│   ├── team-mission-v06-control-board-a4.pdf # 團隊任務 A4 控制板
-│   ├── storm-forest-rescue-reveal-cards-four-up-a4.pdf # 四分標籤揭露卡
-│   ├── storm-forest-rescue-dm-guide-a4-duplex.pdf # A4 雙面 DM 指南
+│   ├── storm-forest-rescue-reveal-image-scale-ab-comparison-a4.pdf # v0.9 繪本式圖片比例 A／B 決策稿
 │   └── bopomofo-font-coverage-qa.pdf # 132 張正式文字注音覆蓋 QA
 └── sim/                      # 對戰模擬器（v3~v5 + shared_dice）
     └── results/              # 模擬結果
@@ -192,23 +191,11 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - 難度：DC 10（優勢）/ 12（標準）/ 14（劣勢）
 - 生命：共享 5 愛心
 - 勝利：累積 5 前進標記 → 終局
-- **團隊任務模式 v0.2 草案**：[`docs/plans/2026-07-15-team-mission-simulation-review.md`](docs/plans/2026-07-15-team-mission-simulation-review.md)（完整文字模擬、三方 blind review、下一次實測規則）
-- **團隊任務 v0.3 後援制**：[`docs/plans/2026-07-15-team-mission-v03-reserve-simulation-review.md`](docs/plans/2026-07-15-team-mission-v03-reserve-simulation-review.md)（8 隻配置、完整模擬、三方 blind review、v0.4 建議）
-- **團隊任務 v0.4 歷史候選**：[`docs/plans/2026-07-15-team-mission-v04-rules-review.md`](docs/plans/2026-07-15-team-mission-v04-rules-review.md)（六格全公開、開局先排陣；保留為候選隊長策略模式）
-- **團隊任務 v0.5 停止版本**：[`docs/plans/2026-07-17-team-mission-v05-rules.md`](docs/plans/2026-07-17-team-mission-v05-rules.md)（v0.4 文字修訂；回歸期間轉向逐關揭露）
-- **團隊任務 v0.6 歷史基準**：[`docs/plans/2026-07-17-team-mission-v06-progressive-reveal-rules.md`](docs/plans/2026-07-17-team-mission-v06-progressive-reveal-rules.md)（Boss 先提示、前三關逐關揭露、待命／再挑戰／休息三區、兩次後援；6 局 Agent 模擬與短回歸通過；護盾部分已被 v0.7 取代）
-- **v0.6 模擬整併**：[`docs/plans/2026-07-17-team-mission-v06-agent-simulation-review.md`](docs/plans/2026-07-17-team-mission-v06-agent-simulation-review.md)（5 歲、9 歲、兄弟模式各自然局＋邊界局；後援 A／B 難度比較）
-- **v0.7 Boss 寶物規則**：[`docs/plans/2026-07-19-team-mission-v07-treasure-boss-design.md`](docs/plans/2026-07-19-team-mission-v07-treasure-boss-design.md)（三件寶物、固定 `2＋2`、結算順序、成功率與後援互動；取代 Boss 護盾）
-- **v0.7 固定劇情模板**：[`docs/plans/2026-07-17-team-mission-story-template.md`](docs/plans/2026-07-17-team-mission-story-template.md)（批次產生欄位、區間理由、寶物銜接、失敗旁白與檢查清單）
-- **v0.7 固定劇情原型**：[`docs/plans/scenarios/`](docs/plans/scenarios/)（災難救援／調查解謎／遠征運送各 1 套；三套皆已遷移為抽寶物與固定 `2＋2` Boss）
-- **v0.6 舊實體測試包**：[`docs/plans/2026-07-18-team-mission-physical-production.md`](docs/plans/2026-07-18-team-mission-physical-production.md)（已被 7/19 原型取代，保留歷史）
+- **團隊任務 v0.2～v0.8 歷史規則與測試**：[`archive/docs/plans/`](archive/docs/plans/)（保留規則演進、Agent 模擬、成人 dry run、兒童真人局與三套 v0.7 固定劇情；不再作為現行規則入口）
+- **v0.6 舊實體測試包**：[`archive/docs/plans/2026-07-18-team-mission-physical-production.md`](archive/docs/plans/2026-07-18-team-mission-physical-production.md)（PDF 位於 `archive/v0.6/output/pdf/`，已被現行原型取代）
 - **v0.9 現行實體／DM 規格**：[`docs/plans/2026-07-19-team-mission-props-dm-web-design.md`](docs/plans/2026-07-19-team-mission-props-dm-web-design.md)（3 張寶物、2 張後援、3 張區域 Poker、4 張孩子用大型揭露卡、DM 隱藏裁定 Web App；正式列印 PDF 均已完成畫面 QA）
-- **類 D&D d6 歷史設計稿**：[`docs/plans/2026-07-22-team-mission-dnd-check-design.md`](docs/plans/2026-07-22-team-mission-dnd-check-design.md)（純 v0.8、v0.8-H 與 v0.8-M 的設計基礎、測試證據與 2026-08-07 正式分流）
-- **純 v0.8 成人代演與分齡審查**：[`docs/plans/2026-07-31-team-mission-v08-adult-dry-run.md`](docs/plans/2026-07-31-team-mission-v08-adult-dry-run.md)、[`docs/plans/2026-07-31-team-mission-v08-child-playability-review.md`](docs/plans/2026-07-31-team-mission-v08-child-playability-review.md)（完整對話、3 Agent 的 5 歲／9 歲／重玩性 review、v0.7／v0.8 取捨）
-- **v0.8-M 隱藏基準／提示制成人測試**：[`docs/plans/2026-08-04-team-mission-v08m-hidden-prompt-adult-test.md`](docs/plans/2026-08-04-team-mission-v08m-hidden-prompt-adult-test.md)（四情境微測）、[`docs/plans/2026-08-06-team-mission-v08m-full-adult-playtest.md`](docs/plans/2026-08-06-team-mission-v08m-full-adult-playtest.md)（十二條正式基準、132 張覆蓋審查、完整成人局、資源流程與通過結論）；停止的 H／M 測試及舊分齡測試單保留為歷史
-- **v0.8-M 兄弟真人完整局**：[`docs/plans/2026-08-06-team-mission-v08m-sibling-child-playtest.md`](docs/plans/2026-08-06-team-mission-v08m-sibling-child-playtest.md)（5 歲＋9 歲自然手牌、六位置與 Boss、tutorial-in-play、卡片所有權、共同後援與背包；完整局通關，局後訪談略過；正式選擇局部修正後最小兒童回歸；Issue #7 剩餘部分取消後以 `not planned` 關閉）
 - **v0.9 2d6 設計正本**：[`docs/plans/2026-08-07-team-mission-v09-2d6-design-review.md`](docs/plans/2026-08-07-team-mission-v09-2d6-design-review.md)（`2d6` 核心、屬性 `3d6` 取高 2、技能 `＋1`、固定 DC 7／8、單向門檻、十二條隱藏基準與三寶物；原訂最小兒童回歸已由 owner 略過）
-- **歷史接手快照**：[`docs/handoffs/handoff.md`](docs/handoffs/handoff.md)（舊流程截至 2026-08-04 的快照；目前 session 接手狀態以 repo root `HANDOFF.md` 為準）
+- **歷史接手快照**：[`archive/docs/handoffs/`](archive/docs/handoffs/)；目前 session 接手狀態只看 repo root [`HANDOFF.md`](HANDOFF.md)
 
 ### 動物大對決（battle-rules.md）
 - 賽制：淘汰賽，每輪 1 戰定勝負（進階：3 戰 2 勝）
@@ -239,14 +226,14 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - **討論文件**：[`docs/plans/2026-02-10-card-size-production.md`](docs/plans/2026-02-10-card-size-production.md)
 - **團隊任務現行原型**：[`docs/plans/2026-07-19-team-mission-props-dm-web-design.md`](docs/plans/2026-07-19-team-mission-props-dm-web-design.md)
 - **目前原型**：A4 全頁、黑白雷射列印，已用於親子遊玩，孩子喜歡
-- **暫定尺寸**：放大版 Poker 122×175mm；無圖測試 PDF 已試印，文字與數字大小可接受
+- **暫定底卡尺寸**：放大版 Poker 122×175mm；動物卡正式卡面為 `117×170mm`
 - **動物卡工法**：A4 二分黑白雷射標籤紙，每張 A4 排 2 張；卡面 `117×170mm`，以名義 `122×175mm` Poker 計算四邊約 `2.5mm` 安全距離，裁切後貼合
 - **屬性視覺定案**：骰面 1-5 置於插圖正上方；五屬性採 B「簡化寫實鋼筆插畫」情境圖，不使用抽象 icon
 - **屬性插圖**：[`card/attribute-illustrations/`](card/attribute-illustrations/)（力量搬石、速度奔跑、攻擊碎木、防禦擋石、聰明看地圖；卡面顯示高度 16mm）
 - **動物圖片風格測試**：[`card/animal-image-style-3x4-comparison.html`](card/animal-image-style-3x4-comparison.html)（V1／V2／V3 × 非洲象、黑豹、河豚、行軍蟻，圖片框實際 114×70mm）；Prompt：[`card/img-prompt/animal-print-bplus-3x4.md`](card/img-prompt/animal-print-bplus-3x4.md)；PDF：[`output/pdf/animal-image-bplus-3x4-comparison.pdf`](output/pdf/animal-image-bplus-3x4-comparison.pdf)
 - **動物圖片風格定案**：V2「圖鑑平衡版」（五階灰階、中粗外輪廓、只保留物種辨識所需紋理）；四種測試動物全部採用 V2，V1／V3 僅保留為比較紀錄
 - **動作強度比較**：[`card/animal-action-v2-comparison.html`](card/animal-action-v2-comparison.html)（非洲獅、皇帝企鵝、紅毛猩猩、金剛鸚鵡 × 現有 V2／V2.1 輕度／V2.2 中度）；Prompt／QA：[`card/img-prompt/animal-action-v2-comparison.md`](card/img-prompt/animal-action-v2-comparison.md)；PDF：[`output/pdf/animal-action-v2-comparison-a4.pdf`](output/pdf/animal-action-v2-comparison-a4.pdf)。V2.1／V2.2 沒有顯著提升，正式圖片維持 V2.0，候選只保留為測試紀錄
-- **首批 16 張 V2 動物卡**：[`card/animal-cards-v2-first-16-half-label.html`](card/animal-cards-v2-first-16-half-label.html)；Prompt／審核：[`card/img-prompt/animal-print-v2-first-16.md`](card/img-prompt/animal-print-v2-first-16.md)；列印 PDF：[`output/pdf/animal-fight-v2-first-16-half-label-a4.pdf`](output/pdf/animal-fight-v2-first-16-half-label-a4.pdf)；日期版細節：[`docs/handoffs/2026-07-20-animal-v2-first-16.md`](docs/handoffs/2026-07-20-animal-v2-first-16.md)；最新接手入口：[`docs/handoffs/handoff.md`](docs/handoffs/handoff.md)
+- **首批 16 張 V2 動物卡**：[`card/animal-cards-v2-first-16-half-label.html`](card/animal-cards-v2-first-16-half-label.html)；Prompt／審核：[`card/img-prompt/animal-print-v2-first-16.md`](card/img-prompt/animal-print-v2-first-16.md)；列印 PDF：[`output/pdf/animal-fight-v2-first-16-half-label-a4.pdf`](output/pdf/animal-fight-v2-first-16-half-label-a4.pdf)；日期版細節：[`archive/docs/handoffs/2026-07-20-animal-v2-first-16.md`](archive/docs/handoffs/2026-07-20-animal-v2-first-16.md)；目前接手入口：[`HANDOFF.md`](HANDOFF.md)
 - **動物卡版面原型**：[`card/animal-card-final-prototype.html`](card/animal-card-final-prototype.html)（122×175mm、全卡注音、黑白雷射列印）
 - **正式注音字型**：[`card/fonts/bopomofo/`](card/fonts/bopomofo/)（v1.500 固定來源、Bold／Medium subset、corpus、授權、build report）；QA：[`card/bopomofo-coverage-qa.html`](card/bopomofo-coverage-qa.html)、[`output/pdf/bopomofo-font-coverage-qa.pdf`](output/pdf/bopomofo-font-coverage-qa.pdf)
 - **團隊任務工法**：萬用背包／探險手電筒／變化魔鏡各 1 張、後援 2 張、待命／再挑戰／休息各 1 張，共用 2 張 A4 四分標籤；4 張大型揭露卡使用 2 張 A4 二分標籤；全部貼在放大版 Poker 上

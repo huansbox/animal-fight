@@ -1,6 +1,6 @@
 # 動物屬性 v2.5
 
-> **注意**：本檔為人類可讀的參考文件。卡片資料的 single source of truth 為 `card/data/animals-wave{N}.json`。本檔每 2-3 波批次更新。
+> **注意**：本檔是 132 隻動物的完整人類可讀數值與設計規格；現行完整結構化資料正本為 `game/digital/data/animals.json`。`card/data/animals-wave{N}.json` 目前只保存第 7～10 波的分波設計輸出，較早波次以本檔與歷史設計文件追溯。本檔每 2～3 波批次更新。
 
 > **版本**：2.5
 > **建立日期**：2026-01-15

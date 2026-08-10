@@ -8,16 +8,16 @@ from __future__ import annotations
 - dall-e-3（回傳圖片 URL，再下載存檔）
 
 使用方式：
-  1) pip install openai python-dotenv
+  1) 在 repo root 執行 uv sync
   2) 在 `card/.env` 填入 OPENAI_API_KEY
-  3) python generate_from_jsonl.py
+  3) uv run python card/generate_from_jsonl.py
 
 可選參數：
-  - 指定輸入 JSONL：python generate_from_jsonl.py --input img-prompt/animal-prompts-api-3-2.jsonl
-  - 指定輸出資料夾：python generate_from_jsonl.py --output-dir images
-  - 每個 prompt 產多張：python generate_from_jsonl.py --num-images 2
-  - 只跑前 N 筆：python generate_from_jsonl.py --limit 1
-  - 覆寫既有檔案：python generate_from_jsonl.py --overwrite
+  - 指定輸入 JSONL：uv run python card/generate_from_jsonl.py --input card/img-prompt/animal-prompts-api-3-2.jsonl
+  - 指定輸出資料夾：uv run python card/generate_from_jsonl.py --output-dir card/images
+  - 每個 prompt 產多張：uv run python card/generate_from_jsonl.py --num-images 2
+  - 只跑前 N 筆：uv run python card/generate_from_jsonl.py --limit 1
+  - 覆寫既有檔案：uv run python card/generate_from_jsonl.py --overwrite
 
 輸入檔（JSONL）格式範例：
   {"id":"01","prompt":"..."}

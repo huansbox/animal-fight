@@ -15,7 +15,8 @@
 ### 1) 安裝相依套件
 
 ```bash
-pip install openai python-dotenv
+cd animal-fight
+uv sync
 ```
 
 ### 2) 設定 API Key
@@ -28,23 +29,22 @@ OPENAI_API_KEY=sk-...
 ### 3) 執行批次產圖
 
 ```bash
-cd D:\mywork\animal-fight\card
-python generate_from_jsonl.py
+uv run python card/generate_from_jsonl.py
 ```
 
 指定 prompt 檔（例如 icon）：
 ```bash
-python generate_from_jsonl.py --input img-prompt/icon-prompts-api.jsonl
+uv run python card/generate_from_jsonl.py --input card/img-prompt/icon-prompts-api.jsonl
 ```
 
 同一個 prompt 產 2 張圖（檔名會變成 `id_1.png`、`id_2.png`）：
 ```bash
-python generate_from_jsonl.py --num-images 2
+uv run python card/generate_from_jsonl.py --num-images 2
 ```
 
 調整每張圖的等待時間（避免 rate limit）：
 ```bash
-python generate_from_jsonl.py --sleep-seconds 8
+uv run python card/generate_from_jsonl.py --sleep-seconds 8
 ```
 
 ### 4) 輸出結果

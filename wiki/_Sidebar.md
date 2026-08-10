@@ -10,7 +10,8 @@
 
 **Repo 內 source of truth**
 
-- [CLAUDE.md](https://github.com/huansbox/animal-fight/blob/master/CLAUDE.md) — 架構、技術決策、動物設計 SOP
+- [AGENTS.md](https://github.com/huansbox/animal-fight/blob/master/AGENTS.md) — 架構、技術決策、動物設計 SOP
 - [docs/attributes.md](https://github.com/huansbox/animal-fight/blob/master/docs/attributes.md) — v2.5 完整數值規格
-- [docs/plans/](https://github.com/huansbox/animal-fight/tree/master/docs/plans) — 進行中的設計討論
+- [HANDOFF.md](https://github.com/huansbox/animal-fight/blob/master/HANDOFF.md) — 目前 session 接手狀態
+- [docs/plans/](https://github.com/huansbox/animal-fight/tree/master/docs/plans) — 現行規格與設計文件
 - [GitHub issues](https://github.com/huansbox/animal-fight/issues)

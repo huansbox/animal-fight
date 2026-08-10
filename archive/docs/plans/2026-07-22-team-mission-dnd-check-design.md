@@ -1,7 +1,7 @@
 # 團隊任務類 D&D d6 檢定設計
 
 > 日期：2026-07-22；候選更新：2026-08-07
-> 狀態：本文件的 v0.8／v0.8-H／v0.8-M 規格保留為歷史設計與測試依據；Issue [#7](https://github.com/huansbox/animal-fight/issues/7) 事後檢討已選擇「局部修正後最小兒童回歸」，新候選見 [`2026-08-07-team-mission-v09-2d6-design-review.md`](2026-08-07-team-mission-v09-2d6-design-review.md)
+> 狀態：本文件的 v0.8／v0.8-H／v0.8-M 規格保留為歷史設計與測試依據；Issue [#7](https://github.com/huansbox/animal-fight/issues/7) 事後檢討已選擇「局部修正後最小兒童回歸」，新候選見 [`2026-08-07-team-mission-v09-2d6-design-review.md`](../../../docs/plans/2026-08-07-team-mission-v09-2d6-design-review.md)
 > 真人測試 Branch：`test/issue-7-v08m-child-playtest`
 
 ## 結論
@@ -10,7 +10,7 @@
 
 v0.8-M 不直接進實作，也不停止整個方向；正式三選一結論為「局部修正後再做一次最小兒童回歸」。新候選命名為 v0.9，改用基本 `2d6`、屬性符合時 `3d6` 取高 2、技能符合 `＋1`、一般 DC 7 與 Boss DC 8；需求只保留單向門檻，並取消屬性不符後的免費換卡／改方法。
 
-tutorial-in-play 正式成為首局預設。略過的局後訪談不補做，未來結論只採可觀察行為，不推論主觀樂趣或公平感。完整規格、十二條基準、寶物順序、成功率與最小回歸範圍見 [`2026-08-07-team-mission-v09-2d6-design-review.md`](2026-08-07-team-mission-v09-2d6-design-review.md)。通過回歸前仍不修改 `game/dm/`、實體卡或 PDF。
+tutorial-in-play 正式成為首局預設。略過的局後訪談不補做，未來結論只採可觀察行為，不推論主觀樂趣或公平感。完整規格、十二條基準、寶物順序、成功率與最小回歸範圍見 [`2026-08-07-team-mission-v09-2d6-design-review.md`](../../../docs/plans/2026-08-07-team-mission-v09-2d6-design-review.md)。通過回歸前仍不修改 `game/dm/`、實體卡或 PDF。
 
 ### v0.8 歷史脈絡
 

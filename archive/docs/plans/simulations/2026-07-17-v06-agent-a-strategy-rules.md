@@ -1,8 +1,8 @@
 # 團隊任務 v0.6 Agent A：策略與規則測試
 
 > 日期：2026-07-17
-> 規則：`docs/plans/2026-07-17-team-mission-v06-progressive-reveal-rules.md`
-> 協定：`docs/plans/2026-07-17-team-mission-v06-agent-test-protocol.md`
+> 規則：`archive/docs/plans/2026-07-17-team-mission-v06-progressive-reveal-rules.md`
+> 協定：`archive/docs/plans/2026-07-17-team-mission-v06-agent-test-protocol.md`
 > 基準：後援 A「取較高、不相加」
 > 影子：後援 B「補足缺口」
 > 判定：通過，無遊戲規則阻擋

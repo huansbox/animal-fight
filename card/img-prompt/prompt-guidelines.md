@@ -422,7 +422,7 @@ AI 圖像生成器的能力邊界：只能畫「看得見的東西」。
 
 ### 轉換檢查清單
 
-- [ ] 每行是合法 JSON（可用 `python -m json.tool` 驗證）
+- [ ] 每行是合法 JSON（可用 `uv run python -m json.tool` 驗證）
 - [ ] 所有 `id` 全域唯一（跨波次不重複）
 - [ ] prompt 已移除 Midjourney 參數（`--ar`、`--v` 等）
 - [ ] 檔案編碼為 UTF-8

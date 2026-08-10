@@ -3,7 +3,7 @@
 > 日期：2026-07-20
 > 狀態：16 張圖片、全卡注音卡面、A4 二分標籤 PDF 與畫面 QA 已完成；等待實際黑白列印及真人對戰驗證
 
-> 最新跨功能接手入口：[`handoff.md`](handoff.md)
+> 目前接手入口：repo root [`HANDOFF.md`](../../../HANDOFF.md)
 
 ## 已鎖定動物
 
@@ -28,11 +28,11 @@
 
 ## 正式檔案
 
-- Prompt 與審核：[`../../card/img-prompt/animal-print-v2-first-16.md`](../../card/img-prompt/animal-print-v2-first-16.md)
-- 組合後 JSONL：[`../../card/img-prompt/animal-print-v2-first-16.jsonl`](../../card/img-prompt/animal-print-v2-first-16.jsonl)
-- 16 張 PNG：[`../../card/images/`](../../card/images/)
-- 卡面 HTML：[`../../card/animal-cards-v2-first-16-half-label.html`](../../card/animal-cards-v2-first-16-half-label.html)
-- 列印 PDF：[`../../output/pdf/animal-fight-v2-first-16-half-label-a4.pdf`](../../output/pdf/animal-fight-v2-first-16-half-label-a4.pdf)
+- Prompt 與審核：[`../../../card/img-prompt/animal-print-v2-first-16.md`](../../../card/img-prompt/animal-print-v2-first-16.md)
+- 組合後 JSONL：[`../../../card/img-prompt/animal-print-v2-first-16.jsonl`](../../../card/img-prompt/animal-print-v2-first-16.jsonl)
+- 16 張 PNG：[`../../../card/images/`](../../../card/images/)
+- 卡面 HTML：[`../../../card/animal-cards-v2-first-16-half-label.html`](../../../card/animal-cards-v2-first-16-half-label.html)
+- 列印 PDF：[`../../../output/pdf/animal-fight-v2-first-16-half-label-a4.pdf`](../../../output/pdf/animal-fight-v2-first-16-half-label-a4.pdf)
 
 ## 生圖與 QA 結果
 

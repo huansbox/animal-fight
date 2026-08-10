@@ -2,7 +2,7 @@
 
 > 日期：2026-07-17
 > 回歸角色：Agent B，家庭共玩與故事 UX
-> 規則來源：`docs/plans/2026-07-17-team-mission-v05-rules.md`
+> 規則來源：`archive/docs/plans/2026-07-17-team-mission-v05-rules.md`
 > 自然局：seed 5202
 > 判定：**失敗**
 

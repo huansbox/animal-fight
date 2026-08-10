@@ -41,10 +41,10 @@
 
 **放大版 Poker 尺寸測試**
 
-- 暫定卡面為 122×175mm，使用 A4 黑白雷射標籤紙，每張 A4 橫式排 2 張。
+- 暫定底卡為 122×175mm 放大版 Poker；首批正式卡面已縮為 117×170mm，使用 A4 黑白雷射標籤紙，每張 A4 橫式排 2 張。
 - 無圖測試版：[`card/print-size-test-122x175.html`](card/print-size-test-122x175.html)
 - 可直接列印 PDF：[`output/pdf/animal-fight-card-size-test-122x175.pdf`](output/pdf/animal-fight-card-size-test-122x175.pdf)
-- 目前試印大小可接受；等放大版 Poker 到貨並量測實際尺寸後，再調整最終卡面與貼紙內縮量。
+- 目前試印大小可接受；重新取得放大版 Poker 後量測 3–5 張實物，再複核 117×170mm 卡面與貼歪容錯。
 
 **團隊任務 v0.9 黑白列印原型**
 
@@ -92,14 +92,14 @@ uv run python -m http.server 8080
 **數位版圖片生成（寫實風格）：**
 
 ```bash
-pip install openai python-dotenv
+uv sync
 # 在 card/.env 填入 OPENAI_API_KEY
 
 cd card
-python3 batch_generate.py generate --skip-existing  # 產生 JSONL
-python3 batch_generate.py submit                     # 提交 batch job
-python3 batch_generate.py status --wait              # 等待完成
-python3 batch_generate.py download                   # 下載至 images-realistic/
+uv run python batch_generate.py generate --skip-existing  # 產生 JSONL
+uv run python batch_generate.py submit                     # 提交 batch job
+uv run python batch_generate.py status --wait              # 等待完成
+uv run python batch_generate.py download                   # 下載至 images-realistic/
 ```
 
 ## 專案結構
@@ -122,7 +122,10 @@ animal-fight/
 │   └── quiz/                 # 動物猜猜看（離線 Web App）
 ├── docs/
 │   ├── attributes.md         # 動物屬性數值表（v2.5）
-│   └── design-versions/      # 設計迭代版本存檔
+│   └── plans/                # 現行規格與仍在使用的設計文件
+├── archive/
+│   ├── docs/                 # 舊規則、測試、handoff 與設計迭代
+│   └── v0.6/output/pdf/      # v0.6 實體測試包
 └── sim/
     ├── battle_sim_v5.py      # 對戰模擬器（64 隻，新版骰 6 規則）
     ├── battle_sim_v4.py      # 對戰模擬器（48 隻，3 強循環賽）

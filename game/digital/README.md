@@ -1,6 +1,6 @@
 # 動物大對決 — 數位版
 
-離線單機版，瀏覽器開 `index.html` 即可遊玩。
+離線單機版，透過本機 HTTP server 在瀏覽器遊玩。
 目標裝置：MacBook Pro 14 吋（搭飛機/火車讓小孩玩）。
 
 ## 啟動
@@ -11,7 +11,7 @@
 
 ```bash
 cd animal-fight          # 專案根目錄
-python -m http.server 8080
+uv run python -m http.server 8080
 # 瀏覽器開 http://localhost:8080/game/digital/
 ```
 

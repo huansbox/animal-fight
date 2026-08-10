@@ -1,9 +1,9 @@
-# 團隊任務固定劇情索引
+# 團隊任務 v0.7 固定劇情歷史索引
 
 > 日期：2026-07-17
-> 狀態：三套劇情皆已遷移為 v0.7 寶物流程；等待依序真人實玩
+> 狀態：已封存；三套劇情保留 v0.7 寶物流程與故事來源，不是現行 v0.9 規則
 
-共用產生規格見 [`../2026-07-17-team-mission-story-template.md`](../2026-07-17-team-mission-story-template.md)，現行候選機制以 [`../2026-07-19-team-mission-v07-treasure-boss-design.md`](../2026-07-19-team-mission-v07-treasure-boss-design.md) 為準。下列三份劇情已統一使用一般任務成功抽寶物、Boss 固定原始 `2＋2`、手電筒／魔鏡／背包結算與後援取較高不相加。
+共用產生規格見 [`../2026-07-17-team-mission-story-template.md`](../2026-07-17-team-mission-story-template.md)，歷史機制見 [`../2026-07-19-team-mission-v07-treasure-boss-design.md`](../2026-07-19-team-mission-v07-treasure-boss-design.md)。下列三份劇情使用一般任務成功抽寶物、Boss 固定原始 `2＋2`、手電筒／魔鏡／背包結算與後援取較高不相加；現行 prototype 請看 [`docs/plans/2026-08-07-team-mission-v09-2d6-design-review.md`](../../../../docs/plans/2026-08-07-team-mission-v09-2d6-design-review.md)。
 
 ## 三套固定劇情
 

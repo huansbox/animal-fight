@@ -1,50 +1,43 @@
 # Animal Fight（動物守護者）— 專案 Wiki
 
-自製兒童桌遊：132 隻動物卡，一套五維數值同時支撐「實體 Print & Play」與「離線網頁小遊戲」。個人專案，做給自己家兩個小孩玩（搭飛機／火車打發時間），非商業用途。
+自製兒童桌遊與離線網頁遊戲：132 隻動物卡支援「動物大對決」與 DM 帶領的「團隊任務」。個人非商業專案，主要玩家是 5 歲與 9 歲兄弟。
 
-目前 132 隻動物與兩個離線數位小遊戲已完成。實體版已用 A4 黑白雷射原型實際遊玩，孩子喜歡；「動物大對決」的一戰定勝負單淘汰核心玩法已通過實玩。「團隊任務」合作模式已收斂為 v0.6 逐關揭露規則，完成 3 Agents 共 6 局模擬、短回歸與三套固定劇情，下一步是真人親子實玩。
+團隊任務目前是 v0.9 owner-approved prototype：DM Web、寶物卡、揭露卡與列印 PDF 已完成，但尚未取得 v0.9 的兒童操作證據，不能標示為 child-validated。
 
 ## 頂層約束
 
-這些約束 gate 掉了後續所有設計決策，先看這裡再看細節：
-
-- **實際玩家是 5 歲與 9 歲的兄弟**（README 寫的 6-12 歲是對外說法）。年齡差是硬約束：規則必須能分層，弟弟玩得動、哥哥不會膩。三方 review 的結論是「兩位數 HP 心算」直接踩線——小孩會變成在看爸爸算數，不是在玩。
-- **純前端、零依賴、可離線**。兩個 Web 小遊戲都是 Vanilla HTML/CSS/JS + ES Modules，沒有框架、沒有 build step、沒有後端。理由是要在飛機上沒網路時能玩。
-- **單人維護**。優先簡單方案，不為假想的未來需求加抽象層。
-- **Print & Play**。實體版必須能用家用印表機 + 文具店買得到的材料做出來。
+- **兒童可操作優先**：首局使用 tutorial-in-play，不一次講完整規則；5 歲孩子能否自行操作 3～4 顆骰取高 2 是後續觀察重點。
+- **純前端、可離線**：三個 Web 工具均為 Vanilla HTML/CSS/JS，沒有 framework、build step 或後端。
+- **單人維護**：只做目前需求需要的最簡方案。
+- **Print & Play**：實體版以 A4 黑白雷射列印與文具店可取得的材料製作。
 
 ## 系統組成
 
 | 區塊 | 職責 | 位置 |
 |---|---|---|
-| 動物資料 | 132 隻的五維數值、技能、技能加成（唯一數值來源） | [`card/data/`](https://github.com/huansbox/animal-fight/tree/master/card/data)（分波）→ [`game/digital/data/animals.json`](https://github.com/huansbox/animal-fight/blob/master/game/digital/data/animals.json)（合併） |
-| 數值規格 | 五維判斷原則、特殊能力設計、審核清單 | [`docs/attributes.md`](https://github.com/huansbox/animal-fight/blob/master/docs/attributes.md) |
-| 卡片列印 | A4 全頁原型；122×175mm 放大版 Poker 測試 | [`card/final_cards.html`](https://github.com/huansbox/animal-fight/blob/master/card/final_cards.html)、[`card/print-size-test-122x175.html`](https://github.com/huansbox/animal-fight/blob/master/card/print-size-test-122x175.html)、[測試 PDF](https://github.com/huansbox/animal-fight/blob/master/output/pdf/animal-fight-card-size-test-122x175.pdf) |
-| 圖片生成 | OpenAI Batch API 批次生成寫實動物大頭照 | [`card/batch_generate.py`](https://github.com/huansbox/animal-fight/blob/master/card/batch_generate.py) + [`card/img-prompt/`](https://github.com/huansbox/animal-fight/tree/master/card/img-prompt) |
-| 實體規則 | 團隊任務 v0.6（DM 帶隊）／動物大對決（1v1 淘汰賽） | [`v0.6 規則`](https://github.com/huansbox/animal-fight/blob/master/docs/plans/2026-07-17-team-mission-v06-progressive-reveal-rules.md)、[`固定劇情模板`](https://github.com/huansbox/animal-fight/blob/master/docs/plans/2026-07-17-team-mission-story-template.md)、[`game/battle-rules.md`](https://github.com/huansbox/animal-fight/blob/master/game/battle-rules.md) |
-| 數位版・動物大對決 | 選角 → 對戰 → 淘汰賽樹，含 AI 對手 | [`game/digital/`](https://github.com/huansbox/animal-fight/tree/master/game/digital) |
-| 數位版・動物猜猜看 | 3 提示猜動物，含 132 題全制霸模式 | [`game/quiz/`](https://github.com/huansbox/animal-fight/tree/master/game/quiz) |
-| 平衡模擬器 | 大量對戰模擬驗證數值平衡 | [`sim/`](https://github.com/huansbox/animal-fight/tree/master/sim) |
+| 動物資料 | 132 隻完整結構化資料正本 | [`game/digital/data/animals.json`](https://github.com/huansbox/animal-fight/blob/master/game/digital/data/animals.json) |
+| 數值與設計規格 | 五維判斷、技能設計與人類可讀完整表 | [`docs/attributes.md`](https://github.com/huansbox/animal-fight/blob/master/docs/attributes.md) |
+| 團隊任務 v0.9 | `2d6`、屬性額外骰、技能 `+1`、固定 DC 7／8 | [v0.9 設計正本](https://github.com/huansbox/animal-fight/blob/master/docs/plans/2026-08-07-team-mission-v09-2d6-design-review.md)、[`game/dm/`](https://github.com/huansbox/animal-fight/tree/master/game/dm) |
+| 實體卡片 | 首批 16 張動物卡、寶物／區域卡與大型揭露卡 | [`card/`](https://github.com/huansbox/animal-fight/tree/master/card)、[`output/pdf/`](https://github.com/huansbox/animal-fight/tree/master/output/pdf) |
+| 動物大對決 | 實體 1v1 淘汰賽與離線 Web App | [`game/battle-rules.md`](https://github.com/huansbox/animal-fight/blob/master/game/battle-rules.md)、[`game/digital/`](https://github.com/huansbox/animal-fight/tree/master/game/digital) |
+| 動物猜猜看 | 132 題、三提示與全制霸存檔 | [`game/quiz/`](https://github.com/huansbox/animal-fight/tree/master/game/quiz) |
+| 歷史證據 | v0.2～v0.8 規則、測試、handoff 與舊列印包 | [`archive/`](https://github.com/huansbox/animal-fight/tree/master/archive) |
 
-架構細節、當前決策與新增動物的 10 步 SOP 寫在 [`AGENTS.md`](https://github.com/huansbox/animal-fight/blob/master/AGENTS.md)，wiki 不重複。
+架構、設計決策、新增動物 SOP 與當前狀態以 [`AGENTS.md`](https://github.com/huansbox/animal-fight/blob/master/AGENTS.md) 為準；本 session 狀態看 repo root [`HANDOFF.md`](https://github.com/huansbox/animal-fight/blob/master/HANDOFF.md)。
 
 ## 專案階段
 
-**已完成**：10 波共 132 隻動物（數值 → 技能 → 繪圖 prompt → JSON → HTML 全打通）、132 張寫實風格圖片、兩個離線 Web 小遊戲、對戰模擬器 v3–v5、A4 黑白實體原型與首輪親子遊玩、團隊任務 v0.6 規則與 6 局 Agent 模擬、共用劇情模板與 3 套固定劇情、122×175mm 無圖卡面 PDF 試印。
+**已完成**：132 隻動物與圖片、兩個離線小遊戲、動物大對決實體核心、首批 16 張 V2 動物卡、全卡注音資產，以及團隊任務 v0.9 Web／實體 prototype。
 
-**進行中**：等待 122×175mm 放大版 Poker 到貨後量測實際尺寸；同時準備團隊任務 v0.6 的第一次真人親子實玩。詳見 [Plan](Plan)。
-
-**暫定但未定案**：放大版 Poker 122×175mm + A4 黑白雷射標籤紙，每張 A4 橫式排 2 張。無圖測試大小可接受，最終尺寸與貼紙內縮量等實物到貨後確認。
-
-**圖片仍未納入版控。** 實體原型已經列印與遊玩，但 `card/images/` 與 `card/images-realistic/` 都被 `.gitignore` 排除，新 clone 無法從 repo 還原圖片。在新機器列印前，必須先確認圖片資產是否齊全。成因與償還策略見 [Tech-Debt](Tech-Debt)。
+**進行中**：實玩 v0.9 prototype；量測放大版 Poker 並複核 `117×170mm` 卡面；重印至少一頁後跑 16 張淘汰賽；數位版仍待實際遊玩測試。詳見 [Plan](Plan)。
 
 ## Wiki 頁面導覽
 
 | 頁面 | 內容 |
 |---|---|
-| [Maintenance](Maintenance) | 維運手冊 — 怎麼跑、怎麼生圖、怎麼部署、踩過哪些坑 |
-| [Roadmap](Roadmap) | 路線圖 — 走過的里程碑、現在的主軸、刻意不做的事 |
-| [Plan](Plan) | 執行中計畫快照 — 現在卡在哪、下一步是什麼 |
-| [Tech-Debt](Tech-Debt) | 技術債 — 依利息排序 + 償還紀錄 |
+| [Maintenance](Maintenance) | 維運手冊 — 環境、執行、測試、列印與地雷 |
+| [Roadmap](Roadmap) | 路線圖 — 里程碑、方向與非目標 |
+| [Plan](Plan) | 執行中計畫快照 |
+| [Tech-Debt](Tech-Debt) | 技術債 — 利息排序與償還紀錄 |
 
-> **文件分工**：wiki 是導覽與快照，方便人快速上手；規格、待辦、決策的 source of truth 在 repo 內（`AGENTS.md`、`docs/`、GitHub issues）。兩者衝突時**以 repo 為準**。
+> wiki 是人類導覽快照；規格、待辦與決策正本在 `AGENTS.md`、`HANDOFF.md`、`docs/` 與 tracker。衝突時以 repo 為準。

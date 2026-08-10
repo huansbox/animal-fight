@@ -1,8 +1,8 @@
-# Animal Fight 最新接手文件
+# Animal Fight 2026-08-04 歷史接手快照
 
 > 更新：2026-08-04
 > Branch：`feat/team-mission-dnd-check-design`
-> 狀態：v0.8-M 四情境成人測試完成，自由方法與裁定初步通過；使用者不做刻意提示短測，提示維持未驗證；下一步可跑完整成人紙筆局
+> 狀態：已封存；內容停在 v0.8-M 四情境成人測試，後續已完成成人局、兒童局並進入 v0.9。現行接手狀態請看 repo root [`HANDOFF.md`](../../../HANDOFF.md)。
 
 ## 下個 session 從這裡開始
 
@@ -50,9 +50,9 @@
 
 ### 132 隻特殊能力描述審核
 
-- 新增 [`../../card/audit_animal_skills.py`](../../card/audit_animal_skills.py)，掃描四字技能名、15–25 字描述、複合動作、外部角色、群體依賴、暴力字詞、抽象效果與誇張語句。
+- 新增 [`../../../card/audit_animal_skills.py`](../../../card/audit_animal_skills.py)，掃描四字技能名、15–25 字描述、複合動作、外部角色、群體依賴、暴力字詞、抽象效果與誇張語句。
 - 修訂前 132 隻中有 10 隻格式問題、102 隻命中至少一項 Prompt 風險候選；正式寫回後四字技能名與 15–25 字描述問題均歸零，Prompt 風險候選降為 77 隻。
-- P0 核心能力與 P1 兒童文案已由兒童文案、`artAction`／V2.0 相容性、臺灣用語／物種 plausibility 三個角度獨立 review，整併結果已同步至正式資料、卡面、規則表與相關 Prompt，詳見 [`../plans/2026-07-21-animal-skill-description-audit.md`](../plans/2026-07-21-animal-skill-description-audit.md)。
+- P0 核心能力與 P1 兒童文案已由兒童文案、`artAction`／V2.0 相容性、臺灣用語／物種 plausibility 三個角度獨立 review，整併結果已同步至正式資料、卡面、規則表與相關 Prompt，詳見 [`docs/plans/2026-07-21-animal-skill-description-audit.md`](../../../docs/plans/2026-07-21-animal-skill-description-audit.md)。
 - 生圖 SOP 新增 `artAction`：`skillDesc` 不再直接餵給模型，先收斂為一個可見動作、單一瞬間與必要物件。
 - 使用者確認原意是臺灣常見眼鏡蛇；正式資料已改為 `id=chinese_cobra`、英文 `Chinese Cobra`、中文維持「眼鏡蛇」。`Cobra` 是泛稱，`King Cobra` 則是不同物種「眼鏡王蛇」。本機被 `.gitignore` 排除的數位版圖片也已改名為 `card/images-realistic/chinese_cobra.png`；其他既有 workspace 若仍保留舊檔，需自行做相同 rename。
 - 注音 corpus 與 Bold／Medium subset 已依新版文字重建；正式 QA 為 132 隻、83 個 IVS、6 個人工注音、23 頁、溢出 0。首批 16 張 PDF 維持 8 頁 A4 橫式，逐頁畫面抽查無裁切、重疊、缺字或空白頁。
@@ -63,14 +63,14 @@
 - 最終 16 張：非洲獅、非洲象、獵豹、灣鱷、紅袋鼠、長頸鹿、海獺、皇帝企鵝、大熊貓、河豚、紅毛猩猩、黑豹、變色龍、蜂鳥、金剛鸚鵡、行軍蟻。
 - 4 張 V2 定錨圖保留，12 張新圖完成；Prompt 與生成圖均經能力動作、物種解剖、構圖／黑白印刷／兒童適性三面向審核。
 - 灣鱷重生後改為頭尾近水平、腹面朝觀者的死亡翻滾；紅袋鼠與變色龍移除速度線；金剛鸚鵡縮小置中以保留長尾。
-- HTML：[`../../card/animal-cards-v2-first-16-half-label.html`](../../card/animal-cards-v2-first-16-half-label.html)
-- Prompt／QA：[`../../card/img-prompt/animal-print-v2-first-16.md`](../../card/img-prompt/animal-print-v2-first-16.md)
-- JSONL：[`../../card/img-prompt/animal-print-v2-first-16.jsonl`](../../card/img-prompt/animal-print-v2-first-16.jsonl)
-- 正式 PDF：[`../../output/pdf/animal-fight-v2-first-16-half-label-a4.pdf`](../../output/pdf/animal-fight-v2-first-16-half-label-a4.pdf)
+- HTML：[`../../../card/animal-cards-v2-first-16-half-label.html`](../../../card/animal-cards-v2-first-16-half-label.html)
+- Prompt／QA：[`../../../card/img-prompt/animal-print-v2-first-16.md`](../../../card/img-prompt/animal-print-v2-first-16.md)
+- JSONL：[`../../../card/img-prompt/animal-print-v2-first-16.jsonl`](../../../card/img-prompt/animal-print-v2-first-16.jsonl)
+- 正式 PDF：[`../../../output/pdf/animal-fight-v2-first-16-half-label-a4.pdf`](../../../output/pdf/animal-fight-v2-first-16-half-label-a4.pdf)
 - 日期版詳細紀錄：[`2026-07-20-animal-v2-first-16.md`](2026-07-20-animal-v2-first-16.md)
-- 動作比較 HTML：[`../../card/animal-action-v2-comparison.html`](../../card/animal-action-v2-comparison.html)
-- 動作比較 Prompt／QA：[`../../card/img-prompt/animal-action-v2-comparison.md`](../../card/img-prompt/animal-action-v2-comparison.md)
-- 動作比較 PDF：[`../../output/pdf/animal-action-v2-comparison-a4.pdf`](../../output/pdf/animal-action-v2-comparison-a4.pdf)
+- 動作比較 HTML：[`../../../card/animal-action-v2-comparison.html`](../../../card/animal-action-v2-comparison.html)
+- 動作比較 Prompt／QA：[`../../../card/img-prompt/animal-action-v2-comparison.md`](../../../card/img-prompt/animal-action-v2-comparison.md)
+- 動作比較 PDF：[`../../../output/pdf/animal-action-v2-comparison-a4.pdf`](../../../output/pdf/animal-action-v2-comparison-a4.pdf)
 
 正式 PDF 為 8 頁 A4 橫式，每頁 2 張；卡面已由 `118.5×170mm` 縮為 `117×170mm`，置中於 A4 二分標籤。以名義 `122×175mm` Poker 計算，四邊各保留約 `2.5mm`。字型已嵌入、圖片與屬性圖約 300 ppi，更新後 8 頁 render QA 均無裁切、重疊、缺字或空白頁。
 
@@ -83,9 +83,9 @@
 ### 團隊任務 v0.7 實體測試包
 
 - 3 張寶物、2 張後援、待命／再挑戰／休息三區卡與 4 張大型揭露卡已完成。
-- 狀態／區域 PDF：[`../../output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf`](../../output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf)
-- 正式揭露卡 PDF：[`../../output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf`](../../output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf)
-- DM 專注模式：[`../../game/dm/`](../../game/dm/)
+- 狀態／區域 PDF：[`../../../output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf`](../../../output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf)
+- 正式揭露卡 PDF：[`../../../output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf`](../../../output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf)
+- DM 專注模式：[`../../../game/dm/`](../../../game/dm/)
 - 日期版詳細紀錄：[`2026-07-19-team-mission-print-layout.md`](2026-07-19-team-mission-print-layout.md)
 
 揭露卡的直向閱讀順序、單動物 `96mm` 屬性組與雙動物版面都已由使用者確認並遷移到正式 PDF。不要回頭使用 prototype 或早期 A／B 比較稿當正式列印檔。
@@ -96,7 +96,7 @@ v0.7 的 DM 網頁與列印檔保持可用，但目前不再視為下一步直�
 
 - 「骰子」正式卡面維持 `ㄊㄡˊ ˙ㄗ`。
 - 這是[教育部《國語辭典簡編本》](https://dict.concised.moe.edu.tw/dictView.jsp?ID=10343&la=0&powerMode=0)的正式讀音；`ㄕㄞˇ ˙ㄗ` 是日常常見讀法，但本案不新增 override。
-- 注音來源、IVS 與例外政策見 [`../../card/fonts/bopomofo/README.md`](../../card/fonts/bopomofo/README.md) 及 [`../../card/data/bopomofo-overrides.json`](../../card/data/bopomofo-overrides.json)。
+- 注音來源、IVS 與例外政策見 [`../../../card/fonts/bopomofo/README.md`](../../../card/fonts/bopomofo/README.md) 及 [`../../../card/data/bopomofo-overrides.json`](../../../card/data/bopomofo-overrides.json)。
 
 ## 下一輪實體驗證
 
@@ -139,7 +139,7 @@ open output/pdf/animal-fight-v2-first-16-half-label-a4.pdf
 open output/pdf/animal-action-v2-comparison-a4.pdf
 open output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf
 open output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf
-open docs/plans/2026-07-22-team-mission-dnd-check-design.md
+open archive/docs/plans/2026-07-22-team-mission-dnd-check-design.md
 python3 card/audit_animal_skills.py --format text
 git status -sb
 ```
