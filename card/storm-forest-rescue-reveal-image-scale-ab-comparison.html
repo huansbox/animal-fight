@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暴雨森林救援隊｜第 1、2 關圖片比例 A/B 比較</title>
+    <style>
+        @page { size: A4 portrait; margin: 0; }
+
+        @font-face {
+            font-family: "Bpmf Rounded";
+            src: url("fonts/bopomofo/rounded-medium.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 500;
+            font-display: block;
+        }
+
+        @font-face {
+            font-family: "Bpmf Rounded";
+            src: url("fonts/bopomofo/rounded-bold.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 800;
+            font-display: block;
+        }
+
+        :root {
+            --font: "Bpmf Rounded", "PingFang TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        html,
+        body {
+            margin: 0;
+            background: #ccc;
+            color: #000;
+            font-family: var(--font);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            position: relative;
+            width: 210mm;
+            height: 297mm;
+            display: grid;
+            grid-template-rows: repeat(2, 148.5mm);
+            margin: 8mm auto;
+            overflow: hidden;
+            background: #fff;
+            break-after: page;
+            page-break-after: always;
+        }
+
+        .page:last-child {
+            break-after: auto;
+            page-break-after: auto;
+        }
+
+        .comparison-cell {
+            position: relative;
+            display: grid;
+            width: 210mm;
+            height: 148.5mm;
+            place-items: center;
+            border-bottom: 0.15mm solid #bbb;
+        }
+
+        .variant-label {
+            position: absolute;
+            z-index: 2;
+            top: 3.5mm;
+            left: 8mm;
+            padding: 1.3mm 2.6mm;
+            border: 0.35mm solid #000;
+            border-radius: 1.5mm;
+            background: #fff;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            font-size: 7.5pt;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .variant-b .variant-label {
+            background: #000;
+            color: #fff;
+        }
+
+        .card-shell {
+            position: relative;
+            width: 170mm;
+            height: 118.5mm;
+            outline: 0.3mm dashed #666;
+        }
+
+        .reveal-card {
+            position: absolute;
+            inset: 2mm;
+            display: grid;
+            overflow: hidden;
+            border: 0.65mm solid #000;
+            border-radius: 4mm;
+            background: #fff;
+        }
+
+        .single.variant-a .reveal-card { grid-template-rows: 13mm 47mm 1fr; }
+        .single.variant-b .reveal-card { grid-template-rows: 13mm 65mm 1fr; }
+        .dual.variant-a .reveal-card { grid-template-rows: 13mm 44mm 1fr; }
+        .dual.variant-b .reveal-card { grid-template-rows: 13mm 58mm 1fr; }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 3mm;
+            padding: 1.5mm 4mm;
+            border-bottom: 0.45mm solid #000;
+        }
+
+        .card-number {
+            width: 8mm;
+            height: 8mm;
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            background: #000;
+            color: #fff;
+            font-family: "Arial Rounded MT Bold", system-ui, sans-serif;
+            font-size: 11pt;
+            font-weight: 900;
+        }
+
+        .card-title {
+            min-width: 0;
+            margin: 0;
+            overflow: hidden;
+            font-size: 15pt;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: 0.06em;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .player-count {
+            margin-left: auto;
+            font-size: 7.8pt;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .scene {
+            overflow: hidden;
+            border-bottom: 0.45mm solid #000;
+            background: #eee;
+        }
+
+        .scene img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            filter: grayscale(1) contrast(1.08);
+        }
+
+        .current-content {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            row-gap: 3mm;
+            min-height: 0;
+            padding: 5mm 10mm 7mm;
+        }
+
+        .reason {
+            display: grid;
+            place-content: center;
+            min-width: 0;
+            text-align: center;
+        }
+
+        .reason strong {
+            margin-bottom: 0.5mm;
+            font-size: 9.5pt;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .reason span {
+            font-size: 8.4pt;
+            font-weight: 500;
+            line-height: 1.35;
+        }
+
+        .goal-card {
+            display: grid;
+            place-content: center;
+            gap: 2mm;
+            padding: 4mm 8mm;
+            border: 0.5mm solid #000;
+            border-radius: 3mm;
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        .goal-card strong {
+            font-size: 10pt;
+            font-weight: 800;
+        }
+
+        .goal-card span {
+            font-size: 11.5pt;
+            font-weight: 800;
+            line-height: 1.45;
+        }
+
+        .picture-book-content {
+            display: grid;
+            min-height: 0;
+            padding: 3.5mm 10mm 5mm;
+        }
+
+        .picture-book-content .goal-card {
+            gap: 1mm;
+            padding: 1mm 6mm 0;
+            border: 0;
+            border-radius: 0;
+            background: #fff;
+        }
+
+        .picture-book-content .goal-card strong { font-size: 9pt; }
+        .picture-book-content .goal-card span {
+            font-size: 12.2pt;
+            line-height: 1.35;
+        }
+
+        .dual-content {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2.5mm;
+            min-height: 0;
+        }
+
+        .dual.variant-a .dual-content { padding: 6mm 7mm 7mm; }
+        .dual.variant-b .dual-content { padding: 3.5mm 6mm 4.5mm; }
+
+        .job {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            min-width: 0;
+            min-height: 0;
+            overflow: hidden;
+            border: 0.45mm solid #000;
+            border-radius: 2mm;
+            background: #f7f7f7;
+        }
+
+        .variant-a .job {
+            row-gap: 3mm;
+            padding: 4mm;
+        }
+
+        .variant-b .job {
+            row-gap: 1.5mm;
+            padding: 2.5mm 3mm;
+            background: #fff;
+        }
+
+        .job:nth-child(2) { border-style: dashed; }
+
+        .job-title {
+            align-self: center;
+            font-size: 10pt;
+            font-weight: 800;
+            line-height: 1.2;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .job-goal {
+            display: grid;
+            place-items: center;
+            margin: 0;
+            overflow: hidden;
+            font-size: 10.5pt;
+            font-weight: 800;
+            line-height: 1.45;
+            text-align: center;
+        }
+
+        .variant-b .job-title { font-size: 9.5pt; }
+        .variant-b .job-goal {
+            font-size: 9.8pt;
+            line-height: 1.35;
+        }
+
+        @media print {
+            html,
+            body { background: #fff; }
+            .page { margin: 0; }
+            .comparison-cell { border-color: transparent; }
+        }
+    </style>
+</head>
+<body>
+    <main id="pages"></main>
+
+    <script>
+        const cards = [
+            {
+                className: "single",
+                number: "1",
+                title: "找出安全道路",
+                count: "選 1 隻動物",
+                image: "mission-art/storm-forest-rescue/01-flooded-road.png",
+                reasonTitle: "積水和倒木擋住路",
+                reason: "水還在慢慢上升，隊伍需要一條能安全通過的路。",
+                goalTitle: "工作目標",
+                goal: "找出安全道路，並留下隊伍看得懂的記號。",
+                labels: ["A｜現行比例｜圖片 47mm", "B｜繪本式｜圖片 65mm"]
+            },
+            {
+                className: "dual",
+                number: "2",
+                title: "搖晃藤橋上的幼獸",
+                count: "選 2 隻動物",
+                image: "mission-art/storm-forest-rescue/02-vine-bridge.png",
+                jobs: [
+                    { title: "2A｜固定藤橋", goal: "讓藤橋停止劇烈搖晃，不被洪水和漂流木撞斷。" },
+                    { title: "2B｜救出小鹿", goal: "靠近小鹿並解開細藤，不能讓橋搖得更厲害。" }
+                ],
+                labels: ["A｜現行比例｜圖片 44mm", "B｜繪本式｜圖片 58mm"]
+            }
+        ];
+
+        function goalMarkup(card, isPictureBook) {
+            if (card.jobs) {
+                return `<div class="dual-content">${card.jobs.map((job) => `
+                    <section class="job">
+                        <div class="job-title">${job.title}</div>
+                        <p class="job-goal">${job.goal}</p>
+                    </section>
+                `).join("")}</div>`;
+            }
+            if (isPictureBook) {
+                return `<div class="picture-book-content">
+                    <div class="goal-card"><strong>${card.goalTitle}</strong><span>${card.goal}</span></div>
+                </div>`;
+            }
+            return `<div class="current-content">
+                <div class="reason"><strong>${card.reasonTitle}</strong><span>${card.reason}</span></div>
+                <div class="goal-card"><strong>${card.goalTitle}</strong><span>${card.goal}</span></div>
+            </div>`;
+        }
+
+        function cardMarkup(card, variant) {
+            const isPictureBook = variant === "b";
+            return `
+                <span class="variant-label">${card.labels[isPictureBook ? 1 : 0]}</span>
+                <div class="card-shell">
+                    <article class="reveal-card">
+                        <header class="card-header">
+                            <span class="card-number">${card.number}</span>
+                            <h2 class="card-title">${card.title}</h2>
+                            <span class="player-count">${card.count}</span>
+                        </header>
+                        <div class="scene"><img src="${card.image}" alt=""></div>
+                        ${goalMarkup(card, isPictureBook)}
+                    </article>
+                </div>`;
+        }
+
+        const root = document.querySelector("#pages");
+        cards.forEach((card) => {
+            const page = document.createElement("section");
+            page.className = "page";
+            ["a", "b"].forEach((variant) => {
+                const cell = document.createElement("section");
+                cell.className = `comparison-cell ${card.className} variant-${variant}`;
+                cell.innerHTML = cardMarkup(card, variant);
+                page.appendChild(cell);
+            });
+            root.appendChild(page);
+        });
+
+        document.fonts.ready.then(() => {
+            document.documentElement.dataset.ready = "true";
+        });
+    </script>
+</body>
+</html>

@@ -250,7 +250,7 @@ AI 自動執行步驟 1-9（數值 + prompt + HTML + 文件更新），完成後
 - **動物卡版面原型**：[`card/animal-card-final-prototype.html`](card/animal-card-final-prototype.html)（122×175mm、全卡注音、黑白雷射列印）
 - **正式注音字型**：[`card/fonts/bopomofo/`](card/fonts/bopomofo/)（v1.500 固定來源、Bold／Medium subset、corpus、授權、build report）；QA：[`card/bopomofo-coverage-qa.html`](card/bopomofo-coverage-qa.html)、[`output/pdf/bopomofo-font-coverage-qa.pdf`](output/pdf/bopomofo-font-coverage-qa.pdf)
 - **團隊任務工法**：萬用背包／探險手電筒／變化魔鏡各 1 張、後援 2 張、待命／再挑戰／休息各 1 張，共用 2 張 A4 四分標籤；4 張大型揭露卡使用 2 張 A4 二分標籤；全部貼在放大版 Poker 上
-- **揭露卡正式版面**：v0.9 只顯示孩子可見的情境圖片、工作名稱與目標，不顯示預寫方法、屬性、需求數字、DC 或加成條件；單／雙動物版均已遷移到正式 4 張揭露卡
+- **揭露卡正式版面**：v0.9 只顯示孩子可見的情境圖片、工作名稱與目標，不顯示預寫方法、屬性、需求數字、DC 或加成條件；正式採用 B「繪本式大圖」，任務簡報與單動物卡圖片高 `65mm`、雙動物卡圖片高 `58mm`，圖片已表達的原因句不重複列出；四張卡均已完成遷移
 - **DM 專注模式**：[`game/dm/`](game/dm/)；Vanilla HTML／CSS／JS、無 build、Cloudflare Pages-ready、tutorial-in-play、逐關隱藏裁定、v0.9 Boss 寶物結算、`localStorage` v3 保存進度與最近 50 局摘要，可匯出 Markdown／JSON
 - **測試檔**：[`card/print-size-test-122x175.html`](card/print-size-test-122x175.html)；可列印 PDF：[`output/pdf/animal-fight-card-size-test-122x175.pdf`](output/pdf/animal-fight-card-size-test-122x175.pdf)
 - **團隊任務列印檔**：[`output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf`](output/pdf/team-mission-status-zone-cards-quarter-label-a4.pdf)（v0.9 三寶物版）、[`output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf`](output/pdf/storm-forest-rescue-reveal-cards-half-label-a4.pdf)（v0.9 孩子可見版）

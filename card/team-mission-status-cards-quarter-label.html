@@ -88,7 +88,7 @@
             border-radius: 8mm;
             background: #000;
             color: #fff;
-            font-family: system-ui, sans-serif;
+            font-family: var(--font);
             font-size: 8.5pt;
             font-weight: 850;
             letter-spacing: 0.12em;
@@ -133,7 +133,7 @@
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 1mm;
-            font-family: system-ui, "PingFang TC", sans-serif;
+            font-family: var(--font);
         }
 
         .rule-row {
@@ -154,7 +154,6 @@
 
         .mirror .rule-row {
             min-height: 7mm;
-            font-family: var(--font);
             font-size: 9pt;
             letter-spacing: 0.04em;
         }
@@ -279,9 +278,9 @@
                     kicker: "BOSS 寶物",
                     title: "變化魔鏡",
                     image: "images-team-status/treasures/change-mirror-v2.png",
-                    lead: "手電筒結算後",
-                    rows: ["重擲一個失敗位置的原本骰池", "不保留背包／手電筒｜這個位置不能後援"],
-                    foot: "只選一個失敗位置"
+                    lead: "手電筒用完後",
+                    rows: ["選沒成功的一邊，骰子全部重擲"],
+                    foot: "背包、手電筒不算；這一邊不能後援"
                 },
                 {
                     type: "reserve",
