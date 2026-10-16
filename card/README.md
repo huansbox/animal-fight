@@ -21,30 +21,32 @@ uv sync
 
 ### 2) 設定 API Key
 
-把 `.env.example` 複製成 `.env`，並在 `card/.env` 內設定：
+把 `.env.example` 複製成 `card/.env`。值是 1Password 引用，不是明文 key：
 ```text
-OPENAI_API_KEY=sk-...
+OPENAI_API_KEY=op://Developer/OpenAI API Key-imgAPI/credential
 ```
+
+需要 API 的指令一律以 `op run --env-file=card/.env --` 開頭，key 只存在於該指令的 process；不要把 key 放進 agent session 的環境變數。
 
 ### 3) 執行批次產圖
 
 ```bash
-uv run python card/generate_from_jsonl.py
+op run --env-file=card/.env -- uv run python card/generate_from_jsonl.py
 ```
 
 指定 prompt 檔（例如 icon）：
 ```bash
-uv run python card/generate_from_jsonl.py --input card/img-prompt/icon-prompts-api.jsonl
+op run --env-file=card/.env -- uv run python card/generate_from_jsonl.py --input card/img-prompt/icon-prompts-api.jsonl
 ```
 
 同一個 prompt 產 2 張圖（檔名會變成 `id_1.png`、`id_2.png`）：
 ```bash
-uv run python card/generate_from_jsonl.py --num-images 2
+op run --env-file=card/.env -- uv run python card/generate_from_jsonl.py --num-images 2
 ```
 
 調整每張圖的等待時間（避免 rate limit）：
 ```bash
-uv run python card/generate_from_jsonl.py --sleep-seconds 8
+op run --env-file=card/.env -- uv run python card/generate_from_jsonl.py --sleep-seconds 8
 ```
 
 ### 4) 輸出結果

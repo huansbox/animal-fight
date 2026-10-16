@@ -9,7 +9,8 @@ from __future__ import annotations
 
 使用方式：
   1) 在 repo root 執行 uv sync
-  2) 在 `card/.env` 填入 OPENAI_API_KEY
+  2) `card/.env` 放 OPENAI_API_KEY 的 op:// 引用（見 card/.env.example），
+     以 `op run --env-file=card/.env -- uv run python card/generate_from_jsonl.py` 執行
   3) uv run python card/generate_from_jsonl.py
 
 可選參數：

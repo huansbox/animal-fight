@@ -12,7 +12,8 @@
 
 使用方式：
   pip install openai python-dotenv
-  在 card/.env 填入 OPENAI_API_KEY
+  card/.env 放 OPENAI_API_KEY 的 op:// 引用（見 .env.example）；
+  submit／status／download 以 `op run --env-file=.env --` 前綴執行
 
   python3 batch_generate.py generate --skip-existing
   python3 batch_generate.py submit

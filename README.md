@@ -93,13 +93,13 @@ uv run python -m http.server 8080
 
 ```bash
 uv sync
-# 在 card/.env 填入 OPENAI_API_KEY
+# card/.env 放 OPENAI_API_KEY 的 op:// 引用（見 card/README.md），呼叫 API 的指令以 op run 執行
 
 cd card
 uv run python batch_generate.py generate --skip-existing  # 產生 JSONL
-uv run python batch_generate.py submit                     # 提交 batch job
-uv run python batch_generate.py status --wait              # 等待完成
-uv run python batch_generate.py download                   # 下載至 images-realistic/
+op run --env-file=.env -- uv run python batch_generate.py submit         # 提交 batch job
+op run --env-file=.env -- uv run python batch_generate.py status --wait  # 等待完成
+op run --env-file=.env -- uv run python batch_generate.py download       # 下載至 images-realistic/
 ```
 
 ## 專案結構
